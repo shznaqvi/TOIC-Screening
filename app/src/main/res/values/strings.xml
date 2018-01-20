@@ -1,3 +1,109 @@
 <resources>
-    <string name="app_name">TOIC-Screening</string>
+    <string name="app_name"> TOIC-Screening </string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+    completions."
+  </string>
+
+    <string name="end_interview"> اختتام </string>
+    <string name="start_interview"> انٽرويو شروع ڪريو </string>
+    <string name="nextSection"> اڳيون سيڪشن </string>
+    <string name="addMember"> افراد کا اندراج </string>
+    <string name="dcstatus"> انٽرويو جو نتيجو</string>
+    <string name="complete"> مکمل</string>
+    <string name="incomplete">نا مکمل</string>
+    <!-- String related to section headings -->
+    <string name="secALabel">A: BASIC INFORMATION</string>
+    <string name="secBLabel">B: HOUSEHOLD MEMBERS’ INFORMATION </string>
+    <string name="secCLabel">C: گھر جي سماجي ۽ اقتصادي معلومات </string>
+    <string name="secDLabel">D: REPRODUCTIVE HEALTH, MATERNAL AND CHILD MORTALITY (Complete this section  for all married aged 15–49 years in the household)</string>
+    <string name="secELabel">E: Deceased Mother Information</string>
+    <string name="secFLabel">F: Deceased Child Information</string>
+    <string name="secGLabel">G: Access to LHWs </string>
+    <string name="secHALabel">(HA: ٻار جي صحت(دستن جي بيماري جي باري ۾</string>
+    <string name="secHBLabel">HB: ٻار جي صحت(ساھ کڻڻ ۾ تڪليف)</string>
+    <string name="secILabel">I: حفاظتي ٽڪن جي معلومات</string>
+    <string name="secJLabel">J: BREAST FEEDING AND NUTRITION </string>
+    <string name="secKLabel">K: پاڻي ۽ صفائي</string>
+    <string name="secLLabel">L: ھٿ ڌوئڻ</string>
+    <string name="secMLabel">M: WASH (Spot Check) </string>
+
+
+    <!-- Strings that are fixed for all apps -->
+    <string name="title_activity_splashscreen">SplashscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="male"> مرد</string>
+    <string name="female"> عورت </string>
+    <string name="yes"> ھا </string>
+    <string name="no"> نه </string>
+    <string name="dkn"> خبر نه آھي </string>
+    <string name="na"> لاڳو نه ٿو ٿئي </string>
+    <string name="day"> ڏينهن </string>
+    <string name="month"> مهينو </string>
+    <string name="year"> سال </string>
+    <string name="hour"> ڪلاڪ </string>
+    <string name="min"> منٽ </string>
+    <string name="other"> ٻيو ڪو وضاحت ڪريو. </string>
+    <string name="name">ٻار جو نالو</string>
+    <string name="none">ڪجهه به نه</string>
+
+    <!-- Strings related to Sections Below -->
+    <string name="RA">  </string>
+    <string name="hhno"> گھر نمبر </string>
+    <string name="wname"> عورت جو نالو </string>
+    <string name="age"> عورت جي عمر (سالن ۾) </string>
+    <string name="hname"> مڙس جو نالو </string>
+    <string name="hhname"> گهر جي سربراه جو نالو </string>
+    <string name="ra06"> تعلقي جو نالو (ڪوڊ) </string>
+    <string name="ra07"> ڳوٺ جو نالو/ڪوڊ </string>
+    <string name="lhvname"> ايل ايڇ وي جو نالو </string>
+    <string name="pwid"> عورت جي آءِ ڊي </string>
+    <string name="FormDate"> انٽرويو جي تاريخ </string>
+    <string name="ra10"> ٽرائيميسٽر / حمل جا مهينا </string>
+    <string name="ra0901"> پهريون </string>
+    <string name="ra0902"> ٻيون </string>
+    <string name="ra0903"> ٽيون </string>
+    <string name="ra11"> گذريل حملن جو تعداد </string>
+    <string name="istatus"> ڇا حاملا عورت انٽرويو لاءِ موجود هئي؟ </string>
+    <string name="istatusa"> موجود هئي </string>
+    <string name="istatusb"> هن وقت اسپتال ۾ آهي </string>
+    <string name="istatusc"> وقتي طور غير موجود آهي </string>
+    <string name="istatusd"> مري چڪي آهي </string>
+    <string name="istatuse"> هميشه لاءِ لڏي ويا </string>
+    <string name="istatusf"> وقتي طور انڪار ڪيو </string>
+    <string name="istatusg"> رضامند نه هجڻ </string>
+    <string name="istatush"> دورو نه ٿي سگهي </string>
+    <string name="istatusi"> سبب ڄاڻايو </string>
+
+    <string name="RB"> حصو ٻيون: گذريل حمل يا دائڪي ڄاڻ </string>
+    <string name="toica01"> ویکسین سلپ: </string>
+    <string name="toica02"> مرکز صحت کا نام </string>
+    <string name="toica03"> گھرانے کے سربراہ کا رابطہ نمبر </string>
+    <string name="toica04"> مکمل پتہ محلہ اور گھرانمبر </string>
+    <string name="toica05"> فون نمبر </string>
+    <string name="toica06"> قاسم آباد اور لطیف آباد کے رہائشی؟ </string>
+    <string name="toica07"> جواب دہندگان کا 2سال تک ہجرت کا کوئی منصوبہ نہیں؟ </string>
+    <string name="toica08"> والدین ویکسین کی رضامندی دینے کےلیے تیار ہیں۔ </string>
+    <string name="toica09"> اگر سوال A to C میں ہاں ہے تو اسکرینگ جاری رکھیں ورنہ اختتام کردیں. </string>
+    <string name="toica10">  </string>
+    <string name="toicb01"> بچے کا نام </string>
+    <string name="toicb02"> والد کانام </string>
+    <string name="toicb03"> عمر 6-60ماہ: </string>
+    <string name="toicb04"> بچےکو کسی بھی قسم کی دوا سے الرجی نہیں ہے </string>
+    <string name="toicb05"> بچے نے پچھلے 24گھنٹوں میں انفیکشن یا بیماری Pneumonia acute diarrhea, and seizures کے لیےکسی قسم کی کوئی اینٹی بائیوٹک اورسٹیرائڈ استعمال نہیں کی ہے۔ </string>
+    <string name="toicb06"> بچے نے ۳سال کے دوران ٹائفائد کے خلاف ٹیکے نہیں لگاوئے) ویکسینشن کارڈ چک کریں۔) </string>
+    <string name="toicb07"> انفیکشن کی کوئ علامات نہیں بشمول، جسم میں درد، 100 سے زیادہ بخار جسم پر چھالے،بے چینی،الٹی،جسم پر سرخ بادہ رشیز،پیٹ پر لال دھبے ،جٹکے ،سانس میں تکلیف،پچھلے تین دن سے پتلے پاخانے۔ </string>
+    <string name="toicb08"> خاندان AEFIکے فالواپ کےلیےخواہش مند ہیں </string>
+    <string name="toicb09"> تم اپنے ساتھ کیتنے بچے لاۓ ہو </string>
+
+
 </resources>

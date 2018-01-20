@@ -1,0 +1,29 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 4f8796a8475dbc52b5d73d155a10efc86312aa81)
++++ app/build.gradle	(revision )
+@@ -4,6 +4,9 @@
+     compileSdkVersion 26
+     buildToolsVersion '26.0.3'
+     def versionPropsFile = file('version.properties')
++    dataBinding {
++        enabled true
++    }
+ 
+     if (versionPropsFile.canRead()) {
+         Properties versionProps = new Properties()
+Index: app/version.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- app/version.properties	(revision 4f8796a8475dbc52b5d73d155a10efc86312aa81)
++++ app/version.properties	(revision )
+@@ -1,2 +1,2 @@
+-#Fri Nov 24 09:25:49 PKT 2017
+-VERSION_CODE=959
++#Fri Nov 24 09:32:06 PKT 2017
++VERSION_CODE=961

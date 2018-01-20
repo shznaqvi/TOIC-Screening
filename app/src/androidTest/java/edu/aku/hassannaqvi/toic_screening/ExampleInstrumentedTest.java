@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("edu.aku.hassannaqvi.toic_screening", appContext.getPackageName());
+        assertEquals("edu.aku.hassannaqvi.src_preg", appContext.getPackageName());
     }
 }
