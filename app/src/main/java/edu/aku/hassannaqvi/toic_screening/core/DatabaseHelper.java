@@ -582,42 +582,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Collection<FormsContract> getUnsyncedChildForms() {
+    public Collection<ChildContract> getUnsyncedChildForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                FormsTable._ID,
-                FormsTable.COLUMN_UID,
-                FormsTable.COLUMN_FORMDATE,
-                FormsTable.COLUMN_USER,
-                FormsTable.COLUMN_ISTATUS,
-                //FormsTable.COLUMN_FORMTYPE,
-                FormsTable.COLUMN_SA,
-                FormsTable.COLUMN_SB,
-                FormsTable.COLUMN_SC,
-                FormsTable.COLUMN_SD,
-                FormsTable.COLUMN_GPSLAT,
-                FormsTable.COLUMN_GPSLNG,
-                FormsTable.COLUMN_GPSDATE,
-                FormsTable.COLUMN_GPSACC,
-                FormsTable.COLUMN_DEVICETAGID,
-                FormsTable.COLUMN_DEVICEID,
-                FormsTable.COLUMN_SYNCED,
-                FormsTable.COLUMN_SYNCED_DATE,
-                FormsTable.COLUMN_APP_VERSION
+                FormsChildTable._ID,
+                FormsChildTable.COLUMN_UID,
+                FormsChildTable.COLUMN_FORMDATE,
+                FormsChildTable.COLUMN_USER,
+                FormsChildTable.COLUMN_SB,
+                FormsChildTable.COLUMN_GPSLAT,
+                FormsChildTable.COLUMN_GPSLNG,
+                FormsChildTable.COLUMN_GPSDATE,
+                FormsChildTable.COLUMN_GPSACC,
+                FormsChildTable.COLUMN_DEVICETAGID,
+                FormsChildTable.COLUMN_DEVICEID,
+                FormsChildTable.COLUMN_SYNCED,
+                FormsChildTable.COLUMN_SYNCED_DATE,
+                FormsChildTable.COLUMN_APP_VERSION
         };
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null";
+        String whereClause = FormsChildTable.COLUMN_SYNCED + " is null";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                FormsTable._ID + " ASC";
+                FormsChildTable._ID + " ASC";
 
-        Collection<FormsContract> allFC = new ArrayList<FormsContract>();
+        Collection<ChildContract> allFC = new ArrayList<ChildContract>();
         try {
             c = db.query(
-                    FormsTable.TABLE_NAME,  // The table to query
+                    FormsChildTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -626,7 +621,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                FormsContract fc = new FormsContract();
+                ChildContract fc = new ChildContract();
                 allFC.add(fc.Hydrate(c));
             }
         } finally {

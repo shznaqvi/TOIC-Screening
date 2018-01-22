@@ -390,6 +390,8 @@ public class ChildContract {
         public static final String COLUMN_GPSLNG = "gpslng";
         public static final String COLUMN_GPSDATE = "gpsdate";
         public static final String COLUMN_GPSACC = "gpsacc";
+
+
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "tagid";
         public static final String COLUMN_SYNCED = "synced";

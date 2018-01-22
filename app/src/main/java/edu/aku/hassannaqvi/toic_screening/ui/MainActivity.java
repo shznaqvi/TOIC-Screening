@@ -50,6 +50,7 @@ import edu.aku.hassannaqvi.toic_screening.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 import edu.aku.hassannaqvi.toic_screening.databinding.ActivityMainBinding;
+import edu.aku.hassannaqvi.toic_screening.sync.SyncChildForms;
 import edu.aku.hassannaqvi.toic_screening.sync.SyncForms;
 
 public class MainActivity extends Activity {
@@ -449,6 +450,11 @@ public class MainActivity extends Activity {
 
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             new SyncForms(this, true).execute();
+
+
+            Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
+            new SyncChildForms(this, true).execute();
+
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
