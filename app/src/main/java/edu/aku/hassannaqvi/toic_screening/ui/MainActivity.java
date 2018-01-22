@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -47,6 +48,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.toic_screening.R;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
 import edu.aku.hassannaqvi.toic_screening.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
@@ -214,7 +216,6 @@ public class MainActivity extends Activity {
         Log.d(TAG, "onCreate: " + rSumText);
         recordSummary.setText(rSumText);
 
-
 //        Fill spinner
 
         lablesAreas = new ArrayList<>();
@@ -241,6 +242,17 @@ public class MainActivity extends Activity {
 
         ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainBinding.setCallback(this);
+
+        /*Add data in Serial date wrt date*/
+        MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+
+        if (MainApp.sc.getDeviceid() == null){
+            db.addSerialForm(new SerialContract(Settings.Secure.getString(getApplicationContext().getContentResolver(),Settings.Secure.ANDROID_ID),
+                    new SimpleDateFormat("dd-MM-yy").format(new Date()).toString(),
+                    "0"));
+
+            MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+        }
 
     }
 

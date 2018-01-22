@@ -23,14 +23,18 @@ public class SerialContract {
     public SerialContract() {
     }
 
+    public SerialContract(String deviceid, String dt, String serialno) {
+        this.deviceid = deviceid;
+        this.dt = dt;
+        this.serialno = serialno;
+    }
+
     public SerialContract sync(JSONObject jsonObject) throws JSONException {
         this.deviceid = jsonObject.getString(singleSerial.COLUMN_DEVICE_ID);
         this.dt = jsonObject.getString(singleSerial.COLUMN_DATE);
         this.serialno = jsonObject.getString(singleSerial.COLUMN_SERIAL_NO);
         this.synced = jsonObject.getString(singleSerial.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(singleSerial.COLUMN_SYNCED_DATE);
-
-
 
         return this;
     }
@@ -39,9 +43,6 @@ public class SerialContract {
         this.deviceid = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_DEVICE_ID));
         this.dt = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_DATE));
         this.serialno = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_SERIAL_NO));
-        this.synced = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_SYNCED));
-        this.synced_date = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_SYNCED_DATE));
-
         return this;
     }
 

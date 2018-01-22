@@ -43,8 +43,8 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="male"> مرد</string>
     <string name="female"> عورت </string>
-    <string name="yes"> ھا </string>
-    <string name="no"> نه </string>
+    <string name="yes"> ہاں </string>
+    <string name="no"> نہیں </string>
     <string name="dkn"> خبر نه آھي </string>
     <string name="na"> لاڳو نه ٿو ٿئي </string>
     <string name="day"> ڏينهن </string>
@@ -58,6 +58,8 @@
 
     <!-- Strings related to Sections Below -->
     <string name="RA">  </string>
+    <string name="uc"> یوسی کا نام </string>
+    <string name="town"> ٹاون/تحیصل کا نام </string>
     <string name="hhno"> گھر نمبر </string>
     <string name="wname"> عورت جو نالو </string>
     <string name="age"> عورت جي عمر (سالن ۾) </string>
@@ -85,7 +87,7 @@
     <string name="istatusi"> سبب ڄاڻايو </string>
 
     <string name="RB"> CHILD ASSESSMENT </string>
-    <string name="toica01"> ویکسین سلپ: </string>
+    <string name="toica01"> ویکسین سلپ موجود ہے: </string>
     <string name="toica02"> ٹیم نمبر </string>
     <string name="toica03"> مرکز صحت کا نام </string>
     <string name="toica04"> مکمل پتہ محلہ اور گھرانمبر </string>

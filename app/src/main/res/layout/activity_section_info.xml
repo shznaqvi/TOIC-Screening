@@ -49,39 +49,29 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <EditText
-                android:id="@+id/toica01"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/toica01"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
-                android:maxLength="6" />
-
-            <!--Team No-->
             <LinearLayout
-                android:id="@+id/fldGrp02"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility='@{toica01.getText.toString.equals("") ? View.VISIBLE : View.GONE}'>
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="match_parent"
+                <Switch
+                    android:id="@+id/toica01"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/toica02"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:layout_weight="15"
+                    android:checked="true"
+                    android:textOff="@string/no"
+                    android:textOn="@string/yes" />
 
                 <EditText
                     android:id="@+id/toica02"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                    android:hint="@string/toica02"
-                    android:maxLength="25"
-                    android:text='@{toica01.getText.toString.trim.length != 0 ? toica02.getText.toString : ""}' />
+                    android:layout_weight="80"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
+                    android:hint="@string/toica01"
+                    android:enabled="@{toica01.checked ? true : false}"
+                    android:maxLength="6" />
 
             </LinearLayout>
 
@@ -108,9 +98,40 @@
                 android:id="@+id/fldGrp04"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility='@{toica01.getText.toString.equals("") ? View.GONE : View.VISIBLE}'>
-                <!--UC-->
+                android:orientation="vertical">
+                <!--TOWN-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spTowns"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:popupBackground="#ffffff" />
+
+                    <TextView
+                        style="?android:textAppearanceMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1.5"
+                        android:background="@android:color/transparent"
+                        android:text="@string/town"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <!--UCS-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -135,39 +156,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1.5"
                         android:background="@android:color/transparent"
-                        android:text="@string/ra06"
-                        android:textAlignment="center"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-                <!--Village-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layoutDirection="ltr"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/spVillages"
-                        style="@style/Widget.AppCompat.Spinner.Underlined"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:popupBackground="#ffffff" />
-
-                    <TextView
-                        style="?android:textAppearanceMedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1.5"
-                        android:background="@android:color/transparent"
-                        android:text="@string/ra07"
+                        android:text="@string/uc"
                         android:textAlignment="center"
                         android:textStyle="bold" />
 
@@ -228,8 +217,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="0123456789"
-                android:inputType="number"
                 android:hint="@string/toica05"
+                android:inputType="number"
                 android:maxLength="11" />
 
             <!--TOICa06-->
@@ -364,8 +353,8 @@
                     android:background="@color/red"
                     android:onClick="@{() -> callback.BtnEnd()}"
                     android:text="@string/end_interview"
-                    android:visibility="@{(toica06a.checked &amp;&amp; toica07a.checked &amp;&amp; toica08a.checked) ? View.GONE : View.VISIBLE}"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:visibility="@{(toica06a.checked &amp;&amp; toica07a.checked &amp;&amp; toica08a.checked) ? View.GONE : View.VISIBLE}" />
 
                 <Button
                     android:id="@+id/btn_Continue"
@@ -376,8 +365,8 @@
                     android:background="#1ed61e"
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="@string/start_interview"
-                    android:visibility="@{(toica06a.checked &amp;&amp; toica07a.checked &amp;&amp; toica08a.checked) ? View.VISIBLE : View.GONE}"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:visibility="@{(toica06a.checked &amp;&amp; toica07a.checked &amp;&amp; toica08a.checked) ? View.VISIBLE : View.GONE}" />
 
             </LinearLayout>
         </LinearLayout>

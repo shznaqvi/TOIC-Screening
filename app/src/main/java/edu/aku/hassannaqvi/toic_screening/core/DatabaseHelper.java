@@ -18,22 +18,18 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
-import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract.singleSerial;
-import edu.aku.hassannaqvi.toic_screening.contracts.DistrictsContract;
-import edu.aku.hassannaqvi.toic_screening.contracts.DistrictsContract.singleDistrict;
-import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
-import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract.FormsChildTable;
-import edu.aku.hassannaqvi.toic_screening.contracts.TalukasContract;
-import edu.aku.hassannaqvi.toic_screening.contracts.TalukasContract.TalukasTable;
+import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract.FormsTable;
+import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract.singleSerial;
+import edu.aku.hassannaqvi.toic_screening.contracts.TehsilsContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.TehsilsContract.TehsilsTable;
 import edu.aku.hassannaqvi.toic_screening.contracts.UCsContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.UCsContract.UCsTable;
 import edu.aku.hassannaqvi.toic_screening.contracts.UsersContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.UsersContract.UsersTable;
-import edu.aku.hassannaqvi.toic_screening.contracts.VillagesContract;
-import edu.aku.hassannaqvi.toic_screening.contracts.VillagesContract.singleVillage;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -103,24 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_CHILD_FORMS =
             "DROP TABLE IF EXISTS " + FormsChildTable.TABLE_NAME;
-
-    private static final String SQL_DELETE_DISTRICTS = "DROP TABLE IF EXISTS " + singleDistrict.TABLE_NAME;
-    private static final String SQL_DELETE_VILLAGES = "DROP TABLE IF EXISTS " + singleVillage.TABLE_NAME;
     private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
-
-
-    final String SQL_CREATE_DISTRICT = "CREATE TABLE " + singleDistrict.TABLE_NAME + " (" +
-            singleDistrict._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            singleDistrict.COLUMN_DISTRICT_CODE + " TEXT, " +
-            singleDistrict.COLUMN_DISTRICT_NAME + " TEXT " +
-            ");";
-    final String SQL_CREATE_VILLAGE = "CREATE TABLE " + singleVillage.TABLE_NAME + " (" +
-            singleVillage._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            singleVillage.COLUMN_VILLAGE_CODE + " TEXT, " +
-            singleVillage.COLUMN_VILLAGE_NAME + " TEXT, " +
-            singleVillage.COLUMN_DISTRICT_CODE + " TEXT " +
-            ");";
-
 
     final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSerial.TABLE_NAME + " (" +
             singleSerial._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -131,6 +110,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             singleSerial.COLUMN_SYNCED_DATE + " TEXT " +
             ");";
 
+    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + TehsilsTable.TABLE_NAME;
+    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
+
+    final String SQL_CREATE_TALUKA = "CREATE TABLE " + TehsilsTable.TABLE_NAME + " (" +
+            TehsilsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            TehsilsTable.COLUMN_TALUKA_CODE + " TEXT, " +
+            TehsilsTable.COLUMN_TALUKA_NAME + " TEXT " +
+            ");";
+    final String SQL_CREATE_UC = "CREATE TABLE " + UCsTable.TABLE_NAME + " (" +
+            UCsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            UCsTable.COLUMN_UCCODE + " TEXT, " +
+            UCsTable.COLUMN_UCS_NAME + " TEXT, " +
+            UCsTable.COLUMN_TALUKA_CODE + " TEXT " +
+            ");";
 
     private final String TAG = "DatabaseHelper";
 
@@ -148,9 +141,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_CHILD_FORMS);
-        db.execSQL(SQL_CREATE_DISTRICT);
-        db.execSQL(SQL_CREATE_VILLAGE);
         db.execSQL(SQL_CREATE_SERIAL);
+        db.execSQL(SQL_CREATE_TALUKA);
+        db.execSQL(SQL_CREATE_UC);
     }
 
     @Override
@@ -158,58 +151,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_CHILD_FORMS);
-        db.execSQL(SQL_DELETE_DISTRICTS);
-        db.execSQL(SQL_DELETE_VILLAGES);
         db.execSQL(SQL_DELETE_SINGLE);
+        db.execSQL(SQL_DELETE_TALUKAS);
+        db.execSQL(SQL_DELETE_UCS);
     }
 
-    public void syncVillages(JSONArray pcList) {
+    public void syncTehsils(JSONArray Talukaslist) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(singleVillage.TABLE_NAME, null, null);
-
-        try {
-            JSONArray jsonArray = pcList;
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObjectPSU = jsonArray.getJSONObject(i);
-
-                VillagesContract vc = new VillagesContract();
-                vc.sync(jsonObjectPSU);
-                Log.i(TAG, "syncVillages: " + jsonObjectPSU.toString());
-
-                ContentValues values = new ContentValues();
-
-                values.put(singleVillage.COLUMN_VILLAGE_CODE, vc.getVillageCode());
-                values.put(singleVillage.COLUMN_VILLAGE_NAME, vc.getVillageName());
-                values.put(singleVillage.COLUMN_DISTRICT_CODE, vc.getDistrictCode());
-
-                db.insert(singleVillage.TABLE_NAME, null, values);
-            }
-            db.close();
-
-        } catch (Exception e) {
-        } finally {
-            db.close();
-        }
-    }
-
-    public void syncTalukas(JSONArray Talukaslist) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TalukasTable.TABLE_NAME, null, null);
+        db.delete(TehsilsTable.TABLE_NAME, null, null);
         try {
             JSONArray jsonArray = Talukaslist;
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
 
-                TalukasContract Vc = new TalukasContract();
+                TehsilsContract Vc = new TehsilsContract();
                 Vc.Sync(jsonObjectCC);
 
                 ContentValues values = new ContentValues();
 
-                values.put(TalukasTable.COLUMN_TALUKA_CODE, Vc.getTalukacode());
-                values.put(TalukasTable.COLUMN_TALUKA, Vc.getTaluka());
+                values.put(TehsilsTable.COLUMN_TALUKA_CODE, Vc.getTalukacode());
+                values.put(TehsilsTable.COLUMN_TALUKA_NAME, Vc.getTalukaName());
 
-                db.insert(TalukasTable.TABLE_NAME, null, values);
+                db.insert(TehsilsTable.TABLE_NAME, null, values);
             }
         } catch (Exception e) {
         } finally {
@@ -231,7 +194,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ContentValues values = new ContentValues();
 
                 values.put(UCsTable.COLUMN_UCCODE, Vc.getUccode());
-                values.put(UCsTable.COLUMN_UCS, Vc.getUcs());
+                values.put(UCsTable.COLUMN_UCS_NAME, Vc.getUcsName());
                 values.put(UCsTable.COLUMN_TALUKA_CODE, Vc.getTaluka_code());
 
                 db.insert(UCsTable.TABLE_NAME, null, values);
@@ -242,42 +205,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void syncDistricts(JSONArray dcList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(singleDistrict.TABLE_NAME, null, null);
-
-        try {
-            JSONArray jsonArray = dcList;
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObjectDistrict = jsonArray.getJSONObject(i);
-
-                DistrictsContract dc = new DistrictsContract();
-                dc.sync(jsonObjectDistrict);
-
-                ContentValues values = new ContentValues();
-
-                values.put(singleDistrict.COLUMN_DISTRICT_CODE, dc.getDistrictCode());
-                values.put(singleDistrict.COLUMN_DISTRICT_NAME, dc.getDistrictName());
-
-                db.insert(singleDistrict.TABLE_NAME, null, values);
-            }
-            db.close();
-
-        } catch (Exception e) {
-        } finally {
-            db.close();
-        }
-    }
-
-    public Collection<DistrictsContract> getAllDistricts() {
+    public Collection<TehsilsContract> getAllTalukas() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                singleDistrict._ID,
-                singleDistrict.COLUMN_DISTRICT_CODE,
-                singleDistrict.COLUMN_DISTRICT_NAME
+                TehsilsTable._ID,
+                TehsilsTable.COLUMN_TALUKA_CODE,
+                TehsilsTable.COLUMN_TALUKA_NAME
         };
 
         String whereClause = null;
@@ -286,12 +221,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                singleDistrict._ID + " ASC";
+                TehsilsTable.COLUMN_TALUKA_NAME + " ASC";
 
-        Collection<DistrictsContract> allDC = new ArrayList<DistrictsContract>();
+        Collection<TehsilsContract> allDC = new ArrayList<>();
         try {
             c = db.query(
-                    singleDistrict.TABLE_NAME,  // The table to query
+                    TehsilsTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -300,8 +235,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                DistrictsContract dc = new DistrictsContract();
-                allDC.add(dc.hydrate(c));
+                TehsilsContract dc = new TehsilsContract();
+                allDC.add(dc.HydrateTalukas(c));
             }
         } finally {
             if (c != null) {
@@ -314,28 +249,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
-    public Collection<VillagesContract> getAllPSUsByDistrict(String district_code) {
+    public SerialContract getSerialWRTDate(String date) {
+
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                singleVillage._ID,
-                singleVillage.COLUMN_VILLAGE_CODE,
-                singleVillage.COLUMN_VILLAGE_NAME,
-                singleVillage.COLUMN_DISTRICT_CODE
+                singleSerial._ID,
+                singleSerial.COLUMN_DEVICE_ID,
+                singleSerial.COLUMN_DATE,
+                singleSerial.COLUMN_SERIAL_NO,
         };
 
-        String whereClause = singleVillage.COLUMN_DISTRICT_CODE + " = ?";
-        String[] whereArgs = {district_code};
+        String whereClause = singleSerial.COLUMN_DATE + " =?";
+        String[] whereArgs = new String[]{date};
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                singleVillage.COLUMN_VILLAGE_CODE + " ASC";
+                singleSerial._ID + " ASC";
 
-        Collection<VillagesContract> allPC = new ArrayList<VillagesContract>();
+        SerialContract allDC = new SerialContract();
         try {
             c = db.query(
-                    singleVillage.TABLE_NAME,  // The table to query
+                    singleSerial.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -344,7 +280,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                VillagesContract pc = new VillagesContract();
+                allDC.hydrate(c);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allDC;
+    }
+
+    public Collection<UCsContract> getAllUCsByTalukas(String taluka_code) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                UCsTable._ID,
+                UCsTable.COLUMN_UCCODE,
+                UCsTable.COLUMN_UCS_NAME,
+                UCsTable.COLUMN_TALUKA_CODE
+        };
+
+        String whereClause = UCsTable.COLUMN_TALUKA_CODE + " = ?";
+        String[] whereArgs = {taluka_code};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                UCsTable.COLUMN_UCS_NAME + " ASC";
+
+        Collection<UCsContract> allPC = new ArrayList<>();
+        try {
+            c = db.query(
+                    UCsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                UCsContract pc = new UCsContract();
                 allPC.add(pc.hydrate(c));
             }
         } finally {
@@ -501,6 +480,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsChildTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
+    }
+
+    public Long addSerialForm(SerialContract sc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(singleSerial.COLUMN_DEVICE_ID, sc.getDeviceid());
+        values.put(singleSerial.COLUMN_DATE, sc.getdt());
+        values.put(singleSerial.COLUMN_SERIAL_NO, sc.getSerialno());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                singleSerial.TABLE_NAME,
+                singleSerial.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+    public int updateSerialWRTDate(String date,String serial) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(singleSerial.COLUMN_SERIAL_NO, serial);
+
+        // Which row to update, based on the title
+        String where = singleSerial.COLUMN_DATE + " = ?";
+        String[] whereArgs = {date};
+
+        int count = db.update(
+                singleSerial.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+
+        return count;
     }
 
 
