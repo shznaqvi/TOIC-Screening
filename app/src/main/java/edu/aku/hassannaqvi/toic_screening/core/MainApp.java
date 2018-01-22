@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
 import edu.aku.hassannaqvi.toic_screening.ui.EndingActivity;
 
@@ -61,6 +62,7 @@ public class MainApp extends Application {
 
     public static Boolean admin = false;
     public static FormsContract fc;
+    public static ChildContract cc;
     public static String userName = "0000";
     public static int versionCode;
     public static int totalChild = 0 ;
