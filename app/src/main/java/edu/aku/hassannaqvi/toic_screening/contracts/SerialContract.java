@@ -30,6 +30,8 @@ public class SerialContract {
         this.synced = jsonObject.getString(singleSerial.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(singleSerial.COLUMN_SYNCED_DATE);
 
+
+
         return this;
     }
 
