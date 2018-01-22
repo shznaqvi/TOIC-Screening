@@ -73,9 +73,9 @@
     <string name="ra0902"> ٻيون </string>
     <string name="ra0903"> ٽيون </string>
     <string name="ra11"> گذريل حملن جو تعداد </string>
-    <string name="istatus"> ڇا حاملا عورت انٽرويو لاءِ موجود هئي؟ </string>
-    <string name="istatusa"> موجود هئي </string>
-    <string name="istatusb"> هن وقت اسپتال ۾ آهي </string>
+    <string name="istatus"> OUTCOME OF INTERVIEW </string>
+    <string name="istatusa"> مکمل </string>
+    <string name="istatusb"> نا مکمل </string>
     <string name="istatusc"> وقتي طور غير موجود آهي </string>
     <string name="istatusd"> مري چڪي آهي </string>
     <string name="istatuse"> هميشه لاءِ لڏي ويا </string>

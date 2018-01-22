@@ -61,7 +61,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
                 finish();
                 if (MainApp.totalChild == childCount) {
                     childCount = 1;
-                    startActivity(new Intent(this, MainActivity.class));
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete",true));
                 } else {
                     childCount++;
                     startActivity(new Intent(this, ChildAssessmentActivity.class).putExtra("childFlag", true).putExtra("childRange", childCount));

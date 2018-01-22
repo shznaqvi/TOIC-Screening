@@ -97,7 +97,7 @@ public class SerialContract {
         public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
         public static final String _ID = "_ID";
         public static final String COLUMN_DEVICE_ID = "deviceid";
-        public static final String COLUMN_DATE = "dt";
+        public static final String COLUMN_DATE = "date";
         public static final String COLUMN_SERIAL_NO = "serialno";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
