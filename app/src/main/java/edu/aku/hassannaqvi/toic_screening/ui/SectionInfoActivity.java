@@ -60,8 +60,6 @@ public class SectionInfoActivity extends Activity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_info);
         db = new DatabaseHelper(this);
 
-        ButterKnife.bind(this);
-
 //        Assigning data to UI binding
         binding.setCallback(this);
 
@@ -70,8 +68,9 @@ public class SectionInfoActivity extends Activity {
 //        Main Working from here
 
 //        Get Slip no for non patients
-        serial = MainApp.sc.getSerialno();
+        serial = String.valueOf(Integer.valueOf(MainApp.sc.getSerialno()) + 1);
 
+        ButterKnife.bind(this);
 //        Listener
         toica01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -81,11 +80,15 @@ public class SectionInfoActivity extends Activity {
                     binding.hhno.setText(null);
 
                     binding.toica02.setText(null);
+                    binding.toica02.setEnabled(true);
+
 
                 } else {
                     binding.fldGrp04.setVisibility(View.VISIBLE);
 
                     binding.toica02.setText(serial);
+
+                    binding.toica02.setEnabled(false);
 
                 }
             }
@@ -94,12 +97,12 @@ public class SectionInfoActivity extends Activity {
     }
 
     public Boolean formValidation() {
-/*
 //        Slip No
-        if (!validatorClass.EmptyTextBox(this, binding.toica01, getString(R.string.toica01))) {
-            return false;
+        if (!binding.toica01.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.toica02, getString(R.string.toica01))) {
+                return false;
+            }
         }
-*/
 
 //        HH NO
         if (!validatorClass.EmptyTextBox(this, binding.toica03, getString(R.string.toica03))) {
