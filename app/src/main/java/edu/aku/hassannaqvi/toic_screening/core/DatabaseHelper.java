@@ -460,27 +460,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_PROJECT_NAME, fc.getProjectName());
-        values.put(FormsTable.COLUMN_UID, fc.getUID());
-        values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
-        values.put(FormsTable.COLUMN_USER, fc.getUser());
-        values.put(FormsTable.COLUMN_SB, fc.getsB());
-        values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
-        values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
-        values.put(FormsTable.COLUMN_GPSDATE, fc.getGpsDT());
-        values.put(FormsTable.COLUMN_GPSACC, fc.getGpsAcc());
-        values.put(FormsTable.COLUMN_DEVICETAGID, fc.getDevicetagID());
-        values.put(FormsTable.COLUMN_DEVICEID, fc.getDeviceID());
-        values.put(FormsTable.COLUMN_SYNCED, fc.getSynced());
-        values.put(FormsTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
-        values.put(FormsTable.COLUMN_APP_VERSION, fc.getAppversion());
+        values.put(FormsChildTable.COLUMN_PROJECT_NAME, fc.getProjectName());
+        values.put(FormsChildTable.COLUMN_UID, fc.getUID());
+        values.put(FormsChildTable.COLUMN_FORMDATE, fc.getFormDate());
+        values.put(FormsChildTable.COLUMN_USER, fc.getUser());
+        values.put(FormsChildTable.COLUMN_SB, fc.getsB());
+        values.put(FormsChildTable.COLUMN_GPSLAT, fc.getGpsLat());
+        values.put(FormsChildTable.COLUMN_GPSLNG, fc.getGpsLng());
+        values.put(FormsChildTable.COLUMN_GPSDATE, fc.getGpsDT());
+        values.put(FormsChildTable.COLUMN_GPSACC, fc.getGpsAcc());
+        values.put(FormsChildTable.COLUMN_DEVICETAGID, fc.getDevicetagID());
+        values.put(FormsChildTable.COLUMN_DEVICEID, fc.getDeviceID());
+        values.put(FormsChildTable.COLUMN_SYNCED, fc.getSynced());
+        values.put(FormsChildTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
+        values.put(FormsChildTable.COLUMN_APP_VERSION, fc.getAppversion());
 
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
-                FormsTable.TABLE_NAME,
-                FormsTable.COLUMN_NAME_NULLABLE,
+                FormsChildTable.TABLE_NAME,
+                FormsChildTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
