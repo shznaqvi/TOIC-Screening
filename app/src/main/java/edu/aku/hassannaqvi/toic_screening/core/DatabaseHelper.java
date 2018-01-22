@@ -78,6 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + FormsChildTable.COLUMN_PROJECT_NAME + " TEXT,"
             + FormsChildTable.COLUMN_UID + " TEXT," +
+            FormsChildTable.COLUMN_UUID + " TEXT," +
             FormsChildTable.COLUMN_FORMDATE + " TEXT," +
             FormsChildTable.COLUMN_USER + " TEXT," +
             FormsChildTable.COLUMN_SB + " TEXT," +
@@ -459,6 +460,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FormsChildTable.COLUMN_PROJECT_NAME, fc.getProjectName());
         values.put(FormsChildTable.COLUMN_UID, fc.getUID());
+        values.put(FormsChildTable.COLUMN_UUID, fc.getUUID());
         values.put(FormsChildTable.COLUMN_FORMDATE, fc.getFormDate());
         values.put(FormsChildTable.COLUMN_USER, fc.getUser());
         values.put(FormsChildTable.COLUMN_SB, fc.getsB());
@@ -502,7 +504,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public int updateSerialWRTDate(String date,String serial) {
+    public int updateSerialWRTDate(String date, String serial) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
@@ -645,7 +647,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_SYNCED_DATE,
                 FormsTable.COLUMN_APP_VERSION
         };
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null";
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
@@ -686,6 +688,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = {
                 FormsChildTable._ID,
                 FormsChildTable.COLUMN_UID,
+                FormsChildTable.COLUMN_UUID,
                 FormsChildTable.COLUMN_FORMDATE,
                 FormsChildTable.COLUMN_USER,
                 FormsChildTable.COLUMN_SB,
@@ -699,7 +702,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsChildTable.COLUMN_SYNCED_DATE,
                 FormsChildTable.COLUMN_APP_VERSION
         };
-        String whereClause = FormsChildTable.COLUMN_SYNCED + " is null";
+        String whereClause = FormsChildTable.COLUMN_SYNCED + " is null OR " + FormsChildTable.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
@@ -746,7 +749,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 singleSerial.COLUMN_SYNCED_DATE
         };
 
-        String whereClause = singleSerial.COLUMN_SYNCED + " is null";
+        String whereClause = null;
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
