@@ -81,7 +81,6 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         startActivity(endSec);
     }
 
-
     private boolean UpdateDB() {
 
         //Long rowId;
