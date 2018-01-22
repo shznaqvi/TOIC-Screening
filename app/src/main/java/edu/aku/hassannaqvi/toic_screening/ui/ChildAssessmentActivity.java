@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.toic_screening.R;
+import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 import edu.aku.hassannaqvi.toic_screening.databinding.ActivitySecChildassessmentBinding;
@@ -86,13 +87,16 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         //Long rowId;
         DatabaseHelper db = new DatabaseHelper(this);
 
-        Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+        Long updcount = db.addChildForm(MainApp.cc);
+        MainApp.cc.set_ID(String.valueOf(updcount));
 
-        // 2. UPDATE FORM ROWID
-        int updcount = db.updateSB();
-
-        if (updcount == 1) {
+        if (updcount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+
+            MainApp.cc.setUID(
+                    (MainApp.cc.getDeviceID() + MainApp.cc.get_ID()));
+            db.updateFormChildID();
+
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -106,12 +110,15 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
 
-        MainApp.fc.setDevicetagID(sharedPref.getString("tagName", null));
-        MainApp.fc.setFormDate(dtToday);
-        MainApp.fc.setUser(MainApp.userName);
-        MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+        MainApp.cc = new ChildContract();
+
+        MainApp.cc.setDevicetagID(sharedPref.getString("tagName", null));
+        MainApp.cc.setFormDate(dtToday);
+        MainApp.cc.setUser(MainApp.userName);
+        MainApp.cc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
-        MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.cc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.cc.setUUID(MainApp.fc.getUID());
 
         JSONObject sB = new JSONObject();
 
@@ -124,8 +131,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         sB.put("toicb07", binding.toicb07a.isChecked() ? "1" : binding.toicb07b.isChecked() ? "2" : "0");
         sB.put("toicb08", binding.toicb08a.isChecked() ? "1" : binding.toicb08b.isChecked() ? "2" : "0");
 
-
-        MainApp.fc.setsB(String.valueOf(sB));
+        MainApp.cc.setsB(String.valueOf(sB));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 

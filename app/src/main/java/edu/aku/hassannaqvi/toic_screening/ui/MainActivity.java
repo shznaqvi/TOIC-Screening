@@ -19,6 +19,7 @@ import android.os.StrictMode;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -99,14 +100,11 @@ public class MainActivity extends Activity {
             adminsec.setVisibility(View.GONE);
         }
 
-
         /*TagID Start*/
         sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
         editor = sharedPref.edit();
-        editor.putString("tagName", "...");
-        editor.commit();
 
-        /*builder = new AlertDialog.Builder(MainActivity.this);
+        builder = new AlertDialog.Builder(MainActivity.this);
         final AlertDialog dialog = builder.create();
 
         ImageView img = new ImageView(getApplicationContext());
@@ -147,8 +145,7 @@ public class MainActivity extends Activity {
 
         if (sharedPref.getString("tagName", null) == "" || sharedPref.getString("tagName", null) == null) {
             builder.show();
-
-        }*/
+        }
         /*TagID End*/
 
 

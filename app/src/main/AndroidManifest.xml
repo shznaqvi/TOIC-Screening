@@ -19,10 +19,10 @@
     <application
         android:name="edu.aku.hassannaqvi.toic_screening.core.MainApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/toic"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme1">
+        android:theme="@style/AppTheme">
         <activity
             android:name="edu.aku.hassannaqvi.toic_screening.ui.SplashscreenActivity"
             android:screenOrientation="portrait">
@@ -57,7 +57,8 @@
         <activity
             android:name="edu.aku.hassannaqvi.toic_screening.ui.ChildAssessmentActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/AppTheme1"/>
 
     </application>
 </manifest>
