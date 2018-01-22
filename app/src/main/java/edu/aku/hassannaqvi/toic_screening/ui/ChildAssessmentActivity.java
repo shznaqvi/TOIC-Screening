@@ -75,6 +75,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
 
     public void BtnEnd() {
+        childCount = 1;
         finish();
         Toast.makeText(this, "complete Section", Toast.LENGTH_SHORT).show();
         Intent endSec = new Intent(this, EndingActivity.class);

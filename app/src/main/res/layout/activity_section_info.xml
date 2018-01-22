@@ -54,23 +54,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Switch
+                <CheckBox
                     android:id="@+id/toica01"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="15"
-                    android:checked="true"
-                    android:textOff="@string/no"
-                    android:textOn="@string/yes" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="10"
+                    android:checked="true" />
 
                 <EditText
                     android:id="@+id/toica02"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="80"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
                     android:hint="@string/toica01"
-                    android:enabled="@{toica01.checked ? true : false}"
                     android:maxLength="6" />
 
             </LinearLayout>
@@ -89,6 +89,7 @@
                 android:id="@+id/toica03"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                 android:hint="@string/toica03"
                 android:maxLength="25" />
@@ -177,6 +178,7 @@
                     android:id="@+id/hhno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                     android:hint="@string/hhno"
                     android:maxLength="3"
@@ -198,6 +200,7 @@
                 android:id="@+id/toica04"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                 android:hint="@string/toica04"
                 android:maxLength="50" />
@@ -216,6 +219,7 @@
                 android:id="@+id/toica05"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:digits="0123456789"
                 android:hint="@string/toica05"
                 android:inputType="number"
@@ -331,6 +335,7 @@
                 android:id="@+id/toica09"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:digits="0123456789"
                 android:hint="@string/toica09"
                 android:inputType="number"
