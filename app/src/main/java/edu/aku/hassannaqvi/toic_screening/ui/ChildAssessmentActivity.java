@@ -123,6 +123,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
         JSONObject sB = new JSONObject();
 
+        sB.put("toicbSerial", String.valueOf(childCount));
         sB.put("toicb01", binding.toicb01.getText().toString());
         sB.put("toicb02", binding.toicb02.getText().toString());
         sB.put("toicb03", binding.toicb03a.isChecked() ? "1" : binding.toicb03b.isChecked() ? "2" : "0");
