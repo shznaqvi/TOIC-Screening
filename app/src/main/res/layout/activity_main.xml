@@ -64,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <TextView
@@ -91,58 +92,14 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/openFormD"
+                android:id="@+id/openForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
-                android:onClick="@{(v) -> callback.openForm(4)}"
-                android:text="PREGNANT RECRUITMENT" />
+                android:onClick="@{() -> callback.openForm()}"
+                android:text="OPEN FORM" />
 
-
-            <Button
-                android:id="@+id/openFormC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:onClick="@{(v) -> callback.openForm(3)}"
-                android:text="PREGNANCY FOLLOWUP"
-                android:visibility="visible" />
-
-
-            <Button
-                android:id="@+id/openFormB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:onClick="@{(v) -> callback.openForm(2)}"
-                android:text="PREGNANCY OUTCOME"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/openFormA"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="16dp"
-                android:onClick="@{(v) -> callback.openForm(1)}"
-                android:text="FOLLOWUP CHILD"
-                android:visibility="gone" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="CheckCluster"
-                    android:text="Check Block" />
-            </LinearLayout>
 
             <Button
                 android:id="@+id/syncServer"
@@ -169,162 +126,15 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/openMembers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openMembers"
-                    android:text="Section Members" />
-
-                <Button
-                    android:id="@+id/openA"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openA"
-                    android:text="Section A" />
-
-                <Button
-                    android:id="@+id/openB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openB"
-                    android:text="Section B" />
-
-                <Button
-                    android:id="@+id/openC"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openC"
-                    android:text="Section C" />
-
-                <Button
-                    android:id="@+id/openD"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openD"
-                    android:text="Section D" />
-
-                <Button
-                    android:id="@+id/openE"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openE"
-                    android:text="Section E" />
-
-                <Button
-                    android:id="@+id/openF"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openF"
-
-                    android:text="Section F" />
-
-                <Button
-                    android:id="@+id/openG"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openG"
-                    android:text="Section G" />
-
-                <Button
-                    android:id="@+id/openHA"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openHA"
-                    android:text="Section HA" />
-
-                <Button
-                    android:id="@+id/openHB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openHB"
-                    android:text="Section HB" />
-
-                <Button
-                    android:id="@+id/openI"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openI"
-                    android:text="Section I" />
-
-                <Button
-                    android:id="@+id/openJ"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openJ"
-                    android:text="Section J" />
-
-                <Button
-                    android:id="@+id/openK"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openK"
-                    android:text="Section K" />
-
-                <Button
-                    android:id="@+id/openL"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openL"
-                    android:text="Section L" />
-
-                <Button
-                    android:id="@+id/openM"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="openM"
-                    android:text="Section M" />
-
-                <Button
                     android:id="@+id/downloadApp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/red"
-                    android:onClick="opendownload"
                     android:text="DOWNLOAD APP"
                     android:textColor="@color/white"
                     android:visibility="gone" />
-
-
-                <!--<Button-->
-                <!--android:id="@+id/openEnd"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="8dp"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:onClick="openEnd"-->
-                <!--android:text="Section End" />-->
 
                 <Button
                     android:id="@+id/updateApp"

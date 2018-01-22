@@ -84,12 +84,12 @@
     <string name="istatush"> دورو نه ٿي سگهي </string>
     <string name="istatusi"> سبب ڄاڻايو </string>
 
-    <string name="RB"> حصو ٻيون: گذريل حمل يا دائڪي ڄاڻ </string>
+    <string name="RB"> CHILD ASSESSMENT </string>
     <string name="toica01"> ویکسین سلپ: </string>
-    <string name="toica02"> مرکز صحت کا نام </string>
-    <string name="toica03"> گھرانے کے سربراہ کا رابطہ نمبر </string>
+    <string name="toica02"> ٹیم نمبر </string>
+    <string name="toica03"> مرکز صحت کا نام </string>
     <string name="toica04"> مکمل پتہ محلہ اور گھرانمبر </string>
-    <string name="toica05"> فون نمبر </string>
+    <string name="toica05"> گھرانے کے سربراہ کا رابطہ نمبر </string>
     <string name="toica06"> قاسم آباد اور لطیف آباد کے رہائشی؟ </string>
     <string name="toica07"> جواب دہندگان کا 2سال تک ہجرت کا کوئی منصوبہ نہیں؟ </string>
     <string name="toica08"> والدین ویکسین کی رضامندی دینے کےلیے تیار ہیں۔ </string>

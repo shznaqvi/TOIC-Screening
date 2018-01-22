@@ -246,26 +246,11 @@ public class MainActivity extends Activity {
 
     }
 
-    public void openForm(int check) {
+    public void openForm() {
 
 //        if (spAreas.getSelectedItemPosition() != 0) {
         final Intent oF = new Intent(MainActivity.this, SectionInfoActivity.class);
-        switch (check) {
-            case 1:
-                oF.putExtra("check", 1);
-                break;
-            case 2:
-                oF.putExtra("check", 2);
-                break;
-            case 3:
-                oF.putExtra("check", 3);
-                break;
-            case 4:
-                oF.putExtra("check", 4);
-                break;
-            default:
-                break;
-        }
+
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
         } else {
