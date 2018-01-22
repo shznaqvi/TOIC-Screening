@@ -84,12 +84,12 @@
     <string name="istatush"> دورو نه ٿي سگهي </string>
     <string name="istatusi"> سبب ڄاڻايو </string>
 
-    <string name="RB"> حصو ٻيون: گذريل حمل يا دائڪي ڄاڻ </string>
+    <string name="RB"> CHILD ASSESSMENT </string>
     <string name="toica01"> ویکسین سلپ: </string>
-    <string name="toica02"> مرکز صحت کا نام </string>
-    <string name="toica03"> گھرانے کے سربراہ کا رابطہ نمبر </string>
+    <string name="toica02"> ٹیم نمبر </string>
+    <string name="toica03"> مرکز صحت کا نام </string>
     <string name="toica04"> مکمل پتہ محلہ اور گھرانمبر </string>
-    <string name="toica05"> فون نمبر </string>
+    <string name="toica05"> گھرانے کے سربراہ کا رابطہ نمبر </string>
     <string name="toica06"> قاسم آباد اور لطیف آباد کے رہائشی؟ </string>
     <string name="toica07"> جواب دہندگان کا 2سال تک ہجرت کا کوئی منصوبہ نہیں؟ </string>
     <string name="toica08"> والدین ویکسین کی رضامندی دینے کےلیے تیار ہیں۔ </string>
@@ -102,7 +102,7 @@
     <string name="toicb05"> بچے نے پچھلے 24گھنٹوں میں انفیکشن یا بیماری Pneumonia acute diarrhea, and seizures کے لیےکسی قسم کی کوئی اینٹی بائیوٹک اورسٹیرائڈ استعمال نہیں کی ہے۔ </string>
     <string name="toicb06"> بچے نے ۳سال کے دوران ٹائفائد کے خلاف ٹیکے نہیں لگاوئے) ویکسینشن کارڈ چک کریں۔) </string>
     <string name="toicb07"> انفیکشن کی کوئ علامات نہیں بشمول، جسم میں درد، 100 سے زیادہ بخار جسم پر چھالے،بے چینی،الٹی،جسم پر سرخ بادہ رشیز،پیٹ پر لال دھبے ،جٹکے ،سانس میں تکلیف،پچھلے تین دن سے پتلے پاخانے۔ </string>
-    <string name="toicb08"> خاندان AEFIکے فالواپ کےلیےخواہش مند ہیں </string>
+    <string name="toicb08"> خاندان AEFI کے فالواپ کےلیےخواہش مند ہیں </string>
     <string name="toicb09"> تم اپنے ساتھ کیتنے بچے لاۓ ہو </string>
 
 

@@ -7,6 +7,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -61,16 +63,43 @@ public class SectionInfoActivity extends AppCompatActivity {
 //        Main Working from here
 //        Skip Patterns
 
+//        Listener
+        binding.toica01.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (binding.toica01.getText().toString().isEmpty()) {
+                    binding.fldGrp02.setVisibility(View.VISIBLE);
+                    binding.fldGrp04.setVisibility(View.VISIBLE);
+                } else {
+                    binding.fldGrp02.setVisibility(View.GONE);
+                    binding.toica02.setText(null);
+                    binding.fldGrp04.setVisibility(View.GONE);
+                    binding.hhno.setText(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
     public Boolean formValidation() {
-
+/*
 //        Slip No
         if (!validatorClass.EmptyTextBox(this, binding.toica01, getString(R.string.toica01))) {
             return false;
         }
+*/
 
-//        Child.Name
+//        Team.No
         if (binding.toica01.getText().toString().trim().isEmpty()) {
             if (!validatorClass.EmptyTextBox(this, binding.toica02, getString(R.string.toica02))) {
                 return false;
@@ -126,6 +155,10 @@ public class SectionInfoActivity extends AppCompatActivity {
 
 //         toica09
         if (!validatorClass.EmptyTextBox(this, binding.toica09, getString(R.string.toica09))) {
+            return false;
+        }
+
+        if (!validatorClass.RangeTextBox(this, binding.toica09, 1, 20, "Range 1 - 20", getString(R.string.toica09))) {
             return false;
         }
 
@@ -207,6 +240,8 @@ public class SectionInfoActivity extends AppCompatActivity {
         sa.put("toica07", binding.toica07a.isChecked() ? "1" : binding.toica07b.isChecked() ? "2" : "0");
         sa.put("toica08", binding.toica08a.isChecked() ? "1" : binding.toica08b.isChecked() ? "2" : "0");
         sa.put("toica09", binding.toica09.getText().toString());
+
+        MainApp.totalChild = Integer.valueOf(binding.toica09.getText().toString());
 
         MainApp.fc.setsA(String.valueOf(sa));
 
