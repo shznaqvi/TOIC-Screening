@@ -16,11 +16,9 @@ import android.text.format.DateFormat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import edu.aku.hassannaqvi.toic_screening.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
 import edu.aku.hassannaqvi.toic_screening.ui.EndingActivity;
 
@@ -65,6 +63,7 @@ public class MainApp extends Application {
     public static FormsContract fc;
     public static String userName = "0000";
     public static int versionCode;
+    public static int totalChild = 0 ;
     public static String versionName;
 
     protected static LocationManager locationManager;

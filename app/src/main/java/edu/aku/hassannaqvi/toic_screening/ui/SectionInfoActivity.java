@@ -72,10 +72,10 @@ public class SectionInfoActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (binding.toica01.getText().toString().isEmpty()){
+                if (binding.toica01.getText().toString().isEmpty()) {
                     binding.fldGrp02.setVisibility(View.VISIBLE);
                     binding.fldGrp04.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     binding.fldGrp02.setVisibility(View.GONE);
                     binding.toica02.setText(null);
                     binding.fldGrp04.setVisibility(View.GONE);
@@ -158,6 +158,10 @@ public class SectionInfoActivity extends AppCompatActivity {
             return false;
         }
 
+        if (!validatorClass.RangeTextBox(this, binding.toica09, 1, 20, "Range 1 - 20", getString(R.string.toica09))) {
+            return false;
+        }
+
         return true;
     }
 
@@ -236,6 +240,8 @@ public class SectionInfoActivity extends AppCompatActivity {
         sa.put("toica07", binding.toica07a.isChecked() ? "1" : binding.toica07b.isChecked() ? "2" : "0");
         sa.put("toica08", binding.toica08a.isChecked() ? "1" : binding.toica08b.isChecked() ? "2" : "0");
         sa.put("toica09", binding.toica09.getText().toString());
+
+        MainApp.totalChild = Integer.valueOf(binding.toica09.getText().toString());
 
         MainApp.fc.setsA(String.valueOf(sa));
 

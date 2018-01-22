@@ -34,6 +34,16 @@
                 android:text="@string/RB"
                 android:textSize="40sp" />
 
+            <TextView
+                android:id="@+id/lblHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:textSize="20sp" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
