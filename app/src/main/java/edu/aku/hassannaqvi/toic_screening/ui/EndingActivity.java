@@ -31,7 +31,7 @@ public class EndingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sec_childassessment);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_ending);
         binding.setCallback(this);
 
         Boolean check = getIntent().getExtras().getBoolean("complete");

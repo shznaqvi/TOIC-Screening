@@ -1,17 +1,18 @@
 package edu.aku.hassannaqvi.toic_screening.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.toic_screening.R;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.TehsilsContract;
@@ -35,9 +38,12 @@ import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 import edu.aku.hassannaqvi.toic_screening.databinding.ActivitySectionInfoBinding;
 import edu.aku.hassannaqvi.toic_screening.validation.validatorClass;
 
-public class SectionInfoActivity extends AppCompatActivity {
+public class SectionInfoActivity extends Activity {
 
     private static final String TAG = SectionInfoActivity.class.getName();
+
+    @BindView(R.id.toica01)
+    CheckBox toica01;
 
     ActivitySectionInfoBinding binding;
     int check = 0;
@@ -54,6 +60,8 @@ public class SectionInfoActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_section_info);
         db = new DatabaseHelper(this);
 
+        ButterKnife.bind(this);
+
 //        Assigning data to UI binding
         binding.setCallback(this);
 
@@ -65,7 +73,7 @@ public class SectionInfoActivity extends AppCompatActivity {
         serial = MainApp.sc.getSerialno();
 
 //        Listener
-        binding.toica01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        toica01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -73,10 +81,12 @@ public class SectionInfoActivity extends AppCompatActivity {
                     binding.hhno.setText(null);
 
                     binding.toica02.setText(null);
+
                 } else {
                     binding.fldGrp04.setVisibility(View.VISIBLE);
 
                     binding.toica02.setText(serial);
+
                 }
             }
         });
@@ -246,11 +256,13 @@ public class SectionInfoActivity extends AppCompatActivity {
                     (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
             db.updateFormID();
 
-            if (db.updateSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString(),binding.toica02.getText().toString()) != 0){
-                Toast.makeText(this, "Updating Serial... Successful!", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(this, "Updating Serial... ERROR!", Toast.LENGTH_SHORT).show();
-                return false;
+            if (!toica01.isChecked()) {
+                if (db.updateSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString(), binding.toica02.getText().toString()) != 0) {
+                    Toast.makeText(this, "Updating Serial... Successful!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Updating Serial... ERROR!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
             }
 
             return true;
