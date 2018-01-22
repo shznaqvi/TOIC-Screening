@@ -19,8 +19,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
-import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract;
-import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract.FormsChildTable;
+import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 
@@ -28,15 +27,15 @@ import edu.aku.hassannaqvi.toic_screening.core.MainApp;
  * Created by javed.khan on 1/22/2018.
  */
 
-public class SyncChildForms extends AsyncTask<Void, Void, String> {
+public class SyncSerials extends AsyncTask<Void, Void, String> {
 
-    private static final String TAG = "SyncChildForms";
+    private static final String TAG = "SyncSerials";
     Boolean flag = false;
     private Context mContext;
     private ProgressDialog pd;
 
 
-    public SyncChildForms(Context context, Boolean flag) {
+    public SyncSerials(Context context, Boolean flag) {
         mContext = context;
         this.flag = flag;
     }
@@ -54,7 +53,7 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
     protected void onPreExecute() {
         super.onPreExecute();
         pd = new ProgressDialog(mContext);
-        pd.setTitle("Please wait... Processing Child Forms");
+        pd.setTitle("Please wait... Processing Serial Forms");
         pd.show();
     }
 
@@ -64,7 +63,7 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
         try {
             String url;
 
-            url = MainApp._HOST_URL + FormsChildTable._URL;
+            url = MainApp._HOST_URL + SerialContract.singleSerial._URI;
 
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
@@ -77,9 +76,9 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
         String line = "No Response";
 
         DatabaseHelper db = new DatabaseHelper(mContext);
-        Collection<ChildContract> Forms;
+        Collection<SerialContract> Forms;
         //if (flag) {
-        Forms = db.getUnsyncedChildForms();
+        Forms = db.getUnsyncedSerials();
         //} else {
         //Forms = db.getFormsSg();
         //}
@@ -114,7 +113,7 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
 
 //            pd.setMessage("Total Forms: " );
 
-                    for (ChildContract fc : Forms) {
+                    for (SerialContract fc : Forms) {
                         //if (fc.getIstatus().equals("1")) {
                         jsonSync.put(fc.toJSONObject());
                         //}
@@ -173,28 +172,29 @@ public class SyncChildForms extends AsyncTask<Void, Void, String> {
                 JSONObject jsonObject = new JSONObject(json.getString(i));
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
 
-                    db.updateSyncedChildForm(jsonObject.getString("id"));  // UPDATE SYNCED
+                    db.updateSyncedSerial(jsonObject.getString("id"));  // UPDATE SYNCED
                     sSynced++;
                 } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
-                    db.updateSyncedChildForm(jsonObject.getString("id")); // UPDATE DUPLICATES
+                    db.updateSyncedSerial(jsonObject.getString("id")); // UPDATE DUPLICATES
                     sDuplicate++;
                 } else {
                     sSyncedError += "\nError: " + jsonObject.getString("message");
                 }
             }
-            Toast.makeText(mContext, " Forms synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, " Forms Serial synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
-
-            pd.setMessage("Child Forms synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
-            pd.setTitle("Done uploading Child Forms data");
+            pd.setMessage(" Forms Serial synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
+            pd.setTitle("Done uploading Forms data");
             pd.show();
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(mContext, "Failed Sync " + result, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Failed Serial Sync " + result, Toast.LENGTH_SHORT).show();
 
             pd.setMessage(result);
-            pd.setTitle("Child Forms Sync Failed");
+            pd.setTitle("Forms Serial Sync Failed");
             pd.show();
+
+
         }
     }
 }

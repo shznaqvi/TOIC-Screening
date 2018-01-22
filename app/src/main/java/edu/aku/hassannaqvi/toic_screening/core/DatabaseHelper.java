@@ -18,6 +18,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract.singleSerial;
 import edu.aku.hassannaqvi.toic_screening.contracts.DistrictsContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.DistrictsContract.singleDistrict;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
@@ -104,6 +106,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_DISTRICTS = "DROP TABLE IF EXISTS " + singleDistrict.TABLE_NAME;
     private static final String SQL_DELETE_VILLAGES = "DROP TABLE IF EXISTS " + singleVillage.TABLE_NAME;
+    private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
+
+
     final String SQL_CREATE_DISTRICT = "CREATE TABLE " + singleDistrict.TABLE_NAME + " (" +
             singleDistrict._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             singleDistrict.COLUMN_DISTRICT_CODE + " TEXT, " +
@@ -115,6 +120,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             singleVillage.COLUMN_VILLAGE_NAME + " TEXT, " +
             singleVillage.COLUMN_DISTRICT_CODE + " TEXT " +
             ");";
+
+
+    final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSerial.TABLE_NAME + " (" +
+            singleSerial._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            singleSerial.COLUMN_DEVICE_ID + " TEXT, " +
+            singleSerial.COLUMN_DATE + " TEXT, " +
+            singleSerial.COLUMN_SERIAL_NO + " TEXT, " +
+            singleSerial.COLUMN_SYNCED + " TEXT, " +
+            singleSerial.COLUMN_SYNCED_DATE + " TEXT " +
+            ");";
+
 
     private final String TAG = "DatabaseHelper";
 
@@ -134,6 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_CHILD_FORMS);
         db.execSQL(SQL_CREATE_DISTRICT);
         db.execSQL(SQL_CREATE_VILLAGE);
+        db.execSQL(SQL_CREATE_SERIAL);
     }
 
     @Override
@@ -143,6 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_CHILD_FORMS);
         db.execSQL(SQL_DELETE_DISTRICTS);
         db.execSQL(SQL_DELETE_VILLAGES);
+        db.execSQL(SQL_DELETE_SINGLE);
     }
 
     public void syncVillages(JSONArray pcList) {
@@ -505,6 +523,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+
+    public void updateSyncedChildForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsChildTable.COLUMN_SYNCED, true);
+        values.put(FormsChildTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = FormsChildTable._ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FormsChildTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
+    public void updateSyncedSerial(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(singleSerial.COLUMN_SYNCED, true);
+        values.put(singleSerial.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = singleSerial._ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                singleSerial.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
     public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -623,6 +682,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 ChildContract fc = new ChildContract();
                 allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
+    public Collection<SerialContract> getUnsyncedSerials() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                singleSerial._ID,
+                singleSerial.COLUMN_DEVICE_ID,
+                singleSerial.COLUMN_DATE,
+                singleSerial.COLUMN_SERIAL_NO,
+                singleSerial.COLUMN_SYNCED,
+                singleSerial.COLUMN_SYNCED_DATE
+        };
+
+        String whereClause = singleSerial.COLUMN_SYNCED + " is null";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                singleSerial._ID + " ASC";
+
+        Collection<SerialContract> allFC = new ArrayList<SerialContract>();
+        try {
+            c = db.query(
+                    singleSerial.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                SerialContract fc = new SerialContract();
+                allFC.add(fc.hydrate(c));
             }
         } finally {
             if (c != null) {
