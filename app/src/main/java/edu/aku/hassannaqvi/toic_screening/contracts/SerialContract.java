@@ -61,26 +61,8 @@ public class SerialContract {
         return json;
     }
 
-
-    public String get_ID() {
-        return id;
-    }
-
-    public void set_ID(String _ID) {
-        this.id = _ID;
-    }
-
-
     public String getDeviceid() {
         return deviceid;
-    }
-
-    public String getSynced() {
-        return synced;
-    }
-
-    public String getSynced_date() {
-        return synced_date;
     }
 
     public String getdt() {
