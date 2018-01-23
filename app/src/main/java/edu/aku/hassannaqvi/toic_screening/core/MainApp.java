@@ -69,9 +69,8 @@ public class MainApp extends Application {
     public static int versionCode;
     public static int totalChild = 0 ;
     public static String versionName;
-
-    protected static LocationManager locationManager;
     public static Integer areaCode;
+    protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 
@@ -223,7 +222,7 @@ public class MainApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/MBLateefi.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
+        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/JameelNooriNastaleeq.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
 
         deviceId = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
