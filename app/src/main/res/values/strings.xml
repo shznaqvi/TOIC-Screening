@@ -107,5 +107,24 @@
     <string name="toicb08"> خاندان AEFI کے فالواپ کےلیےخواہش مند ہیں </string>
     <string name="toicb09"> تم اپنے ساتھ کیتنے بچے لاۓ ہو </string>
 
+    <string name="RCA"> ڈیموگرافک ڈیٹا </string>
+    <string name="toicc01"> انرولمنٹ آئی ڈی: </string>
+    <string name="toicc02"> بچے کا نام </string>
+    <string name="toicc03"> والد کا نام </string>
+    <string name="toicc04"> ماں کا نام </string>
+    <string name="toicc05"> بچے کی جنس کیا ہے؟ </string>
+    <string name="toicc5a"> لڑکا </string>
+    <string name="toicc5b"> لڑکی </string>
+    <string name="toicc6a"> بچے کی تاریخ پیدائش </string>
+    <string name="toicc6b"> عمر(مہینوں میں) </string>
+    <string name="toicc7"> والد کا موبائل نمبر: </string>
+    <string name="toicc8"> ماں کا موبائل نمبر </string>
+    <string name="toicc9"> متبادل رابطہ شخص/نام/موباہل نمبر </string>
+    <string name="RCB"> Tybar ویکسینشن کی تفصیلات </string>
+    <string name="toicc10"> ویکسین لگانے کی تاریخ </string>
+    <string name="toicc11"> ویکسین کی بوتل کا شناختی نمبر </string>
+    <string name="toicc12"> ویکسین جسم کے کس حصہ پر لگائی گئی </string>
+    <string name="toicc13"> ویکسین میعاد کی تاریخ: </string>
+    <string name="toicc14"> Adverse event کا کوئی فوری علامت کا ظاہر ہونا؟ </string>
 
 </resources>

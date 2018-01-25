@@ -61,26 +61,8 @@ public class SerialContract {
         return json;
     }
 
-
-    public String get_ID() {
-        return id;
-    }
-
-    public void set_ID(String _ID) {
-        this.id = _ID;
-    }
-
-
     public String getDeviceid() {
         return deviceid;
-    }
-
-    public String getSynced() {
-        return synced;
-    }
-
-    public String getSynced_date() {
-        return synced_date;
     }
 
     public String getdt() {
@@ -96,7 +78,7 @@ public class SerialContract {
 
         public static final String TABLE_NAME = "serials";
         public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
-        public static final String _ID = "_ID";
+        public static final String _ID = "_id";
         public static final String COLUMN_DEVICE_ID = "deviceid";
         public static final String COLUMN_DATE = "date";
         public static final String COLUMN_SERIAL_NO = "serialno";

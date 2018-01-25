@@ -229,9 +229,9 @@ public class SectionInfoActivity extends Activity {
         if (!binding.toica01.isChecked()) {
             sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
             sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
+            sa.put("hhno", binding.hhno.getText().toString());
         }
 
-        sa.put("hhno", binding.hhno.getText().toString());
         sa.put("toica04", binding.toica04.getText().toString());
         sa.put("toica05", binding.toica05.getText().toString());
 
