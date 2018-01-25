@@ -125,6 +125,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     DatabaseHelper db;
 
     private UserLoginTask mAuthTask = null;
+    private int clicks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -434,6 +435,21 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         startActivity(im);
     }
 
+    public void showCredits(View view) {
+        if (clicks < 7) {
+            clicks++;
+            Toast.makeText(this, String.valueOf(clicks), Toast.LENGTH_SHORT).show();
+        } else {
+            clicks = 0;
+            Toast.makeText(this, "TEAM CREDITS: " +
+                            "\r\nHassan Naqvi, " +
+                            "Ali Azaz, " +
+                            "Gul Sanober, " +
+                            "Javed Khan",
+                    Toast.LENGTH_LONG)
+                    .show();
+        }
+    }
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
