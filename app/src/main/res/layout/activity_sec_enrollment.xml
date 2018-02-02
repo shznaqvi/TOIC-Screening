@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.aku.hassannaqvi.toic_screening.ui.ChildAssessmentActivity">
+    tools:context="edu.aku.hassannaqvi.toic_screening.ui.EnrollmentActivity">
 
     <data>
 
@@ -9,7 +10,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.toic_screening.ui.ChildAssessmentActivity" />
+            type="edu.aku.hassannaqvi.toic_screening.ui.EnrollmentActivity" />
     </data>
 
     <ScrollView
@@ -31,18 +32,18 @@
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:text="@string/RB"
+                android:text="ENROLLMENT FORM"
                 android:textSize="40sp" />
 
             <TextView
-                android:id="@+id/lblHead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="2dp"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center"
-                android:textSize="20sp" />
+                android:text="@string/RCA"
+                android:textSize="25sp" />
 
             <View
                 android:layout_width="match_parent"
@@ -51,22 +52,21 @@
 
             <!--01-->
             <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/toicb01"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/toicc01"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
 
             <EditText
                 android:id="@+id/toicb01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/toicb01"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                android:maxLength="25" />
+                android:enabled="false"
+                android:hint="@string/toicc01" />
 
             <!--02-->
             <TextView
@@ -74,18 +74,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/toicb02"
+                android:text="@string/toicc02"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <EditText
-                android:id="@+id/toicb02"
+                android:id="@+id/toicc02"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/toicb02"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                android:maxLength="25" />
+                android:enabled="false"
+                android:hint="@string/toicc02" />
 
             <!--03-->
             <TextView
@@ -93,210 +92,130 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/toicb03"
+                android:text="@string/toicc03"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <RadioGroup
-                android:id="@+id/toicb03"
+            <EditText
+                android:id="@+id/toicc03"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginBottom="1dp"
+                android:enabled="false"
+                android:hint="@string/toicc03" />
 
-                <RadioButton
-                    android:id="@+id/toicb03a"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/yes" />
-
-                <RadioButton
-                    android:id="@+id/toicb03b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/no" />
-
-            </RadioGroup>
             <!--04-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/toicb04"
+                android:text="@string/toicc04"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <RadioGroup
-                android:id="@+id/toicb04"
+            <EditText
+                android:id="@+id/toicc04"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginBottom="1dp"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                android:hint="@string/toicc04"
+                android:maxLength="25" />
 
-                <RadioButton
-                    android:id="@+id/toicb04a"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/yes" />
-
-                <RadioButton
-                    android:id="@+id/toicb04b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/no" />
-
-            </RadioGroup>
             <!--05-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/toicb05"
+                android:text="@string/toicc05"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <RadioGroup
-                android:id="@+id/toicb05"
+                android:id="@+id/toicc05"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/toicb05a"
+                    android:id="@+id/toicc05a"
                     style="@style/radiobutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:text="@string/yes" />
+                    android:text="@string/toicc05a" />
 
                 <RadioButton
-                    android:id="@+id/toicb05b"
+                    android:id="@+id/toicc05b"
                     style="@style/radiobutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
-                    android:text="@string/no" />
+                    android:text="@string/toicc05b" />
 
             </RadioGroup>
+
             <!--06-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/toicb06"
+                android:text="@string/toicc06"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <RadioGroup
-                android:id="@+id/toicb06"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:id="@+id/toicc06"
+                style="@style/radiogroup"
+                android:layout_marginTop="32dp"
+                android:background="@color/colorPrimary">
 
                 <RadioButton
-                    android:id="@+id/toicb06a"
-                    style="@style/radiobutton"
+                    android:id="@+id/toicc06a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/yes" />
+                    android:text="@string/toicc06a" />
 
                 <RadioButton
-                    android:id="@+id/toicb06b"
-                    style="@style/radiobutton"
+                    android:id="@+id/toicc06b"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/no" />
+                    android:text="@string/toicc06b" />
 
             </RadioGroup>
-            <!--07-->
-            <TextView
+
+            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                android:id="@+id/toicc06aa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicb07"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:layout_marginTop="1dp"
+                android:focusable="true"
+                android:hint="@string/toicc06a"
+                android:text='@{toicc06a.checked ? toicc06aa.getText.toString : ""}'
+                android:textColor="@android:color/black"
+                android:visibility="@{toicc06a.checked ? View.VISIBLE : View.GONE}"
+                app:dateFormat="dd-MM-yyyy"
+                android:padding="15dp"
+                app:minDate="01/01/1917" />
 
-            <RadioGroup
-                android:id="@+id/toicb07"
+            <EditText
+                android:id="@+id/toicc06bb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/toicb07a"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/yes" />
-
-                <RadioButton
-                    android:id="@+id/toicb07b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/no" />
-
-            </RadioGroup>
-            <!--08-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicb08"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <RadioGroup
-                android:id="@+id/toicb08"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/toicb08a"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/yes" />
-
-                <RadioButton
-                    android:id="@+id/toicb08b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/no" />
-
-            </RadioGroup>
+                android:layout_marginBottom="1dp"
+                android:digits="0123456789"
+                android:hint="@string/toicc06b"
+                android:inputType="number"
+                android:maxLength="2"
+                android:text='@{toicc06b.checked ? toicc06bb.getText.toString : ""}'
+                android:visibility="@{toicc06b.checked ? View.VISIBLE : View.GONE}" />
 
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
@@ -334,4 +253,5 @@
         </LinearLayout>
 
     </ScrollView>
+
 </layout>

@@ -126,6 +126,13 @@ public class SectionInfoActivity extends Activity {
             if (!validatorClass.EmptyTextBox(this, binding.hhno, getString(R.string.hhno))) {
                 return false;
             }
+
+            String[] str = binding.hhno.getText().toString().split("-");
+             if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")){
+                 binding.hhno.setError("Wrong presentation!!");
+                 return false;
+             }
+
         }
 
 //        toica04

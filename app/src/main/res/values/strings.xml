@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name"> Typhoid Outbreak Investigation and Control </string>
+    <string name="app_name"> Typhoid Outbreak Investigation and Control </string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -113,13 +113,14 @@
     <string name="toicc03"> والد کا نام </string>
     <string name="toicc04"> ماں کا نام </string>
     <string name="toicc05"> بچے کی جنس کیا ہے؟ </string>
-    <string name="toicc5a"> لڑکا </string>
-    <string name="toicc5b"> لڑکی </string>
-    <string name="toicc6a"> بچے کی تاریخ پیدائش </string>
-    <string name="toicc6b"> عمر(مہینوں میں) </string>
-    <string name="toicc7"> والد کا موبائل نمبر: </string>
-    <string name="toicc8"> ماں کا موبائل نمبر </string>
-    <string name="toicc9"> متبادل رابطہ شخص/نام/موباہل نمبر </string>
+    <string name="toicc05a"> لڑکا </string>
+    <string name="toicc05b"> لڑکی </string>
+    <string name="toicc06"> بچے کی عمر </string>
+    <string name="toicc06a"> بچے کی تاریخ پیدائش </string>
+    <string name="toicc06b"> عمر(مہینوں میں) </string>
+    <string name="toicc07"> والد کا موبائل نمبر: </string>
+    <string name="toicc08"> ماں کا موبائل نمبر </string>
+    <string name="toicc09"> متبادل رابطہ شخص/نام/موباہل نمبر </string>
     <string name="RCB"> Tybar ویکسینشن کی تفصیلات </string>
     <string name="toicc10"> ویکسین لگانے کی تاریخ </string>
     <string name="toicc11"> ویکسین کی بوتل کا شناختی نمبر </string>
