@@ -13,6 +13,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.format.DateFormat;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,9 +22,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.EnrollmentContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
+import edu.aku.hassannaqvi.toic_screening.ui.ChildAssessmentActivity;
 import edu.aku.hassannaqvi.toic_screening.ui.EndingActivity;
+import edu.aku.hassannaqvi.toic_screening.ui.SectionInfoActivity;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -65,9 +70,10 @@ public class MainApp extends Application {
     public static FormsContract fc;
     public static ChildContract cc;
     public static SerialContract sc;
+    public static EnrollmentContract ec;
     public static String userName = "0000";
     public static int versionCode;
-    public static int totalChild = 0 ;
+    public static int totalChild = 0;
     public static String versionName;
     public static Integer areaCode;
     protected static LocationManager locationManager;
@@ -203,6 +209,42 @@ public class MainApp extends Application {
         }
 
         return "";
+    }
+
+    public static void setGPS(Class<?> contract, Context mContext) {
+
+        SharedPreferences GPSPref = mContext.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
+
+            if (lat == "0" && lang == "0") {
+                Toast.makeText(mContext, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(mContext, "GPS set", Toast.LENGTH_SHORT).show();
+            }
+
+            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+            if (contract.getClass() == SectionInfoActivity.class.getClass()) {
+                MainApp.fc.setGpsLat(lat);
+                MainApp.fc.setGpsLng(lang);
+                MainApp.fc.setGpsAcc(acc);
+                MainApp.fc.setGpsDT(date); // Timestamp is converted to date above
+            } else if (contract.getClass() == ChildAssessmentActivity.class.getClass()) {
+                MainApp.cc.setGpsLat(lat);
+                MainApp.cc.setGpsLng(lang);
+                MainApp.cc.setGpsAcc(acc);
+                MainApp.cc.setGpsDT(date); // Timestamp is converted to date above
+            }
+
+            Toast.makeText(mContext, "GPS set", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            Log.e(contract.getClass().getName(), "setGPS: " + e.getMessage());
+        }
+
     }
 
     public static Calendar getCalendarDate(String value) {

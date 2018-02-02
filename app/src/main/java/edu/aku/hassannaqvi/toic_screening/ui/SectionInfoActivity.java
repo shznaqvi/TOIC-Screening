@@ -1,14 +1,11 @@
 package edu.aku.hassannaqvi.toic_screening.ui;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -128,10 +125,10 @@ public class SectionInfoActivity extends Activity {
             }
 
             String[] str = binding.hhno.getText().toString().split("-");
-             if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")){
-                 binding.hhno.setError("Wrong presentation!!");
-                 return false;
-             }
+            if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
+                binding.hhno.setError("Wrong presentation!!");
+                return false;
+            }
 
         }
 
@@ -225,7 +222,7 @@ public class SectionInfoActivity extends Activity {
         MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-        setGPS(); //Set GPS
+        MainApp.setGPS(FormsContract.class, this); //Set GPS
 
         JSONObject sa = new JSONObject();
 
@@ -280,34 +277,6 @@ public class SectionInfoActivity extends Activity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-    }
-
-    public void setGPS() {
-        SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
-        try {
-            String lat = GPSPref.getString("Latitude", "0");
-            String lang = GPSPref.getString("Longitude", "0");
-            String acc = GPSPref.getString("Accuracy", "0");
-
-            if (lat == "0" && lang == "0") {
-                Toast.makeText(this, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
-            }
-
-            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
-
-            MainApp.fc.setGpsLat(lat);
-            MainApp.fc.setGpsLng(lang);
-            MainApp.fc.setGpsAcc(acc);
-            MainApp.fc.setGpsDT(date); // Timestamp is converted to date above
-
-            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
-
-        } catch (Exception e) {
-            Log.e(TAG, "setGPS: " + e.getMessage());
-        }
-
     }
 
     public void populateSpinner() {
