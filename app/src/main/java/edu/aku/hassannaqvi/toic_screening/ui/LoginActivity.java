@@ -60,13 +60,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.toic_screening.R;
-import edu.aku.hassannaqvi.toic_screening.contracts.TalukasContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.TehsilsContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.UCsContract;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
-import edu.aku.hassannaqvi.toic_screening.get.GetDistricts;
+import edu.aku.hassannaqvi.toic_screening.get.GetTehsils;
+import edu.aku.hassannaqvi.toic_screening.get.GetUCs;
 import edu.aku.hassannaqvi.toic_screening.get.GetUsers;
-import edu.aku.hassannaqvi.toic_screening.get.GetVillages;
 
 import static java.lang.Thread.sleep;
 
@@ -87,7 +87,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     ArrayAdapter<String> dataAdapter;
 
     ArrayList<String> lablesTalukas;
-    Collection<TalukasContract> TalukasList;
+    Collection<TehsilsContract> TalukasList;
     Map<String, String> talukasMap;
 
     ArrayList<String> lablesUCs;
@@ -125,6 +125,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     DatabaseHelper db;
 
     private UserLoginTask mAuthTask = null;
+    private int clicks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,81 +193,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         db = new DatabaseHelper(this);
 
-//        populateSpinner(this);
-
 //        DB backup
 
         dbBackup();
-    }
-
-    public void populateSpinner(Context context) {
-
-        /*final Context mContext = context;
-
-        // Populate Talukas list
-        TalukasList = db.getAllTalukas();
-
-        lablesTalukas = new ArrayList<>();
-        talukasMap = new HashMap<>();
-
-        lablesTalukas.add("Select Taluka..");
-
-        for (TalukasContract taluka : TalukasList) {
-            lablesTalukas.add(taluka.getTaluka());
-
-            talukasMap.put(taluka.getTaluka(), taluka.getTalukacode());
-        }
-
-        spTalukas.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item, lablesTalukas));
-
-        spTalukas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // Populate Districts list
-
-                if (spTalukas.getSelectedItemPosition() != 0) {
-                    MainApp.talukaCode = Integer.valueOf(talukasMap.get(spTalukas.getSelectedItem().toString()));
-                }
-
-                lablesUCs = new ArrayList<>();
-                ucsMap = new HashMap<>();
-                lablesUCs.add("Select UC..");
-
-                if (spTalukas.getSelectedItemPosition() != 0) {
-                    UcsList = db.getAllDistricts(String.valueOf(MainApp.talukaCode));
-                    for (UCsContract ucs : UcsList) {
-                        lablesUCs.add(ucs.getUcs());
-                        ucsMap.put(ucs.getUcs(), ucs.getUccode());
-                    }
-                }
-
-                spUCs.setAdapter(new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item, lablesUCs));
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        spUCs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                // Populate Districts list
-
-                if (spUCs.getSelectedItemPosition() != 0) {
-                    MainApp.ucCode = Integer.valueOf(ucsMap.get(spUCs.getSelectedItem().toString()));
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });*/
-
     }
 
     public void dbBackup() {
@@ -506,6 +435,21 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         startActivity(im);
     }
 
+    public void showCredits(View view) {
+        if (clicks < 7) {
+            clicks++;
+            Toast.makeText(this, String.valueOf(clicks), Toast.LENGTH_SHORT).show();
+        } else {
+            clicks = 0;
+            Toast.makeText(this, "TEAM CREDITS: " +
+                            "\r\nHassan Naqvi, " +
+                            "Ali Azaz, " +
+                            "Gul Sanober, " +
+                            "Javed Khan",
+                    Toast.LENGTH_LONG)
+                    .show();
+        }
+    }
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
@@ -626,10 +570,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                 @Override
                 public void run() {
-                    Toast.makeText(LoginActivity.this, "Sync District's", Toast.LENGTH_LONG).show();
-                    new GetDistricts(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync Villages", Toast.LENGTH_LONG).show();
-                    new GetVillages(mContext).execute();
+                    Toast.makeText(LoginActivity.this, "Sync Tehsil's", Toast.LENGTH_LONG).show();
+                    new GetTehsils(mContext).execute();
+                    Toast.makeText(LoginActivity.this, "Sync UCs", Toast.LENGTH_LONG).show();
+                    new GetUCs(mContext).execute();
                     Toast.makeText(LoginActivity.this, "Sync User", Toast.LENGTH_LONG).show();
                     new GetUsers(mContext).execute();
                 }

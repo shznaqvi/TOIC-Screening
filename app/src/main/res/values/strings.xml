@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"> TOIC-Screening </string>
+    <string name="app_name"> Typhoid Outbreak Investigation and Control </string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -14,10 +14,10 @@
   </string>
 
     <string name="end_interview"> اختتام </string>
-    <string name="start_interview"> انٽرويو شروع ڪريو </string>
-    <string name="nextSection"> اڳيون سيڪشن </string>
+    <string name="start_interview"> انٹروہو شروع کریں </string>
+    <string name="nextSection"> اگلا سیکشن </string>
     <string name="addMember"> افراد کا اندراج </string>
-    <string name="dcstatus"> انٽرويو جو نتيجو</string>
+    <string name="dcstatus">انٹروہو کا نتیجہ</string>
     <string name="complete"> مکمل</string>
     <string name="incomplete">نا مکمل</string>
     <!-- String related to section headings -->
@@ -43,8 +43,8 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="male"> مرد</string>
     <string name="female"> عورت </string>
-    <string name="yes"> ھا </string>
-    <string name="no"> نه </string>
+    <string name="yes"> ہاں </string>
+    <string name="no"> نہیں </string>
     <string name="dkn"> خبر نه آھي </string>
     <string name="na"> لاڳو نه ٿو ٿئي </string>
     <string name="day"> ڏينهن </string>
@@ -58,6 +58,8 @@
 
     <!-- Strings related to Sections Below -->
     <string name="RA">  </string>
+    <string name="uc"> یوسی کا نام </string>
+    <string name="town"> ٹاون/تحیصل کا نام </string>
     <string name="hhno"> گھر نمبر </string>
     <string name="wname"> عورت جو نالو </string>
     <string name="age"> عورت جي عمر (سالن ۾) </string>
@@ -73,9 +75,9 @@
     <string name="ra0902"> ٻيون </string>
     <string name="ra0903"> ٽيون </string>
     <string name="ra11"> گذريل حملن جو تعداد </string>
-    <string name="istatus"> ڇا حاملا عورت انٽرويو لاءِ موجود هئي؟ </string>
-    <string name="istatusa"> موجود هئي </string>
-    <string name="istatusb"> هن وقت اسپتال ۾ آهي </string>
+    <string name="istatus"> OUTCOME OF INTERVIEW </string>
+    <string name="istatusa"> مکمل </string>
+    <string name="istatusb"> نا مکمل </string>
     <string name="istatusc"> وقتي طور غير موجود آهي </string>
     <string name="istatusd"> مري چڪي آهي </string>
     <string name="istatuse"> هميشه لاءِ لڏي ويا </string>
@@ -85,7 +87,7 @@
     <string name="istatusi"> سبب ڄاڻايو </string>
 
     <string name="RB"> CHILD ASSESSMENT </string>
-    <string name="toica01"> ویکسین سلپ: </string>
+    <string name="toica01"> ویکسین سلپ موجود ہے: </string>
     <string name="toica02"> ٹیم نمبر </string>
     <string name="toica03"> مرکز صحت کا نام </string>
     <string name="toica04"> مکمل پتہ محلہ اور گھرانمبر </string>
@@ -105,5 +107,25 @@
     <string name="toicb08"> خاندان AEFI کے فالواپ کےلیےخواہش مند ہیں </string>
     <string name="toicb09"> تم اپنے ساتھ کیتنے بچے لاۓ ہو </string>
 
+    <string name="RCA"> ڈیموگرافک ڈیٹا </string>
+    <string name="toicc01"> انرولمنٹ آئی ڈی: </string>
+    <string name="toicc02"> بچے کا نام </string>
+    <string name="toicc03"> والد کا نام </string>
+    <string name="toicc04"> ماں کا نام </string>
+    <string name="toicc05"> بچے کی جنس کیا ہے؟ </string>
+    <string name="toicc05a"> لڑکا </string>
+    <string name="toicc05b"> لڑکی </string>
+    <string name="toicc06"> بچے کی عمر </string>
+    <string name="toicc06a"> بچے کی تاریخ پیدائش </string>
+    <string name="toicc06b"> عمر(مہینوں میں) </string>
+    <string name="toicc07"> والد کا موبائل نمبر: </string>
+    <string name="toicc08"> ماں کا موبائل نمبر </string>
+    <string name="toicc09"> متبادل رابطہ شخص/نام/موباہل نمبر </string>
+    <string name="RCB"> Tybar ویکسینشن کی تفصیلات </string>
+    <string name="toicc10"> ویکسین لگانے کی تاریخ </string>
+    <string name="toicc11"> ویکسین کی بوتل کا شناختی نمبر </string>
+    <string name="toicc12"> ویکسین جسم کے کس حصہ پر لگائی گئی </string>
+    <string name="toicc13"> ویکسین میعاد کی تاریخ: </string>
+    <string name="toicc14"> Adverse event کا کوئی فوری علامت کا ظاہر ہونا؟ </string>
 
 </resources>

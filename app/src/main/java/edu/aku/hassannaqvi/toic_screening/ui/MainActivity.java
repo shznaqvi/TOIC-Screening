@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -47,12 +48,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.toic_screening.R;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
 import edu.aku.hassannaqvi.toic_screening.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 import edu.aku.hassannaqvi.toic_screening.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.toic_screening.sync.SyncChildForms;
 import edu.aku.hassannaqvi.toic_screening.sync.SyncForms;
+import edu.aku.hassannaqvi.toic_screening.sync.SyncSerials;
 
 public class MainActivity extends Activity {
 
@@ -94,12 +97,6 @@ public class MainActivity extends Activity {
             StrictMode.setThreadPolicy(policy);
         }
         lblheader.setText("Welcome! You're assigned to block ' " + MainApp.userName);
-
-        if (MainApp.admin) {
-            adminsec.setVisibility(View.VISIBLE);
-        } else {
-            adminsec.setVisibility(View.GONE);
-        }
 
         /*TagID Start*/
         sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
@@ -150,58 +147,64 @@ public class MainActivity extends Activity {
         /*TagID End*/
 
 
+//        Binding setting
+        ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mainBinding.setCallback(this);
+
         DatabaseHelper db = new DatabaseHelper(this);
-        Collection<FormsContract> todaysForms = db.getTodayForms();
-        Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
 
-        rSumText += "TODAY'S RECORDS SUMMARY\r\n";
-
-        rSumText += "=======================\r\n";
-        rSumText += "\r\n";
-        rSumText += "Total Forms Today: " + todaysForms.size() + "\r\n";
-        rSumText += "\r\n";
-        if (todaysForms.size() > 0) {
-            rSumText += "\tFORMS' LIST: \r\n";
-            String iStatus;
-            rSumText += "--------------------------------------------------\r\n";
-            rSumText += "[ DSS_ID ] \t[Form Status] \t[Sync Status]----------\r\n";
-            rSumText += "--------------------------------------------------\r\n";
-
-            for (FormsContract fc : todaysForms) {
-                if (fc.getIstatus() != null) {
-                    switch (fc.getIstatus()) {
-                        case "1":
-                            iStatus = "\tComplete";
-                            break;
-                        case "2":
-                            iStatus = "\tIncomplete";
-                            break;
-                        case "3":
-                            iStatus = "\tRefused";
-                            break;
-                        case "4":
-                            iStatus = "\tRefused";
-                            break;
-                        default:
-                            iStatus = "\tN/A";
-                    }
-                } else {
-                    iStatus = "\tN/A";
-                }
-
-                //rSumText += fc.getDSSID();
-
-                rSumText += " " + iStatus + " ";
-
-                rSumText += (fc.getSynced() == null ? "\t\tNot Synced" : "\t\tSynced");
-                rSumText += "\r\n";
-                rSumText += "--------------------------------------------------\r\n";
-            }
-        }
-
-
+//        Admin checking
         if (MainApp.admin) {
-            adminsec.setVisibility(View.VISIBLE);
+            mainBinding.adminsec.setVisibility(View.VISIBLE);
+
+            Collection<FormsContract> todaysForms = db.getTodayForms();
+            Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
+
+            rSumText += "TODAY'S RECORDS SUMMARY\r\n";
+
+            rSumText += "=======================\r\n";
+            rSumText += "\r\n";
+            rSumText += "Total Forms Today: " + todaysForms.size() + "\r\n";
+            rSumText += "\r\n";
+            if (todaysForms.size() > 0) {
+                rSumText += "\tFORMS' LIST: \r\n";
+                String iStatus;
+                rSumText += "--------------------------------------------------\r\n";
+                rSumText += "[ DSS_ID ] \t[Form Status] \t[Sync Status]----------\r\n";
+                rSumText += "--------------------------------------------------\r\n";
+
+                for (FormsContract fc : todaysForms) {
+                    if (fc.getIstatus() != null) {
+                        switch (fc.getIstatus()) {
+                            case "1":
+                                iStatus = "\tComplete";
+                                break;
+                            case "2":
+                                iStatus = "\tIncomplete";
+                                break;
+                            case "3":
+                                iStatus = "\tRefused";
+                                break;
+                            case "4":
+                                iStatus = "\tRefused";
+                                break;
+                            default:
+                                iStatus = "\tN/A";
+                        }
+                    } else {
+                        iStatus = "\tN/A";
+                    }
+
+                    //rSumText += fc.getDSSID();
+
+                    rSumText += " " + iStatus + " ";
+
+                    rSumText += (fc.getSynced() == null ? "\t\tNot Synced" : "\t\tSynced");
+                    rSumText += "\r\n";
+                    rSumText += "--------------------------------------------------\r\n";
+                }
+            }
+
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             rSumText += "Last Data Download: \t" + syncPref.getString("LastDownSyncServer", "Never Updated");
             rSumText += "\r\n";
@@ -210,14 +213,17 @@ public class MainActivity extends Activity {
             rSumText += "\r\n";
             rSumText += "Unsynced Forms: \t" + unsyncedForms.size();
             rSumText += "\r\n";
-        }
-        Log.d(TAG, "onCreate: " + rSumText);
-        recordSummary.setText(rSumText);
 
+            Log.d(TAG, "onCreate: " + rSumText);
+            recordSummary.setText(rSumText);
+
+        }else {
+            mainBinding.adminsec.setVisibility(View.GONE);
+        }
 
 //        Fill spinner
 
-        lablesAreas = new ArrayList<>();
+        /*lablesAreas = new ArrayList<>();
         AreasMap = new HashMap<>();
         lablesAreas.add("Select Area..");
 
@@ -237,10 +243,18 @@ public class MainActivity extends Activity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        });*/
 
-        ActivityMainBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mainBinding.setCallback(this);
+        /*Add data in Serial date wrt date*/
+        MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+
+        if (MainApp.sc.getDeviceid() == null){
+            db.addSerialForm(new SerialContract(Settings.Secure.getString(getApplicationContext().getContentResolver(),Settings.Secure.ANDROID_ID),
+                    new SimpleDateFormat("dd-MM-yy").format(new Date()).toString(),
+                    "0"));
+
+            MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+        }
 
     }
 
@@ -448,9 +462,11 @@ public class MainActivity extends Activity {
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             new SyncForms(this, true).execute();
 
-
             Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
             new SyncChildForms(this, true).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Serials", Toast.LENGTH_SHORT).show();
+            new SyncSerials(this, true).execute();
 
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

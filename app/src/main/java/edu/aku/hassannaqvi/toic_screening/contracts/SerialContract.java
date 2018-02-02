@@ -23,14 +23,18 @@ public class SerialContract {
     public SerialContract() {
     }
 
+    public SerialContract(String deviceid, String dt, String serialno) {
+        this.deviceid = deviceid;
+        this.dt = dt;
+        this.serialno = serialno;
+    }
+
     public SerialContract sync(JSONObject jsonObject) throws JSONException {
         this.deviceid = jsonObject.getString(singleSerial.COLUMN_DEVICE_ID);
         this.dt = jsonObject.getString(singleSerial.COLUMN_DATE);
         this.serialno = jsonObject.getString(singleSerial.COLUMN_SERIAL_NO);
         this.synced = jsonObject.getString(singleSerial.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(singleSerial.COLUMN_SYNCED_DATE);
-
-
 
         return this;
     }
@@ -39,9 +43,6 @@ public class SerialContract {
         this.deviceid = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_DEVICE_ID));
         this.dt = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_DATE));
         this.serialno = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_SERIAL_NO));
-        this.synced = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_SYNCED));
-        this.synced_date = cursor.getString(cursor.getColumnIndex(singleSerial.COLUMN_SYNCED_DATE));
-
         return this;
     }
 
@@ -60,26 +61,8 @@ public class SerialContract {
         return json;
     }
 
-
-    public String get_ID() {
-        return id;
-    }
-
-    public void set_ID(String _ID) {
-        this.id = _ID;
-    }
-
-
     public String getDeviceid() {
         return deviceid;
-    }
-
-    public String getSynced() {
-        return synced;
-    }
-
-    public String getSynced_date() {
-        return synced_date;
     }
 
     public String getdt() {
@@ -95,9 +78,9 @@ public class SerialContract {
 
         public static final String TABLE_NAME = "serials";
         public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
-        public static final String _ID = "_ID";
+        public static final String _ID = "_id";
         public static final String COLUMN_DEVICE_ID = "deviceid";
-        public static final String COLUMN_DATE = "dt";
+        public static final String COLUMN_DATE = "date";
         public static final String COLUMN_SERIAL_NO = "serialno";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";

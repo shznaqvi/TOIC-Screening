@@ -21,6 +21,7 @@ import java.util.Date;
 
 import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
 import edu.aku.hassannaqvi.toic_screening.ui.EndingActivity;
 
 /**
@@ -63,13 +64,13 @@ public class MainApp extends Application {
     public static Boolean admin = false;
     public static FormsContract fc;
     public static ChildContract cc;
+    public static SerialContract sc;
     public static String userName = "0000";
     public static int versionCode;
     public static int totalChild = 0 ;
     public static String versionName;
-
-    protected static LocationManager locationManager;
     public static Integer areaCode;
+    protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 
@@ -178,7 +179,7 @@ public class MainApp extends Application {
                                                 int id) {
                                 activity.finish();
                                 Intent end_intent = new Intent(context, EndingActivity.class);
-                                end_intent.putExtra("check", false);
+                                end_intent.putExtra("complete", false);
                                 context.startActivity(end_intent);
                             }
                         });
@@ -221,7 +222,7 @@ public class MainApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/MBLateefi.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
+        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/JameelNooriNastaleeq.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
 
         deviceId = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);

@@ -1,19 +1,19 @@
 package edu.aku.hassannaqvi.toic_screening.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -22,32 +22,37 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.toic_screening.R;
-import edu.aku.hassannaqvi.toic_screening.contracts.DistrictsContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
-import edu.aku.hassannaqvi.toic_screening.contracts.VillagesContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.TehsilsContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.UCsContract;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 import edu.aku.hassannaqvi.toic_screening.databinding.ActivitySectionInfoBinding;
 import edu.aku.hassannaqvi.toic_screening.validation.validatorClass;
 
-public class SectionInfoActivity extends AppCompatActivity {
+public class SectionInfoActivity extends Activity {
 
     private static final String TAG = SectionInfoActivity.class.getName();
+
+    @BindView(R.id.toica01)
+    CheckBox toica01;
 
     ActivitySectionInfoBinding binding;
     int check = 0;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     DatabaseHelper db;
-    Map<String, String> getAllDistricts, getAllVillages;
-    List<String> Districts, Villages;
+    Map<String, String> getAllTalukas, getAllUCs;
+    List<String> Talukas, UCs;
+    String serial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,50 +63,43 @@ public class SectionInfoActivity extends AppCompatActivity {
 //        Assigning data to UI binding
         binding.setCallback(this);
 
-//        populateSpinner(); //populate spinner for ucs and villages
+        populateSpinner(); //populate spinner for ucs and villages
 
 //        Main Working from here
-//        Skip Patterns
 
+//        Get Slip no for non patients
+        serial = String.valueOf(Integer.valueOf(MainApp.sc.getSerialno()) + 1);
+
+        ButterKnife.bind(this);
 //        Listener
-        binding.toica01.addTextChangedListener(new TextWatcher() {
+        toica01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (binding.toica01.getText().toString().isEmpty()) {
-                    binding.fldGrp02.setVisibility(View.VISIBLE);
-                    binding.fldGrp04.setVisibility(View.VISIBLE);
-                } else {
-                    binding.fldGrp02.setVisibility(View.GONE);
-                    binding.toica02.setText(null);
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
                     binding.fldGrp04.setVisibility(View.GONE);
                     binding.hhno.setText(null);
+
+                    binding.toica02.setText(null);
+                    binding.toica02.setEnabled(true);
+
+
+                } else {
+                    binding.fldGrp04.setVisibility(View.VISIBLE);
+
+                    binding.toica02.setText(serial);
+
+                    binding.toica02.setEnabled(false);
+
                 }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
             }
         });
 
     }
 
     public Boolean formValidation() {
-/*
 //        Slip No
-        if (!validatorClass.EmptyTextBox(this, binding.toica01, getString(R.string.toica01))) {
-            return false;
-        }
-*/
-
-//        Team.No
-        if (binding.toica01.getText().toString().trim().isEmpty()) {
-            if (!validatorClass.EmptyTextBox(this, binding.toica02, getString(R.string.toica02))) {
+        if (!binding.toica01.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.toica02, getString(R.string.toica01))) {
                 return false;
             }
         }
@@ -112,24 +110,29 @@ public class SectionInfoActivity extends AppCompatActivity {
         }
 
 //        UC - HH
-        if (binding.toica01.getText().toString().trim().isEmpty()) {
-/*
+        if (!binding.toica01.isChecked()) {
+
+//        Town
+            if (!validatorClass.EmptySpinner(this, binding.spTowns, "Town")) {
+                return false;
+            }
 
 //        UC
             if (!validatorClass.EmptySpinner(this, binding.spUCs, "UCs")) {
                 return false;
             }
 
-//        Villages
-            if (!validatorClass.EmptySpinner(this, binding.spVillages, "Villages")) {
-                return false;
-            }
-*/
-
 //         House no
             if (!validatorClass.EmptyTextBox(this, binding.hhno, getString(R.string.hhno))) {
                 return false;
             }
+
+            String[] str = binding.hhno.getText().toString().split("-");
+             if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")){
+                 binding.hhno.setError("Wrong presentation!!");
+                 return false;
+             }
+
         }
 
 //        toica04
@@ -226,13 +229,16 @@ public class SectionInfoActivity extends AppCompatActivity {
 
         JSONObject sa = new JSONObject();
 
-        sa.put("toica01", binding.toica01.getText().toString());
+        sa.put("toica01", binding.toica01.isChecked() ? "1" : "2");
         sa.put("toica02", binding.toica02.getText().toString());
         sa.put("toica03", binding.toica03.getText().toString());
 
-//        sa.put("ucCode", getAllDistricts.get(binding.spUCs.getSelectedItem().toString()));
-//        sa.put("villageCode", getAllVillages.get(binding.spVillages.getSelectedItem().toString()));
-        sa.put("hhno", binding.hhno.getText().toString());
+        if (!binding.toica01.isChecked()) {
+            sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
+            sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
+            sa.put("hhno", binding.hhno.getText().toString());
+        }
+
         sa.put("toica04", binding.toica04.getText().toString());
         sa.put("toica05", binding.toica05.getText().toString());
 
@@ -259,6 +265,15 @@ public class SectionInfoActivity extends AppCompatActivity {
             MainApp.fc.setUID(
                     (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
             db.updateFormID();
+
+            if (!toica01.isChecked()) {
+                if (db.updateSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString(), binding.toica02.getText().toString()) != 0) {
+                    Toast.makeText(this, "Updating Serial... Successful!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Updating Serial... ERROR!", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
 
             return true;
         } else {
@@ -301,40 +316,38 @@ public class SectionInfoActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
 
-        Districts = new ArrayList<>();
-        getAllDistricts = new HashMap<>();
+        Talukas = new ArrayList<>();
+        getAllTalukas = new HashMap<>();
 
-        Districts.add("....");
+        Talukas.add("....");
 
-        Collection<DistrictsContract> allDis = db.getAllDistricts();
+        Collection<TehsilsContract> allDis = db.getAllTalukas();
 
-        for (DistrictsContract aUCs : allDis) {
-            getAllDistricts.put(aUCs.getDistrictName(), aUCs.getDistrictCode());
-            Districts.add(aUCs.getDistrictName());
-            Collections.sort(Districts);
+        for (TehsilsContract aUCs : allDis) {
+            getAllTalukas.put(aUCs.getTalukaName(), aUCs.getTalukacode());
+            Talukas.add(aUCs.getTalukaName());
         }
 
-        binding.spUCs.setAdapter(new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, Districts));
+        binding.spTowns.setAdapter(new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, Talukas));
 
-        binding.spUCs.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.spTowns.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                Villages = new ArrayList<>();
-                getAllVillages = new HashMap<>();
+                UCs = new ArrayList<>();
+                getAllUCs = new HashMap<>();
 
-                Villages.add("....");
+                UCs.add("....");
 
-                if (binding.spUCs.getSelectedItemPosition() != 0) {
-                    Collection<VillagesContract> allDis = db.getAllPSUsByDistrict(getAllDistricts.get(binding.spUCs.getSelectedItem().toString()));
-                    for (VillagesContract aUCs : allDis) {
-                        getAllVillages.put(aUCs.getVillageName(), aUCs.getVillageCode());
-                        Villages.add(aUCs.getVillageName());
-                        Collections.sort(Villages);
+                if (binding.spTowns.getSelectedItemPosition() != 0) {
+                    Collection<UCsContract> allDis = db.getAllUCsByTalukas(getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
+                    for (UCsContract aUCs : allDis) {
+                        getAllUCs.put(aUCs.getUcsName(), aUCs.getUccode());
+                        UCs.add(aUCs.getUcsName());
                     }
                 }
 
-                binding.spVillages.setAdapter(new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, Villages));
+                binding.spUCs.setAdapter(new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, UCs));
 
             }
 

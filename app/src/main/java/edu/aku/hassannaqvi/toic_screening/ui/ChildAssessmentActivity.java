@@ -61,10 +61,10 @@ public class ChildAssessmentActivity extends AppCompatActivity {
                 finish();
                 if (MainApp.totalChild == childCount) {
                     childCount = 1;
-                    startActivity(new Intent(this, MainActivity.class));
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete",true));
                 } else {
                     childCount++;
-                    startActivity(new Intent(this, MainActivity.class).putExtra("childFlag", true).putExtra("childRange", childCount));
+                    startActivity(new Intent(this, ChildAssessmentActivity.class).putExtra("childFlag", true).putExtra("childRange", childCount));
                 }
 
             } else {
@@ -75,11 +75,8 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
 
     public void BtnEnd() {
-        finish();
-        Toast.makeText(this, "complete Section", Toast.LENGTH_SHORT).show();
-        Intent endSec = new Intent(this, EndingActivity.class);
-        endSec.putExtra("complete", false);
-        startActivity(endSec);
+        childCount = 1;
+        MainApp.endActivity(this,this);
     }
 
     private boolean UpdateDB() {
@@ -122,6 +119,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
         JSONObject sB = new JSONObject();
 
+        sB.put("toicbSerial", String.valueOf(childCount));
         sB.put("toicb01", binding.toicb01.getText().toString());
         sB.put("toicb02", binding.toicb02.getText().toString());
         sB.put("toicb03", binding.toicb03a.isChecked() ? "1" : binding.toicb03b.isChecked() ? "2" : "0");

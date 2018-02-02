@@ -36,18 +36,24 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="1dp"
+                android:background="@drawable/top_bottom_border"
+                android:backgroundTint="@color/dullWhileOverlay"
+                android:backgroundTintMode="screen"
+                android:elevation="2dp"
                 android:gravity="center_horizontal"
                 android:keepScreenOn="true"
+                android:padding="16dp"
                 android:text="@string/app_name"
                 android:textColor="@color/colorPrimary"
                 android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+
+                />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center_horizontal"
                 android:text="A PROJECT OF"
                 android:textColor="@color/white"
@@ -58,13 +64,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="0dp"
+                android:background="@drawable/border_logo"
+
                 android:contentDescription="Aga Khan LOGO"
-                android:src="@drawable/agakhannew" />
+                android:src="@drawable/sg_agakhan" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -176,6 +184,7 @@
                     android:layout_weight="38"
                     android:background="@color/black_overlay"
                     android:drawableStart="@drawable/ic_cloud_download_black_24dp"
+                    android:elevation="2dp"
                     android:padding="15dp"
                     android:text="Sync Data"
                     android:textStyle="bold" />
@@ -185,9 +194,11 @@
                     style="?android:textAppearanceSmall"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+
                     android:layout_marginRight="2dp"
                     android:layout_weight="68"
                     android:background="#56ae51"
+                    android:elevation="2dp"
                     android:padding="16dp"
                     android:text="@string/action_sign_in"
                     android:textStyle="bold" />
@@ -197,9 +208,21 @@
                 android:id="@+id/txtinstalldate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#efefef"
+                android:layout_marginTop="110dp"
+                android:background="@color/grayOverlay"
                 android:gravity="center"
-                android:textColor="#565656"
+                android:textColor="@color/dullWhile"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/grayOverlay"
+                android:gravity="center"
+                android:onClick="showCredits"
+                android:text="This app is developed by The Software Developers Team of Data Management Unit,\nPediatrics Department, Division of Women and Child Health, \n Aga Khan University. "
+                android:textColor="@color/blackOverlay"
                 android:textSize="12sp" />
 
         </LinearLayout>

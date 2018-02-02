@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <ImageView
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:contentDescription="Aga khan LOGO"
-            android:paddingTop="70dp"
+            android:paddingTop="73dp"
             android:src="@drawable/agakhan" />
 
         <TextView
