@@ -54,6 +54,7 @@ import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 import edu.aku.hassannaqvi.toic_screening.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.toic_screening.sync.SyncChildForms;
+import edu.aku.hassannaqvi.toic_screening.sync.SyncEnrollment;
 import edu.aku.hassannaqvi.toic_screening.sync.SyncForms;
 import edu.aku.hassannaqvi.toic_screening.sync.SyncSerials;
 
@@ -217,7 +218,7 @@ public class MainActivity extends Activity {
             Log.d(TAG, "onCreate: " + rSumText);
             recordSummary.setText(rSumText);
 
-        }else {
+        } else {
             mainBinding.adminsec.setVisibility(View.GONE);
         }
 
@@ -248,8 +249,8 @@ public class MainActivity extends Activity {
         /*Add data in Serial date wrt date*/
         MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
 
-        if (MainApp.sc.getDeviceid() == null){
-            db.addSerialForm(new SerialContract(Settings.Secure.getString(getApplicationContext().getContentResolver(),Settings.Secure.ANDROID_ID),
+        if (MainApp.sc.getDeviceid() == null) {
+            db.addSerialForm(new SerialContract(Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID),
                     new SimpleDateFormat("dd-MM-yy").format(new Date()).toString(),
                     "0"));
 
@@ -464,6 +465,9 @@ public class MainActivity extends Activity {
 
             Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
             new SyncChildForms(this, true).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Enrollment Forms", Toast.LENGTH_SHORT).show();
+            new SyncEnrollment(this, true).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Serials", Toast.LENGTH_SHORT).show();
             new SyncSerials(this, true).execute();

@@ -20,6 +20,8 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract.FormsChildTable;
+import edu.aku.hassannaqvi.toic_screening.contracts.EnrollmentContract;
+import edu.aku.hassannaqvi.toic_screening.contracts.EnrollmentContract.EnrollChildTable;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
@@ -93,6 +95,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsChildTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
 
+
+    private static final String SQL_CREATE_ENROLLMENT_FORMS = "CREATE TABLE "
+            + EnrollChildTable.TABLE_NAME + "("
+            + EnrollChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + EnrollChildTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + EnrollChildTable.COLUMN_UID + " TEXT," +
+            EnrollChildTable.COLUMN_UUID + " TEXT," +
+            EnrollChildTable.COLUMN_FORMDATE + " TEXT," +
+            EnrollChildTable.COLUMN_USER + " TEXT," +
+            EnrollChildTable.COLUMN_SC + " TEXT," +
+            EnrollChildTable.COLUMN_GPSLAT + " TEXT," +
+            EnrollChildTable.COLUMN_GPSLNG + " TEXT," +
+            EnrollChildTable.COLUMN_GPSDATE + " TEXT," +
+            EnrollChildTable.COLUMN_GPSACC + " TEXT," +
+            EnrollChildTable.COLUMN_DEVICEID + " TEXT," +
+            EnrollChildTable.COLUMN_DEVICETAGID + " TEXT," +
+            EnrollChildTable.COLUMN_APP_VERSION + " TEXT," +
+            EnrollChildTable.COLUMN_SYNCED + " TEXT," +
+            EnrollChildTable.COLUMN_SYNCED_DATE + " TEXT"
+            + " );";
+
+
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
@@ -100,6 +124,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_CHILD_FORMS =
             "DROP TABLE IF EXISTS " + FormsChildTable.TABLE_NAME;
+
+    private static final String SQL_DELETE_ENROLLMENT_FORMS =
+            "DROP TABLE IF EXISTS " + EnrollChildTable.TABLE_NAME;
+
+
     private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSerial.TABLE_NAME;
 
     final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSerial.TABLE_NAME + " (" +
@@ -142,6 +171,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_CHILD_FORMS);
+        db.execSQL(SQL_CREATE_ENROLLMENT_FORMS);
         db.execSQL(SQL_CREATE_SERIAL);
         db.execSQL(SQL_CREATE_TALUKA);
         db.execSQL(SQL_CREATE_UC);
@@ -152,6 +182,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_CHILD_FORMS);
+        db.execSQL(SQL_DELETE_ENROLLMENT_FORMS);
         db.execSQL(SQL_DELETE_SINGLE);
         db.execSQL(SQL_DELETE_TALUKAS);
         db.execSQL(SQL_DELETE_UCS);
@@ -484,6 +515,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+
+    public Long addEnrollmentForm(EnrollmentContract ec) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(EnrollChildTable.COLUMN_PROJECT_NAME, ec.getProjectName());
+        values.put(EnrollChildTable.COLUMN_UID, ec.getUID());
+        values.put(EnrollChildTable.COLUMN_UUID, ec.getUUID());
+        values.put(EnrollChildTable.COLUMN_FORMDATE, ec.getFormDate());
+        values.put(EnrollChildTable.COLUMN_USER, ec.getUser());
+        values.put(EnrollChildTable.COLUMN_SC, ec.getsC());
+        values.put(EnrollChildTable.COLUMN_GPSLAT, ec.getGpsLat());
+        values.put(EnrollChildTable.COLUMN_GPSLNG, ec.getGpsLng());
+        values.put(EnrollChildTable.COLUMN_GPSDATE, ec.getGpsDT());
+        values.put(EnrollChildTable.COLUMN_GPSACC, ec.getGpsAcc());
+        values.put(EnrollChildTable.COLUMN_DEVICETAGID, ec.getDevicetagID());
+        values.put(EnrollChildTable.COLUMN_DEVICEID, ec.getDeviceID());
+        values.put(EnrollChildTable.COLUMN_SYNCED, ec.getSynced());
+        values.put(EnrollChildTable.COLUMN_SYNCED_DATE, ec.getSynced_date());
+        values.put(EnrollChildTable.COLUMN_APP_VERSION, ec.getAppversion());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                EnrollChildTable.TABLE_NAME,
+                EnrollChildTable.COLUMN_NAME_NULLABLE,
+                values);
+
+        return newRowId;
+    }
+
+
     public Long addSerialForm(SerialContract sc) {
 
         // Gets the data repository in write mode
@@ -561,6 +628,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int count = db.update(
                 FormsChildTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
+    public void updateSyncedEnrollmentForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(EnrollChildTable.COLUMN_SYNCED, true);
+        values.put(EnrollChildTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = EnrollChildTable._ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                EnrollChildTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
@@ -723,6 +810,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 ChildContract fc = new ChildContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+
+    public Collection<EnrollmentContract> getUnsyncedEnrollmentForms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                EnrollChildTable._ID,
+                EnrollChildTable.COLUMN_UID,
+                EnrollChildTable.COLUMN_UUID,
+                EnrollChildTable.COLUMN_FORMDATE,
+                EnrollChildTable.COLUMN_USER,
+                EnrollChildTable.COLUMN_SC,
+                EnrollChildTable.COLUMN_GPSLAT,
+                EnrollChildTable.COLUMN_GPSLNG,
+                EnrollChildTable.COLUMN_GPSDATE,
+                EnrollChildTable.COLUMN_GPSACC,
+                EnrollChildTable.COLUMN_DEVICETAGID,
+                EnrollChildTable.COLUMN_DEVICEID,
+                EnrollChildTable.COLUMN_SYNCED,
+                EnrollChildTable.COLUMN_SYNCED_DATE,
+                EnrollChildTable.COLUMN_APP_VERSION
+        };
+        String whereClause = EnrollChildTable.COLUMN_SYNCED + " is null OR " + EnrollChildTable.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                EnrollChildTable._ID + " ASC";
+
+        Collection<EnrollmentContract> allFC = new ArrayList<EnrollmentContract>();
+        try {
+            c = db.query(
+                    EnrollChildTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                EnrollmentContract fc = new EnrollmentContract();
                 allFC.add(fc.Hydrate(c));
             }
         } finally {
