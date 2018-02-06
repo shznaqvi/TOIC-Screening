@@ -25,7 +25,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
     private static final String TAG = ChildAssessmentActivity.class.getSimpleName();
 
-    private static int childCount = 1;
+    public static int childCount = 1;
 
     ActivitySecChildassessmentBinding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
@@ -59,12 +59,18 @@ public class ChildAssessmentActivity extends AppCompatActivity {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
 
                 finish();
-                if (MainApp.totalChild == childCount) {
-                    childCount = 1;
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete",true));
+
+                if (binding.toicb03a.isChecked() && binding.toicb04a.isChecked() && binding.toicb05a.isChecked()
+                        && binding.toicb06a.isChecked() && binding.toicb07a.isChecked() && binding.toicb08a.isChecked()) {
+                    startActivity(new Intent(this, EnrollmentActivity.class).putExtra("name", binding.toicb01.getText().toString()));
                 } else {
-                    childCount++;
-                    startActivity(new Intent(this, ChildAssessmentActivity.class).putExtra("childFlag", true).putExtra("childRange", childCount));
+                    if (MainApp.totalChild == childCount) {
+                        childCount = 1;
+                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                    } else {
+                        childCount++;
+                        startActivity(new Intent(this, ChildAssessmentActivity.class).putExtra("childFlag", true).putExtra("childRange", childCount));
+                    }
                 }
 
             } else {
@@ -76,7 +82,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         childCount = 1;
-        MainApp.endActivity(this,this);
+        MainApp.endActivity(this, this);
     }
 
     private boolean UpdateDB() {
@@ -134,7 +140,6 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
-
 
 
     private boolean ValidateForm() {

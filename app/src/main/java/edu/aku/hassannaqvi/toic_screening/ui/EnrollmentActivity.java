@@ -43,6 +43,8 @@ public class EnrollmentActivity extends AppCompatActivity {
         binding.toicc13.setManager(getSupportFragmentManager());
         binding.toicc13.setMaxDate(dtToday);
 
+//        Getting Extra
+        binding.toicc02.setText(getIntent().getStringExtra("name"));
 
     }
 
@@ -73,14 +75,17 @@ public class EnrollmentActivity extends AppCompatActivity {
             return false;
         }
 
-        if (binding.toicc06a.isChecked()){
+        if (binding.toicc06a.isChecked()) {
 //        toicc06a
             if (!validatorClass.EmptyTextBox(this, binding.toicc06aa, getString(R.string.toicc06a))) {
                 return false;
             }
-        }else {
+        } else {
 //        toicc06b
             if (!validatorClass.EmptyTextBox(this, binding.toicc06bb, getString(R.string.toicc06b))) {
+                return false;
+            }
+            if (!validatorClass.RangeTextBox(this, binding.toicc06bb, 6, 60, getString(R.string.toicc06b), " for month")) {
                 return false;
             }
         }
@@ -135,8 +140,13 @@ public class EnrollmentActivity extends AppCompatActivity {
                 Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
                 finish();
-
-                startActivity(new Intent(this, MainActivity.class));
+                if (MainApp.totalChild == ChildAssessmentActivity.childCount) {
+                    ChildAssessmentActivity.childCount = 1;
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                } else {
+                    ChildAssessmentActivity.childCount++;
+                    startActivity(new Intent(this, ChildAssessmentActivity.class).putExtra("childFlag", true).putExtra("childRange", ChildAssessmentActivity.childCount));
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -145,10 +155,9 @@ public class EnrollmentActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-
         Toast.makeText(this, "Processing EndActivity Section", Toast.LENGTH_SHORT).show();
+        ChildAssessmentActivity.childCount = 1;
         MainApp.endActivity(this, this);
-
     }
 
     private void SaveDraft() throws JSONException {
@@ -164,7 +173,7 @@ public class EnrollmentActivity extends AppCompatActivity {
         MainApp.ec.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.ec.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-        MainApp.ec.setUUID(MainApp.fc.getUID());
+        MainApp.ec.setUUID(MainApp.cc.getUID());
 
         JSONObject sc = new JSONObject();
 
