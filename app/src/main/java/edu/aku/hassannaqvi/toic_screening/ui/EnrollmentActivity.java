@@ -6,12 +6,15 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.toic_screening.R;
@@ -26,6 +29,10 @@ public class EnrollmentActivity extends AppCompatActivity {
     ActivitySecEnrollmentBinding binding;
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    String maxDate6Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_6_MONTH));
+    String maxDate60Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_5Years));
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,8 @@ public class EnrollmentActivity extends AppCompatActivity {
 
 //        setting for daterpicker
         binding.toicc06aa.setManager(getSupportFragmentManager());
-        binding.toicc06aa.setMaxDate(dtToday);
+        binding.toicc06aa.setMaxDate(maxDate6Months);
+        binding.toicc06aa.setMinDate(maxDate60Months);
         binding.toicc10.setManager(getSupportFragmentManager());
         binding.toicc10.setMaxDate(dtToday);
         binding.toicc13.setManager(getSupportFragmentManager());
@@ -45,6 +53,28 @@ public class EnrollmentActivity extends AppCompatActivity {
 
 //        Getting Extra
         binding.toicc02.setText(getIntent().getStringExtra("name"));
+
+        binding.toicc06aa.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                Calendar selectedDate = MainApp.getCalendarDate(binding.toicc06aa.getText().toString());
+                binding.toicc10.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
+                binding.toicc13.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -120,11 +150,7 @@ public class EnrollmentActivity extends AppCompatActivity {
         }
 
 //        toicc14
-        if (!validatorClass.EmptyRadioButton(this, binding.toicc14, binding.toicc14b, getString(R.string.toicc14))) {
-            return false;
-        }
-
-        return true;
+        return validatorClass.EmptyRadioButton(this, binding.toicc14, binding.toicc14b, getString(R.string.toicc14));
     }
 
     public void BtnContinue() {
