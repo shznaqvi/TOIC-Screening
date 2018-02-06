@@ -6,8 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -55,27 +54,20 @@ public class EnrollmentActivity extends AppCompatActivity {
         binding.toicc01.setText(getIntent().getStringExtra("enroll_id"));
         binding.toicc02.setText(getIntent().getStringExtra("name"));
 
-        binding.toicc06aa.addTextChangedListener(new TextWatcher() {
+        binding.toicc06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (binding.toicc06a.isChecked()) {
+                    binding.toicc10.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
+                    binding.toicc13.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-//                Calendar selectedDate = MainApp.getCalendarDate(binding.toicc06aa.getText().toString());
-                binding.toicc10.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
-                binding.toicc13.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+                } else {
+                    binding.toicc10.setMinDate(maxDate60Months);
+                    binding.toicc13.setMinDate(maxDate60Months);
+                }
             }
         });
+
 
     }
 
