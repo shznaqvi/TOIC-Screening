@@ -28,7 +28,7 @@ public class EnrollmentActivity extends AppCompatActivity {
     ActivitySecEnrollmentBinding binding;
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
-    String dtToday1 = new SimpleDateFormat("dd/MM/yy").format(new Date().getTime());
+    String dtToday1 = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
     String maxDate6Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_6_MONTH));
     String maxDate60Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_5Years));
 
@@ -39,6 +39,7 @@ public class EnrollmentActivity extends AppCompatActivity {
 
         //        Initializing
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sec_enrollment);
+        binding.setCallback(this);
         db = new DatabaseHelper(this);
 
 //        setting for daterpicker
@@ -57,6 +58,10 @@ public class EnrollmentActivity extends AppCompatActivity {
         binding.toicc06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                binding.toicc10.setText(null);
+                binding.toicc13.setText(null);
+
                 if (binding.toicc06a.isChecked()) {
                     binding.toicc10.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
                     binding.toicc13.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
@@ -145,6 +150,7 @@ public class EnrollmentActivity extends AppCompatActivity {
 //        toicc14
         return validatorClass.EmptyRadioButton(this, binding.toicc14, binding.toicc14b, getString(R.string.toicc14));
     }
+
 
     public void BtnContinue() {
 
