@@ -6,7 +6,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.RadioGroup;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -28,7 +30,9 @@ public class EnrollmentActivity extends AppCompatActivity {
     ActivitySecEnrollmentBinding binding;
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
-    String dtToday1 = new SimpleDateFormat("dd/MM/yy").format(new Date().getTime());
+    //String dtToday1 = new SimpleDateFormat("dd/MM/yy").format(System.currentTimeMillis());
+    String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
+
     String maxDate6Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_6_MONTH));
     String maxDate60Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_5Years));
 
@@ -46,18 +50,44 @@ public class EnrollmentActivity extends AppCompatActivity {
         binding.toicc06aa.setMaxDate(maxDate6Months);
         binding.toicc06aa.setMinDate(maxDate60Months);
         binding.toicc10.setManager(getSupportFragmentManager());
-        binding.toicc10.setMaxDate(dtToday1);
         binding.toicc13.setManager(getSupportFragmentManager());
-        binding.toicc13.setMaxDate(dtToday1);
+        binding.toicc10.setMaxDate(dateToday);
+        binding.toicc13.setMaxDate(dateToday);
 
 //        Getting Extra
         binding.toicc01.setText(getIntent().getStringExtra("enroll_id"));
         binding.toicc02.setText(getIntent().getStringExtra("name"));
 
-        binding.toicc06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.toicc06b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    /*binding.toicc10.setMaxDate(dtToday1);
+                    binding.toicc13.setMaxDate(dtToday1);*/
+                    binding.toicc10.setMinDate(maxDate60Months);
+                    binding.toicc13.setMinDate(maxDate60Months);
+
+
+                }
+            }
+        });
+
+
+        binding.toicc06aa.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
                 if (binding.toicc06a.isChecked()) {
+
+
+                    //binding.toicc10.setMaxDate(dtToday1);
+                    //binding.toicc13.setMaxDate(dtToday1);
+                    //Calendar selectedDate = MainApp.getCalendarDate(binding.toicc06aa.getText().toString());
                     binding.toicc10.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
                     binding.toicc13.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
 
@@ -65,6 +95,13 @@ public class EnrollmentActivity extends AppCompatActivity {
                     binding.toicc10.setMinDate(maxDate60Months);
                     binding.toicc13.setMinDate(maxDate60Months);
                 }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
