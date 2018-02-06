@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -73,6 +74,20 @@ public class EnrollmentActivity extends AppCompatActivity {
             }
         });
 
+        binding.toicc06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                binding.toicc10.setText(null);
+                binding.toicc13.setText(null);
+
+                if (i == R.id.toicc06b){
+                    binding.toicc10.setMinDate(maxDate60Months);
+                    binding.toicc13.setMinDate(maxDate60Months);
+                }
+            }
+        });
+
 
         binding.toicc06aa.addTextChangedListener(new TextWatcher() {
             @Override
@@ -84,11 +99,6 @@ public class EnrollmentActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (binding.toicc06a.isChecked()) {
-
-
-                    //binding.toicc10.setMaxDate(dtToday1);
-                    //binding.toicc13.setMaxDate(dtToday1);
-                    //Calendar selectedDate = MainApp.getCalendarDate(binding.toicc06aa.getText().toString());
                     binding.toicc10.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
                     binding.toicc13.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
 
@@ -105,7 +115,6 @@ public class EnrollmentActivity extends AppCompatActivity {
 
             }
         });
-
 
     }
 
