@@ -62,7 +62,8 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
                 if (binding.toicb03a.isChecked() && binding.toicb04a.isChecked() && binding.toicb05a.isChecked()
                         && binding.toicb06a.isChecked() && binding.toicb07a.isChecked() && binding.toicb08a.isChecked()) {
-                    startActivity(new Intent(this, EnrollmentActivity.class).putExtra("name", binding.toicb01.getText().toString()));
+                    startActivity(new Intent(this, EnrollmentActivity.class).putExtra("name", binding.toicb01.getText().toString())
+                            .putExtra("enroll_id", binding.toicb09.getText().toString()));
                 } else {
                     if (MainApp.totalChild == childCount) {
                         childCount = 1;
@@ -134,6 +135,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         sB.put("toicb06", binding.toicb06a.isChecked() ? "1" : binding.toicb06b.isChecked() ? "2" : "0");
         sB.put("toicb07", binding.toicb07a.isChecked() ? "1" : binding.toicb07b.isChecked() ? "2" : "0");
         sB.put("toicb08", binding.toicb08a.isChecked() ? "1" : binding.toicb08b.isChecked() ? "2" : "0");
+        sB.put("toicb09", binding.toicb09.getText().toString());
 
         MainApp.cc.setsB(String.valueOf(sB));
 
@@ -176,6 +178,13 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
         if (!validatorClass.EmptyRadioButton(this, binding.toicb08, binding.toicb08b, getString(R.string.toicb08))) {
             return false;
+        }
+
+        if (binding.toicb03a.isChecked() && binding.toicb04a.isChecked() && binding.toicb05a.isChecked()
+                && binding.toicb06a.isChecked() && binding.toicb07a.isChecked() && binding.toicb08a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, binding.toicb09, getString(R.string.toicc01))) {
+                return false;
+            }
         }
 
         return true;

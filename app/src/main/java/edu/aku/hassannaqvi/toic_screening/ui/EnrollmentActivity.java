@@ -29,9 +29,9 @@ public class EnrollmentActivity extends AppCompatActivity {
     ActivitySecEnrollmentBinding binding;
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    String dtToday1 = new SimpleDateFormat("dd/MM/yy").format(new Date().getTime());
     String maxDate6Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_6_MONTH));
     String maxDate60Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_5Years));
-
 
 
     @Override
@@ -47,11 +47,12 @@ public class EnrollmentActivity extends AppCompatActivity {
         binding.toicc06aa.setMaxDate(maxDate6Months);
         binding.toicc06aa.setMinDate(maxDate60Months);
         binding.toicc10.setManager(getSupportFragmentManager());
-        binding.toicc10.setMaxDate(dtToday);
+        binding.toicc10.setMaxDate(dtToday1);
         binding.toicc13.setManager(getSupportFragmentManager());
-        binding.toicc13.setMaxDate(dtToday);
+        binding.toicc13.setMaxDate(dtToday1);
 
 //        Getting Extra
+        binding.toicc01.setText(getIntent().getStringExtra("enroll_id"));
         binding.toicc02.setText(getIntent().getStringExtra("name"));
 
         binding.toicc06aa.addTextChangedListener(new TextWatcher() {
@@ -63,7 +64,7 @@ public class EnrollmentActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                Calendar selectedDate = MainApp.getCalendarDate(binding.toicc06aa.getText().toString());
+//                Calendar selectedDate = MainApp.getCalendarDate(binding.toicc06aa.getText().toString());
                 binding.toicc10.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
                 binding.toicc13.setMinDate(MainApp.convertDateFormat(binding.toicc06aa.getText().toString()));
 
@@ -253,5 +254,8 @@ public class EnrollmentActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "You Can't go back", Toast.LENGTH_LONG).show();
+    }
 }

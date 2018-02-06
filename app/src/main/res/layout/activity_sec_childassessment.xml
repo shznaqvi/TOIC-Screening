@@ -51,21 +51,21 @@
 
             <!--01-->
             <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/toicb01"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/toicb01"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
 
             <EditText
                 android:id="@+id/toicb01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/toicb01"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                android:hint="@string/toicb01"
                 android:maxLength="25" />
 
             <!--02-->
@@ -83,8 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:hint="@string/toicb02"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                android:hint="@string/toicb02"
                 android:maxLength="25" />
 
             <!--03-->
@@ -297,6 +297,34 @@
                     android:text="@string/no" />
 
             </RadioGroup>
+
+            <!--09-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{toicb03a.checked &amp;&amp; toicb04a.checked &amp;&amp; toicb05a.checked &amp;&amp; toicb06a.checked &amp;&amp; toicb07a.checked &amp;&amp; toicb08a.checked ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/toicc01"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/toicb09"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:digits="01234567890"
+                    android:hint="@string/toicc01"
+                    android:inputType="number"
+                    android:maxLength="8" />
+
+            </LinearLayout>
 
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
