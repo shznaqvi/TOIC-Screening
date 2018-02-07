@@ -76,15 +76,15 @@ public class SyncSerials extends AsyncTask<Void, Void, String> {
         String line = "No Response";
 
         DatabaseHelper db = new DatabaseHelper(mContext);
-        Collection<SerialContract> Forms;
+        Collection<SerialContract> Serials;
         //if (flag) {
-        Forms = db.getUnsyncedSerials();
+        Serials = db.getUnsyncedSerials();
         //} else {
         //Forms = db.getFormsSg();
         //}
-        Log.d(TAG, String.valueOf(Forms.size()));
+        Log.d(TAG, String.valueOf(Serials.size()));
 
-        if (Forms.size() > 0) {
+        if (Serials.size() > 0) {
 
             HttpURLConnection connection = null;
             try {
@@ -113,9 +113,9 @@ public class SyncSerials extends AsyncTask<Void, Void, String> {
 
 //            pd.setMessage("Total Forms: " );
 
-                    for (SerialContract fc : Forms) {
+                    for (SerialContract sc : Serials) {
                         //if (fc.getIstatus().equals("1")) {
-                        jsonSync.put(fc.toJSONObject());
+                        jsonSync.put(sc.toJSONObject());
                         //}
                     }
                     wr.writeBytes(jsonSync.toString().replace("\uFEFF", "") + "\n");
@@ -184,7 +184,7 @@ public class SyncSerials extends AsyncTask<Void, Void, String> {
             Toast.makeText(mContext, " Forms Serial synced: " + sSynced + "\r\n\r\n Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
             pd.setMessage(" Forms Serial synced: " + sSynced + "\r\n\r\n Duplicates: " + sDuplicate + "\r\n\r\n Errors: " + sSyncedError);
-            pd.setTitle("Done uploading Forms data");
+            pd.setTitle("Done uploading Serial data");
             pd.show();
         } catch (JSONException e) {
             e.printStackTrace();
