@@ -122,7 +122,7 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
                         //}
                     }
                     wr.writeBytes(jsonSync.toString().replace("\uFEFF", "") + "\n");
-                    longInfo(jsonSync.toString().replace("\uFEFF", "") + "\n");
+//                    longInfo(jsonSync.toString().replace("\uFEFF", "") + "\n");
                     wr.flush();
 
 
