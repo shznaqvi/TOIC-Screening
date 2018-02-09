@@ -37,6 +37,21 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/testing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:elevation="2dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_horizontal"
+                android:keepScreenOn="true"
+                android:text="ONLY FOR TESTING"
+                android:textColor="@color/dullWhile"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/lblMainMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,14 +116,14 @@
                 android:onClick="@{() -> callback.openForm()}"
                 android:text="OPEN FORM" />
 
-                <Button
-                    android:id="@+id/syncServer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp"
-                    android:onClick="syncServer"
-                    android:text="Upload Data" />
+            <Button
+                android:id="@+id/syncServer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="16dp"
+                android:onClick="syncServer"
+                android:text="Upload Data" />
 
             <LinearLayout
                 android:id="@+id/adminsec"

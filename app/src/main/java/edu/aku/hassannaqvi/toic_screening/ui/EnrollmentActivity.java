@@ -24,6 +24,7 @@ import edu.aku.hassannaqvi.toic_screening.contracts.EnrollmentContract;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 import edu.aku.hassannaqvi.toic_screening.databinding.ActivitySecEnrollmentBinding;
+import edu.aku.hassannaqvi.toic_screening.other.childData;
 import edu.aku.hassannaqvi.toic_screening.validation.validatorClass;
 
 public class EnrollmentActivity extends AppCompatActivity {
@@ -57,8 +58,12 @@ public class EnrollmentActivity extends AppCompatActivity {
         binding.toicc13.setMaxDate(dateToday);
 
 //        Getting Extra
-        binding.toicc01.setText(getIntent().getStringExtra("enroll_id"));
-        binding.toicc02.setText(getIntent().getStringExtra("name"));
+
+        childData data = (childData) getIntent().getBundleExtra("data").getSerializable("data");
+
+        binding.toicc01.setText(data.getEnrollID());
+        binding.toicc02.setText(data.getChild_name());
+        binding.toicc03.setText(data.getF_name());
 
         binding.toicc06b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -81,7 +86,7 @@ public class EnrollmentActivity extends AppCompatActivity {
                 binding.toicc10.setText(null);
                 binding.toicc13.setText(null);
 
-                if (i == R.id.toicc06b){
+                if (i == R.id.toicc06b) {
                     binding.toicc10.setMinDate(maxDate60Months);
                     binding.toicc13.setMinDate(maxDate60Months);
                 }
@@ -206,14 +211,7 @@ public class EnrollmentActivity extends AppCompatActivity {
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                finish();
-                if (MainApp.totalChild == ChildAssessmentActivity.childCount) {
-                    ChildAssessmentActivity.childCount = 1;
-                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                } else {
-                    ChildAssessmentActivity.childCount++;
-                    startActivity(new Intent(this, ChildAssessmentActivity.class).putExtra("childFlag", true).putExtra("childRange", ChildAssessmentActivity.childCount));
-                }
+                MainApp.endEnrollmentActivity(this,this,true);
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -223,8 +221,7 @@ public class EnrollmentActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         Toast.makeText(this, "Processing EndActivity Section", Toast.LENGTH_SHORT).show();
-        ChildAssessmentActivity.childCount = 1;
-        MainApp.endActivity(this, this);
+        MainApp.endEnrollmentActivity(this,this,false);
     }
 
     private void SaveDraft() throws JSONException {

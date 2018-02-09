@@ -22,7 +22,7 @@ public class EnrollmentContract {
     private String user = ""; // Interviewer
     //private String formtype = "";
 
-    //private String istatus = ""; // Interview Status
+    private String istatus = ""; // Interview Status
     //private String istatus88x = ""; // Interview Status
 
     //private String sA = "";     // Info Section
@@ -52,7 +52,7 @@ public class EnrollmentContract {
         this._UUID = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_UUID);
         this.formDate = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_FORMDATE);
         this.user = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_USER);
-        //this.istatus = jsonObject.getString(FormsContract.EnrollChildTable.COLUMN_ISTATUS);
+        this.istatus = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_ISTATUS);
         //this.istatus88x = jsonObject.getString(FormsContract.EnrollChildTable.COLUMN_ISTATUS);
         //this.formtype = jsonObject.getString(FormsContract.EnrollChildTable.COLUMN_FORMTYPE);
         //this.sA = jsonObject.getString(FormsContract.EnrollChildTable.COLUMN_SA);
@@ -79,7 +79,7 @@ public class EnrollmentContract {
         this._UUID = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_UUID));
         this.formDate = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_FORMDATE));
         this.user = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_USER));
-        //this.istatus = cursor.getString(cursor.getColumnIndex(FormsContract.EnrollChildTable.COLUMN_ISTATUS));
+        this.istatus = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_ISTATUS));
         //this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsContract.EnrollChildTable.COLUMN_ISTATUS));
         //this.formtype = cursor.getString(cursor.getColumnIndex(FormsContract.EnrollChildTable.COLUMN_FORMTYPE));
         //this.sA = cursor.getString(cursor.getColumnIndex(FormsContract.EnrollChildTable.COLUMN_SA));
@@ -112,7 +112,7 @@ public class EnrollmentContract {
         json.put(EnrollmentContract.EnrollChildTable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(EnrollmentContract.EnrollChildTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(EnrollmentContract.EnrollChildTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        //json.put(FormsContract.EnrollChildTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
+//        json.put(EnrollmentContract.EnrollChildTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         //json.put(FormsContract.EnrollChildTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
         //json.put(FormsContract.EnrollChildTable.COLUMN_FORMTYPE, this.formtype == null ? JSONObject.NULL : this.formtype);
 
@@ -197,7 +197,7 @@ public class EnrollmentContract {
         this.user = user;
     }
 
-    /*public String getIstatus() {
+    public String getIstatus() {
         return istatus;
     }
 
@@ -205,7 +205,7 @@ public class EnrollmentContract {
         this.istatus = istatus;
     }
 
-
+/*
     public String getIstatus88x() {
         return istatus88x;
     }
@@ -379,7 +379,7 @@ public class EnrollmentContract {
         public static final String COLUMN_UUID = "_uuid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_USER = "user";
-        //public static final String COLUMN_ISTATUS = "istatus";
+        public static final String COLUMN_ISTATUS = "istatus";
         //public static final String COLUMN_ISTATUS88x = "istatus88x";
         //public static final String COLUMN_FORMTYPE = "formtype";
         //public static final String COLUMN_SA = "sa";

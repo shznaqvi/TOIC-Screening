@@ -19,6 +19,7 @@ import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 import edu.aku.hassannaqvi.toic_screening.databinding.ActivitySecChildassessmentBinding;
+import edu.aku.hassannaqvi.toic_screening.other.childData;
 import edu.aku.hassannaqvi.toic_screening.validation.validatorClass;
 
 public class ChildAssessmentActivity extends AppCompatActivity {
@@ -62,8 +63,12 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
                 if (binding.toicb03a.isChecked() && binding.toicb04a.isChecked() && binding.toicb05a.isChecked()
                         && binding.toicb06a.isChecked() && binding.toicb07a.isChecked() && binding.toicb08a.isChecked()) {
-                    startActivity(new Intent(this, EnrollmentActivity.class).putExtra("name", binding.toicb01.getText().toString())
-                            .putExtra("enroll_id", binding.toicb09.getText().toString()));
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("data", new childData(binding.toicb09.getText().toString(), binding.toicb01.getText().toString(), binding.toicb02.getText().toString()));
+
+                    startActivity(new Intent(this, EnrollmentActivity.class).putExtra("data", bundle));
+
                 } else {
                     if (MainApp.totalChild == childCount) {
                         childCount = 1;

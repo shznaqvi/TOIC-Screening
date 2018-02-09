@@ -84,6 +84,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsChildTable.COLUMN_FORMDATE + " TEXT," +
             FormsChildTable.COLUMN_USER + " TEXT," +
             FormsChildTable.COLUMN_SB + " TEXT," +
+            FormsChildTable.COLUMN_ISTATUS + " TEXT," +
             FormsChildTable.COLUMN_GPSLAT + " TEXT," +
             FormsChildTable.COLUMN_GPSLNG + " TEXT," +
             FormsChildTable.COLUMN_GPSDATE + " TEXT," +
@@ -105,6 +106,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             EnrollChildTable.COLUMN_FORMDATE + " TEXT," +
             EnrollChildTable.COLUMN_USER + " TEXT," +
             EnrollChildTable.COLUMN_SC + " TEXT," +
+            EnrollChildTable.COLUMN_ISTATUS + " TEXT," +
             EnrollChildTable.COLUMN_GPSLAT + " TEXT," +
             EnrollChildTable.COLUMN_GPSLNG + " TEXT," +
             EnrollChildTable.COLUMN_GPSDATE + " TEXT," +
@@ -494,6 +496,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsChildTable.COLUMN_UUID, fc.getUUID());
         values.put(FormsChildTable.COLUMN_FORMDATE, fc.getFormDate());
         values.put(FormsChildTable.COLUMN_USER, fc.getUser());
+        values.put(FormsChildTable.COLUMN_ISTATUS, fc.getIstatus());
         values.put(FormsChildTable.COLUMN_SB, fc.getsB());
         values.put(FormsChildTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsChildTable.COLUMN_GPSLNG, fc.getGpsLng());
@@ -528,6 +531,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(EnrollChildTable.COLUMN_UUID, ec.getUUID());
         values.put(EnrollChildTable.COLUMN_FORMDATE, ec.getFormDate());
         values.put(EnrollChildTable.COLUMN_USER, ec.getUser());
+        values.put(EnrollChildTable.COLUMN_ISTATUS, ec.getIstatus());
         values.put(EnrollChildTable.COLUMN_SC, ec.getsC());
         values.put(EnrollChildTable.COLUMN_GPSLAT, ec.getGpsLat());
         values.put(EnrollChildTable.COLUMN_GPSLNG, ec.getGpsLng());
@@ -796,6 +800,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsChildTable.COLUMN_UUID,
                 FormsChildTable.COLUMN_FORMDATE,
                 FormsChildTable.COLUMN_USER,
+                FormsChildTable.COLUMN_ISTATUS,
                 FormsChildTable.COLUMN_SB,
                 FormsChildTable.COLUMN_GPSLAT,
                 FormsChildTable.COLUMN_GPSLNG,
@@ -851,6 +856,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 EnrollChildTable.COLUMN_UUID,
                 EnrollChildTable.COLUMN_FORMDATE,
                 EnrollChildTable.COLUMN_USER,
+                EnrollChildTable.COLUMN_ISTATUS,
                 EnrollChildTable.COLUMN_SC,
                 EnrollChildTable.COLUMN_GPSLAT,
                 EnrollChildTable.COLUMN_GPSLNG,
@@ -1144,6 +1150,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateEnrollmentEnding() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsChildTable.COLUMN_ISTATUS, MainApp.cc.getIstatus());
+
+// Which row to update, based on the ID
+        String selection = FormsChildTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
+
+        int count = db.update(FormsChildTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

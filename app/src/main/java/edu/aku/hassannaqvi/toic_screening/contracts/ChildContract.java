@@ -21,7 +21,7 @@ public class ChildContract {
     private String user = ""; // Interviewer
     //private String formtype = "";
 
-    //private String istatus = ""; // Interview Status
+    private String istatus = ""; // Interview Status
     //private String istatus88x = ""; // Interview Status
 
     //private String sA = "";     // Info Section
@@ -51,7 +51,7 @@ public class ChildContract {
         this._UUID = jsonObject.getString(FormsChildTable.COLUMN_UUID);
         this.formDate = jsonObject.getString(FormsChildTable.COLUMN_FORMDATE);
         this.user = jsonObject.getString(FormsChildTable.COLUMN_USER);
-        //this.istatus = jsonObject.getString(FormsContract.FormsChildTable.COLUMN_ISTATUS);
+        this.istatus = jsonObject.getString(FormsChildTable.COLUMN_ISTATUS);
         //this.istatus88x = jsonObject.getString(FormsContract.FormsChildTable.COLUMN_ISTATUS);
         //this.formtype = jsonObject.getString(FormsContract.FormsChildTable.COLUMN_FORMTYPE);
         //this.sA = jsonObject.getString(FormsContract.FormsChildTable.COLUMN_SA);
@@ -78,13 +78,13 @@ public class ChildContract {
         this._UUID = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_UUID));
         this.formDate = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_FORMDATE));
         this.user = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_USER));
-        //this.istatus = cursor.getString(cursor.getColumnIndex(FormsContract.FormsChildTable.COLUMN_ISTATUS));
-        //this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsContract.FormsChildTable.COLUMN_ISTATUS));
-        //this.formtype = cursor.getString(cursor.getColumnIndex(FormsContract.FormsChildTable.COLUMN_FORMTYPE));
-        //this.sA = cursor.getString(cursor.getColumnIndex(FormsContract.FormsChildTable.COLUMN_SA));
+        this.istatus = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_ISTATUS));
+        //this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_ISTATUS));
+        //this.formtype = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_FORMTYPE));
+        //this.sA = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_SA));
         this.sB = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_SB));
-        //this.sC = cursor.getString(cursor.getColumnIndex(FormsContract.FormsChildTable.COLUMN_SC));
-        //this.sD = cursor.getString(cursor.getColumnIndex(FormsContract.FormsChildTable.COLUMN_SD));
+        //this.sC = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_SC));
+        //this.sD = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_SD));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_GPSLNG));
         this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_GPSDATE));
@@ -111,13 +111,13 @@ public class ChildContract {
         json.put(FormsChildTable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(FormsChildTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(FormsChildTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        //json.put(FormsContract.FormsChildTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
-        //json.put(FormsContract.FormsChildTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
-        //json.put(FormsContract.FormsChildTable.COLUMN_FORMTYPE, this.formtype == null ? JSONObject.NULL : this.formtype);
+        json.put(FormsChildTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
+        //json.put(FormsChildTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
+        //json.put(FormsChildTable.COLUMN_FORMTYPE, this.formtype == null ? JSONObject.NULL : this.formtype);
 
         /*if (!this.sA.equals("")) {
 
-            json.put(FormsContract.FormsChildTable.COLUMN_SA, this.sA.equals("") ? JSONObject.NULL : new JSONObject(this.sA));
+            json.put(FormsChildTable.COLUMN_SA, this.sA.equals("") ? JSONObject.NULL : new JSONObject(this.sA));
         }*/
 
         if (!this.sB.equals("")) {
@@ -127,12 +127,12 @@ public class ChildContract {
 
         /*if (!this.sC.equals("")) {
 
-            json.put(FormsContract.FormsChildTable.COLUMN_SC, this.sC.equals("") ? JSONObject.NULL : new JSONObject(this.sC));
+            json.put(FormsChildTable.COLUMN_SC, this.sC.equals("") ? JSONObject.NULL : new JSONObject(this.sC));
             // }
         }
         if (!this.sD.equals("")) {
 
-            json.put(FormsContract.FormsChildTable.COLUMN_SD, this.sD.equals("") ? JSONObject.NULL : new JSONObject(this.sD));
+            json.put(FormsChildTable.COLUMN_SD, this.sD.equals("") ? JSONObject.NULL : new JSONObject(this.sD));
         }*/
 
 /*        json.put(FormsChildTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
@@ -195,7 +195,7 @@ public class ChildContract {
         this.user = user;
     }
 
-    /*public String getIstatus() {
+    public String getIstatus() {
         return istatus;
     }
 
@@ -203,7 +203,7 @@ public class ChildContract {
         this.istatus = istatus;
     }
 
-
+/*
     public String getIstatus88x() {
         return istatus88x;
     }
@@ -378,7 +378,7 @@ public class ChildContract {
         public static final String COLUMN_UUID = "_uuid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_USER = "user";
-        //public static final String COLUMN_ISTATUS = "istatus";
+        public static final String COLUMN_ISTATUS = "istatus";
         //public static final String COLUMN_ISTATUS88x = "istatus88x";
         //public static final String COLUMN_FORMTYPE = "formtype";
         //public static final String COLUMN_SA = "sa";

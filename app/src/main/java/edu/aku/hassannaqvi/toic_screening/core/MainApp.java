@@ -27,6 +27,7 @@ import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
 import edu.aku.hassannaqvi.toic_screening.ui.ChildAssessmentActivity;
 import edu.aku.hassannaqvi.toic_screening.ui.EndingActivity;
+import edu.aku.hassannaqvi.toic_screening.ui.EnrollmentEndingActivity;
 import edu.aku.hassannaqvi.toic_screening.ui.SectionInfoActivity;
 
 /**
@@ -150,7 +151,7 @@ public class MainApp extends Application {
         alert.show();
     }
 
-    public static void finishActivity(final Context context, final Activity activity) {
+    public static void endEnrollmentActivity(final Context context, final Activity activity, final Boolean response) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
         alertDialogBuilder
@@ -161,6 +162,9 @@ public class MainApp extends Application {
                             public void onClick(DialogInterface dialog,
                                                 int id) {
                                 activity.finish();
+                                Intent end_intent = new Intent(context, EnrollmentEndingActivity.class);
+                                end_intent.putExtra("complete", response);
+                                context.startActivity(end_intent);
                             }
                         });
         alertDialogBuilder.setNegativeButton("No",
