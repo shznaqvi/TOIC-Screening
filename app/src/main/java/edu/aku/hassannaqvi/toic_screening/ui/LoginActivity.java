@@ -117,6 +117,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     @BindView(R.id.syncData)
     Button syncData;
 
+    @BindView(R.id.testing)
+    TextView testing;
+
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
 
@@ -196,6 +199,12 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 //        DB backup
 
         dbBackup();
+
+//        Testing visibility
+        if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 1) {
+            testing.setVisibility(View.VISIBLE);
+        }
+
     }
 
     public void dbBackup() {
@@ -450,6 +459,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     .show();
         }
     }
+
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,

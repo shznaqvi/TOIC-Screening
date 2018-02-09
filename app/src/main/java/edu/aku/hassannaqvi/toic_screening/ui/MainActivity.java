@@ -76,6 +76,9 @@ public class MainActivity extends Activity {
     @BindView(R.id.spAreas)
     Spinner spAreas;
 
+    @BindView(R.id.testing)
+    TextView testing;
+
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     AlertDialog.Builder builder;
@@ -255,6 +258,12 @@ public class MainActivity extends Activity {
                     "0"));
 
             MainApp.sc = db.getSerialWRTDate(new SimpleDateFormat("dd-MM-yy").format(new Date()).toString());
+        }
+
+
+//        Testing visibility
+        if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 1) {
+            testing.setVisibility(View.VISIBLE);
         }
 
     }
