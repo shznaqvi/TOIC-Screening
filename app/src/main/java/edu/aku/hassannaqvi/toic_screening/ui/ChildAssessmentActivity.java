@@ -61,8 +61,8 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
                 finish();
 
-                if (binding.toicb03a.isChecked() && binding.toicb04a.isChecked() && binding.toicb05a.isChecked()
-                        && binding.toicb06a.isChecked() && binding.toicb07a.isChecked() && binding.toicb08a.isChecked()) {
+                if (binding.toicb03a.isChecked() && binding.toicb04b.isChecked() && binding.toicb05b.isChecked()
+                        && binding.toicb06b.isChecked() && binding.toicb07b.isChecked() && binding.toicb08b.isChecked()) {
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("data", new childData(binding.toicb09.getText().toString(), binding.toicb01.getText().toString(), binding.toicb02.getText().toString()));
@@ -185,8 +185,8 @@ public class ChildAssessmentActivity extends AppCompatActivity {
             return false;
         }
 
-        if (binding.toicb03a.isChecked() && binding.toicb04a.isChecked() && binding.toicb05a.isChecked()
-                && binding.toicb06a.isChecked() && binding.toicb07a.isChecked() && binding.toicb08a.isChecked()) {
+        if (binding.toicb03a.isChecked() && binding.toicb04b.isChecked() && binding.toicb05b.isChecked()
+                && binding.toicb06b.isChecked() && binding.toicb07b.isChecked() && binding.toicb08b.isChecked()) {
             if (!validatorClass.EmptyTextBox(this, binding.toicb09, getString(R.string.toicc01))) {
                 return false;
             }

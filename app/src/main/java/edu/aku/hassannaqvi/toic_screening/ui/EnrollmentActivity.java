@@ -1,15 +1,10 @@
 package edu.aku.hassannaqvi.toic_screening.ui;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -37,6 +32,7 @@ public class EnrollmentActivity extends AppCompatActivity {
 
     String maxDate6Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_6_MONTH));
     String maxDate60Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_5Years));
+    String max2Days = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_2DAYS));
 
 
     @Override
@@ -65,21 +61,10 @@ public class EnrollmentActivity extends AppCompatActivity {
         binding.toicc02.setText(data.getChild_name());
         binding.toicc03.setText(data.getF_name());
 
-        binding.toicc06b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    /*binding.toicc10.setMaxDate(dtToday1);
-                    binding.toicc13.setMaxDate(dtToday1);*/
-                    binding.toicc10.setMinDate(maxDate60Months);
-                    binding.toicc13.setMinDate(maxDate60Months);
+        binding.toicc10.setMinDate(max2Days);
+        binding.toicc13.setMinDate(maxDate60Months);
 
-
-                }
-            }
-        });
-
-        binding.toicc06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        /*binding.toicc06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
@@ -91,10 +76,10 @@ public class EnrollmentActivity extends AppCompatActivity {
                     binding.toicc13.setMinDate(maxDate60Months);
                 }
             }
-        });
+        });*/
 
 
-        binding.toicc06aa.addTextChangedListener(new TextWatcher() {
+        /*binding.toicc06aa.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -119,7 +104,7 @@ public class EnrollmentActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        });*/
 
     }
 
