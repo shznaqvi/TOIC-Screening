@@ -262,8 +262,10 @@ public class MainActivity extends Activity {
 
 
 //        Testing visibility
-        if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 1) {
-            testing.setVisibility(View.VISIBLE);
+        if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 0) {
+            mainBinding.testing.setVisibility(View.GONE);
+        }else {
+            mainBinding.testing.setVisibility(View.VISIBLE);
         }
 
     }

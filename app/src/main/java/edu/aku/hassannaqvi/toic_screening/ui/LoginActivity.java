@@ -201,7 +201,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         dbBackup();
 
 //        Testing visibility
-        if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 1) {
+        if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 0) {
+            testing.setVisibility(View.GONE);
+        }else {
             testing.setVisibility(View.VISIBLE);
         }
 
