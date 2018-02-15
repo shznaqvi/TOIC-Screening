@@ -68,20 +68,21 @@ public class SectionInfoActivity extends Activity {
         serial = String.valueOf(Integer.valueOf(MainApp.sc.getSerialno()) + 1);
 
         ButterKnife.bind(this);
+
 //        Listener
-/*        toica01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        toica01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    binding.fldGrp04.setVisibility(View.GONE);
-                    binding.hhno.setText(null);
+//                    binding.fldGrp04.setVisibility(View.GONE);
+//                    binding.hhno.setText(null);
 
                     binding.toica02.setText(null);
                     binding.toica02.setEnabled(true);
 
 
                 } else {
-                    binding.fldGrp04.setVisibility(View.VISIBLE);
+//                    binding.fldGrp04.setVisibility(View.VISIBLE);
 
                     binding.toica02.setText(serial);
 
@@ -89,7 +90,7 @@ public class SectionInfoActivity extends Activity {
 
                 }
             }
-        });*/
+        });
 
     }
 
@@ -202,7 +203,7 @@ public class SectionInfoActivity extends Activity {
 
                 finish();
 
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
