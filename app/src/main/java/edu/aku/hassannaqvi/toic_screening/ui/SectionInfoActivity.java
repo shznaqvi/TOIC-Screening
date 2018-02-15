@@ -69,7 +69,7 @@ public class SectionInfoActivity extends Activity {
 
         ButterKnife.bind(this);
 //        Listener
-        toica01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+/*        toica01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -89,7 +89,7 @@ public class SectionInfoActivity extends Activity {
 
                 }
             }
-        });
+        });*/
 
     }
 
@@ -107,7 +107,7 @@ public class SectionInfoActivity extends Activity {
         }
 
 //        UC - HH
-        if (!binding.toica01.isChecked()) {
+//        if (!binding.toica01.isChecked()) {
 
 //        Town
             if (!validatorClass.EmptySpinner(this, binding.spTowns, "Town")) {
@@ -119,6 +119,7 @@ public class SectionInfoActivity extends Activity {
                 return false;
             }
 
+/*
 //         House no
             if (!validatorClass.EmptyTextBox(this, binding.hhno, getString(R.string.hhno))) {
                 return false;
@@ -128,9 +129,9 @@ public class SectionInfoActivity extends Activity {
             if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
                 binding.hhno.setError("Wrong presentation!!");
                 return false;
-            }
+            }*/
 
-        }
+//        }
 
 //        toica04
         if (!validatorClass.EmptyTextBox(this, binding.toica04, getString(R.string.toica04))) {
@@ -226,15 +227,16 @@ public class SectionInfoActivity extends Activity {
 
         JSONObject sa = new JSONObject();
 
+        sa.put("teamno", MainApp.teamNo);
         sa.put("toica01", binding.toica01.isChecked() ? "1" : "2");
         sa.put("toica02", binding.toica02.getText().toString());
         sa.put("toica03", binding.toica03.getText().toString());
 
-        if (!binding.toica01.isChecked()) {
+//        if (!binding.toica01.isChecked()) {
             sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
             sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
-            sa.put("hhno", binding.hhno.getText().toString());
-        }
+//            sa.put("hhno", binding.hhno.getText().toString());
+//        }
 
         sa.put("toica04", binding.toica04.getText().toString());
         sa.put("toica05", binding.toica05.getText().toString());

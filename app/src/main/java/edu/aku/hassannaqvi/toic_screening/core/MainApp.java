@@ -79,6 +79,7 @@ public class MainApp extends Application {
     public static int versionCode;
     public static int totalChild = 0;
     public static String versionName;
+    public static String teamNo;
     public static Integer areaCode;
     protected static LocationManager locationManager;
 

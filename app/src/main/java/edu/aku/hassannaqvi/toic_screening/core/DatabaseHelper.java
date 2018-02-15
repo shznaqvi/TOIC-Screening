@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersTable.ROW_USERNAME + " TEXT,"
             + UsersTable.ROW_PASSWORD + " TEXT,"
-            + UsersTable.FULL_NAME + " TEXT"
+            + UsersTable.ROW_TEAM + " TEXT"
             + " );";
     public static final String DATABASE_NAME = "toic-screening.db";
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_copy.");
@@ -386,7 +386,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 values.put(UsersContract.UsersTable.ROW_USERNAME, user.getUserName());
                 values.put(UsersTable.ROW_PASSWORD, user.getPassword());
-                values.put(UsersTable.FULL_NAME, user.getFULL_NAME());
+                values.put(UsersTable.ROW_TEAM, user.getROW_TEAM());
                 db.insert(UsersTable.TABLE_NAME, null, values);
             }
 
@@ -398,31 +398,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean Login(String username, String password) throws SQLException {
+    public boolean Login(String username, String password) {
 
         SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        try {
 
-// New value for one column
-        String[] columns = {
-                UsersTable._ID
-        };
+//      New value for one column
+            String[] columns = {
+                    UsersTable._ID,
+                    UsersTable.ROW_USERNAME,
+                    UsersTable.ROW_TEAM
+            };
 
 // Which row to update, based on the ID
-        String selection = UsersContract.UsersTable.ROW_USERNAME + " = ?" + " AND " + UsersContract.UsersTable.ROW_PASSWORD + " = ?";
-        String[] selectionArgs = {username, password};
-        Cursor cursor = db.query(UsersContract.UsersTable.TABLE_NAME, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                       //filter by row groups
-                null);                      //The sort order
+            String selection = UsersContract.UsersTable.ROW_USERNAME + " = ?" + " AND " + UsersContract.UsersTable.ROW_PASSWORD + " = ?";
+            String[] selectionArgs = {username, password};
+            cursor = db.query(UsersContract.UsersTable.TABLE_NAME, //Table to query
+                    columns,                    //columns to return
+                    selection,                  //columns for the WHERE clause
+                    selectionArgs,              //The values for the WHERE clause
+                    null,                       //group the rows
+                    null,                       //filter by row groups
+                    null);                      //The sort order
 
-        int cursorCount = cursor.getCount();
+            if (cursor.getCount() > 0) {
 
-        cursor.close();
-        db.close();
-        return cursorCount > 0;
+                if (cursor.moveToFirst()) {
+                    MainApp.teamNo = cursor.getString(cursor.getColumnIndex(UsersTable.ROW_TEAM));
+                }
+                return true;
+            }
+        } catch (Exception e) {
+
+        } finally {
+            cursor.close();
+            db.close();
+        }
+        return false;
     }
 
     public List<FormsContract> getFormsByDSS(String dssID) {

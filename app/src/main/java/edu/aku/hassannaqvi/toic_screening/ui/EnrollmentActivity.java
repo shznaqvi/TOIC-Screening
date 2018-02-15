@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -24,6 +25,7 @@ import edu.aku.hassannaqvi.toic_screening.validation.validatorClass;
 
 public class EnrollmentActivity extends AppCompatActivity {
 
+    private static final String TAG = EnrollmentActivity.class.getName();
     ActivitySecEnrollmentBinding binding;
     DatabaseHelper db;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
@@ -154,10 +156,30 @@ public class EnrollmentActivity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, binding.toicc07, getString(R.string.toicc07))) {
             return false;
         }
+
+        if (binding.toicc07.length() != 11) {
+            Toast.makeText(this, "Error: " + getString(R.string.toicc07), Toast.LENGTH_SHORT).show();
+            binding.toicc07.setError("Invalid(Pattern):Not correct.");
+            Log.e(TAG, "Invalid(Pattern):Not correct.");
+            return false;
+        }else {
+            binding.toicc07.setError(null);
+        }
+
 //        toicc08
         if (!validatorClass.EmptyTextBox(this, binding.toicc08, getString(R.string.toicc08))) {
             return false;
         }
+
+        if (binding.toicc08.length() != 11) {
+            Toast.makeText(this, "Error: " + getString(R.string.toicc08), Toast.LENGTH_SHORT).show();
+            binding.toicc08.setError("Invalid(Pattern):Not correct.");
+            Log.e(TAG, "Invalid(Pattern):Not correct.");
+            return false;
+        }else {
+            binding.toicc08.setError(null);
+        }
+
 //        toicc09
         if (!validatorClass.EmptyTextBox(this, binding.toicc09, getString(R.string.toicc09))) {
             return false;
@@ -196,7 +218,7 @@ public class EnrollmentActivity extends AppCompatActivity {
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Ending Section", Toast.LENGTH_SHORT).show();
 
-                MainApp.endEnrollmentActivity(this,this,true);
+                MainApp.endEnrollmentActivity(this, this, true);
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -206,7 +228,7 @@ public class EnrollmentActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         Toast.makeText(this, "Processing EndActivity Section", Toast.LENGTH_SHORT).show();
-        MainApp.endEnrollmentActivity(this,this,false);
+        MainApp.endEnrollmentActivity(this, this, false);
     }
 
     private void SaveDraft() throws JSONException {
