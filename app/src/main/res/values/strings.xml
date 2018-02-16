@@ -60,6 +60,8 @@
     <string name="RA">  </string>
     <string name="uc"> یوسی کا نام </string>
     <string name="town"> ٹاون/تحیصل کا نام </string>
+    <string name="hhteam"> ٹیم نمبر </string>
+    <string name="hhcluster"> کلسٹر نمبر </string>
     <string name="hhno"> گھر نمبر </string>
     <string name="wname"> عورت جو نالو </string>
     <string name="age"> عورت جي عمر (سالن ۾) </string>

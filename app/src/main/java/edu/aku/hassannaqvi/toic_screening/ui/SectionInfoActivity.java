@@ -111,26 +111,32 @@ public class SectionInfoActivity extends Activity {
 //        if (!binding.toica01.isChecked()) {
 
 //        Town
-            if (!validatorClass.EmptySpinner(this, binding.spTowns, "Town")) {
-                return false;
-            }
+        if (!validatorClass.EmptySpinner(this, binding.spTowns, "Town")) {
+            return false;
+        }
 
 //        UC
-            if (!validatorClass.EmptySpinner(this, binding.spUCs, "UCs")) {
-                return false;
-            }
+        if (!validatorClass.EmptySpinner(this, binding.spUCs, "UCs")) {
+            return false;
+        }
 
-
+//         Team no
+        if (!validatorClass.EmptyTextBox(this, binding.hhteamID, getString(R.string.hhteam))) {
+            return false;
+        }
+//         Cluster no
+        if (!validatorClass.EmptyTextBox(this, binding.hhclusterID, getString(R.string.hhcluster))) {
+            return false;
+        }
 //         House no
-            if (!validatorClass.EmptyTextBox(this, binding.hhno, getString(R.string.hhno))) {
-                return false;
-            }
-            /*
-            String[] str = binding.hhno.getText().toString().split("-");
-            if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
-                binding.hhno.setError("Wrong presentation!!");
-                return false;
-            }*/
+        if (!validatorClass.EmptyTextBox(this, binding.hhno, getString(R.string.hhno))) {
+            return false;
+        }
+        String[] str = binding.hhno.getText().toString().split("-");
+        if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
+            binding.hhno.setError("Wrong presentation!!");
+            return false;
+        }
 
 //        }
 
@@ -234,9 +240,12 @@ public class SectionInfoActivity extends Activity {
         sa.put("toica03", binding.toica03.getText().toString());
 
 //        if (!binding.toica01.isChecked()) {
-            sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
-            sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
-            sa.put("hhno", binding.hhno.getText().toString());
+        sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
+        sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
+        sa.put("hhno", binding.hhno.getText().toString());
+
+        sa.put("hhteamID", binding.hhteamID.getText().toString());
+        sa.put("hhcluster", binding.hhclusterID.getText().toString());
 //        }
 
         sa.put("toica04", binding.toica04.getText().toString());
