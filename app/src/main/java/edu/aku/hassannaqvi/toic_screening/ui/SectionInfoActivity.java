@@ -120,12 +120,12 @@ public class SectionInfoActivity extends Activity {
                 return false;
             }
 
-/*
+
 //         House no
             if (!validatorClass.EmptyTextBox(this, binding.hhno, getString(R.string.hhno))) {
                 return false;
             }
-
+            /*
             String[] str = binding.hhno.getText().toString().split("-");
             if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
                 binding.hhno.setError("Wrong presentation!!");
@@ -236,7 +236,7 @@ public class SectionInfoActivity extends Activity {
 //        if (!binding.toica01.isChecked()) {
             sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
             sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
-//            sa.put("hhno", binding.hhno.getText().toString());
+            sa.put("hhno", binding.hhno.getText().toString());
 //        }
 
         sa.put("toica04", binding.toica04.getText().toString());

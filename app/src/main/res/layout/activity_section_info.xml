@@ -171,7 +171,6 @@
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
                     android:text="@string/hhno"
-                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@android:color/white" />
 
@@ -181,10 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
-                    android:hint="XXX-X"
-                    android:maxLength="5"
-                    android:visibility="gone"
-                    android:text='@{toica01.getText.toString.trim.length != 0 ? hhno.getText.toString : ""}' />
+                    android:maxLength="15" />
 
             </LinearLayout>
 
