@@ -61,8 +61,8 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
                 finish();
 
-                if (binding.toicb03a.isChecked() && binding.toicb04b.isChecked() && binding.toicb05b.isChecked()
-                        && binding.toicb06b.isChecked() && binding.toicb07b.isChecked() && binding.toicb08b.isChecked()) {
+                if (binding.toicb03a.isChecked() && binding.toicb04a.isChecked() && binding.toicb05a.isChecked()
+                        && binding.toicb06a.isChecked() && binding.toicb07a.isChecked()) {
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("data", new childData(binding.toicb09.getText().toString(), binding.toicb01.getText().toString(), binding.toicb02.getText().toString()));
@@ -139,7 +139,6 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         sB.put("toicb05", binding.toicb05a.isChecked() ? "1" : binding.toicb05b.isChecked() ? "2" : "0");
         sB.put("toicb06", binding.toicb06a.isChecked() ? "1" : binding.toicb06b.isChecked() ? "2" : "0");
         sB.put("toicb07", binding.toicb07a.isChecked() ? "1" : binding.toicb07b.isChecked() ? "2" : "0");
-        sB.put("toicb08", binding.toicb08a.isChecked() ? "1" : binding.toicb08b.isChecked() ? "2" : "0");
         sB.put("toicb09", binding.toicb09.getText().toString());
 
         MainApp.cc.setsB(String.valueOf(sB));
@@ -177,16 +176,12 @@ public class ChildAssessmentActivity extends AppCompatActivity {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.toicb08, binding.toicb07b, getString(R.string.toicb07))) {
+        if (!validatorClass.EmptyRadioButton(this, binding.toicb07, binding.toicb07b, getString(R.string.toicb07))) {
             return false;
         }
 
-        if (!validatorClass.EmptyRadioButton(this, binding.toicb08, binding.toicb08b, getString(R.string.toicb08))) {
-            return false;
-        }
-
-        if (binding.toicb03a.isChecked() && binding.toicb04b.isChecked() && binding.toicb05b.isChecked()
-                && binding.toicb06b.isChecked() && binding.toicb07b.isChecked() && binding.toicb08b.isChecked()) {
+        if (binding.toicb03a.isChecked() && binding.toicb04a.isChecked() && binding.toicb05a.isChecked()
+                && binding.toicb06a.isChecked() && binding.toicb07a.isChecked()) {
             if (!validatorClass.EmptyTextBox(this, binding.toicb09, getString(R.string.toicc01))) {
                 return false;
             }

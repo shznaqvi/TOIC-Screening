@@ -71,7 +71,7 @@
                     android:layout_weight="80"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
                     android:hint="@string/toica01"
-                    android:maxLength="6" />
+                    android:maxLength="7" />
 
             </LinearLayout>
 
@@ -396,7 +396,7 @@
                     android:onClick="@{() -> callback.BtnEnd()}"
                     android:text="@string/end_interview"
                     android:textColor="@color/white"
-                    android:visibility="@{(toica06a.checked &amp;&amp; toica07b.checked &amp;&amp; toica08a.checked) ? View.GONE : View.VISIBLE}" />
+                    android:visibility="@{(toica06a.checked &amp;&amp; toica07a.checked &amp;&amp; toica08a.checked) ? View.GONE : View.VISIBLE}" />
 
                 <Button
                     android:id="@+id/btn_Continue"
@@ -408,7 +408,7 @@
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="@string/start_interview"
                     android:textColor="@color/white"
-                    android:visibility="@{(toica06a.checked &amp;&amp; toica07b.checked &amp;&amp; toica08a.checked) ? View.VISIBLE : View.GONE}" />
+                    android:visibility="@{(toica06a.checked &amp;&amp; toica07a.checked &amp;&amp; toica08a.checked) ? View.VISIBLE : View.GONE}" />
 
             </LinearLayout>
         </LinearLayout>

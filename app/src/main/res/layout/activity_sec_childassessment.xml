@@ -262,48 +262,13 @@
                     android:text="@string/no" />
 
             </RadioGroup>
-            <!--08-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicb08"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
-
-            <RadioGroup
-                android:id="@+id/toicb08"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/toicb08a"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/yes" />
-
-                <RadioButton
-                    android:id="@+id/toicb08b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/no" />
-
-            </RadioGroup>
 
             <!--09-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{toicb03a.checked &amp;&amp; toicb04b.checked &amp;&amp; toicb05b.checked &amp;&amp; toicb06b.checked &amp;&amp; toicb07b.checked &amp;&amp; toicb08b.checked ? View.VISIBLE : View.GONE}">
+                android:visibility="@{toicb03a.checked &amp;&amp; toicb04a.checked &amp;&amp; toicb05a.checked &amp;&amp; toicb06a.checked &amp;&amp; toicb07a.checked ? View.VISIBLE : View.GONE}">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -320,10 +285,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:digits="01234567890"
-                    android:text='@{toicb03a.checked &amp;&amp; toicb04b.checked &amp;&amp; toicb05b.checked &amp;&amp; toicb06b.checked &amp;&amp; toicb07b.checked &amp;&amp; toicb08b.checked ? toicb09.getText.toString : ""}'
+                    android:text='@{toicb03a.checked &amp;&amp; toicb04a.checked &amp;&amp; toicb05a.checked &amp;&amp; toicb06a.checked &amp;&amp; toicb07a.checked ? toicb09.getText.toString : ""}'
                     android:hint="@string/toicc01"
                     android:inputType="number"
-                    android:maxLength="8" />
+                    android:maxLength="9" />
 
             </LinearLayout>
 

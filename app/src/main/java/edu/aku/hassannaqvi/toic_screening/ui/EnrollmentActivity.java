@@ -189,17 +189,17 @@ public class EnrollmentActivity extends AppCompatActivity {
             return false;
         }
 //        toicc11
-        if (!validatorClass.EmptyTextBox(this, binding.toicc11, getString(R.string.toicc11))) {
+        /*if (!validatorClass.EmptyTextBox(this, binding.toicc11, getString(R.string.toicc11))) {
             return false;
-        }
+        }*/
 //        toicc12
         if (!validatorClass.EmptyTextBox(this, binding.toicc12, getString(R.string.toicc12))) {
             return false;
         }
 //        toicc13
-        if (!validatorClass.EmptyTextBox(this, binding.toicc13, getString(R.string.toicc13))) {
+        /*if (!validatorClass.EmptyTextBox(this, binding.toicc13, getString(R.string.toicc13))) {
             return false;
-        }
+        }*/
 
 //        toicc14
         return validatorClass.EmptyRadioButton(this, binding.toicc14, binding.toicc14b, getString(R.string.toicc14));
