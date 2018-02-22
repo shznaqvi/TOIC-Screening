@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -31,6 +32,8 @@ public class ChildAssessmentActivity extends AppCompatActivity {
     ActivitySecChildassessmentBinding binding;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
+    int teamLength = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,14 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         }
 
         binding.lblHead.setText("Child count " + String.valueOf(childCount) + " - " + String.valueOf(MainApp.totalChild));
+
+        teamLength = SectionInfoActivity.currentTeam.length();
+
+        if (teamLength > 1) {
+            binding.toicb09.setFilters(new InputFilter[]{new InputFilter.LengthFilter(9)});
+        } else {
+            binding.toicb09.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
+        }
 
     }
 
@@ -139,6 +150,7 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         sB.put("toicb05", binding.toicb05a.isChecked() ? "1" : binding.toicb05b.isChecked() ? "2" : "0");
         sB.put("toicb06", binding.toicb06a.isChecked() ? "1" : binding.toicb06b.isChecked() ? "2" : "0");
         sB.put("toicb07", binding.toicb07a.isChecked() ? "1" : binding.toicb07b.isChecked() ? "2" : "0");
+        sB.put("toicb08", binding.toicb08a.isChecked() ? "1" : binding.toicb08b.isChecked() ? "2" : "0");
         sB.put("toicb09", binding.toicb09.getText().toString());
 
         MainApp.cc.setsB(String.valueOf(sB));
@@ -180,11 +192,23 @@ public class ChildAssessmentActivity extends AppCompatActivity {
             return false;
         }
 
+        if (!validatorClass.EmptyRadioButton(this, binding.toicb08, binding.toicb08b, getString(R.string.toicb08))) {
+            return false;
+        }
+
         if (binding.toicb03a.isChecked() && binding.toicb04a.isChecked() && binding.toicb05a.isChecked()
                 && binding.toicb06a.isChecked() && binding.toicb07a.isChecked()) {
             if (!validatorClass.EmptyTextBox(this, binding.toicb09, getString(R.string.toicc01))) {
                 return false;
             }
+            if (binding.toicb09.getText().toString().length() != (teamLength > 1 ? 9 : 8)) {
+                Toast.makeText(this, "Invalid length: " + getString(R.string.toicc01), Toast.LENGTH_SHORT).show();
+                binding.toicb09.setError("Invalid Length");
+                return false;
+            } else {
+                binding.toicb09.setError(null);
+            }
+
         }
 
         return true;

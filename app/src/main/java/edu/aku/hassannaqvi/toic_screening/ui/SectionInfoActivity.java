@@ -51,6 +51,8 @@ public class SectionInfoActivity extends Activity {
     List<String> Talukas, UCs;
     String serial;
 
+    static String currentTeam;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,10 +98,20 @@ public class SectionInfoActivity extends Activity {
 
     public Boolean formValidation() {
 //        Slip No
-        if (!binding.toica01.isChecked()) {
+        if (binding.toica01.isChecked()) {
             if (!validatorClass.EmptyTextBox(this, binding.toica02, getString(R.string.toica01))) {
                 return false;
             }
+
+            if (binding.toica02.getText().toString().length() != 7) {
+                Toast.makeText(this, "Invalid length: " + getString(R.string.hhno), Toast.LENGTH_SHORT).show();
+                binding.toica02.setError("Invalid Length");
+                return false;
+            } else {
+                binding.toica02.setError(null);
+            }
+        } else {
+            binding.toica02.setError(null);
         }
 
 //        HH NO
@@ -132,9 +144,16 @@ public class SectionInfoActivity extends Activity {
         if (!validatorClass.EmptyTextBox(this, binding.hhno, getString(R.string.hhno))) {
             return false;
         }
-        String[] str = binding.hhno.getText().toString().split("-");
-        if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+")) {
-            binding.hhno.setError("Wrong presentation!!");
+
+        if (binding.hhno.getText().toString().length() == 5) {
+            String[] str = binding.hhno.getText().toString().split("-");
+            if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
+                binding.hhno.setError("Wrong presentation!!");
+                return false;
+            }
+        } else {
+            Toast.makeText(this, "Invalid length: " + getString(R.string.hhno), Toast.LENGTH_SHORT).show();
+            binding.hhno.setError("Invalid length");
             return false;
         }
 
@@ -243,6 +262,8 @@ public class SectionInfoActivity extends Activity {
         sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
         sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
         sa.put("hhno", binding.hhno.getText().toString());
+
+        currentTeam = binding.hhteamID.getText().toString();
 
         sa.put("hhteamID", binding.hhteamID.getText().toString());
         sa.put("hhcluster", binding.hhclusterID.getText().toString());
