@@ -76,7 +76,8 @@ public class ChildAssessmentActivity extends AppCompatActivity {
                         && binding.toicb06a.isChecked() && binding.toicb07a.isChecked()) {
 
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("data", new childData(binding.toicb09.getText().toString(), binding.toicb01.getText().toString(), binding.toicb02.getText().toString()));
+                    bundle.putSerializable("data", new childData(binding.toicb09.getText().toString(), binding.toicb01.getText().toString(),
+                            binding.toicb02.getText().toString(), String.valueOf(childCount)));
 
                     startActivity(new Intent(this, EnrollmentActivity.class).putExtra("data", bundle));
 
@@ -141,6 +142,13 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         MainApp.cc.setUUID(MainApp.fc.getUID());
 
         JSONObject sB = new JSONObject();
+
+        sB.put("toicbSlipNo", MainApp.identificationData.getvSlip());
+        sB.put("toicbTeamNo", MainApp.identificationData.getTeamNo());
+        sB.put("toicbUc", MainApp.identificationData.getUc());
+        sB.put("toicbTehsil", MainApp.identificationData.getTehsil());
+        sB.put("toicbHHno", MainApp.identificationData.getHhno());
+
 
         sB.put("toicbSerial", String.valueOf(childCount));
         sB.put("toicb01", binding.toicb01.getText().toString());

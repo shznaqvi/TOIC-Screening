@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class childData implements Serializable {
-    String enrollID,child_name,f_name;
+    String enrollID,child_name,f_name,serialNo;
 
     public String getEnrollID() {
         return enrollID;
@@ -21,9 +21,14 @@ public class childData implements Serializable {
         return f_name;
     }
 
-    public childData(String enrollID, String child_name, String f_name) {
+    public String getSerialNo() {
+        return serialNo;
+    }
+
+    public childData(String enrollID, String child_name, String f_name, String serialNo) {
         this.enrollID = enrollID;
         this.child_name = child_name;
         this.f_name = f_name;
+        this.serialNo = serialNo;
     }
 }

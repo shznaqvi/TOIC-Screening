@@ -36,6 +36,7 @@ public class EnrollmentActivity extends AppCompatActivity {
     String maxDate60Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_5Years));
     String max2Days = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_2DAYS));
 
+    childData data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class EnrollmentActivity extends AppCompatActivity {
 
 //        Getting Extra
 
-        childData data = (childData) getIntent().getBundleExtra("data").getSerializable("data");
+        data = (childData) getIntent().getBundleExtra("data").getSerializable("data");
 
         binding.toicc01.setText(data.getEnrollID());
         binding.toicc02.setText(data.getChild_name());
@@ -248,6 +249,13 @@ public class EnrollmentActivity extends AppCompatActivity {
 
         JSONObject sc = new JSONObject();
 
+        sc.put("toiccSlipNo", MainApp.identificationData.getvSlip());
+        sc.put("toiccTeamNo", MainApp.identificationData.getTeamNo());
+        sc.put("toiccUc", MainApp.identificationData.getUc());
+        sc.put("toiccTehsil", MainApp.identificationData.getTehsil());
+        sc.put("toiccHHno", MainApp.identificationData.getHhno());
+
+        sc.put("toicc01Serial", data.getSerialNo());
         sc.put("toicc01", binding.toicc01.getText().toString());
         sc.put("toicc02", binding.toicc02.getText().toString());
         sc.put("toicc03", binding.toicc03.getText().toString());

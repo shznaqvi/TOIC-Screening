@@ -25,6 +25,7 @@ import edu.aku.hassannaqvi.toic_screening.contracts.ChildContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.EnrollmentContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.FormsContract;
 import edu.aku.hassannaqvi.toic_screening.contracts.SerialContract;
+import edu.aku.hassannaqvi.toic_screening.other.IdentificationData;
 import edu.aku.hassannaqvi.toic_screening.ui.ChildAssessmentActivity;
 import edu.aku.hassannaqvi.toic_screening.ui.EndingActivity;
 import edu.aku.hassannaqvi.toic_screening.ui.EnrollmentEndingActivity;
@@ -81,6 +82,7 @@ public class MainApp extends Application {
     public static String versionName;
     public static String teamNo;
     public static Integer areaCode;
+    public static IdentificationData identificationData;
     protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {

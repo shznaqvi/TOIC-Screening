@@ -33,6 +33,7 @@ import edu.aku.hassannaqvi.toic_screening.contracts.UCsContract;
 import edu.aku.hassannaqvi.toic_screening.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening.core.MainApp;
 import edu.aku.hassannaqvi.toic_screening.databinding.ActivitySectionInfoBinding;
+import edu.aku.hassannaqvi.toic_screening.other.IdentificationData;
 import edu.aku.hassannaqvi.toic_screening.validation.validatorClass;
 
 public class SectionInfoActivity extends Activity {
@@ -280,6 +281,11 @@ public class SectionInfoActivity extends Activity {
         MainApp.totalChild = Integer.valueOf(binding.toica09.getText().toString());
 
         MainApp.fc.setsA(String.valueOf(sa));
+
+        MainApp.identificationData = new IdentificationData(binding.toica02.getText().toString(), binding.hhteamID.getText().toString(),
+                getAllTalukas.get(binding.spTowns.getSelectedItem().toString()), getAllUCs.get(binding.spUCs.getSelectedItem().toString()),
+                binding.hhno.getText().toString());
+
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
