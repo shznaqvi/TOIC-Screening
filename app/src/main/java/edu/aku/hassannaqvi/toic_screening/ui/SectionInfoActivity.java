@@ -77,15 +77,13 @@ public class SectionInfoActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-//                    binding.fldGrp04.setVisibility(View.GONE);
-//                    binding.hhno.setText(null);
-
+                    binding.fldGrp04.setVisibility(View.VISIBLE);
                     binding.toica02.setText(null);
                     binding.toica02.setEnabled(true);
-
-
                 } else {
-//                    binding.fldGrp04.setVisibility(View.VISIBLE);
+                    binding.fldGrp04.setVisibility(View.GONE);
+                    binding.hhteamID.setText(null);
+                    binding.hhclusterID.setText(null);
 
                     binding.toica02.setText(serial);
 
@@ -105,7 +103,7 @@ public class SectionInfoActivity extends Activity {
             }
 
             if (binding.toica02.getText().toString().length() != 7) {
-                Toast.makeText(this, "Invalid length: " + getString(R.string.hhno), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Invalid length: " + getString(R.string.toica02), Toast.LENGTH_SHORT).show();
                 binding.toica02.setError("Invalid Length");
                 return false;
             } else {
@@ -133,22 +131,24 @@ public class SectionInfoActivity extends Activity {
             return false;
         }
 
+        if (binding.toica01.isChecked()) {
 //         Team no
-        if (!validatorClass.EmptyTextBox(this, binding.hhteamID, getString(R.string.hhteam))) {
-            return false;
-        }
+            if (!validatorClass.EmptyTextBox(this, binding.hhteamID, getString(R.string.hhteam))) {
+                return false;
+            }
 //         Cluster no
-        if (!validatorClass.EmptyTextBox(this, binding.hhclusterID, getString(R.string.hhcluster))) {
-            return false;
+            if (!validatorClass.EmptyTextBox(this, binding.hhclusterID, getString(R.string.hhcluster))) {
+                return false;
+            }
         }
 //         House no
         if (!validatorClass.EmptyTextBox(this, binding.hhno, getString(R.string.hhno))) {
             return false;
         }
 
-        if (binding.hhno.getText().toString().length() == 5) {
+        if (binding.hhno.getText().toString().length() == 6) {
             String[] str = binding.hhno.getText().toString().split("-");
-            if (str.length > 2 || binding.hhno.getText().toString().charAt(3) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
+            if (str.length > 2 || binding.hhno.getText().toString().charAt(4) != '-' || !str[0].matches("[0-9]+") || !str[1].matches("[a-zA-Z]")) {
                 binding.hhno.setError("Wrong presentation!!");
                 return false;
             }
@@ -181,13 +181,15 @@ public class SectionInfoActivity extends Activity {
             return false;
         }
 
+        if (binding.toica08a.isChecked()) {
 //         toica09
-        if (!validatorClass.EmptyTextBox(this, binding.toica09, getString(R.string.toica09))) {
-            return false;
-        }
+            if (!validatorClass.EmptyTextBox(this, binding.toica09, getString(R.string.toica09))) {
+                return false;
+            }
 
-        if (!validatorClass.RangeTextBox(this, binding.toica09, 1, 20, "Range 1 - 20", getString(R.string.toica09))) {
-            return false;
+            if (!validatorClass.RangeTextBox(this, binding.toica09, 1, 20, "Range 1 - 20", getString(R.string.toica09))) {
+                return false;
+            }
         }
 
         return true;
@@ -259,16 +261,12 @@ public class SectionInfoActivity extends Activity {
         sa.put("toica02", binding.toica02.getText().toString());
         sa.put("toica03", binding.toica03.getText().toString());
 
-//        if (!binding.toica01.isChecked()) {
         sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
         sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
         sa.put("hhno", binding.hhno.getText().toString());
 
-        currentTeam = binding.hhteamID.getText().toString();
-
         sa.put("hhteamID", binding.hhteamID.getText().toString());
         sa.put("hhcluster", binding.hhclusterID.getText().toString());
-//        }
 
         sa.put("toica04", binding.toica04.getText().toString());
         sa.put("toica05", binding.toica05.getText().toString());
@@ -278,13 +276,18 @@ public class SectionInfoActivity extends Activity {
         sa.put("toica08", binding.toica08a.isChecked() ? "1" : binding.toica08b.isChecked() ? "2" : "0");
         sa.put("toica09", binding.toica09.getText().toString());
 
-        MainApp.totalChild = Integer.valueOf(binding.toica09.getText().toString());
+        if (binding.toica08a.isChecked()) {
+
+            currentTeam = binding.hhteamID.getText().toString();
+
+            MainApp.totalChild = Integer.valueOf(binding.toica09.getText().toString());
+
+            MainApp.identificationData = new IdentificationData(binding.toica02.getText().toString(), binding.hhteamID.getText().toString(),
+                    getAllTalukas.get(binding.spTowns.getSelectedItem().toString()), getAllUCs.get(binding.spUCs.getSelectedItem().toString()),
+                    binding.hhno.getText().toString());
+        }
 
         MainApp.fc.setsA(String.valueOf(sa));
-
-        MainApp.identificationData = new IdentificationData(binding.toica02.getText().toString(), binding.hhteamID.getText().toString(),
-                getAllTalukas.get(binding.spTowns.getSelectedItem().toString()), getAllUCs.get(binding.spUCs.getSelectedItem().toString()),
-                binding.hhno.getText().toString());
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

@@ -69,8 +69,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_weight="80"
-                    android:inputType="number"
                     android:hint="@string/toica01"
+                    android:inputType="number"
                     android:maxLength="7" />
 
             </LinearLayout>
@@ -96,7 +96,6 @@
 
 
             <LinearLayout
-                android:id="@+id/fldGrp04"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -164,43 +163,50 @@
 
                 </LinearLayout>
 
-                <!--Team no-->
-                <TextView
+                <LinearLayout
+                    android:id="@+id/fldGrp04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/hhteam"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    android:orientation="vertical">
+                    <!--Team no-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/hhteam"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
 
-                <EditText
-                    android:id="@+id/hhteamID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:inputType="number"
-                    android:hint="@string/hhteam"
-                    android:maxLength="2" />
+                    <EditText
+                        android:id="@+id/hhteamID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/hhteam"
+                        android:inputType="number"
+                        android:maxLength="2" />
 
-                <!--Cluster no-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/hhcluster"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@android:color/white" />
+                    <!--Cluster no-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/hhcluster"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@android:color/white" />
 
-                <EditText
-                    android:id="@+id/hhclusterID"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:inputType="number"
-                    android:hint="@string/hhcluster"
-                    android:maxLength="6" />
+                    <EditText
+                        android:id="@+id/hhclusterID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/hhcluster"
+                        android:inputType="number"
+                        android:maxLength="6" />
+
+                </LinearLayout>
 
                 <!--House no-->
                 <TextView
@@ -217,9 +223,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:hint="XXX-X"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
-                    android:maxLength="5" />
+                    android:hint="XXXX-X"
+                    android:maxLength="6" />
 
             </LinearLayout>
 
@@ -359,24 +365,32 @@
             </RadioGroup>
 
             <!--toica09-->
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toica09"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                android:orientation="vertical"
+                android:visibility="@{toica08a.checked ? View.VISIBLE : View.GONE}">
 
-            <EditText
-                android:id="@+id/toica09"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:digits="0123456789"
-                android:hint="@string/toica09"
-                android:inputType="number"
-                android:maxLength="2" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/toica09"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/toica09"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:digits="0123456789"
+                    android:hint="@string/toica09"
+                    android:inputType="number"
+                    android:text='@{toica08a.checked ? toica09.getText.toString : ""}'
+                    android:maxLength="2" />
+            </LinearLayout>
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout
