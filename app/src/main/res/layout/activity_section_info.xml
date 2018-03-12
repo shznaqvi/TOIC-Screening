@@ -369,7 +369,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{toica08a.checked ? View.VISIBLE : View.GONE}">
+                android:visibility="@{(toica06a.checked &amp;&amp; toica07b.checked &amp;&amp; toica08a.checked) ? View.VISIBLE : View.GONE}">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -388,7 +388,7 @@
                     android:digits="0123456789"
                     android:hint="@string/toica09"
                     android:inputType="number"
-                    android:text='@{toica08a.checked ? toica09.getText.toString : ""}'
+                    android:text='@{(toica06a.checked &amp;&amp; toica07b.checked &amp;&amp; toica08a.checked) ? toica09.getText.toString : ""}'
                     android:maxLength="2" />
             </LinearLayout>
 

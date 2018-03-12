@@ -181,7 +181,7 @@ public class SectionInfoActivity extends Activity {
             return false;
         }
 
-        if (binding.toica08a.isChecked()) {
+        if (binding.toica06a.isChecked() && binding.toica07b.isChecked() && binding.toica08a.isChecked()) {
 //         toica09
             if (!validatorClass.EmptyTextBox(this, binding.toica09, getString(R.string.toica09))) {
                 return false;
