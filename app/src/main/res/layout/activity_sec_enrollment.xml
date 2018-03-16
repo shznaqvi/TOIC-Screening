@@ -213,7 +213,7 @@
                 android:digits="0123456789"
                 android:hint="@string/toicc06b"
                 android:inputType="number"
-                android:maxLength="2"
+                android:maxLength="3"
                 android:text='@{toicc06b.checked ? toicc06bb.getText.toString : ""}'
                 android:visibility="@{toicc06b.checked ? View.VISIBLE : View.GONE}" />
 

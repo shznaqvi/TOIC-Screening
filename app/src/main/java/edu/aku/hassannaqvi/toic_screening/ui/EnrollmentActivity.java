@@ -34,6 +34,7 @@ public class EnrollmentActivity extends AppCompatActivity {
 
     String maxDate6Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_6_MONTH));
     String maxDate60Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_5Years));
+    String maxDate10Years = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_10Years));
     String max2Days = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - (MainApp.MILLISECONDS_IN_2DAYS));
 
     childData data;
@@ -50,7 +51,7 @@ public class EnrollmentActivity extends AppCompatActivity {
 //        setting for daterpicker
         binding.toicc06aa.setManager(getSupportFragmentManager());
         binding.toicc06aa.setMaxDate(maxDate6Months);
-        binding.toicc06aa.setMinDate(maxDate60Months);
+        binding.toicc06aa.setMinDate(maxDate10Years);
         binding.toicc10.setManager(getSupportFragmentManager());
         binding.toicc13.setManager(getSupportFragmentManager());
         binding.toicc10.setMaxDate(dateToday);
@@ -148,7 +149,7 @@ public class EnrollmentActivity extends AppCompatActivity {
             if (!validatorClass.EmptyTextBox(this, binding.toicc06bb, getString(R.string.toicc06b))) {
                 return false;
             }
-            if (!validatorClass.RangeTextBox(this, binding.toicc06bb, 6, 60, getString(R.string.toicc06b), " for month")) {
+            if (!validatorClass.RangeTextBox(this, binding.toicc06bb, 6, 119, getString(R.string.toicc06b), " months")) {
                 return false;
             }
         }
