@@ -303,7 +303,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{toicb03a.checked &amp;&amp; toicb04a.checked &amp;&amp; toicb05a.checked &amp;&amp; toicb06a.checked &amp;&amp; toicb07a.checked ? View.VISIBLE : View.GONE}">
+                android:visibility="@{toicb03a.checked &amp;&amp; toicb04b.checked &amp;&amp; toicb05b.checked &amp;&amp; toicb06b.checked &amp;&amp; toicb07b.checked ? View.VISIBLE : View.GONE}">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -322,7 +322,7 @@
                     android:digits="01234567890"
                     android:hint="@string/toicc01"
                     android:inputType="number"
-                    android:text='@{toicb03a.checked &amp;&amp; toicb04a.checked &amp;&amp; toicb05a.checked &amp;&amp; toicb06a.checked &amp;&amp; toicb07a.checked ? toicb09.getText.toString : ""}' />
+                    android:text='@{toicb03a.checked &amp;&amp; toicb04b.checked &amp;&amp; toicb05b.checked &amp;&amp; toicb06b.checked &amp;&amp; toicb07b.checked ? toicb09.getText.toString : ""}' />
 
             </LinearLayout>
 
