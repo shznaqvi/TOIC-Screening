@@ -276,7 +276,7 @@ public class SectionInfoActivity extends Activity {
         sa.put("toica08", binding.toica08a.isChecked() ? "1" : binding.toica08b.isChecked() ? "2" : "0");
         sa.put("toica09", binding.toica09.getText().toString());
 
-        if (binding.toica08a.isChecked()) {
+        if (binding.toica08a.isChecked() && binding.toica06a.isChecked() && binding.toica07b.isChecked()) {
 
             currentTeam = binding.hhteamID.getText().toString();
 
