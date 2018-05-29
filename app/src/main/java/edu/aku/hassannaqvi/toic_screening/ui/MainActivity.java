@@ -17,6 +17,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -58,7 +59,7 @@ import edu.aku.hassannaqvi.toic_screening.sync.SyncEnrollment;
 import edu.aku.hassannaqvi.toic_screening.sync.SyncForms;
 import edu.aku.hassannaqvi.toic_screening.sync.SyncSerials;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "MainActivity";
 

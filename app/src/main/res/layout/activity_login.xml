@@ -30,7 +30,6 @@
             android:layout_marginLeft="72dp"
             android:layout_marginRight="72dp"
             android:layout_marginTop="70dp"
-            android:layoutDirection="rtl"
             android:orientation="vertical">
 
             <TextView
@@ -78,7 +77,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="0dp"
                 android:background="@drawable/border_logo"
-
                 android:contentDescription="Aga Khan LOGO"
                 android:src="@drawable/sg_agakhan" />
 
@@ -99,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_weight="0.99"
-                        android:drawableEnd="@drawable/ic_assignment_ind_black_24dp"
+                        android:drawableStart="@drawable/ic_assignment_ind_black_24dp"
                         android:drawablePadding="8dp"
                         android:hint="Username/Code"
                         android:imeActionId="@+id/login"
@@ -124,25 +122,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/showPassword"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/round_button"
-                        android:drawableStart="@drawable/ic_remove_red_eye_black_24dp"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:textSize="18sp" />
-
                     <EditText
                         android:id="@+id/password"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_weight="0.99"
-                        android:drawableEnd="@drawable/ic_lock_black_24dp"
+                        android:drawableStart="@drawable/ic_lock_black_24dp"
                         android:drawablePadding="8dp"
                         android:hint="@string/prompt_password"
                         android:imeActionId="@+id/login"
@@ -153,6 +139,18 @@
                         android:paddingEnd="4dp"
                         android:paddingStart="4dp"
                         android:singleLine="true"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/showPassword"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/round_button"
+                        android:drawableStart="@drawable/ic_remove_red_eye_black_24dp"
+                        android:gravity="center"
+                        android:padding="3dp"
                         android:textSize="18sp" />
 
                     <!--android:text="aku?dmu"-->
@@ -190,19 +188,6 @@
                 android:layout_marginTop="40dp">
 
                 <Button
-                    android:id="@+id/syncData"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="38"
-                    android:background="@color/black_overlay"
-                    android:drawableStart="@drawable/ic_cloud_download_black_24dp"
-                    android:elevation="2dp"
-                    android:padding="15dp"
-                    android:text="Sync Data"
-                    android:textStyle="bold" />
-
-                <Button
                     android:id="@+id/email_sign_in_button"
                     style="?android:textAppearanceSmall"
                     android:layout_width="0dp"
@@ -215,6 +200,20 @@
                     android:padding="16dp"
                     android:text="@string/action_sign_in"
                     android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/syncData"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="38"
+                    android:background="@color/black_overlay"
+                    android:drawableStart="@drawable/ic_cloud_download_black_24dp"
+                    android:elevation="2dp"
+                    android:padding="15dp"
+                    android:text="Sync Data"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
             <TextView
