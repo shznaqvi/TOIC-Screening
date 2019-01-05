@@ -82,7 +82,6 @@ public class SectionInfoActivity extends Activity {
                     binding.toica02.setEnabled(true);
                 } else {
                     binding.fldGrp04.setVisibility(View.GONE);
-                    binding.hhteamID.setText(null);
                     binding.hhclusterID.setText(null);
 
                     binding.toica02.setText(serial);
@@ -112,14 +111,15 @@ public class SectionInfoActivity extends Activity {
         } else {
             binding.toica02.setError(null);
         }
-
+/*
 //        HH NO
         if (!validatorClass.EmptyTextBox(this, binding.toica03, getString(R.string.toica03))) {
             return false;
-        }
+        }*/
 
 //        UC - HH
 //        if (!binding.toica01.isChecked()) {
+/*
 
 //        Town
         if (!validatorClass.EmptySpinner(this, binding.spTowns, "Town")) {
@@ -130,12 +130,13 @@ public class SectionInfoActivity extends Activity {
         if (!validatorClass.EmptySpinner(this, binding.spUCs, "UCs")) {
             return false;
         }
+*/
 
         if (binding.toica01.isChecked()) {
-//         Team no
+/*//         Team no
             if (!validatorClass.EmptyTextBox(this, binding.hhteamID, getString(R.string.hhteam))) {
                 return false;
-            }
+            }*/
 //         Cluster no
             if (!validatorClass.EmptyTextBox(this, binding.hhclusterID, getString(R.string.hhcluster))) {
                 return false;
@@ -159,6 +160,7 @@ public class SectionInfoActivity extends Activity {
         }
 
 //        }
+/*
 
 //        toica04
         if (!validatorClass.EmptyTextBox(this, binding.toica04, getString(R.string.toica04))) {
@@ -180,9 +182,10 @@ public class SectionInfoActivity extends Activity {
         if (!validatorClass.EmptyRadioButton(this, binding.toica08, binding.toica08b, getString(R.string.toica08))) {
             return false;
         }
+*/
 
-        if (binding.toica06a.isChecked() && binding.toica07b.isChecked() && binding.toica08a.isChecked()) {
-//         toica09
+/*        if (binding.toica06a.isChecked() && binding.toica07b.isChecked() && binding.toica08a.isChecked()) {
+//         toica09*/
             if (!validatorClass.EmptyTextBox(this, binding.toica09, getString(R.string.toica09))) {
                 return false;
             }
@@ -190,7 +193,7 @@ public class SectionInfoActivity extends Activity {
             if (!validatorClass.RangeTextBox(this, binding.toica09, 1, 20, "Range 1 - 20", getString(R.string.toica09))) {
                 return false;
             }
-        }
+    //    }
 
         return true;
     }
@@ -259,33 +262,35 @@ public class SectionInfoActivity extends Activity {
         sa.put("teamno", MainApp.teamNo);
         sa.put("toica01", binding.toica01.isChecked() ? "1" : "2");
         sa.put("toica02", binding.toica02.getText().toString());
-        sa.put("toica03", binding.toica03.getText().toString());
+        //sa.put("toica03", binding.toica03.getText().toString());
 
-        sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
-        sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
+        //sa.put("townCode", getAllTalukas.get(binding.spTowns.getSelectedItem().toString()));
+        //sa.put("ucCode", getAllUCs.get(binding.spUCs.getSelectedItem().toString()));
         sa.put("hhno", binding.hhno.getText().toString());
 
-        sa.put("hhteamID", binding.hhteamID.getText().toString());
+        //sa.put("hhteamID", binding.hhteamID.getText().toString());
         sa.put("hhcluster", binding.hhclusterID.getText().toString());
 
-        sa.put("toica04", binding.toica04.getText().toString());
-        sa.put("toica05", binding.toica05.getText().toString());
+        //sa.put("toica04", binding.toica04.getText().toString());
+        //sa.put("toica05", binding.toica05.getText().toString());
 
-        sa.put("toica06", binding.toica06a.isChecked() ? "1" : binding.toica06b.isChecked() ? "2" : "0");
+        /*sa.put("toica06", binding.toica06a.isChecked() ? "1" : binding.toica06b.isChecked() ? "2" : "0");
         sa.put("toica07", binding.toica07a.isChecked() ? "1" : binding.toica07b.isChecked() ? "2" : "0");
         sa.put("toica08", binding.toica08a.isChecked() ? "1" : binding.toica08b.isChecked() ? "2" : "0");
+        */
         sa.put("toica09", binding.toica09.getText().toString());
 
-        if (binding.toica08a.isChecked() && binding.toica06a.isChecked() && binding.toica07b.isChecked()) {
+       /* if (binding.toica08a.isChecked() && binding.toica06a.isChecked() && binding.toica07b.isChecked()) {
 
             currentTeam = binding.hhteamID.getText().toString();
 
-            MainApp.totalChild = Integer.valueOf(binding.toica09.getText().toString());
+        */
+       MainApp.totalChild = Integer.valueOf(binding.toica09.getText().toString());
 
-            MainApp.identificationData = new IdentificationData(binding.toica02.getText().toString(), binding.hhteamID.getText().toString(),
-                    getAllTalukas.get(binding.spTowns.getSelectedItem().toString()), getAllUCs.get(binding.spUCs.getSelectedItem().toString()),
+            MainApp.identificationData = new IdentificationData(binding.toica02.getText().toString(), /*binding.hhteamID.getText().toString(),
+                    getAllTalukas.get(binding.spTowns.getSelectedItem().toString()), getAllUCs.get(binding.spUCs.getSelectedItem().toString()),*/
                     binding.hhno.getText().toString());
-        }
+        //}
 
         MainApp.fc.setsA(String.valueOf(sa));
 
@@ -339,7 +344,7 @@ public class SectionInfoActivity extends Activity {
             Talukas.add(aUCs.getTalukaName());
         }
 
-        binding.spTowns.setAdapter(new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, Talukas));
+       /* binding.spTowns.setAdapter(new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, Talukas));
 
         binding.spTowns.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -366,7 +371,7 @@ public class SectionInfoActivity extends Activity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
 
     }

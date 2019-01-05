@@ -52,21 +52,21 @@ public class EnrollmentActivity extends AppCompatActivity {
         binding.toicc06aa.setManager(getSupportFragmentManager());
         binding.toicc06aa.setMaxDate(maxDate6Months);
         binding.toicc06aa.setMinDate(maxDate10Years);
-        binding.toicc10.setManager(getSupportFragmentManager());
+       /* binding.toicc10.setManager(getSupportFragmentManager());
         binding.toicc13.setManager(getSupportFragmentManager());
         binding.toicc10.setMaxDate(dateToday);
         binding.toicc13.setMaxDate(dateToday);
-
+*/
 //        Getting Extra
 
         data = (childData) getIntent().getBundleExtra("data").getSerializable("data");
 
         binding.toicc01.setText(data.getEnrollID());
-        binding.toicc02.setText(data.getChild_name());
-        binding.toicc03.setText(data.getF_name());
+     /*   binding.toicc02.setText(data.getChild_name());
+        binding.toicc03.setText(data.getF_name());*/
 
-        binding.toicc10.setMinDate(max2Days);
-        binding.toicc13.setMinDate(maxDate60Months);
+      /*  binding.toicc10.setMinDate(max2Days);
+        binding.toicc13.setMinDate(maxDate60Months);*/
 
         /*binding.toicc06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -118,7 +118,7 @@ public class EnrollmentActivity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, binding.toicc01, getString(R.string.toicc01))) {
             return false;
         }
-//        toicc02
+/*//        toicc02
         if (!validatorClass.EmptyTextBox(this, binding.toicc02, getString(R.string.toicc02))) {
             return false;
         }
@@ -129,7 +129,7 @@ public class EnrollmentActivity extends AppCompatActivity {
 //        toicc04
         if (!validatorClass.EmptyTextBox(this, binding.toicc04, getString(R.string.toicc04))) {
             return false;
-        }
+        }*/
 //        toicc05
         if (!validatorClass.EmptyRadioButton(this, binding.toicc05, binding.toicc05b, getString(R.string.toicc05))) {
             return false;
@@ -154,7 +154,7 @@ public class EnrollmentActivity extends AppCompatActivity {
             }
         }
 
-//        toicc07
+/*//        toicc07
         if (!validatorClass.EmptyTextBox(this, binding.toicc07, getString(R.string.toicc07))) {
             return false;
         }
@@ -191,20 +191,23 @@ public class EnrollmentActivity extends AppCompatActivity {
             return false;
         }
 //        toicc11
-        /*if (!validatorClass.EmptyTextBox(this, binding.toicc11, getString(R.string.toicc11))) {
+        *//*if (!validatorClass.EmptyTextBox(this, binding.toicc11, getString(R.string.toicc11))) {
             return false;
-        }*/
+        }*//*
 //        toicc12
         if (!validatorClass.EmptyTextBox(this, binding.toicc12, getString(R.string.toicc12))) {
             return false;
         }
 //        toicc13
-        /*if (!validatorClass.EmptyTextBox(this, binding.toicc13, getString(R.string.toicc13))) {
+        *//*if (!validatorClass.EmptyTextBox(this, binding.toicc13, getString(R.string.toicc13))) {
             return false;
-        }*/
+        }*//*
 
 //        toicc14
         return validatorClass.EmptyRadioButton(this, binding.toicc14, binding.toicc14b, getString(R.string.toicc14));
+   */
+
+        return true;
     }
 
 
@@ -251,16 +254,16 @@ public class EnrollmentActivity extends AppCompatActivity {
         JSONObject sc = new JSONObject();
 
         sc.put("toiccSlipNo", MainApp.identificationData.getvSlip());
-        sc.put("toiccTeamNo", MainApp.identificationData.getTeamNo());
+        /*sc.put("toiccTeamNo", MainApp.identificationData.getTeamNo());
         sc.put("toiccUc", MainApp.identificationData.getUc());
-        sc.put("toiccTehsil", MainApp.identificationData.getTehsil());
+        sc.put("toiccTehsil", MainApp.identificationData.getTehsil());*/
         sc.put("toiccHHno", MainApp.identificationData.getHhno());
 
         sc.put("toicc01Serial", data.getSerialNo());
         sc.put("toicc01", binding.toicc01.getText().toString());
-        sc.put("toicc02", binding.toicc02.getText().toString());
+       /* sc.put("toicc02", binding.toicc02.getText().toString());
         sc.put("toicc03", binding.toicc03.getText().toString());
-        sc.put("toicc04", binding.toicc04.getText().toString());
+        sc.put("toicc04", binding.toicc04.getText().toString());*/
 
         sc.put("toicc05", binding.toicc05a.isChecked() ? "1" : binding.toicc05b.isChecked() ? "2" : "0");
         sc.put("toicc06", binding.toicc06a.isChecked() ? "1" : binding.toicc06b.isChecked() ? "2" : "0");
@@ -271,15 +274,15 @@ public class EnrollmentActivity extends AppCompatActivity {
             sc.put("toicc06age", binding.toicc06bb.getText().toString());
         }
 
-        sc.put("toicc07", binding.toicc07.getText().toString());
+       /* sc.put("toicc07", binding.toicc07.getText().toString());
         sc.put("toicc08", binding.toicc08.getText().toString());
         sc.put("toicc09", binding.toicc09.getText().toString());
-        sc.put("toicc10", binding.toicc10.getText().toString());
+        sc.put("toicc10", binding.toicc10.getText().toString());*/
         sc.put("toicc11", binding.toicc11.getText().toString());
-        sc.put("toicc12", binding.toicc12.getText().toString());
-        sc.put("toicc13", binding.toicc13.getText().toString());
+       /* sc.put("toicc12", binding.toicc12.getText().toString());
+        sc.put("toicc13", binding.toicc13.getText().toString());*/
 
-        sc.put("toicc14", binding.toicc14a.isChecked() ? "1" : binding.toicc14b.isChecked() ? "2" : "0");
+      //  sc.put("toicc14", binding.toicc14a.isChecked() ? "1" : binding.toicc14b.isChecked() ? "2" : "0");
 
 
         MainApp.ec.setsC(String.valueOf(sc));

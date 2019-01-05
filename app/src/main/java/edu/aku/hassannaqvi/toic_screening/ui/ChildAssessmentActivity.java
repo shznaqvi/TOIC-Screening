@@ -30,9 +30,10 @@ public class ChildAssessmentActivity extends AppCompatActivity {
     public static int childCount = 1;
 
     ActivitySecChildassessmentBinding binding;
+
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
-    int teamLength = 0;
+//    int teamLength = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +49,13 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
         binding.lblHead.setText("Child count " + String.valueOf(childCount) + " - " + String.valueOf(MainApp.totalChild));
 
-        teamLength = SectionInfoActivity.currentTeam.length();
+//        teamLength = SectionInfoActivity.currentTeam.length();
 
-        if (teamLength > 1) {
-            binding.toicb09.setFilters(new InputFilter[]{new InputFilter.LengthFilter(9)});
-        } else {
-            binding.toicb09.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
-        }
+//        if (teamLength > 1) {
+//            binding.toicb09.setFilters(new InputFilter[]{new InputFilter.LengthFilter(9)});
+//        } else {
+//            binding.toicb09.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
+//        }
 
     }
 
@@ -72,24 +73,12 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
                 finish();
 
-                if (binding.toicb03a.isChecked() && binding.toicb04b.isChecked() && binding.toicb05b.isChecked()
-                        && binding.toicb06b.isChecked() && binding.toicb07b.isChecked()) {
-
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("data", new childData(binding.toicb09.getText().toString(), binding.toicb01.getText().toString(),
-                            binding.toicb02.getText().toString(), String.valueOf(childCount)));
+                    bundle.putSerializable("data", new childData(binding.toicb09.getText().toString(), /*binding.toicb01.getText().toString(),
+                            binding.toicb02.getText().toString(),*/ String.valueOf(childCount)));
 
                     startActivity(new Intent(this, EnrollmentActivity.class).putExtra("data", bundle));
 
-                } else {
-                    if (MainApp.totalChild == childCount) {
-                        childCount = 1;
-                        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-                    } else {
-                        childCount++;
-                        startActivity(new Intent(this, ChildAssessmentActivity.class).putExtra("childFlag", true).putExtra("childRange", childCount));
-                    }
-                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -144,21 +133,21 @@ public class ChildAssessmentActivity extends AppCompatActivity {
         JSONObject sB = new JSONObject();
 
         sB.put("toicbSlipNo", MainApp.identificationData.getvSlip());
-        sB.put("toicbTeamNo", MainApp.identificationData.getTeamNo());
+       /* sB.put("toicbTeamNo", MainApp.identificationData.getTeamNo());
         sB.put("toicbUc", MainApp.identificationData.getUc());
-        sB.put("toicbTehsil", MainApp.identificationData.getTehsil());
+        sB.put("toicbTehsil", MainApp.identificationData.getTehsil());*/
         sB.put("toicbHHno", MainApp.identificationData.getHhno());
 
 
         sB.put("toicbSerial", String.valueOf(childCount));
-        sB.put("toicb01", binding.toicb01.getText().toString());
+        /*//sB.put("toicb01", binding.toicb01.getText().toString());
         sB.put("toicb02", binding.toicb02.getText().toString());
         sB.put("toicb03", binding.toicb03a.isChecked() ? "1" : binding.toicb03b.isChecked() ? "2" : "0");
         sB.put("toicb04", binding.toicb04a.isChecked() ? "1" : binding.toicb04b.isChecked() ? "2" : "0");
         sB.put("toicb05", binding.toicb05a.isChecked() ? "1" : binding.toicb05b.isChecked() ? "2" : "0");
         sB.put("toicb06", binding.toicb06a.isChecked() ? "1" : binding.toicb06b.isChecked() ? "2" : "0");
         sB.put("toicb07", binding.toicb07a.isChecked() ? "1" : binding.toicb07b.isChecked() ? "2" : "0");
-        sB.put("toicb08", binding.toicb08a.isChecked() ? "1" : binding.toicb08b.isChecked() ? "2" : "0");
+        sB.put("toicb08", binding.toicb08a.isChecked() ? "1" : binding.toicb08b.isChecked() ? "2" : "0");*/
         sB.put("toicb09", binding.toicb09.getText().toString());
 
         MainApp.cc.setsB(String.valueOf(sB));
@@ -171,19 +160,21 @@ public class ChildAssessmentActivity extends AppCompatActivity {
     private boolean ValidateForm() {
 
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+/*
 
         if (!validatorClass.EmptyTextBox(this, binding.toicb01, getString(R.string.toicb01))) {
             return false;
         }
-
+*/
+/*
         if (!validatorClass.EmptyTextBox(this, binding.toicb02, getString(R.string.toicb02))) {
             return false;
-        }
-
+        }*/
+/*
         if (!validatorClass.EmptyRadioButton(this, binding.toicb03, binding.toicb03b, getString(R.string.toicb03))) {
             return false;
-        }
-
+        }*/
+/*
         if (!validatorClass.EmptyRadioButton(this, binding.toicb04, binding.toicb04b, getString(R.string.toicb04))) {
             return false;
         }
@@ -202,22 +193,22 @@ public class ChildAssessmentActivity extends AppCompatActivity {
 
         if (!validatorClass.EmptyRadioButton(this, binding.toicb08, binding.toicb08b, getString(R.string.toicb08))) {
             return false;
-        }
+        }*/
 
-        if (binding.toicb03a.isChecked() && binding.toicb04b.isChecked() && binding.toicb05b.isChecked()
-                && binding.toicb06b.isChecked() && binding.toicb07b.isChecked()) {
+  //      if (binding.toicb03a.isChecked() /*&& binding.toicb04b.isChecked() && binding.toicb05b.isChecked()
+         //       && binding.toicb06b.isChecked() && binding.toicb07b.isChecked()*/) {
             if (!validatorClass.EmptyTextBox(this, binding.toicb09, getString(R.string.toicc01))) {
                 return false;
             }
-            if (binding.toicb09.getText().toString().length() != (teamLength > 1 ? 9 : 8)) {
+           /* if (binding.toicb09.getText().toString().length() != (teamLength > 1 ? 9 : 8)) {
                 Toast.makeText(this, "Invalid length: " + getString(R.string.toicc01), Toast.LENGTH_SHORT).show();
                 binding.toicb09.setError("Invalid Length");
                 return false;
             } else {
                 binding.toicb09.setError(null);
-            }
+            }*/
 
-        }
+       // }
 
         return true;
     }

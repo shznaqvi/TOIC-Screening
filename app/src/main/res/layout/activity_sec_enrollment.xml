@@ -68,60 +68,60 @@
                 android:enabled="false"
                 android:hint="@string/toicc01" />
 
-            <!--02-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc02"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+            <!--&lt;!&ndash;02&ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:text="@string/toicc02"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+                <!--android:textColor="@android:color/white" />-->
 
-            <EditText
-                android:id="@+id/toicc02"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:enabled="false"
-                android:hint="@string/toicc02" />
+            <!--<EditText-->
+                <!--android:id="@+id/toicc02"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="1dp"-->
+                <!--android:enabled="false"-->
+                <!--android:hint="@string/toicc02" />-->
 
-            <!--03-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc03"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+            <!--&lt;!&ndash;03&ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:text="@string/toicc03"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+                <!--android:textColor="@android:color/white" />-->
 
-            <EditText
-                android:id="@+id/toicc03"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:enabled="false"
-                android:hint="@string/toicc03" />
+            <!--<EditText-->
+                <!--android:id="@+id/toicc03"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="1dp"-->
+                <!--android:enabled="false"-->
+                <!--android:hint="@string/toicc03" />-->
 
-            <!--04-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc04"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+            <!--&lt;!&ndash;04&ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:text="@string/toicc04"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+                <!--android:textColor="@android:color/white" />-->
 
-            <EditText
-                android:id="@+id/toicc04"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                android:hint="@string/toicc04"
-                android:maxLength="25" />
+            <!--<EditText-->
+                <!--android:id="@+id/toicc04"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="1dp"-->
+                <!--android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"-->
+                <!--android:hint="@string/toicc04"-->
+                <!--android:maxLength="25" />-->
 
             <!--05-->
             <TextView
@@ -216,8 +216,9 @@
                 android:maxLength="3"
                 android:text='@{toicc06b.checked ? toicc06bb.getText.toString : ""}'
                 android:visibility="@{toicc06b.checked ? View.VISIBLE : View.GONE}" />
+<!--
 
-            <!--07-->
+            &lt;!&ndash;07&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -237,7 +238,7 @@
                 android:hint="@string/toicc07"
                 android:maxLength="11" />
 
-            <!--08-->
+            &lt;!&ndash;08&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -257,7 +258,7 @@
                 android:hint="@string/toicc08"
                 android:maxLength="11" />
 
-            <!--09-->
+            &lt;!&ndash;09&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -277,7 +278,7 @@
                 android:hint="@string/toicc09"
                 android:maxLength="11" />
 
-            <!--10-->
+            &lt;!&ndash;10&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -298,6 +299,7 @@
                 app:dateFormat="dd-MM-yyyy"
                 android:padding="15dp"
                 app:minDate="01/01/1917" />
+-->
 
             <!--11-->
             <TextView
@@ -319,8 +321,9 @@
                 android:inputType="number"
                 android:hint="@string/toicc11"
                 android:maxLength="8" />
+<!--
 
-            <!--12-->
+            &lt;!&ndash;12&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -339,7 +342,7 @@
                 android:hint="@string/toicc12"
                 android:maxLength="25" />
 
-            <!--13-->
+            &lt;!&ndash;13&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -362,7 +365,7 @@
                 android:padding="15dp"
                 app:minDate="01/01/1917" />
 
-            <!--14-->
+            &lt;!&ndash;14&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -397,6 +400,7 @@
                     android:text="@string/no" />
 
             </RadioGroup>
+-->
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout

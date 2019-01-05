@@ -7,12 +7,12 @@ import java.io.Serializable;
  */
 
 public class IdentificationData implements Serializable {
-    String vSlip,teamNo,uc,tehsil,hhno;
+    String vSlip,/*teamNo,uc,tehsil,*/hhno;
 
     public String getvSlip() {
         return vSlip;
     }
-
+/*
     public String getTeamNo() {
         return teamNo;
     }
@@ -23,17 +23,17 @@ public class IdentificationData implements Serializable {
 
     public String getTehsil() {
         return tehsil;
-    }
+    }*/
 
     public String getHhno() {
         return hhno;
     }
 
-    public IdentificationData(String vSlip, String teamNo, String uc, String tehsil, String hhno) {
+    public IdentificationData(String vSlip, /*String teamNo, String uc, String tehsil, */String hhno) {
         this.vSlip = vSlip;
-        this.teamNo = teamNo;
+     /*   this.teamNo = teamNo;
         this.uc = uc;
-        this.tehsil = tehsil;
+        this.tehsil = tehsil;*/
         this.hhno = hhno;
     }
 }

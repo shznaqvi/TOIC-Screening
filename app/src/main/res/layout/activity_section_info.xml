@@ -74,8 +74,9 @@
                     android:maxLength="7" />
 
             </LinearLayout>
+<!--
 
-            <!--HH name-->
+            &lt;!&ndash;HH name&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,12 +95,13 @@
                 android:hint="@string/toica03"
                 android:maxLength="25" />
 
+-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <!--TOWN-->
+              <!--  &lt;!&ndash;TOWN&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -129,9 +131,9 @@
                         android:textStyle="bold" />
 
 
-                </LinearLayout>
+                </LinearLayout>-->
 
-                <!--UCS-->
+                <!--&lt;!&ndash;UCS&ndash;&gt;
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,13 +164,13 @@
 
 
                 </LinearLayout>
-
+-->
                 <LinearLayout
                     android:id="@+id/fldGrp04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <!--Team no-->
+                   <!-- &lt;!&ndash;Team no&ndash;&gt;
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -186,7 +188,7 @@
                         android:hint="@string/hhteam"
                         android:inputType="number"
                         android:maxLength="2" />
-
+-->
                     <!--Cluster no-->
                     <TextView
                         android:layout_width="match_parent"
@@ -228,8 +230,9 @@
                     android:maxLength="6" />
 
             </LinearLayout>
+<!--
 
-            <!--TOICa04-->
+            &lt;!&ndash;TOICa04&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -248,7 +251,7 @@
                 android:hint="@string/toica04"
                 android:maxLength="50" />
 
-            <!--TOICa05-->
+            &lt;!&ndash;TOICa05&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -268,7 +271,7 @@
                 android:inputType="number"
                 android:maxLength="11" />
 
-            <!--TOICa06-->
+            &lt;!&ndash;TOICa06&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -300,7 +303,7 @@
                     android:text="@string/no" />
             </RadioGroup>
 
-            <!--TOICa07-->
+            &lt;!&ndash;TOICa07&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -332,7 +335,7 @@
                     android:text="@string/no" />
             </RadioGroup>
 
-            <!--TOICa08-->
+            &lt;!&ndash;TOICa08&ndash;&gt;
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -364,12 +367,13 @@
                     android:text="@string/no" />
             </RadioGroup>
 
-            <!--toica09-->
+            &lt;!&ndash;toica09&ndash;&gt;-->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="@{(toica06a.checked &amp;&amp; toica07b.checked &amp;&amp; toica08a.checked) ? View.VISIBLE : View.GONE}">
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -388,7 +392,6 @@
                     android:digits="0123456789"
                     android:hint="@string/toica09"
                     android:inputType="number"
-                    android:text='@{(toica06a.checked &amp;&amp; toica07b.checked &amp;&amp; toica08a.checked) ? toica09.getText.toString : ""}'
                     android:maxLength="2" />
             </LinearLayout>
 
@@ -409,8 +412,7 @@
                     android:background="@color/red"
                     android:onClick="@{() -> callback.BtnEnd()}"
                     android:text="@string/end_interview"
-                    android:textColor="@color/white"
-                    android:visibility="@{(toica06a.checked &amp;&amp; toica07b.checked &amp;&amp; toica08a.checked) ? View.GONE : View.VISIBLE}" />
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/btn_Continue"
@@ -421,8 +423,7 @@
                     android:background="#1ed61e"
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="@string/start_interview"
-                    android:textColor="@color/white"
-                    android:visibility="@{(toica06a.checked &amp;&amp; toica07b.checked &amp;&amp; toica08a.checked) ? View.VISIBLE : View.GONE}" />
+                    android:textColor="@color/white"/>
 
             </LinearLayout>
         </LinearLayout>
