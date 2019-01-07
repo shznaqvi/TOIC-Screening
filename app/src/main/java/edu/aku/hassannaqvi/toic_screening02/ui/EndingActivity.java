@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import org.json.JSONException;
-
 import edu.aku.hassannaqvi.toic_screening02.R;
 import edu.aku.hassannaqvi.toic_screening02.core.DatabaseHelper;
 import edu.aku.hassannaqvi.toic_screening02.core.MainApp;
@@ -56,11 +54,7 @@ public class EndingActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            SaveDraft();
             if (UpdateDB()) {
 
                 finish();
