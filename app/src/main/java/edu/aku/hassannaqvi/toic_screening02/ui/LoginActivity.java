@@ -141,10 +141,13 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     .getPackageManager()
                     .getPackageInfo("edu.aku.hassannaqvi.toic_screening", 0)
                     .lastUpdateTime;
+
+
             MainApp.versionCode = this
                     .getPackageManager()
                     .getPackageInfo("edu.aku.hassannaqvi.toic_screening", 0)
-                    .versionCode;
+                    .getLongVersionCode();
+
             MainApp.versionName = this
                     .getPackageManager()
                     .getPackageInfo("edu.aku.hassannaqvi.toic_screening", 0)
@@ -201,11 +204,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         dbBackup();
 
 //        Testing visibility
-        if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 0) {
+     /*   if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 0) {
             testing.setVisibility(View.GONE);
         }else {
             testing.setVisibility(View.VISIBLE);
-        }
+        }*/
 
     }
 

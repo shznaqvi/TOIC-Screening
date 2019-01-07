@@ -163,6 +163,7 @@ public class SyncEnrollment extends AsyncTask<Void, Void, String> {
         String sSyncedError = "";
         JSONArray json = null;
         try {
+            Log.d(TAG, "onPostExecute: " + result);
             json = new JSONArray(result);
 
             DatabaseHelper db = new DatabaseHelper(mContext); // Database Helper

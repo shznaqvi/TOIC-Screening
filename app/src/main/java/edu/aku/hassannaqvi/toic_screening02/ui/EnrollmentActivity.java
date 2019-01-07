@@ -121,6 +121,10 @@ public class EnrollmentActivity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, binding.toicc02, getString(R.string.toicc02))) {
             return false;
         }
+
+        if (!validatorClass.EmptyTextBox(this, binding.hhcluster, getString(R.string.hhcluster))) {
+            return false;
+        }
 /*//        toicc03
         if (!validatorClass.EmptyTextBox(this, binding.toicc03, getString(R.string.toicc03))) {
             return false;
@@ -222,6 +226,7 @@ public class EnrollmentActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
+/*
 
 //        toicc01
         if (!validatorClass.EmptyTextBox(this, binding.toicc01, getString(R.string.toicc01))) {
@@ -231,6 +236,7 @@ public class EnrollmentActivity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, binding.toicc02, getString(R.string.toicc02))) {
             return;
         }
+*/
 
         try {
             SaveDraft();
@@ -255,6 +261,8 @@ public class EnrollmentActivity extends AppCompatActivity {
         MainApp.ec.setUser(MainApp.userName);
         MainApp.ec.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
+        MainApp.setGPS(EnrollmentContract.class, this); //Set GPS
+
         MainApp.ec.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
 //        MainApp.ec.setUUID(MainApp.cc.getUID());
 
@@ -269,8 +277,8 @@ public class EnrollmentActivity extends AppCompatActivity {
 //        sc.put("toicc01Serial", data.getSerialNo());
         sc.put("toicc01", binding.toicc01.getText().toString());
         sc.put("toicc02", binding.toicc02.getText().toString());
-        /*sc.put("toicc03", binding.toicc03.getText().toString());
-        sc.put("toicc04", binding.toicc04.getText().toString());*/
+        sc.put("hhcluster", binding.hhcluster.getText().toString());
+        /* sc.put("toicc04", binding.toicc04.getText().toString());*/
 
         sc.put("toicc05", binding.toicc05a.isChecked() ? "1" : binding.toicc05b.isChecked() ? "2" : "0");
         sc.put("toicc06", binding.toicc06a.isChecked() ? "1" : binding.toicc06b.isChecked() ? "2" : "0");

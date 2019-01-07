@@ -69,6 +69,25 @@
                 android:hint="@string/toicc01"
                 android:maxLength="12" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/hhcluster"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/hhcluster"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:digits="0123456789"
+                android:hint="@string/hhcluster"
+                android:inputType="number"
+                android:maxLength="5" />
+
             <!--01-->
             <TextView
                 android:layout_width="match_parent"

@@ -28,8 +28,8 @@ import edu.aku.hassannaqvi.toic_screening02.contracts.SerialContract;
 import edu.aku.hassannaqvi.toic_screening02.other.IdentificationData;
 import edu.aku.hassannaqvi.toic_screening02.ui.ChildAssessmentActivity;
 import edu.aku.hassannaqvi.toic_screening02.ui.EndingActivity;
+import edu.aku.hassannaqvi.toic_screening02.ui.EnrollmentActivity;
 import edu.aku.hassannaqvi.toic_screening02.ui.EnrollmentEndingActivity;
-import edu.aku.hassannaqvi.toic_screening02.ui.SectionInfoActivity;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -79,7 +79,7 @@ public class MainApp extends Application {
     public static SerialContract sc;
     public static EnrollmentContract ec;
     public static String userName = "0000";
-    public static int versionCode;
+    public static long versionCode;
     public static int totalChild = 0;
     public static String versionName;
     public static String teamNo;
@@ -239,11 +239,11 @@ public class MainApp extends Application {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-            if (contract.getClass() == SectionInfoActivity.class.getClass()) {
-                MainApp.fc.setGpsLat(lat);
-                MainApp.fc.setGpsLng(lang);
-                MainApp.fc.setGpsAcc(acc);
-                MainApp.fc.setGpsDT(date); // Timestamp is converted to date above
+            if (contract.getClass() == EnrollmentActivity.class.getClass()) {
+                MainApp.ec.setGpsLat(lat);
+                MainApp.ec.setGpsLng(lang);
+                MainApp.ec.setGpsAcc(acc);
+                MainApp.ec.setGpsDT(date); // Timestamp is converted to date above
             } else if (contract.getClass() == ChildAssessmentActivity.class.getClass()) {
                 MainApp.cc.setGpsLat(lat);
                 MainApp.cc.setGpsLng(lang);

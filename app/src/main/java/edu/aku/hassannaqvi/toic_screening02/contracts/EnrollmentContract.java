@@ -399,7 +399,7 @@ public class EnrollmentContract {
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APP_VERSION = "appversion";
 
-        public static String _URL = "enrollment_tcv.php";
+        public static String _URL = "enrollment.php";
     }
 
 }
