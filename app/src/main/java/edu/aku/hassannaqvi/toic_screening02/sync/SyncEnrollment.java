@@ -62,16 +62,12 @@ public class SyncEnrollment extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... params) {
-        try {
-            String url;
+        String url;
 
-            url = MainApp._HOST_URL + EnrollChildTable._URL;
+        url = MainApp._HOST_URL + EnrollChildTable._URL;
 
-            Log.d(TAG, "doInBackground: URL " + url);
-            return downloadUrl(url);
-        } catch (IOException e) {
-            return "Unable to upload data. Server may be down.";
-        }
+        Log.d(TAG, "doInBackground: URL " + url);
+        return downloadUrl(url);
     }
 
     private String downloadUrl(String myurl) {
