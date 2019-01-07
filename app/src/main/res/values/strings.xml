@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name"> Typhoid Outbreak Investigation and Control 2019 </string>
+    <!--<string name="app_name"> Typhoid Outbreak Investigation and Control 2019 </string>-->
+    <string name="app_name"> TOIC 2019 </string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -111,7 +112,7 @@
 
     <string name="RCA"> ڈیموگرافک ڈیٹا </string>
     <string name="toicc01"> انرولمنٹ آئی ڈی: </string>
-    <string name="toicc02"> بچے کا نام </string>
+    <string name="toicc02"> گھر انہ نمبر </string>
     <string name="toicc03"> والد کا نام </string>
     <string name="toicc04"> ماں کا نام </string>
     <string name="toicc05"> بچے کی جنس کیا ہے؟ </string>

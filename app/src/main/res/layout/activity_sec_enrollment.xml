@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="edu.aku.hassannaqvi.toic_screening.ui.EnrollmentActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="edu.aku.hassannaqvi.toic_screening02.ui.EnrollmentActivity">
 
     <data>
 
@@ -10,7 +10,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.toic_screening.ui.EnrollmentActivity" />
+            type="edu.aku.hassannaqvi.toic_screening02.ui.EnrollmentActivity" />
     </data>
 
     <ScrollView
@@ -65,63 +65,83 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:enabled="false"
-                android:hint="@string/toicc01" />
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+                android:hint="@string/toicc01"
+                android:maxLength="12" />
+
+            <!--01-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/toicc02"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/toicc02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+                android:hint="@string/toicc02"
+                android:maxLength="12" />
 
             <!--&lt;!&ndash;02&ndash;&gt;-->
             <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:text="@string/toicc02"-->
-                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                <!--android:textColor="@android:color/white" />-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="@string/toicc02"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:textColor="@android:color/white" />-->
 
             <!--<EditText-->
-                <!--android:id="@+id/toicc02"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="1dp"-->
-                <!--android:enabled="false"-->
-                <!--android:hint="@string/toicc02" />-->
+            <!--android:id="@+id/toicc02"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:enabled="false"-->
+            <!--android:hint="@string/toicc02" />-->
 
             <!--&lt;!&ndash;03&ndash;&gt;-->
             <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:text="@string/toicc03"-->
-                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                <!--android:textColor="@android:color/white" />-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="@string/toicc03"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:textColor="@android:color/white" />-->
 
             <!--<EditText-->
-                <!--android:id="@+id/toicc03"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="1dp"-->
-                <!--android:enabled="false"-->
-                <!--android:hint="@string/toicc03" />-->
+            <!--android:id="@+id/toicc03"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:enabled="false"-->
+            <!--android:hint="@string/toicc03" />-->
 
             <!--&lt;!&ndash;04&ndash;&gt;-->
             <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:text="@string/toicc04"-->
-                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                <!--android:textColor="@android:color/white" />-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="@string/toicc04"-->
+            <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
+            <!--android:textColor="@android:color/white" />-->
 
             <!--<EditText-->
-                <!--android:id="@+id/toicc04"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="1dp"-->
-                <!--android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"-->
-                <!--android:hint="@string/toicc04"-->
-                <!--android:maxLength="25" />-->
+            <!--android:id="@+id/toicc04"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"-->
+            <!--android:hint="@string/toicc04"-->
+            <!--android:maxLength="25" />-->
 
             <!--05-->
             <TextView
@@ -198,11 +218,11 @@
                 android:layout_marginTop="1dp"
                 android:focusable="true"
                 android:hint="@string/toicc06a"
+                android:padding="15dp"
                 android:text='@{toicc06a.checked ? toicc06aa.getText.toString : ""}'
                 android:textColor="@android:color/black"
                 android:visibility="@{toicc06a.checked ? View.VISIBLE : View.GONE}"
                 app:dateFormat="dd-MM-yyyy"
-                android:padding="15dp"
                 app:minDate="01/01/1917" />
 
             <EditText
@@ -216,90 +236,90 @@
                 android:maxLength="3"
                 android:text='@{toicc06b.checked ? toicc06bb.getText.toString : ""}'
                 android:visibility="@{toicc06b.checked ? View.VISIBLE : View.GONE}" />
-<!--
+            <!--
 
-            &lt;!&ndash;07&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc07"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                        &lt;!&ndash;07&ndash;&gt;
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/toicc07"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
-            <EditText
-                android:id="@+id/toicc07"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="0123456789"
-                android:inputType="number"
-                android:hint="@string/toicc07"
-                android:maxLength="11" />
+                        <EditText
+                            android:id="@+id/toicc07"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:digits="0123456789"
+                            android:inputType="number"
+                            android:hint="@string/toicc07"
+                            android:maxLength="11" />
 
-            &lt;!&ndash;08&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc08"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                        &lt;!&ndash;08&ndash;&gt;
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/toicc08"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
-            <EditText
-                android:id="@+id/toicc08"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="0123456789"
-                android:inputType="number"
-                android:hint="@string/toicc08"
-                android:maxLength="11" />
+                        <EditText
+                            android:id="@+id/toicc08"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:digits="0123456789"
+                            android:inputType="number"
+                            android:hint="@string/toicc08"
+                            android:maxLength="11" />
 
-            &lt;!&ndash;09&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc09"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                        &lt;!&ndash;09&ndash;&gt;
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/toicc09"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
-            <EditText
-                android:id="@+id/toicc09"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="0123456789"
-                android:inputType="number"
-                android:hint="@string/toicc09"
-                android:maxLength="11" />
+                        <EditText
+                            android:id="@+id/toicc09"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:digits="0123456789"
+                            android:inputType="number"
+                            android:hint="@string/toicc09"
+                            android:maxLength="11" />
 
-            &lt;!&ndash;10&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc10"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                        &lt;!&ndash;10&ndash;&gt;
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/toicc10"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
-            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                android:id="@+id/toicc10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:focusable="true"
-                android:hint="@string/toicc10"
-                android:textColor="@android:color/black"
-                app:dateFormat="dd-MM-yyyy"
-                android:padding="15dp"
-                app:minDate="01/01/1917" />
--->
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                            android:id="@+id/toicc10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:focusable="true"
+                            android:hint="@string/toicc10"
+                            android:textColor="@android:color/black"
+                            app:dateFormat="dd-MM-yyyy"
+                            android:padding="15dp"
+                            app:minDate="01/01/1917" />
+            -->
 
             <!--11-->
             <TextView
@@ -313,94 +333,92 @@
 
             <EditText
                 android:id="@+id/toicc11"
-                android:enabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:digits="0123456789"
-                android:inputType="number"
                 android:hint="@string/toicc11"
+                android:inputType="number"
                 android:maxLength="8" />
-<!--
+            <!--
 
-            &lt;!&ndash;12&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc12"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                        &lt;!&ndash;12&ndash;&gt;
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/toicc12"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
-            <EditText
-                android:id="@+id/toicc12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                android:hint="@string/toicc12"
-                android:maxLength="25" />
+                        <EditText
+                            android:id="@+id/toicc12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
+                            android:hint="@string/toicc12"
+                            android:maxLength="25" />
 
-            &lt;!&ndash;13&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc13"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                        &lt;!&ndash;13&ndash;&gt;
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/toicc13"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
-            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                android:id="@+id/toicc13"
-                android:enabled="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:focusable="true"
-                android:hint="@string/toicc13"
-                android:textColor="@android:color/black"
-                app:dateFormat="dd-MM-yyyy"
-                android:padding="15dp"
-                app:minDate="01/01/1917" />
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                            android:id="@+id/toicc13"
+                            android:enabled="false"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:focusable="true"
+                            android:hint="@string/toicc13"
+                            android:textColor="@android:color/black"
+                            app:dateFormat="dd-MM-yyyy"
+                            android:padding="15dp"
+                            app:minDate="01/01/1917" />
 
-            &lt;!&ndash;14&ndash;&gt;
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/toicc14"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@android:color/white" />
+                        &lt;!&ndash;14&ndash;&gt;
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/toicc14"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white" />
 
-            <RadioGroup
-                android:id="@+id/toicc14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                        <RadioGroup
+                            android:id="@+id/toicc14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/toicc14a"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/yes" />
+                            <RadioButton
+                                android:id="@+id/toicc14a"
+                                style="@style/radiobutton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:layout_weight="1"
+                                android:text="@string/yes" />
 
-                <RadioButton
-                    android:id="@+id/toicc14b"
-                    style="@style/radiobutton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:text="@string/no" />
+                            <RadioButton
+                                android:id="@+id/toicc14b"
+                                style="@style/radiobutton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="1dp"
+                                android:layout_weight="1"
+                                android:text="@string/no" />
 
-            </RadioGroup>
--->
+                        </RadioGroup>
+            -->
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
             <LinearLayout

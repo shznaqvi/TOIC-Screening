@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.toic_screening.ui.SectionInfoActivity" />
+            type="edu.aku.hassannaqvi.toic_screening02.ui.SectionInfoActivity" />
 
     </data>
 

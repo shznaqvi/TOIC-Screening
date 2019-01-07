@@ -18,7 +18,7 @@ android {
         versionProps.store(versionPropsFile.newWriter(), null)
 
         defaultConfig {
-            applicationId "edu.aku.hassannaqvi.toic_screening"
+            applicationId "edu.aku.hassannaqvi.toic_screening02"
             minSdkVersion 22
             targetSdkVersion 22
 
