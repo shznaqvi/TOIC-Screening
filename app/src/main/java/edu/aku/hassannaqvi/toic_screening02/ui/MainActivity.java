@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.spAreas)
     Spinner spAreas;
 
-    @BindView(R.id.testing)
-    TextView testing;
+   /* @BindView(R.id.testing)
+    TextView testing;*/
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;

@@ -47,7 +47,7 @@
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/testing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                 android:text="ONLY FOR TESTING"
                 android:textColor="@color/dullWhile"
                 android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textStyle="bold" />-->
 
             <TextView
                 android:layout_width="match_parent"
