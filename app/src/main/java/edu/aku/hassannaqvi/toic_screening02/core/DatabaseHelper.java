@@ -886,8 +886,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
 
-        String orderBy =
-                EnrollChildTable._ID + " ASC";
+        String orderBy = EnrollChildTable._ID + " ASC";
 
         Collection<EnrollmentContract> allFC = new ArrayList<EnrollmentContract>();
         try {

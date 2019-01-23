@@ -65,8 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
                 android:hint="@string/toicc01"
+                android:inputType="number"
                 android:maxLength="12" />
 
             <TextView
@@ -105,7 +105,8 @@
                 android:layout_marginBottom="1dp"
                 android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
                 android:hint="@string/toicc02"
-                android:maxLength="12" />
+                android:inputType="textCapCharacters"
+                android:maxLength="6" />
 
             <!--&lt;!&ndash;02&ndash;&gt;-->
             <!--<TextView-->

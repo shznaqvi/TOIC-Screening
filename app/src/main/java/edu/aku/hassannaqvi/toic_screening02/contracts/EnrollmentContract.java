@@ -112,7 +112,7 @@ public class EnrollmentContract {
         json.put(EnrollmentContract.EnrollChildTable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(EnrollmentContract.EnrollChildTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(EnrollmentContract.EnrollChildTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-//        json.put(EnrollmentContract.EnrollChildTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
+        json.put(EnrollmentContract.EnrollChildTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         //json.put(FormsContract.EnrollChildTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
         //json.put(FormsContract.EnrollChildTable.COLUMN_FORMTYPE, this.formtype == null ? JSONObject.NULL : this.formtype);
 
@@ -137,10 +137,10 @@ public class EnrollmentContract {
             json.put(FormsContract.EnrollChildTable.COLUMN_SD, this.sD.equals("") ? JSONObject.NULL : new JSONObject(this.sD));
         }*/
 
-/*        json.put(EnrollChildTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
+        json.put(EnrollChildTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
         json.put(EnrollChildTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
         json.put(EnrollChildTable.COLUMN_GPSDATE, this.gpsDT == null ? JSONObject.NULL : this.gpsDT);
-        json.put(EnrollChildTable.COLUMN_GPSACC, this.gpsAcc == null ? JSONObject.NULL : this.gpsAcc);*/
+        json.put(EnrollChildTable.COLUMN_GPSACC, this.gpsAcc == null ? JSONObject.NULL : this.gpsAcc);
         json.put(EnrollmentContract.EnrollChildTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(EnrollmentContract.EnrollChildTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(EnrollmentContract.EnrollChildTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);

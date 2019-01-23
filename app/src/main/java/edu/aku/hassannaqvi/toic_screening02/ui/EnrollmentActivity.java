@@ -121,6 +121,9 @@ public class EnrollmentActivity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, binding.toicc02, getString(R.string.toicc02))) {
             return false;
         }
+        if (!validatorClass.PatternTextBox(this, binding.toicc02, getString(R.string.toicc02), "[0-9]{4,4}-[^0-9]{1,1}", "XXXX.X")) {
+            return false;
+        }
 
         if (!validatorClass.EmptyTextBox(this, binding.hhcluster, getString(R.string.hhcluster))) {
             return false;
