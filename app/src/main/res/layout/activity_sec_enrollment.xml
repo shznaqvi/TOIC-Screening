@@ -56,6 +56,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
+                android:text="@string/toicc00"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
+
+            <EditText
+                android:id="@+id/toicc00"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:hint="@string/toicc00"
+                android:inputType="number"
+                android:maxLength="12" />
+
+            <!--01-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
                 android:text="@string/toicc01"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
@@ -98,15 +117,17 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
-            <EditText
+            <com.santalu.widget.MaskEditText
                 android:id="@+id/toicc02"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
-                android:hint="@string/toicc02"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                android:hint="####-#"
                 android:inputType="textCapCharacters"
-                android:maxLength="6" />
+                android:layoutDirection="ltr"
+                android:maxLength="6"
+                app:met_mask="####-#" />
 
             <!--&lt;!&ndash;02&ndash;&gt;-->
             <!--<TextView-->

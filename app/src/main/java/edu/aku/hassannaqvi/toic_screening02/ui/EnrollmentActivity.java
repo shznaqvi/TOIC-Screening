@@ -113,19 +113,22 @@ public class EnrollmentActivity extends AppCompatActivity {
 
     public Boolean formValidation() {
 
+//        toicc00
+        if (!validatorClass.EmptyTextBox(this, binding.toicc00, getString(R.string.toicc00))) {
+            return false;
+        }
 //        toicc01
         if (!validatorClass.EmptyTextBox(this, binding.toicc01, getString(R.string.toicc01))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, binding.hhcluster, getString(R.string.hhcluster))) {
             return false;
         }
 //        toicc02
         if (!validatorClass.EmptyTextBox(this, binding.toicc02, getString(R.string.toicc02))) {
             return false;
         }
-        if (!validatorClass.PatternTextBox(this, binding.toicc02, getString(R.string.toicc02), "[0-9]{4,4}-[^0-9]{1,1}", "XXXX.X")) {
-            return false;
-        }
-
-        if (!validatorClass.EmptyTextBox(this, binding.hhcluster, getString(R.string.hhcluster))) {
+        if (!validatorClass.PatternTextBox(this, binding.toicc02, getString(R.string.toicc02), "[0-9]{4,4}-[^0-9]{1,1}", "XXXX-X")) {
             return false;
         }
 /*//        toicc03
@@ -147,13 +150,17 @@ public class EnrollmentActivity extends AppCompatActivity {
 
         if (binding.toicc06a.isChecked()) {
 //        toicc06a
-            return validatorClass.EmptyTextBox(this, binding.toicc06aa, getString(R.string.toicc06a));
+            if (!validatorClass.EmptyTextBox(this, binding.toicc06aa, getString(R.string.toicc06a))) {
+                return false;
+            }
         } else {
 //        toicc06b
             if (!validatorClass.EmptyTextBox(this, binding.toicc06bb, getString(R.string.toicc06b))) {
                 return false;
             }
-            return validatorClass.RangeTextBox(this, binding.toicc06bb, 6, 119, getString(R.string.toicc06b), " months");
+            if (!validatorClass.RangeTextBox(this, binding.toicc06bb, 6, 119, getString(R.string.toicc06b), " months")) {
+                return false;
+            }
         }
 
 /*//        toicc07
@@ -191,23 +198,9 @@ public class EnrollmentActivity extends AppCompatActivity {
 //        toicc10
         if (!validatorClass.EmptyTextBox(this, binding.toicc10, getString(R.string.toicc10))) {
             return false;
-        }
+        }*/
 //        toicc11
-        *//*if (!validatorClass.EmptyTextBox(this, binding.toicc11, getString(R.string.toicc11))) {
-            return false;
-        }*//*
-//        toicc12
-        if (!validatorClass.EmptyTextBox(this, binding.toicc12, getString(R.string.toicc12))) {
-            return false;
-        }
-//        toicc13
-        *//*if (!validatorClass.EmptyTextBox(this, binding.toicc13, getString(R.string.toicc13))) {
-            return false;
-        }*//*
-
-//        toicc14
-        return validatorClass.EmptyRadioButton(this, binding.toicc14, binding.toicc14b, getString(R.string.toicc14));
-   */
+        return validatorClass.EmptyTextBox(this, binding.toicc11, getString(R.string.toicc11));
 
     }
 
@@ -278,6 +271,7 @@ public class EnrollmentActivity extends AppCompatActivity {
         sc.put("toiccHHno", MainApp.identificationData.getHhno());*/
 
 //        sc.put("toicc01Serial", data.getSerialNo());
+        sc.put("toiccSlipNo", binding.toicc00.getText().toString());
         sc.put("toicc01", binding.toicc01.getText().toString());
         sc.put("toicc02", binding.toicc02.getText().toString());
         sc.put("hhcluster", binding.hhcluster.getText().toString());

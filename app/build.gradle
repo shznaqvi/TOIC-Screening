@@ -52,6 +52,8 @@ dependencies {
     implementation 'com.github.BlackBoxVision:datetimepicker-edittext:v0.3.3'
     implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
 
+    implementation 'com.github.santalu:mask-edittext:1.0.9'
+
     testImplementation 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
