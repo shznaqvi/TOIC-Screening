@@ -1,6 +1,6 @@
 <resources>
     <!--<string name="app_name"> Typhoid Outbreak Investigation and Control 2019 </string>-->
-    <string name="app_name"> TOIC 2019 </string>
+    <string name="app_name"> TYBAR TCV </string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -37,99 +37,33 @@
     <string name="secLLabel">L: ھٿ ڌوئڻ</string>
     <string name="secMLabel">M: WASH (Spot Check) </string>
 
+    <string name="istatus"> OUTCOME OF INTERVIEW </string>
+    <string name="istatusa"> مکمل </string>
+    <string name="istatusb"> نا مکمل </string>
+
 
     <!-- Strings that are fixed for all apps -->
     <string name="title_activity_splashscreen">SplashscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="male"> مرد</string>
-    <string name="female"> عورت </string>
-    <string name="yes"> ہاں </string>
-    <string name="no"> نہیں </string>
-    <string name="dkn"> خبر نه آھي </string>
-    <string name="na"> لاڳو نه ٿو ٿئي </string>
-    <string name="day"> ڏينهن </string>
-    <string name="month"> مهينو </string>
-    <string name="year"> سال </string>
-    <string name="hour"> ڪلاڪ </string>
-    <string name="min"> منٽ </string>
-    <string name="other"> ٻيو ڪو وضاحت ڪريو. </string>
-    <string name="name">ٻار جو نالو</string>
-    <string name="none">ڪجهه به نه</string>
 
-    <!-- Strings related to Sections Below -->
-    <string name="RA">  </string>
-    <string name="uc"> یوسی کا نام </string>
-    <string name="town"> ٹاون/تحیصل کا نام </string>
-    <string name="hhteam"> ٹیم نمبر </string>
-    <string name="hhcluster"> کلسٹر نمبر </string>
-    <string name="hhno"> گھر نمبر </string>
-    <string name="wname"> عورت جو نالو </string>
-    <string name="age"> عورت جي عمر (سالن ۾) </string>
-    <string name="hname"> مڙس جو نالو </string>
-    <string name="hhname"> گهر جي سربراه جو نالو </string>
-    <string name="ra06"> تعلقي جو نالو (ڪوڊ) </string>
-    <string name="ra07"> ڳوٺ جو نالو/ڪوڊ </string>
-    <string name="lhvname"> ايل ايڇ وي جو نالو </string>
-    <string name="pwid"> عورت جي آءِ ڊي </string>
-    <string name="FormDate"> انٽرويو جي تاريخ </string>
-    <string name="ra10"> ٽرائيميسٽر / حمل جا مهينا </string>
-    <string name="ra0901"> پهريون </string>
-    <string name="ra0902"> ٻيون </string>
-    <string name="ra0903"> ٽيون </string>
-    <string name="ra11"> گذريل حملن جو تعداد </string>
-    <string name="istatus1"> OUTCOME OF CHILD </string>
-    <string name="istatus"> OUTCOME OF INTERVIEW </string>
-    <string name="istatusa"> مکمل </string>
-    <string name="istatusb"> نا مکمل </string>
-    <string name="istatusc"> وقتي طور غير موجود آهي </string>
-    <string name="istatusd"> مري چڪي آهي </string>
-    <string name="istatuse"> هميشه لاءِ لڏي ويا </string>
-    <string name="istatusf"> وقتي طور انڪار ڪيو </string>
-    <string name="istatusg"> رضامند نه هجڻ </string>
-    <string name="istatush"> دورو نه ٿي سگهي </string>
-    <string name="istatusi"> سبب ڄاڻايو </string>
+    <!--School Listing-->
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="other">Other</string>
+    <string name="dkn">Don\'t Know</string>
 
-    <string name="RB"> CHILD ASSESSMENT </string>
-    <string name="toica01"> ویکسین سلپ موجود ہے: </string>
-    <string name="toica02"> ٹیم نمبر </string>
-    <string name="toica03"> مرکز صحت کا نام </string>
-    <string name="toica04"> مکمل پتہ محلہ اور گھرانمبر </string>
-    <string name="toica05"> گھرانے کے سربراہ کا رابطہ نمبر </string>
-    <string name="toica06"> کیا آپ قاسم آباد اور لطیف آباد کے مستقل رہائشی ہے؟ </string>
-    <string name="toica07"> کیا جواب دہندگان کا 2سال تک ہجرت کا کوئی منصوبہ ہے؟ </string>
-    <string name="toica08"> کیا والدین ویکسین کی رضامندی دینے کےلیے تیار ہیں۔ </string>
-    <string name="toica09"> آپ اپنے ساتھ کتنے بچے ویکسین لگوانے لائیں ہیں ؟ </string>
-    <string name="toica10">  </string>
-    <string name="toicb01"> بچے کا نام </string>
-    <string name="toicb02"> والد کانام </string>
-    <string name="toicb03"> عمر 6ماہ - 10سال: </string>
-    <string name="toicb04"> کیا بچےکو کسی بھی قسم کی دوا سے الرجی ہے؟ </string>
-    <string name="toicb05"> کیا بچے نے پچھلے 24گھنٹوں میں انفیکشن یا بیماری Pneumonia acute diarrhea, and seizures کے لیےکسی قسم کی کوئی اینٹی بائیوٹک اورسٹیرائڈ استعمال کی ہے؟ </string>
-    <string name="toicb06"> کیا بچے  نے ۳سال کے دوران ٹائیفائیڈکے خلاف ٹیکے لگاوئے؟) ویکسینشن کارڈ چک کریں۔) </string>
-    <string name="toicb07"> کیا انفیکشن کی کوئی علامات موجود ہے بشمول، جسم میں درد، 100 سے زیادہ بخار جسم پر  چھالے،بے چینی،الٹی،جسم پر سرخ بادہ رشیز،پیٹ پر لال دھبے ،جٹکے ،سانس میں تکلیف،پچھلے تین دن سے پتلے پاخانے۔ </string>
-    <string name="toicb08"> خاندان AEFI کے فالواپ کےلیےخواہش مند ہیں </string>
-
-    <string name="RCA"> ڈیموگرافک ڈیٹا </string>
-  <string name="toicc00"> ویکسین سلپ: </string>
-    <string name="toicc01"> انرولمنٹ آئی ڈی: </string>
-    <string name="toicc02"> گھر انہ نمبر </string>
-    <string name="toicc03"> والد کا نام </string>
-    <string name="toicc04"> ماں کا نام </string>
-    <string name="toicc05"> بچے کی جنس کیا ہے؟ </string>
-    <string name="toicc05a"> لڑکا </string>
-    <string name="toicc05b"> لڑکی </string>
-    <string name="toicc06"> بچے کی عمر </string>
-    <string name="toicc06a"> بچے کی تاریخ پیدائش </string>
-    <string name="toicc06b"> عمر(مہینوں میں) </string>
-    <string name="toicc07"> والد کا موبائل نمبر: </string>
-    <string name="toicc08"> ماں کا موبائل نمبر </string>
-    <string name="toicc09"> متبادل رابطہ شخص/نام/موباہل نمبر </string>
-    <string name="RCB"> Tybar ویکسینشن کی تفصیلات </string>
-    <string name="toicc10"> ویکسین لگانے کی تاریخ </string>
-    <string name="toicc11"> ویکسین کی بوتل کا شناختی نمبر </string>
-    <string name="toicc12"> ویکسین جسم کے کس حصہ پر لگائی گئی </string>
-    <string name="toicc13"> ویکسین میعاد کی تاریخ: </string>
-    <string name="toicc14"> Adverse event کا کوئی فوری علامت کا ظاہر ہونا؟ </string>
+    <string name="sec_slisting">SCHOOL LISTING</string>
+    <string name="tcvsl01"> School Name </string>
+    <string name="tcvsl02"> Type of School </string>
+    <string name="tcvsl02a"> Government </string>
+    <string name="tcvsl02b"> Private </string>
+    <string name="tcvsl02c"> Madarasa </string>
+    <string name="tcvsl03"> Union Council </string>
+    <string name="tcvsl04"> Mahulla/Area </string>
+    <string name="tcvsl05"> Complete Address including Mohalla and House No </string>
+    <string name="tcvsl06"> School Administration ready to give consent for Mass Immunization campaign </string>
+    <string name="tcvsl07"> Name of School Administrator </string>
+    <string name="tcvsl08"> Contact No </string>
 
 </resources>

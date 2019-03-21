@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.aku.hassannaqvi.toic_screening02.ui.MainActivity">
+    tools:context="edu.aku.hassannaqvi.typbar_tcv.ui.MainActivity">
 
     <data>
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.toic_screening02.ui.MainActivity" />
+            type="edu.aku.hassannaqvi.typbar_tcv.ui.MainActivity" />
     </data>
 
     <ScrollView
@@ -36,7 +36,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
-            <!--<TextView
+            <TextView
                 android:id="@+id/testing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 android:text="ONLY FOR TESTING"
                 android:textColor="@color/dullWhile"
                 android:textSize="32sp"
-                android:textStyle="bold" />-->
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lblMainMenu"
@@ -113,7 +113,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="16dp"
                 android:onClick="@{() -> callback.openForm()}"
-                android:text="OPEN FORM" />
+                android:text="SCHOOL LISTING FORM" />
 
             <Button
                 android:id="@+id/syncServer"

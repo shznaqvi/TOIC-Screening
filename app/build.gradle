@@ -18,9 +18,9 @@ android {
         versionProps.store(versionPropsFile.newWriter(), null)
 
         defaultConfig {
-            applicationId "edu.aku.hassannaqvi.toic_screening02"
+            applicationId "edu.aku.hassannaqvi.tybar_tcv"
             minSdkVersion 22
-            targetSdkVersion 22
+            targetSdkVersion 28
 
             versionCode code
             versionName "2.1"
