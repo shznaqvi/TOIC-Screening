@@ -4,16 +4,24 @@ import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionSListingBinding;
@@ -23,6 +31,7 @@ public class SectionSListingActivity extends Activity {
 
     ActivitySectionSListingBinding bi;
     String deviceID;
+    Map<String, SchoolContract> schoolMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +40,51 @@ public class SectionSListingActivity extends Activity {
         bi.setCallback(this);
 
         setContentUI();
+        setListeners();
     }
 
     private void setContentUI() {
         this.setTitle(R.string.sec_slisting);
         deviceID = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+
+        filledTypeSpinner();
+    }
+
+    private void filledTypeSpinner() {
+        String[] schTypes = {"....", "Government Boys Secondary School", "Government Girls Secondary School",
+                "Government Boys Primary School", "Government Girls Primary School", "Private"};
+        bi.tcvsl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(schTypes)));
+    }
+
+    private void setListeners() {
+
+        final DatabaseHelper db = new DatabaseHelper(this);
+
+        bi.tcvsl00.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                ArrayList<String> schNames = new ArrayList<>();
+                schNames.add("....");
+
+                if (i != 0) {
+                    ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvsl00.getSelectedItemPosition()));
+                    schoolMap = new HashMap<>();
+
+                    for (SchoolContract school : schoolContract) {
+                        schoolMap.put(school.getSch_name(), school);
+                        schNames.add(school.getSch_name());
+                    }
+                }
+
+                bi.tcvsl01.setAdapter(new ArrayAdapter<>(SectionSListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
     }
 

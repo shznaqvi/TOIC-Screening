@@ -64,9 +64,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.TehsilsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
-import edu.aku.hassannaqvi.typbar_tcv.get.GetTehsils;
-import edu.aku.hassannaqvi.typbar_tcv.get.GetUCs;
-import edu.aku.hassannaqvi.typbar_tcv.get.GetUsers;
+import edu.aku.hassannaqvi.typbar_tcv.get.GetAllData;
 
 import static java.lang.Thread.sleep;
 
@@ -583,12 +581,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                 @Override
                 public void run() {
-                    Toast.makeText(LoginActivity.this, "Sync Tehsil's", Toast.LENGTH_LONG).show();
-                    new GetTehsils(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync UCs", Toast.LENGTH_LONG).show();
-                    new GetUCs(mContext).execute();
-                    Toast.makeText(LoginActivity.this, "Sync User", Toast.LENGTH_LONG).show();
-                    new GetUsers(mContext).execute();
+                    Toast.makeText(mContext, "Sync Users", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "User").execute();
+                    Toast.makeText(mContext, "Sync Schools", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "School").execute();
                 }
             });
 

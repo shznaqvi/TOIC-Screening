@@ -162,7 +162,7 @@ public class MainApp extends Application {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
         alertDialogBuilder
-                .setMessage("Do you want to Exit??")
+                .setMessage("Do you want to End Activity??")
                 .setCancelable(false)
                 .setPositiveButton("Yes",
                         new DialogInterface.OnClickListener() {

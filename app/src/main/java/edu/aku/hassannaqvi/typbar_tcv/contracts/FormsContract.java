@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class FormsContract {
 
-    private final String projectName = "DMU-TOICSCREENING";
+    private final String projectName = "TYBAR_TCV";
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";
@@ -28,7 +28,6 @@ public class FormsContract {
     private String sC = ""; //
     private String sD = "";
 
-
     private String gpsLat = "";
     private String gpsLng = "";
     private String gpsDT = "";
@@ -41,7 +40,6 @@ public class FormsContract {
 
     public FormsContract() {
     }
-
 
     public FormsContract Sync(JSONObject jsonObject) throws JSONException {
         this._ID = jsonObject.getString(FormsTable._ID);

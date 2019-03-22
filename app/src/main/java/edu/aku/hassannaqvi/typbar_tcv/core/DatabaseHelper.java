@@ -25,7 +25,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.EnrollmentContract.EnrollChildTa
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract.singleSchool;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract.SchoolTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.TehsilsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.TehsilsContract.TehsilsTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
@@ -39,16 +39,19 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.UsersContract.UsersTable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    public static final String DATABASE_NAME = "typbar_tcv.db";
+    public static final String DB_NAME = DATABASE_NAME.replace(".", "_copy.");
+    public static final String PROJECT_NAME = "DMU-TYPBAR-TCV";
+    private static final int DATABASE_VERSION = 1;
+    private static final String SQL_DELETE_USERS = "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
+    private static final String SQL_DELETE_FORMS = "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
+
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersContract.UsersTable.TABLE_NAME + "("
             + UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersTable.ROW_USERNAME + " TEXT,"
             + UsersTable.ROW_PASSWORD + " TEXT,"
             + UsersTable.ROW_TEAM + " TEXT"
             + " );";
-    public static final String DATABASE_NAME = "typbar_tcv.db";
-    public static final String DB_NAME = DATABASE_NAME.replace(".", "_copy.");
-    public static final String PROJECT_NAME = "DMU-TYPBAR-TCV";
-    private static final int DATABASE_VERSION = 1;
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
             + FormsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -73,8 +76,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SYNCED + " TEXT," +
             FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
-
-
     private static final String SQL_CREATE_CHILD_FORMS = "CREATE TABLE "
             + FormsChildTable.TABLE_NAME + "("
             + FormsChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -95,8 +96,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsChildTable.COLUMN_SYNCED + " TEXT," +
             FormsChildTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
-
-
     private static final String SQL_CREATE_ENROLLMENT_FORMS = "CREATE TABLE "
             + EnrollChildTable.TABLE_NAME + "("
             + EnrollChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -117,34 +116,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             EnrollChildTable.COLUMN_SYNCED + " TEXT," +
             EnrollChildTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
-
-
-    private static final String SQL_DELETE_USERS =
-            "DROP TABLE IF EXISTS " + UsersContract.UsersTable.TABLE_NAME;
-    private static final String SQL_DELETE_FORMS =
-            "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
-
-    private static final String SQL_DELETE_CHILD_FORMS =
-            "DROP TABLE IF EXISTS " + FormsChildTable.TABLE_NAME;
-
-    private static final String SQL_DELETE_ENROLLMENT_FORMS =
-            "DROP TABLE IF EXISTS " + EnrollChildTable.TABLE_NAME;
-
-
-    private static final String SQL_DELETE_SINGLE = "DROP TABLE IF EXISTS " + singleSchool.TABLE_NAME;
-
-    final String SQL_CREATE_SERIAL = "CREATE TABLE " + singleSchool.TABLE_NAME + " (" +
-            singleSchool._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            singleSchool.COLUMN_DEVICE_ID + " TEXT, " +
-            singleSchool.COLUMN_DATE + " TEXT, " +
-            singleSchool.COLUMN_SERIAL_NO + " TEXT, " +
-            singleSchool.COLUMN_SYNCED + " TEXT, " +
-            singleSchool.COLUMN_SYNCED_DATE + " TEXT " +
-            ");";
-
-    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + TehsilsTable.TABLE_NAME;
-    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
-
+    private static final String SQL_DELETE_CHILD_FORMS = "DROP TABLE IF EXISTS " + FormsChildTable.TABLE_NAME;
     final String SQL_CREATE_TALUKA = "CREATE TABLE " + TehsilsTable.TABLE_NAME + " (" +
             TehsilsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             TehsilsTable.COLUMN_TALUKA_CODE + " TEXT, " +
@@ -156,10 +128,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             UCsTable.COLUMN_UCS_NAME + " TEXT, " +
             UCsTable.COLUMN_TALUKA_CODE + " TEXT " +
             ");";
-
+    private static final String SQL_DELETE_ENROLLMENT_FORMS = "DROP TABLE IF EXISTS " + EnrollChildTable.TABLE_NAME;
+    private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + TehsilsTable.TABLE_NAME;
+    private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
+    private static final String SQL_DELETE_SCHOOL = "DROP TABLE IF EXISTS " + SchoolTable.TABLE_NAME;
+    final String SQL_CREATE_SCHOOL = "CREATE TABLE " + SchoolTable.TABLE_NAME + " (" +
+            SchoolTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            SchoolTable.COLUMN_SCH_CODE + " TEXT," +
+            SchoolTable.COLUMN_SCH_NAME + " TEXT," +
+            SchoolTable.COLUMN_SCH_ADD + " TEXT," +
+//            SchoolTable.COLUMN_SCH_GENDER + " TEXT," +
+            SchoolTable.COLUMN_SCH_TYPE + " TEXT" +
+            ");";
     private final String TAG = "DatabaseHelper";
-
-
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
 
 
@@ -169,21 +150,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
-        db.execSQL(SQL_CREATE_SERIAL);
+        db.execSQL(SQL_CREATE_SCHOOL);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
-        db.execSQL(SQL_DELETE_CHILD_FORMS);
-        db.execSQL(SQL_DELETE_ENROLLMENT_FORMS);
-        db.execSQL(SQL_DELETE_SINGLE);
-        db.execSQL(SQL_DELETE_TALUKAS);
-        db.execSQL(SQL_DELETE_UCS);
+        db.execSQL(SQL_DELETE_SCHOOL);
     }
 
     public void syncTehsils(JSONArray Talukaslist) {
@@ -237,22 +213,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void syncSchools(JSONArray Schoolslist) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(singleSchool.TABLE_NAME, null, null);
+        db.delete(SchoolTable.TABLE_NAME, null, null);
         try {
             JSONArray jsonArray = Schoolslist;
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
 
-                SchoolContract Vc = new SchoolContract();
-                Vc.sync(jsonObjectCC);
+                SchoolContract sch = new SchoolContract();
+                sch.sync(jsonObjectCC);
 
                 ContentValues values = new ContentValues();
 
-                values.put(singleSchool.COLUMN_DATE, Vc.getdt());
-                values.put(singleSchool.COLUMN_DEVICE_ID, Vc.getDeviceid());
-                values.put(singleSchool.COLUMN_SERIAL_NO, Vc.getSerialno());
+                values.put(SchoolTable.COLUMN_SCH_CODE, sch.getSch_code());
+                values.put(SchoolTable.COLUMN_SCH_NAME, sch.getSch_name());
+                values.put(SchoolTable.COLUMN_SCH_ADD, sch.getSch_add());
+//                values.put(SchoolTable.COLUMN_SCH_GENDER, sch.getSch_gender());
+                values.put(SchoolTable.COLUMN_SCH_TYPE, sch.getSch_type());
 
-                db.insert(singleSchool.TABLE_NAME, null, values);
+                db.insert(SchoolTable.TABLE_NAME, null, values);
             }
         } catch (Exception e) {
         } finally {
@@ -304,29 +282,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
-    public SchoolContract getSerialWRTDate(String date) {
+    public ArrayList<SchoolContract> getSchoolWRTType(String type) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                singleSchool._ID,
-                singleSchool.COLUMN_DEVICE_ID,
-                singleSchool.COLUMN_DATE,
-                singleSchool.COLUMN_SERIAL_NO,
+                SchoolTable._ID,
+                SchoolTable.COLUMN_SCH_CODE,
+                SchoolTable.COLUMN_SCH_NAME,
+                SchoolTable.COLUMN_SCH_ADD,
+//                SchoolTable.COLUMN_SCH_GENDER,
+                SchoolTable.COLUMN_SCH_TYPE,
+
         };
 
-        String whereClause = singleSchool.COLUMN_DATE + " =?";
-        String[] whereArgs = new String[]{date};
+        String whereClause = SchoolTable.COLUMN_SCH_TYPE + " =?";
+        String[] whereArgs = {type};
         String groupBy = null;
         String having = null;
 
-        String orderBy =
-                singleSchool._ID + " ASC";
+        String orderBy = SchoolTable.COLUMN_SCH_NAME + " ASC";
 
-        SchoolContract allDC = new SchoolContract();
+        ArrayList<SchoolContract> allDC = new ArrayList<>();
         try {
             c = db.query(
-                    singleSchool.TABLE_NAME,  // The table to query
+                    SchoolTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -335,7 +315,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allDC.hydrate(c);
+                allDC.add(new SchoolContract().hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -517,121 +497,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-
-    public Long addChildForm(ChildContract fc) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-// Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(FormsChildTable.COLUMN_PROJECT_NAME, fc.getProjectName());
-        values.put(FormsChildTable.COLUMN_UID, fc.getUID());
-        values.put(FormsChildTable.COLUMN_UUID, fc.getUUID());
-        values.put(FormsChildTable.COLUMN_FORMDATE, fc.getFormDate());
-        values.put(FormsChildTable.COLUMN_USER, fc.getUser());
-        values.put(FormsChildTable.COLUMN_ISTATUS, fc.getIstatus());
-        values.put(FormsChildTable.COLUMN_SB, fc.getsB());
-        values.put(FormsChildTable.COLUMN_GPSLAT, fc.getGpsLat());
-        values.put(FormsChildTable.COLUMN_GPSLNG, fc.getGpsLng());
-        values.put(FormsChildTable.COLUMN_GPSDATE, fc.getGpsDT());
-        values.put(FormsChildTable.COLUMN_GPSACC, fc.getGpsAcc());
-        values.put(FormsChildTable.COLUMN_DEVICETAGID, fc.getDevicetagID());
-        values.put(FormsChildTable.COLUMN_DEVICEID, fc.getDeviceID());
-        values.put(FormsChildTable.COLUMN_SYNCED, fc.getSynced());
-        values.put(FormsChildTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
-        values.put(FormsChildTable.COLUMN_APP_VERSION, fc.getAppversion());
-
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                FormsChildTable.TABLE_NAME,
-                FormsChildTable.COLUMN_NAME_NULLABLE,
-                values);
-        return newRowId;
-    }
-
-
-    public Long addEnrollmentForm(EnrollmentContract ec) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-// Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(EnrollChildTable.COLUMN_PROJECT_NAME, ec.getProjectName());
-        values.put(EnrollChildTable.COLUMN_UID, ec.getUID());
-        values.put(EnrollChildTable.COLUMN_UUID, ec.getUUID());
-        values.put(EnrollChildTable.COLUMN_FORMDATE, ec.getFormDate());
-        values.put(EnrollChildTable.COLUMN_USER, ec.getUser());
-        values.put(EnrollChildTable.COLUMN_ISTATUS, ec.getIstatus());
-        values.put(EnrollChildTable.COLUMN_SC, ec.getsC());
-        values.put(EnrollChildTable.COLUMN_GPSLAT, ec.getGpsLat());
-        values.put(EnrollChildTable.COLUMN_GPSLNG, ec.getGpsLng());
-        values.put(EnrollChildTable.COLUMN_GPSDATE, ec.getGpsDT());
-        values.put(EnrollChildTable.COLUMN_GPSACC, ec.getGpsAcc());
-        values.put(EnrollChildTable.COLUMN_DEVICETAGID, ec.getDevicetagID());
-        values.put(EnrollChildTable.COLUMN_DEVICEID, ec.getDeviceID());
-        values.put(EnrollChildTable.COLUMN_SYNCED, ec.getSynced());
-        values.put(EnrollChildTable.COLUMN_SYNCED_DATE, ec.getSynced_date());
-        values.put(EnrollChildTable.COLUMN_APP_VERSION, ec.getAppversion());
-
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                EnrollChildTable.TABLE_NAME,
-                EnrollChildTable.COLUMN_NAME_NULLABLE,
-                values);
-
-        return newRowId;
-    }
-
-
-    public Long addSerialForm(SchoolContract sc) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-// Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(singleSchool.COLUMN_DEVICE_ID, sc.getDeviceid());
-        values.put(singleSchool.COLUMN_DATE, sc.getdt());
-        values.put(singleSchool.COLUMN_SERIAL_NO, sc.getSerialno());
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(
-                singleSchool.TABLE_NAME,
-                singleSchool.COLUMN_NAME_NULLABLE,
-                values);
-        return newRowId;
-    }
-
-    public int updateSerialWRTDate(String date, String serial) {
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = this.getWritableDatabase();
-
-// Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(singleSchool.COLUMN_SERIAL_NO, serial);
-
-        // Which row to update, based on the title
-        String where = singleSchool.COLUMN_DATE + " = ?";
-        String[] whereArgs = {date};
-
-        int count = db.update(
-                singleSchool.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-
-        return count;
-    }
-
-
     public void updateSyncedForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -650,7 +515,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
-
 
     public void updateSyncedChildForm(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -671,7 +535,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-
     public void updateSyncedEnrollmentForm(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -691,27 +554,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-
-    public void updateSyncedSerial(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(singleSchool.COLUMN_SYNCED, true);
-        values.put(singleSchool.COLUMN_SYNCED_DATE, new Date().toString());
-
-// Which row to update, based on the title
-        String where = singleSchool._ID + " = ?";
-        String[] whereArgs = {id};
-
-        int count = db.update(
-                singleSchool.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-    }
-
-
     public int updateFormID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -724,42 +566,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-    }
-
-    public int updateFormChildID() {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(FormsChildTable.COLUMN_UID, MainApp.cc.getUID());
-
-// Which row to update, based on the ID
-        String selection = FormsChildTable._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
-
-        int count = db.update(FormsChildTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-    }
-
-    public int updateFormEnrollmentID() {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(EnrollChildTable.COLUMN_UID, MainApp.ec.getUID());
-
-// Which row to update, based on the ID
-        String selection = EnrollChildTable._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.ec.get_ID())};
-
-        int count = db.update(EnrollChildTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -824,7 +630,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-
     public Collection<ChildContract> getUnsyncedChildForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -880,7 +685,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-
     public Collection<EnrollmentContract> getUnsyncedEnrollmentForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -935,60 +739,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-
-    public Collection<SchoolContract> getUnsyncedSerials() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                singleSchool._ID,
-                singleSchool.COLUMN_DEVICE_ID,
-                singleSchool.COLUMN_DATE,
-                singleSchool.COLUMN_SERIAL_NO,
-                singleSchool.COLUMN_SYNCED,
-                singleSchool.COLUMN_SYNCED_DATE
-        };
-
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                singleSchool._ID + " ASC";
-
-        Collection<SchoolContract> allFC = new ArrayList<SchoolContract>();
-        try {
-            c = db.query(
-                    singleSchool.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                SchoolContract fc = new SchoolContract();
-                allFC.add(fc.hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allFC;
-    }
-
-
     public Collection<FormsContract> getTodayForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
-                //FormsChildTable.COLUMN_DSSID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
@@ -1096,80 +851,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public int updateSB() {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SB, MainApp.fc.getsB());
-
-// Which row to update, based on the ID
-        String selection = FormsTable._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
-
-        int count = db.update(FormsTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-    }
-
-    public int updateSC() {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SC, MainApp.fc.getsC());
-
-// Which row to update, based on the ID
-        String selection = FormsTable._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
-
-        int count = db.update(FormsTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-    }
-
-    public int updateSD() {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SD, MainApp.fc.getsD());
-
-// Which row to update, based on the ID
-        String selection = FormsTable._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
-
-        int count = db.update(FormsTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-    }
-
-
-    public int updateCount() {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SB, MainApp.fc.getsB());
-
-// Which row to update, based on the ID
-        String selection = FormsTable._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
-
-        int count = db.update(FormsTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-    }
-
-
     public int updateEnding() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1183,24 +864,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-    }
-
-    public int updateEnrollmentEnding() {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(EnrollChildTable.COLUMN_ISTATUS, MainApp.ec.getIstatus());
-
-// Which row to update, based on the ID
-        String selection = EnrollChildTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.ec.get_ID())};
-
-        int count = db.update(EnrollChildTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <item name="android:scrollViewStyle">@style/BackgroundStyle</item>
-        <item name="android:textViewStyle">@style/labels</item>
+        <!--<item name="android:textViewStyle">@style/labels</item>-->
         <item name="android:editTextStyle">@style/textInput</item>
         <item name="android:buttonStyle">@style/buttons</item>
         <item name="android:checkboxStyle">@style/checkbox</item>
@@ -23,7 +23,7 @@
 
     <style name="BackgroundStyle" parent="android:Widget.ScrollView">
         <item name="android:background">#efefef</item>
-        <item name="android:padding">24dp</item>
+        <item name="android:padding">20dp</item>
     </style>
 
     <style name="SpinnerItem">
@@ -39,7 +39,6 @@
         <item name="android:background">@drawable/background_grad</item>
         <item name="background">@drawable/background_grad</item>
     </style>
-
 
     <!-- Form Styles -->
     <style name="labels" parent="android:Widget.TextView">
@@ -108,7 +107,6 @@
 
     <style name="spinner" parent="android:Widget.Material.Light.Spinner.Underlined">
         <item name="android:background">@drawable/spinner_style</item>
-        <item name="android:paddingRight">15dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">10dp</item>
@@ -116,7 +114,7 @@
     </style>
 
     <style name="SpinnerTextViewItem" parent="@android:style/Widget.TextView">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <!-- Irfan RadioGroup  -->
@@ -174,18 +172,6 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="FullscreenTheme" parent="AppTheme">
-        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
-        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
-        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
-    </style>
-
-    <style name="FullscreenActionBarStyle" parent="AppTheme.AppBarOverlay">
-        <item name="android:background">@color/black_overlay</item>
-    </style>
-
     <style name="Theme.AppTheme.Light.DarkActionBar" parent="android:Theme.Material.Light.DarkActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -213,7 +199,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:padding">2dp</item>
+        <item name="android:padding">1dp</item>
     </style>
 
     <style name="linearlayout_view_wt_bound">

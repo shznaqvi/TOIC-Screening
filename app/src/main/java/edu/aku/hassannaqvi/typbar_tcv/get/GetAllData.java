@@ -65,11 +65,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 case "Tehsil":
                     url = new URL(MainApp._HOST_URL + TehsilsContract.TehsilsTable._URI);
                     break;
-                case "UCs":
+                case "UC":
                     url = new URL(MainApp._HOST_URL + UCsContract.UCsTable._URI);
                     break;
                 case "School":
-                    url = new URL(MainApp._HOST_URL + SchoolContract.singleSchool._URI);
+                    url = new URL(MainApp._HOST_URL + SchoolContract.SchoolTable._URI);
                     break;
             }
 
@@ -118,7 +118,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                         case "Tehsil":
                             db.syncTehsils(jsonArray);
                             break;
-                        case "UCs":
+                        case "UC":
                             db.syncUCs(jsonArray);
                             break;
                         case "School":
