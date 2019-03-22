@@ -237,22 +237,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void syncSchools(JSONArray Schoolslist) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(UCsTable.TABLE_NAME, null, null);
+        db.delete(singleSchool.TABLE_NAME, null, null);
         try {
             JSONArray jsonArray = Schoolslist;
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
 
-                UCsContract Vc = new UCsContract();
-                Vc.Sync(jsonObjectCC);
+                SchoolContract Vc = new SchoolContract();
+                Vc.sync(jsonObjectCC);
 
                 ContentValues values = new ContentValues();
 
-                values.put(UCsTable.COLUMN_UCCODE, Vc.getUccode());
-                values.put(UCsTable.COLUMN_UCS_NAME, Vc.getUcsName());
-                values.put(UCsTable.COLUMN_TALUKA_CODE, Vc.getTaluka_code());
+                values.put(singleSchool.COLUMN_DATE, Vc.getdt());
+                values.put(singleSchool.COLUMN_DEVICE_ID, Vc.getDeviceid());
+                values.put(singleSchool.COLUMN_SERIAL_NO, Vc.getSerialno());
 
-                db.insert(UCsTable.TABLE_NAME, null, values);
+                db.insert(singleSchool.TABLE_NAME, null, values);
             }
         } catch (Exception e) {
         } finally {

@@ -121,8 +121,8 @@ public class GetAllData extends AsyncTask<String, String, String> {
                         case "UCs":
                             db.syncUCs(jsonArray);
                             break;
-                        case "Villages":
-//                            db.syncVillages(jsonArray);
+                        case "School":
+                            db.syncSchools(jsonArray);
                             break;
                     }
 
