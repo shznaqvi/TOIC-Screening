@@ -10,7 +10,7 @@ import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityEndingBinding;
-import edu.aku.hassannaqvi.typbar_tcv.validation.validatorClass;
+import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class EndingActivity extends AppCompatActivity {
 
@@ -98,7 +98,7 @@ public class EndingActivity extends AppCompatActivity {
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
-        return validatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusb, getString(R.string.istatus));
+        return ValidatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusb, getString(R.string.istatus));
     }
 
 
