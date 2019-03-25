@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.typbar_tcv.ui;
 
-import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -127,6 +126,7 @@ public class SectionSListingActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
+        MainApp.fc.setFormtype("sl");
 
         JSONObject sA = new JSONObject();
         sA.put("tcvsl00", bi.tcvsl00.getSelectedItem());

@@ -59,7 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_UID + " TEXT," +
             FormsTable.COLUMN_FORMDATE + " TEXT," +
             FormsTable.COLUMN_USER + " TEXT," +
-            //FormsChildTable.COLUMN_FORMTYPE + " TEXT," +
+            FormsTable.COLUMN_FORMTYPE + " TEXT," +
             FormsTable.COLUMN_SA + " TEXT," +
             FormsTable.COLUMN_SB + " TEXT," +
             FormsTable.COLUMN_SC + " TEXT," +
@@ -470,7 +470,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UID, fc.getUID());
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
         values.put(FormsTable.COLUMN_USER, fc.getUser());
-        //values.put(FormsChildTable.COLUMN_FORMTYPE, fc.getFormtype());
+        values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormtype());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
         values.put(FormsTable.COLUMN_ISTATUS88x, fc.getIstatus88x());
         values.put(FormsTable.COLUMN_SA, fc.getsA());
@@ -486,7 +486,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_SYNCED, fc.getSynced());
         values.put(FormsTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
         values.put(FormsTable.COLUMN_APP_VERSION, fc.getAppversion());
-
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -572,7 +571,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public Collection<FormsContract> getUnsyncedForms() {
+    public Collection<FormsContract> getUnsyncedForms(int type) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -581,7 +580,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_USER,
                 FormsTable.COLUMN_ISTATUS,
-                //FormsTable.COLUMN_FORMTYPE,
+                FormsTable.COLUMN_FORMTYPE,
                 FormsTable.COLUMN_SA,
                 FormsTable.COLUMN_SB,
                 FormsTable.COLUMN_SC,
@@ -598,13 +597,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
         String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
+
+        if (type != 0) {
+            whereClause += FormsTable.COLUMN_FORMTYPE + " =?";
+            whereArgs = new String[]{type == 1 ? "sl" : "cl"};
+        }
+
         String groupBy = null;
         String having = null;
 
-        String orderBy =
-                FormsTable._ID + " ASC";
+        String orderBy = FormsTable._ID + " ASC";
 
-        Collection<FormsContract> allFC = new ArrayList<FormsContract>();
+        Collection<FormsContract> allFC = new ArrayList<>();
         try {
             c = db.query(
                     FormsTable.TABLE_NAME,  // The table to query

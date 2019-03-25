@@ -18,7 +18,7 @@ public class FormsContract {
     private String _UID = "";
     private String formDate = ""; // Date
     private String user = ""; // Interviewer
-    //private String formtype = "";
+    private String formtype = "";
 
     private String istatus = ""; // Interview Status
     private String istatus88x = ""; // Interview Status
@@ -48,7 +48,7 @@ public class FormsContract {
         this.user = jsonObject.getString(FormsTable.COLUMN_USER);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
-        //this.formtype = jsonObject.getString(FormsChildTable.COLUMN_FORMTYPE);
+        this.formtype = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
         this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
         this.sB = jsonObject.getString(FormsTable.COLUMN_SB);
         this.sC = jsonObject.getString(FormsTable.COLUMN_SC);
@@ -74,7 +74,7 @@ public class FormsContract {
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
-        //this.formtype = cursor.getString(cursor.getColumnIndex(FormsChildTable.COLUMN_FORMTYPE));
+        this.formtype = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
         this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
         this.sB = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SB));
         this.sC = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SC));
@@ -106,10 +106,9 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(FormsTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
-        //json.put(FormsChildTable.COLUMN_FORMTYPE, this.formtype == null ? JSONObject.NULL : this.formtype);
+        json.put(FormsTable.COLUMN_FORMTYPE, this.formtype == null ? JSONObject.NULL : this.formtype);
 
         if (!this.sA.equals("")) {
-
             json.put(FormsTable.COLUMN_SA, this.sA.equals("") ? JSONObject.NULL : new JSONObject(this.sA));
         }
         /*if (!this.sB.equals("")) {
@@ -201,13 +200,13 @@ public class FormsContract {
     }
 
 
-    /*public String getFormtype() {
+    public String getFormtype() {
         return formtype;
     }
 
     public void setFormtype(String formtype) {
         this.formtype = formtype;
-    }*/
+    }
 
     public String getsD() {
         return sD;
@@ -317,12 +316,11 @@ public class FormsContract {
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS88x = "istatus88x";
-        //public static final String COLUMN_FORMTYPE = "formtype";
+        public static final String COLUMN_FORMTYPE = "formtype";
         public static final String COLUMN_SA = "sa";
         public static final String COLUMN_SB = "sb";
         public static final String COLUMN_SC = "sc";
         public static final String COLUMN_SD = "sd";
-
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";
         public static final String COLUMN_GPSDATE = "gpsdate";
@@ -333,6 +331,7 @@ public class FormsContract {
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APP_VERSION = "appversion";
 
-        public static String _URL = "forms.php";
+        public static String _URL1 = "forms.php";
+        public static String _URL2 = "children_forms.php";
     }
 }

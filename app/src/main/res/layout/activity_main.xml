@@ -106,13 +106,20 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/openForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
-                    android:onClick="@{() -> callback.openForm()}"
+                    android:onClick="@{(v) -> callback.openForm(1)}"
                     android:text="SCHOOL LISTING FORM" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="@{(v) -> callback.openForm(2)}"
+                    android:text="CHILD LISTING FORM" />
 
                 <Button
                     android:id="@+id/syncServer"

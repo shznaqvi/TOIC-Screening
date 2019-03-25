@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             bi.adminsec.setVisibility(View.VISIBLE);
 
             Collection<FormsContract> todaysForms = db.getTodayForms();
-            Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
+            Collection<FormsContract> unsyncedForms = db.getUnsyncedForms(0);
 
             rSumText += "TODAY'S RECORDS SUMMARY\r\n";
 
@@ -199,9 +199,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void openForm() {
+    public void openForm(int type) {
 
-        final Intent oF = new Intent(MainActivity.this, SectionSListingActivity.class);
+        final Intent oF = new Intent(MainActivity.this, type == 1 ? SectionSListingActivity.class : SectionCListingActivity.class);
 
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
@@ -333,14 +333,24 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Syncing School Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
                     "Forms",
                     "updateSyncedForms",
                     FormsContract.class,
-                    MainApp._HOST_URL + FormsContract.FormsTable._URL,
-                    db.getUnsyncedForms()
+                    MainApp._HOST_URL + FormsContract.FormsTable._URL1,
+                    db.getUnsyncedForms(1)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Children",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    MainApp._HOST_URL + FormsContract.FormsTable._URL2,
+                    db.getUnsyncedForms(2)
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

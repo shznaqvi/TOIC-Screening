@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.typbar_tcv.ui;
 
-import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -17,18 +16,18 @@ import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
-import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionChildBinding;
+import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCListingBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
-public class SectionChild extends AppCompatActivity {
+public class SectionCListingActivity extends AppCompatActivity {
 
-    ActivitySectionChildBinding bi;
+    ActivitySectionCListingBinding bi;
     String deviceID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_child);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c_listing);
         bi.setCallback(this);
 
         setContentUI();
@@ -78,6 +77,7 @@ public class SectionChild extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
+        MainApp.fc.setFormtype("cl");
 
         JSONObject child = new JSONObject();
         child.put("tcvcl01", bi.tcvcl01.getText().toString());
