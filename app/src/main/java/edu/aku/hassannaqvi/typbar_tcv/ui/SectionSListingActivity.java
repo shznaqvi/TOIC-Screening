@@ -128,6 +128,12 @@ public class SectionSListingActivity extends Activity {
         settingGPS(MainApp.fc);
 
         JSONObject sA = new JSONObject();
+        sA.put("tcvsl00", bi.tcvsl00.getSelectedItem());
+
+        sA.put("sch_code", schoolMap.get(bi.tcvsl01.getSelectedItem()).getSch_code());
+        sA.put("sch_add", schoolMap.get(bi.tcvsl01.getSelectedItem()).getSch_add());
+        sA.put("sch_type", schoolMap.get(bi.tcvsl01.getSelectedItem()).getSch_type());
+
         sA.put("tcvsl01", bi.tcvsl01.getSelectedItem());
         sA.put("tcvsl02", bi.tcvsl02a.isChecked() ? "1" : bi.tcvsl02b.isChecked() ? "2" :
                 bi.tcvsl02c.isChecked() ? "3" : bi.tcvsl0296.isChecked() ? "96" : "0");
