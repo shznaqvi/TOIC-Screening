@@ -82,6 +82,7 @@ public class SectionCListingActivity extends AppCompatActivity {
         JSONObject child = new JSONObject();
         child.put("tcvcl01", bi.tcvcl01.getText().toString());
         child.put("tcvcl02", bi.tcvcl02.getText().toString());
+        child.put("tcvcl034", bi.tcvcl034a.isChecked() ? "DOB" : bi.tcvcl034b.isChecked() ? "AGE" : "0");
         child.put("tcvcl03", bi.tcvcl03.getText().toString());
         child.put("tcvcl04", bi.tcvcl04.getText().toString());
         child.put("tcvcl05", bi.tcvcl05a.isChecked() ? "1" : bi.tcvcl05b.isChecked() ? "2" : "0");

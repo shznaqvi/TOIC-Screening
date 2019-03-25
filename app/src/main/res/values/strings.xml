@@ -90,5 +90,8 @@
   <string name="tcvcl18">Vaccination ID:</string>
   <string name="tcvcl19">Vaccination Date</string>
   <string name="tcvcl20">Vaccination Time</string>
+  <string name="tcvcl034a">Date of Birth</string>
+  <string name="tcvcl034b">Age</string>
+  <string name="tcvcl034">Date of Birth or Age</string>
 
 </resources>
