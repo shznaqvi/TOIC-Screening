@@ -28,6 +28,8 @@ public class FormsContract {
     private String sC = ""; //
     private String sD = "";
 
+    private String child = "";
+
 
     private String gpsLat = "";
     private String gpsLng = "";
@@ -202,6 +204,14 @@ public class FormsContract {
         this.sA = sA;
     }
 
+    public String getchild() {
+        return child;
+    }
+
+    public void setchild(String child) {
+        this.child = child;
+    }
+
 
     /*public String getFormtype() {
         return formtype;
@@ -324,6 +334,8 @@ public class FormsContract {
         public static final String COLUMN_SB = "sb";
         public static final String COLUMN_SC = "sc";
         public static final String COLUMN_SD = "sd";
+
+        public static final String COLUMN_CHILD = "child";
 
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";

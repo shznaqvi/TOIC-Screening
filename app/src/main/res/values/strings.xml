@@ -66,4 +66,28 @@
     <string name="tcvsl07"> Name of School Administrator </string>
     <string name="tcvsl08"> Contact No </string>
 
+  <string name="sec_clisting">CHILD LISTING</string>
+  <string name="tcvcl01">School Name/Code</string>
+  <string name="tcvcl02">Name of Child</string>
+  <string name="tcvcl03">Date of birth</string>
+  <string name="tcvcl04">Age</string>
+  <string name="tcvcl05">Gender</string>
+  <string name="tcvcl05a">Male</string>
+  <string name="tcvcl05b">Female</string>
+  <string name="tcvcl06">Father’s Name</string>
+  <string name="tcvcl07">Father’s National Identity Card Number</string>
+  <string name="tcvcl09">Telephone Number</string>
+  <string name="tcvcl10">Alternate Telephone Number</string>
+  <string name="tcvcl11">Parents ready to give consent for vaccination</string>
+  <string name="tcvcl11h">if NO skip to end</string>
+  <string name="tcvcl12">Child is between 6 months – 15 years</string>
+  <string name="tcvcl13">Child is NOT allergic to any medicine</string>
+  <string name="tcvcl14"><![CDATA[NO active signs of infection including fever >1000F, body ache, blisters on body, malaise, vomiting, Rashes on body, Red Spots on Abdomens, seizures, Breathing Difficulty, and loose Stools for the past three days.]]></string>
+  <string name="tcvcl15">Child is currently NOT using medications (Antibiotics and Steroids) for any infection or disease in the past 24 hours. (Pneumonia Acute Diarrhea, and seizures).</string>
+  <string name="tcvcl16">Child is NOT immunized against Typhoid During the past 3 years (Check Vaccination card)</string>
+  <string name="tcvcl17">IF ANSWER TO ALL THE ABOVE QUESTIONS IS YES, CHILD IS ELIGIBLE TO GET VACCINATED</string>
+  <string name="tcvcl18">Vaccination ID:</string>
+  <string name="tcvcl19">Vaccination Date</string>
+  <string name="tcvcl20">Vaccination Time</string>
+
 </resources>
