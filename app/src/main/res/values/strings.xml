@@ -54,6 +54,7 @@
     <string name="dkn">Don\'t Know</string>
 
     <string name="sec_slisting">SCHOOL LISTING</string>
+    <string name="tcvsl00"> School Type </string>
     <string name="tcvsl01"> School Name </string>
     <string name="tcvsl02"> Type of School </string>
     <string name="tcvsl02a"> Government </string>

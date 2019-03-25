@@ -40,7 +40,7 @@ import edu.aku.hassannaqvi.typbar_tcv.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.typbar_tcv.sync.SyncEnrollment;
+import edu.aku.hassannaqvi.typbar_tcv.sync.SyncAllData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     String m_Text = "";
     private Boolean exit = false;
     private String rSumText = "";
+    DatabaseHelper db;
 
     ActivityMainBinding bi;
 
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         /*TagID End*/
 
 
-        DatabaseHelper db = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
 
 //        Admin checking
         if (MainApp.admin) {
@@ -332,18 +333,15 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            /*Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-            new SyncForms(this, true).execute();
-
-            Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
-            new SyncChildForms(this, true).execute();*/
-
-            Toast.makeText(getApplicationContext(), "Syncing Enrollment Forms", Toast.LENGTH_SHORT).show();
-            new SyncEnrollment(this, true).execute();
-
-            /*Toast.makeText(getApplicationContext(), "Syncing Serials", Toast.LENGTH_SHORT).show();
-            new SyncSerials(this, true).execute();*/
-
+            Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Forms",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    MainApp._HOST_URL + FormsContract.FormsTable._URL,
+                    db.getUnsyncedForms()
+            ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();

@@ -30,7 +30,7 @@ public class EndingActivity extends AppCompatActivity {
         if (check) {
             binding.istatusa.setEnabled(true);
             binding.istatusb.setEnabled(false);
-        }else {
+        } else {
             binding.istatusa.setEnabled(false);
             binding.istatusb.setEnabled(true);
         }
@@ -50,9 +50,8 @@ public class EndingActivity extends AppCompatActivity {
 
     }
 
-    public void BtnEnd(){
+    public void BtnEnd() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         if (formValidation()) {
             SaveDraft();
             if (UpdateDB()) {
@@ -68,16 +67,12 @@ public class EndingActivity extends AppCompatActivity {
     }
 
     private void SaveDraft() {
-        Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
         MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
                 : "0");
 
 //        MainApp.fc.setIstatus88x(istatus88x.getText().toString());
-
-
-        Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
@@ -86,7 +81,6 @@ public class EndingActivity extends AppCompatActivity {
         int updcount = db.updateEnding();
 
         if (updcount == 1) {
-            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -96,8 +90,6 @@ public class EndingActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
-
         return ValidatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusb, getString(R.string.istatus));
     }
 

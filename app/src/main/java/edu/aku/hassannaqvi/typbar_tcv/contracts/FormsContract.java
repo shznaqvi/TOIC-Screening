@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class FormsContract {
 
-    private final String projectName = "DMU-TOICSCREENING";
+    private final String projectName = "TYBAR_TCV";
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";
@@ -28,9 +28,6 @@ public class FormsContract {
     private String sC = ""; //
     private String sD = "";
 
-    private String child = "";
-
-
     private String gpsLat = "";
     private String gpsLng = "";
     private String gpsDT = "";
@@ -43,7 +40,6 @@ public class FormsContract {
 
     public FormsContract() {
     }
-
 
     public FormsContract Sync(JSONObject jsonObject) throws JSONException {
         this._ID = jsonObject.getString(FormsTable._ID);
@@ -204,14 +200,6 @@ public class FormsContract {
         this.sA = sA;
     }
 
-    public String getchild() {
-        return child;
-    }
-
-    public void setchild(String child) {
-        this.child = child;
-    }
-
 
     /*public String getFormtype() {
         return formtype;
@@ -334,8 +322,6 @@ public class FormsContract {
         public static final String COLUMN_SB = "sb";
         public static final String COLUMN_SC = "sc";
         public static final String COLUMN_SD = "sd";
-
-        public static final String COLUMN_CHILD = "child";
 
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";
