@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -19,7 +20,7 @@ import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionChildBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
-public class SectionChild extends Activity {
+public class SectionChild extends AppCompatActivity {
 
     ActivitySectionChildBinding bi;
     String deviceID;
@@ -100,7 +101,7 @@ public class SectionChild extends Activity {
         child.put("tcvcl19", bi.tcvcl19.getText().toString());
         child.put("tcvcl20", bi.tcvcl20.getText().toString());
 
-        MainApp.fc.setchild(String.valueOf(child));
+        MainApp.fc.setsA(String.valueOf(child));
 
     }
 

@@ -38,9 +38,9 @@
             android:windowSoftInputMode="stateVisible|adjustPan" />
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name="edu.aku.hassannaqvi.typbar_tcv.ui.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <activity
