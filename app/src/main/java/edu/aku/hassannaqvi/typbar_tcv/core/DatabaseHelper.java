@@ -599,7 +599,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] whereArgs = null;
 
         if (type != 0) {
-            whereClause += FormsTable.COLUMN_FORMTYPE + " =?";
+            whereClause += " AND " + FormsTable.COLUMN_FORMTYPE + " =?";
             whereArgs = new String[]{type == 1 ? "sl" : "cl"};
         }
 
