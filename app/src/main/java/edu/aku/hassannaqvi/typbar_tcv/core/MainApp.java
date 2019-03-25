@@ -28,7 +28,6 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.ChildContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.EnrollmentContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
-import edu.aku.hassannaqvi.typbar_tcv.other.IdentificationData;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
 
 /**
@@ -83,7 +82,6 @@ public class MainApp extends Application {
     public static String versionName;
     public static String teamNo;
     public static Integer areaCode;
-    public static IdentificationData identificationData;
     protected static LocationManager locationManager;
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {

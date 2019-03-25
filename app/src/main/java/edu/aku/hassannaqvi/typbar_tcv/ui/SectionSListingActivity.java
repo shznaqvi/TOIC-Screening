@@ -110,11 +110,11 @@ public class SectionSListingActivity extends Activity {
         if (updcount > 0) {
             MainApp.fc.setUID((MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
             db.updateFormID();
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     private void SaveDraft() throws JSONException {
