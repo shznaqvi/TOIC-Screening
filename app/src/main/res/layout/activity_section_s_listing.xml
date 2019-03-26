@@ -56,11 +56,16 @@
                             android:layout_height="wrap_content"
                             android:padding="20dp" />
 
+                        <EditText
+                            android:id="@+id/tcvsl01_name"
+                            style="@style/EditText"
+                            android:visibility="gone" />
+
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
                 <!--tcvsl02-->
-                <android.support.v7.widget.CardView style="@style/cardView">
+                <!--<android.support.v7.widget.CardView style="@style/cardView">
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -95,7 +100,7 @@
                         </RadioGroup>
 
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </android.support.v7.widget.CardView>-->
 
                 <!--tcvsl03-->
                 <android.support.v7.widget.CardView style="@style/cardView">
@@ -106,11 +111,16 @@
                             style="@style/i_textview"
                             android:text="@string/tcvsl03" />
 
-                        <EditText
-                            android:id="@+id/tcvsl03"
-                            style="@style/EditText"
-                            android:hint="@string/tcvsl03" />
+                        <!-- <EditText
+                             android:id="@+id/tcvsl03"
+                             style="@style/EditText"
+                             android:hint="@string/tcvsl03" />-->
 
+                        <Spinner
+                            android:id="@+id/tcvsl03"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="20dp" />
 
                     </LinearLayout>
                 </android.support.v7.widget.CardView>

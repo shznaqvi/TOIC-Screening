@@ -196,16 +196,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         db = new DatabaseHelper(this);
 
 //        DB backup
-
         dbBackup();
-
-//        Testing visibility
-     /*   if (Integer.valueOf(MainApp.versionName.split("\\.")[0]) > 0) {
-            testing.setVisibility(View.GONE);
-        }else {
-            testing.setVisibility(View.VISIBLE);
-        }*/
-
     }
 
     public void dbBackup() {
@@ -290,7 +281,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private void populateAutoComplete() {
         getLoaderManager().initLoader(0, null, this);
     }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -583,6 +573,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 public void run() {
                     Toast.makeText(mContext, "Sync Users", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "User").execute();
+                    Toast.makeText(mContext, "Sync UCs", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "UC").execute();
                     Toast.makeText(mContext, "Sync Schools", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "School").execute();
                 }

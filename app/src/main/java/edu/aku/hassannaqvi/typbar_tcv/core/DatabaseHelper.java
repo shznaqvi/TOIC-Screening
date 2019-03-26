@@ -125,8 +125,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final String SQL_CREATE_UC = "CREATE TABLE " + UCsTable.TABLE_NAME + " (" +
             UCsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             UCsTable.COLUMN_UCCODE + " TEXT, " +
-            UCsTable.COLUMN_UCS_NAME + " TEXT, " +
-            UCsTable.COLUMN_TALUKA_CODE + " TEXT " +
+            UCsTable.COLUMN_UCS_NAME + " TEXT " +
+//            UCsTable.COLUMN_TALUKA_CODE + " TEXT " +
             ");";
     private static final String SQL_DELETE_ENROLLMENT_FORMS = "DROP TABLE IF EXISTS " + EnrollChildTable.TABLE_NAME;
     private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + TehsilsTable.TABLE_NAME;
@@ -153,6 +153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_SCHOOL);
+        db.execSQL(SQL_CREATE_UC);
     }
 
     @Override
@@ -160,6 +161,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_SCHOOL);
+        db.execSQL(SQL_DELETE_UCS);
     }
 
     public void syncTehsils(JSONArray Talukaslist) {
@@ -201,7 +203,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 values.put(UCsTable.COLUMN_UCCODE, Vc.getUccode());
                 values.put(UCsTable.COLUMN_UCS_NAME, Vc.getUcsName());
-                values.put(UCsTable.COLUMN_TALUKA_CODE, Vc.getTaluka_code());
+//                values.put(UCsTable.COLUMN_TALUKA_CODE, Vc.getTaluka_code());
 
                 db.insert(UCsTable.TABLE_NAME, null, values);
             }
@@ -328,25 +330,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
-    public Collection<UCsContract> getAllUCsByTalukas(String taluka_code) {
+    public ArrayList<UCsContract> getAllUCs() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
                 UCsTable._ID,
                 UCsTable.COLUMN_UCCODE,
                 UCsTable.COLUMN_UCS_NAME,
-                UCsTable.COLUMN_TALUKA_CODE
         };
 
-        String whereClause = UCsTable.COLUMN_TALUKA_CODE + " = ?";
-        String[] whereArgs = {taluka_code};
+        String whereClause = null;
+        String[] whereArgs = null;
         String groupBy = null;
         String having = null;
 
-        String orderBy =
-                UCsTable.COLUMN_UCS_NAME + " ASC";
+        String orderBy = UCsTable.COLUMN_UCS_NAME + " ASC";
 
-        Collection<UCsContract> allPC = new ArrayList<>();
+        ArrayList<UCsContract> allPC = new ArrayList<>();
         try {
             c = db.query(
                     UCsTable.TABLE_NAME,  // The table to query
@@ -358,8 +358,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                UCsContract pc = new UCsContract();
-                allPC.add(pc.hydrate(c));
+                allPC.add(new UCsContract().hydrate(c));
             }
         } finally {
             if (c != null) {

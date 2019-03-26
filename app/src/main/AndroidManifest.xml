@@ -16,7 +16,7 @@
     <application
         android:name=".core.MainApp"
         android:allowBackup="true"
-        android:icon="@drawable/toic"
+        android:icon="@drawable/typbar_tcv"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
