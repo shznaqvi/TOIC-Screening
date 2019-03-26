@@ -241,6 +241,15 @@ public abstract class ValidatorClass {
             if (view.getVisibility() == View.GONE || !view.isEnabled())
                 continue;
 
+            // use tag for some situations
+            if (view.getTag() != null && view.getTag().equals("-1")) {
+                if (view instanceof EditText)
+                    ((EditText) view).setError(null);
+                else if (view instanceof CheckBox)
+                    ((CheckBox) view).setError(null);
+                continue;
+            }
+
             if (view instanceof CardView) {
                 for (int j = 0; j < ((CardView) view).getChildCount(); j++) {
                     View view1 = ((CardView) view).getChildAt(j);

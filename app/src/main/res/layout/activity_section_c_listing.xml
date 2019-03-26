@@ -206,11 +206,16 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvcl07" />
 
+                            <TextView
+                                style="@style/h_textview"
+                                android:text="Can be blank" />
+
                             <EditText
                                 android:id="@+id/tcvcl07"
                                 style="@style/EditText_number"
                                 android:hint="@string/tcvcl07"
-                                android:maxLength="13" />
+                                android:maxLength="13"
+                                android:tag="-1" />
 
 
                         </LinearLayout>
@@ -243,11 +248,16 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvcl09" />
 
+                            <TextView
+                                style="@style/h_textview"
+                                android:text="Can be blank" />
+
                             <EditText
                                 android:id="@+id/tcvcl09"
                                 style="@style/EditText_number"
                                 android:hint="@string/tcvcl09"
-                                android:maxLength="11" />
+                                android:maxLength="11"
+                                android:tag="-1" />
 
 
                         </LinearLayout>
@@ -262,11 +272,16 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvcl10" />
 
+                            <TextView
+                                style="@style/h_textview"
+                                android:text="Can be blank" />
+
                             <EditText
                                 android:id="@+id/tcvcl10"
                                 style="@style/EditText_number"
                                 android:hint="@string/tcvcl10"
-                                android:maxLength="11" />
+                                android:maxLength="11"
+                                android:tag="-1" />
 
 
                         </LinearLayout>

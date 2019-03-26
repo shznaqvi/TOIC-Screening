@@ -222,9 +222,13 @@
 
 
     <style name="h_textview">
+        <item name="android:background">@color/dullWhile</item>
+        <item name="android:gravity">center</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/red</item>
         <item name="android:textSize">15sp</item>
     </style>
