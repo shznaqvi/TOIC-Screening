@@ -32,7 +32,6 @@ import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 public class SectionSListingActivity extends AppCompatActivity {
 
     ActivitySectionSListingBinding bi;
-    String deviceID;
     Map<String, SchoolContract> schoolMap;
     Map<String, String> ucMap;
     DatabaseHelper db;
@@ -49,11 +48,9 @@ public class SectionSListingActivity extends AppCompatActivity {
 
     private void setContentUI() {
         this.setTitle(R.string.sec_slisting);
-        deviceID = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
 
         // Initialize db
         db = new DatabaseHelper(this);
-
         filledSpinners();
     }
 

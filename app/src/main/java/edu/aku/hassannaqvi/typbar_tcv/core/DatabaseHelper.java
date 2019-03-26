@@ -330,6 +330,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
+    public SchoolContract getSchoolWRTTypeAndCode(String type, String code) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                SchoolTable._ID,
+                SchoolTable.COLUMN_SCH_CODE,
+                SchoolTable.COLUMN_SCH_NAME,
+                SchoolTable.COLUMN_SCH_ADD,
+                SchoolTable.COLUMN_SCH_STATUS,
+                SchoolTable.COLUMN_SCH_TYPE,
+
+        };
+
+        String whereClause = SchoolTable.COLUMN_SCH_TYPE + " =? AND " + SchoolTable.COLUMN_SCH_CODE + " =? ";
+        String[] whereArgs = {type, code};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = SchoolTable.COLUMN_SCH_NAME + " ASC";
+
+        SchoolContract allDC = null;
+        try {
+            c = db.query(
+                    SchoolTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allDC = new SchoolContract().hydrate(c);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allDC;
+    }
+
     public ArrayList<UCsContract> getAllUCs() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;

@@ -5,6 +5,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -12,10 +15,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCListingBinding;
@@ -25,6 +33,8 @@ import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 public class SectionCListingActivity extends AppCompatActivity {
 
     ActivitySectionCListingBinding bi;
+    DatabaseHelper db;
+    Map<String, SchoolContract> schoolMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +48,16 @@ public class SectionCListingActivity extends AppCompatActivity {
 
     private void setContentUI() {
         this.setTitle(R.string.sec_clisting);
+
+        // Initialize db
+        db = new DatabaseHelper(this);
+        filledSpinners();
+    }
+
+    private void filledSpinners() {
+        String[] schTypes = {"....", "Government Boys Secondary School", "Government Girls Secondary School",
+                "Government Boys Primary School", "Government Girls Primary School", "Private", "Madarasa", "Other"};
+        bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(schTypes)));
     }
 
     private void setListeners() {
@@ -53,11 +73,77 @@ public class SectionCListingActivity extends AppCompatActivity {
         String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
         bi.tcvcl03.setManager(getSupportFragmentManager());
         bi.tcvcl03.setMaxDate(dateToday);
-
         bi.tcvcl19.setManager(getSupportFragmentManager());
         bi.tcvcl19.setMaxDate(dateToday);
-
         bi.tcvcl20.setManager(getSupportFragmentManager());
+
+        //settting spinner listeners
+        bi.tcvcl00.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                ArrayList<String> schNames = new ArrayList<>();
+                schNames.add("....");
+
+                if (i != 0) {
+
+                    ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvcl00.getSelectedItemPosition()));
+                    schoolMap = new HashMap<>();
+
+                    for (SchoolContract school : schoolContract) {
+                        schoolMap.put(school.getSch_name(), school);
+                        schNames.add(school.getSch_name());
+                    }
+
+                } else {
+                    bi.childSec00.setVisibility(View.GONE);
+                    ClearClass.ClearAllFields(bi.childSec00);
+                    bi.childSec00a.setVisibility(View.GONE);
+                }
+
+                bi.tcvcl01.setAdapter(new ArrayAdapter<>(SectionCListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        bi.tcvcl01.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i == 0) {
+                    bi.childSec00.setVisibility(View.GONE);
+                    ClearClass.ClearAllFields(bi.childSec00);
+                    bi.childSec00a.setVisibility(View.GONE);
+                    return;
+                }
+
+                SchoolContract schoolContract = db.getSchoolWRTTypeAndCode(
+                        String.valueOf(bi.tcvcl00.getSelectedItemPosition()),
+                        schoolMap.get(bi.tcvcl01.getSelectedItem().toString()).getSch_code());
+
+                if (schoolContract == null) {
+                    Toast.makeText(SectionCListingActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!schoolContract.getSch_status().equals("1")) {
+                    Toast.makeText(SectionCListingActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                bi.childSec00.setVisibility(View.VISIBLE);
+                bi.childSec00a.setVisibility(View.VISIBLE);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
     }
 
@@ -86,11 +172,11 @@ public class SectionCListingActivity extends AppCompatActivity {
         if (updcount > 0) {
             MainApp.fc.setUID((MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
             db.updateFormID();
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     private void SaveDraft() throws JSONException {
@@ -105,7 +191,13 @@ public class SectionCListingActivity extends AppCompatActivity {
         MainApp.fc.setFormtype("cl");
 
         JSONObject child = new JSONObject();
-        child.put("tcvcl01", bi.tcvcl01.getText().toString());
+        child.put("tcvcl00", bi.tcvcl00.getSelectedItem());
+
+        child.put("sch_code", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_code());
+        child.put("sch_add", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_add());
+        child.put("sch_type", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_type());
+        child.put("tcvcl01", bi.tcvcl01.getSelectedItem());
+
         child.put("tcvcl02", bi.tcvcl02.getText().toString());
         child.put("tcvcl034", bi.tcvcl034a.isChecked() ? "DOB" : bi.tcvcl034b.isChecked() ? "AGE" : "0");
         child.put("tcvcl03", bi.tcvcl03.getText().toString());
