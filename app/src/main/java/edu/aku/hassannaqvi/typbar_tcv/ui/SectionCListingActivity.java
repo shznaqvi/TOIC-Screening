@@ -1,15 +1,26 @@
 package edu.aku.hassannaqvi.typbar_tcv.ui;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
@@ -19,7 +30,12 @@ import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCListingBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
-public class SectionCListingActivity extends AppCompatActivity {
+public class SectionCListingActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener  {
+
+    static EditText
+            tcvcl03,
+            tcvcl19,
+            tcvcl20;
 
     ActivitySectionCListingBinding bi;
     String deviceID;
@@ -31,6 +47,25 @@ public class SectionCListingActivity extends AppCompatActivity {
         bi.setCallback(this);
 
         setContentUI();
+
+        tcvcl03 = findViewById(R.id.tcvcl03);
+        tcvcl19 = findViewById(R.id.tcvcl19);
+        tcvcl20 = findViewById(R.id.tcvcl20);
+
+        bi.tcvcl11.setOnCheckedChangeListener(this);
+
+
+        tcvcl03.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                xDatePickerDialog(v);
+            }
+        });
+
+        tcvcl20.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                xTimePickerDialog(v);
+            }
+        });
     }
 
     private void setContentUI() {
@@ -120,6 +155,63 @@ public class SectionCListingActivity extends AppCompatActivity {
         fc.setGpsLng(locClass.getLongitude());
         fc.setGpsAcc(locClass.getAccuracy());
         fc.setGpsDT(locClass.getTime());
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+        if (!bi.tcvcl11a.isChecked()){
+            bi.tcvcl12.clearCheck();
+            bi.tcvcl13.clearCheck();
+            bi.tcvcl14.clearCheck();
+            bi.tcvcl15.clearCheck();
+            bi.tcvcl16.clearCheck();
+            bi.tcvcl17.clearCheck();
+        }
+    }
+
+
+    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            tcvcl03.setText(day + "-" + (month + 1) + "-" + year);
+        }
+    }
+
+    public void xDatePickerDialog(View v) {
+        DialogFragment newFragment = new SectionCListingActivity.DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+
+
+
+    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+
+            return new TimePickerDialog(getActivity(), this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+        }
+
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            tcvcl20.setText(hourOfDay + ":" + minute);
+        }
+    }
+
+    public void xTimePickerDialog(View v) {
+        DialogFragment newFragment = new SectionCListingActivity.TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
 }
