@@ -15,7 +15,7 @@ public class SchoolContract {
     private String sch_code;
     private String sch_name;
     private String sch_add;
-    //    private String sch_gender ;
+    private String sch_status;
     private String sch_type;
 
     public SchoolContract() {
@@ -33,9 +33,9 @@ public class SchoolContract {
         return sch_add;
     }
 
-//    public String getSch_gender() {
-//        return sch_gender;
-//    }
+    public String getSch_status() {
+        return sch_status;
+    }
 
     public String getSch_type() {
         return sch_type;
@@ -45,7 +45,7 @@ public class SchoolContract {
         this.sch_code = jsonObject.getString(SchoolTable.COLUMN_SCH_CODE);
         this.sch_name = jsonObject.getString(SchoolTable.COLUMN_SCH_NAME);
         this.sch_add = jsonObject.getString(SchoolTable.COLUMN_SCH_ADD);
-//        this.sch_gender= jsonObject.getString(SchoolTable.COLUMN_SCH_GENDER);
+        this.sch_status = jsonObject.getString(SchoolTable.COLUMN_SCH_STATUS);
         this.sch_type = jsonObject.getString(SchoolTable.COLUMN_SCH_TYPE);
         return this;
     }
@@ -54,7 +54,7 @@ public class SchoolContract {
         this.sch_code = cursor.getString(cursor.getColumnIndex(SchoolTable.COLUMN_SCH_CODE));
         this.sch_name = cursor.getString(cursor.getColumnIndex(SchoolTable.COLUMN_SCH_NAME));
         this.sch_add = cursor.getString(cursor.getColumnIndex(SchoolTable.COLUMN_SCH_ADD));
-//        this.sch_gender = cursor.getString(cursor.getColumnIndex(SchoolTable.COLUMN_SCH_GENDER));
+        this.sch_status = cursor.getString(cursor.getColumnIndex(SchoolTable.COLUMN_SCH_STATUS));
         this.sch_type = cursor.getString(cursor.getColumnIndex(SchoolTable.COLUMN_SCH_TYPE));
         return this;
     }
@@ -67,7 +67,7 @@ public class SchoolContract {
         public static final String COLUMN_SCH_CODE = "sch_code";
         public static final String COLUMN_SCH_NAME = "sch_name";
         public static final String COLUMN_SCH_ADD = "sch_add";
-        //        public static final String COLUMN_SCH_GENDER = "sch_gender";
+        public static final String COLUMN_SCH_STATUS = "sch_status";
         public static final String COLUMN_SCH_TYPE = "sch_type";
 
         public static final String _URI = "schools.php";

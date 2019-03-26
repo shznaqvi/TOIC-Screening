@@ -137,7 +137,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             SchoolTable.COLUMN_SCH_CODE + " TEXT," +
             SchoolTable.COLUMN_SCH_NAME + " TEXT," +
             SchoolTable.COLUMN_SCH_ADD + " TEXT," +
-//            SchoolTable.COLUMN_SCH_GENDER + " TEXT," +
+            SchoolTable.COLUMN_SCH_STATUS + " TEXT," +
             SchoolTable.COLUMN_SCH_TYPE + " TEXT" +
             ");";
     private final String TAG = "DatabaseHelper";
@@ -229,7 +229,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(SchoolTable.COLUMN_SCH_CODE, sch.getSch_code());
                 values.put(SchoolTable.COLUMN_SCH_NAME, sch.getSch_name());
                 values.put(SchoolTable.COLUMN_SCH_ADD, sch.getSch_add());
-//                values.put(SchoolTable.COLUMN_SCH_GENDER, sch.getSch_gender());
+                values.put(SchoolTable.COLUMN_SCH_STATUS, sch.getSch_status());
                 values.put(SchoolTable.COLUMN_SCH_TYPE, sch.getSch_type());
 
                 db.insert(SchoolTable.TABLE_NAME, null, values);
@@ -293,7 +293,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 SchoolTable.COLUMN_SCH_CODE,
                 SchoolTable.COLUMN_SCH_NAME,
                 SchoolTable.COLUMN_SCH_ADD,
-//                SchoolTable.COLUMN_SCH_GENDER,
+                SchoolTable.COLUMN_SCH_STATUS,
                 SchoolTable.COLUMN_SCH_TYPE,
 
         };

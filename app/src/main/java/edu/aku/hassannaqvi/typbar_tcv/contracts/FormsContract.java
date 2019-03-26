@@ -100,6 +100,7 @@ public class FormsContract {
 
         JSONObject json = new JSONObject();
 
+        json.put(FormsTable.COLUMN_PROJECT_NAME, this.projectName);
         json.put(FormsTable._ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
@@ -129,10 +130,7 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_GPSACC, this.gpsAcc == null ? JSONObject.NULL : this.gpsAcc);
         json.put(FormsTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        json.put(FormsTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(FormsTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
         json.put(FormsTable.COLUMN_APP_VERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
-
 
         return json;
     }
@@ -332,6 +330,6 @@ public class FormsContract {
         public static final String COLUMN_APP_VERSION = "appversion";
 
         public static String _URL1 = "forms.php";
-        public static String _URL2 = "children_forms.php";
+        public static String _URL2 = "forms_mi.php";
     }
 }
