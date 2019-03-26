@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.typbar_tcv.ui;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -45,8 +46,11 @@ public class SectionCListingActivity extends AppCompatActivity {
             if (!formValidation()) return;
             SaveDraft();
 
-            if (UpdateDB()) MainApp.endActivity(this, this, true);
-            Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
+            if (!UpdateDB()) {
+                Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
 
         } catch (JSONException e) {
             e.printStackTrace();
