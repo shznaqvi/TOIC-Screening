@@ -120,7 +120,7 @@ public class SectionSListingActivity extends AppCompatActivity {
 
             if (!formValidation()) return;
 
-            if (!MainApp.checkingGPSRules(this)) return;
+//            if (!MainApp.checkingGPSRules(this)) return;
 
             SaveDraft();
 
