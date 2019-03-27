@@ -41,6 +41,7 @@ import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.typbar_tcv.sync.SyncAllData;
+import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -201,8 +202,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void openForm(int type) {
 
-        final Intent oF = new Intent(MainActivity.this, type == 1 ? SectionSListingActivity.class : SectionCListingActivity.class);
+        if (!checkingGPSRules()) {
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("GPS WARNING")
+                    .setIcon(R.drawable.ic_warning_black_24dp)
+                    .setCancelable(false)
+                    .setMessage("Can't get GPS coordinates. Please expose device to sky and then re-start app")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .show();
 
+            return;
+        }
+
+        final Intent oF = new Intent(MainActivity.this, type == 1 ? SectionSListingActivity.class : SectionCListingActivity.class);
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
         } else {
@@ -241,6 +258,24 @@ public class MainActivity extends AppCompatActivity {
 
             builder.show();
         }
+    }
+
+    private boolean checkingGPSRules() {
+
+        MainApp.LocClass locClass = MainApp.setGPS(this);
+
+        if (locClass.getTime().equals("0") || locClass.getAccuracy().equals("0")) return false;
+
+        Long minutes = DateUtils.getMinutes(DateUtils.getDateFormat(locClass.getTime()), DateUtils.getDateFormat(
+                new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(new Date())));
+
+        Toast.makeText(this, "Date Time: " + locClass.getTime()
+                        + "\nMinutes: " + minutes
+                        + "\nAccuracy: " + locClass.getAccuracy()
+                , Toast.LENGTH_LONG).show();
+
+        return minutes.intValue() < 20 && Double.valueOf(locClass.getAccuracy()).intValue() < 15;
+
     }
 
 

@@ -205,12 +205,10 @@ public class MainApp extends Application {
             if (lat == "0" && lang == "0") {
                 Toast.makeText(mContext, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(mContext, "GPS set", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, "GPS set", Toast.LENGTH_SHORT).show();
             }
 
-            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
-
-            Toast.makeText(mContext, "GPS set", Toast.LENGTH_SHORT).show();
+            String date = DateFormat.format("dd/MM/yyyy hh:mm:ss", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
             return new LocClass(lang, lat, acc, date);
 
@@ -345,30 +343,6 @@ public class MainApp extends Application {
             return provider2 == null;
         }
         return provider1.equals(provider2);
-    }
-
-    public static class deadMemberClass {
-
-        int position;
-        String DSSId;
-
-        public deadMemberClass(int i, String s) {
-            position = i;
-            DSSId = s;
-        }
-
-        public int getPosition() {
-            return position;
-        }
-
-        public void setPosition(int i) {
-            position = i;
-        }
-
-        public void setDSSId(String id) {
-            DSSId = id;
-        }
-
     }
 
     public class GPSLocationListener implements LocationListener {
