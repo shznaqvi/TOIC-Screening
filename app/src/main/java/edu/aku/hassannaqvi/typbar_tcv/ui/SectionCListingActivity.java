@@ -151,6 +151,9 @@ public class SectionCListingActivity extends AppCompatActivity {
         try {
 
             if (!formValidation()) return;
+
+            if (!MainApp.checkingGPSRules(this)) return;
+
             SaveDraft();
 
             if (!UpdateDB()) {

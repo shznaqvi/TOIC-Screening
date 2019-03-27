@@ -24,11 +24,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.ChildContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.EnrollmentContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
+import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -182,16 +184,38 @@ public class MainApp extends Application {
         alert.show();
     }
 
-    public static String convertDateFormat(String dateStr) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            Date d = sdf.parse(dateStr);
-            return new SimpleDateFormat("dd/MM/yyyy").format(d);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
+    public static boolean checkingGPSRules(Context mContext) {
 
-        return "";
+        MainApp.LocClass locClass = MainApp.setGPS(mContext);
+
+        if (locClass.getTime().equals("0") || locClass.getAccuracy().equals("0")) return false;
+
+        Long minutes = DateUtils.getMinutes(DateUtils.getDateFormat(locClass.getTime()), DateUtils.getDateFormat(
+                new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(new Date())));
+
+        Toast.makeText(mContext, "Date Time: " + locClass.getTime()
+                        + "\nMinutes: " + minutes
+                        + "\nAccuracy: " + locClass.getAccuracy()
+                , Toast.LENGTH_LONG).show();
+
+        boolean flag = minutes.intValue() < 20 && Double.valueOf(locClass.getAccuracy()).intValue() < 15;
+        if (flag) return true;
+
+        new AlertDialog.Builder(mContext)
+                .setTitle("GPS WARNING")
+                .setIcon(R.drawable.ic_warning_black_24dp)
+                .setCancelable(false)
+                .setMessage("Please show sky to device and then re-start app")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .show();
+
+        return false;
+
     }
 
     public static LocClass setGPS(Context mContext) {
