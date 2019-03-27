@@ -360,11 +360,13 @@ public class MainApp extends Application {
             bestLocation.setLongitude(Float.parseFloat(sharedPref.getString("Longitude", "0")));
 
             if (isBetterLocation(location, bestLocation)) {
-                editor.putString("Longitude", String.valueOf(location.getLongitude()));
-                editor.putString("Latitude", String.valueOf(location.getLatitude()));
-                editor.putString("Accuracy", String.valueOf(location.getAccuracy()));
-                editor.putString("Time", String.valueOf(location.getTime()));
-                editor.apply();
+                if (Double.valueOf(location.getAccuracy()).intValue() < 15) {
+                    editor.putString("Longitude", String.valueOf(location.getLongitude()));
+                    editor.putString("Latitude", String.valueOf(location.getLatitude()));
+                    editor.putString("Accuracy", String.valueOf(location.getAccuracy()));
+                    editor.putString("Time", String.valueOf(location.getTime()));
+                    editor.apply();
+                }
             }
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(String.valueOf(location.getTime()))).toString();

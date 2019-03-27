@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
                     .setTitle("GPS WARNING")
                     .setIcon(R.drawable.ic_warning_black_24dp)
                     .setCancelable(false)
-                    .setMessage("Can't get GPS coordinates. Please expose device to sky and then re-start app")
+                    .setMessage("Please show sky to device and then re-start app")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
