@@ -202,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
     public void openForm(int type) {
         final Intent oF = new Intent(MainActivity.this, type == 1 ? SectionSListingActivity.class : SectionCListingActivity.class);
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
+            finish();
             startActivity(oF);
         } else {
 
@@ -225,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
                         editor.commit();
 
                         if (!MainApp.userName.equals("0000")) {
+                            finish();
                             startActivity(oF);
                         }
                     }

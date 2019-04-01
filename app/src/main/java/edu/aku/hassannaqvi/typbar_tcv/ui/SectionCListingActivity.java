@@ -160,6 +160,7 @@ public class SectionCListingActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            finish();
             startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
 
         } catch (JSONException e) {
