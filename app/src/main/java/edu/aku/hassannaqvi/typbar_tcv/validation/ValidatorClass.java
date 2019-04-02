@@ -44,6 +44,14 @@ public abstract class ValidatorClass {
 
     }
 
+    public static boolean EmptyTextBoxCustom(Context context, EditText txt, String msg) {
+        txt.setError(msg);    // Set Error on last radio button
+        txt.setFocusableInTouchMode(true);
+        txt.requestFocus();
+        Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": " + msg);
+        return false;
+    }
+
     public static boolean EmptyCardCheckBox(Context context, CardView container, CheckBox cbx, String msg) {
 
         Boolean flag = false;

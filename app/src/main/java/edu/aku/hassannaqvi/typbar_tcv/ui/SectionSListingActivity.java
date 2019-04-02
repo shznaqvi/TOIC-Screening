@@ -78,33 +78,42 @@ public class SectionSListingActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                ArrayList<String> schNames = new ArrayList<>();
-                schNames.add("....");
 
                 if (i != 0) {
 
                     if (i > 5) {
                         bi.tcvsl01Name.setVisibility(View.VISIBLE);
                         bi.tcvsl01Name.setHint(bi.tcvsl00.getSelectedItem().toString() + " Name");
-                        bi.tcvsl01.setVisibility(View.GONE);
-                        bi.tcvsl01.setSelection(0);
+
+                        bi.autoCompleteSName.setVisibility(View.GONE);
+                        /*bi.tcvsl01.setVisibility(View.GONE);
+                        bi.tcvsl01.setSelection(0);*/
+
                     } else {
+
+                        ArrayList<String> schNames = new ArrayList<>();
+                        /*schNames.add("....");*/
 
                         ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvsl00.getSelectedItemPosition()));
                         schoolMap = new HashMap<>();
 
                         for (SchoolContract school : schoolContract) {
-                            schoolMap.put(school.getSch_name(), school);
-                            schNames.add(school.getSch_name());
+                            schoolMap.put(school.getSch_name().toUpperCase(), school);
+                            schNames.add(school.getSch_name().toUpperCase());
                         }
 
-                        bi.tcvsl01.setVisibility(View.VISIBLE);
+                        /*bi.tcvsl01.setVisibility(View.VISIBLE);*/
+                        bi.autoCompleteSName.setVisibility(View.VISIBLE);
+
                         bi.tcvsl01Name.setVisibility(View.GONE);
                         bi.tcvsl01Name.setText(null);
+
+
+                        bi.autoCompleteSName.setAdapter(new ArrayAdapter<>(SectionSListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
                     }
                 }
 
-                bi.tcvsl01.setAdapter(new ArrayAdapter<>(SectionSListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
+//                bi.tcvsl01.setAdapter(new ArrayAdapter<>(SectionSListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
             }
 
             @Override
@@ -164,11 +173,11 @@ public class SectionSListingActivity extends AppCompatActivity {
         JSONObject sA = new JSONObject();
         sA.put("tcvsl00", bi.tcvsl00.getSelectedItem());
 
-        if (bi.tcvsl01.getVisibility() == View.VISIBLE) {
-            sA.put("sch_code", schoolMap.get(bi.tcvsl01.getSelectedItem()).getSch_code());
-            sA.put("sch_add", schoolMap.get(bi.tcvsl01.getSelectedItem()).getSch_add());
-            sA.put("sch_type", schoolMap.get(bi.tcvsl01.getSelectedItem()).getSch_type());
-            sA.put("tcvsl01", bi.tcvsl01.getSelectedItem());
+        if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
+            sA.put("sch_code", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_code());
+            sA.put("sch_add", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_add());
+            sA.put("sch_type", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_type());
+            sA.put("tcvsl01", bi.autoCompleteSName.getText().toString());
         } else
             sA.put("tcvsl01Name", bi.tcvsl01Name.getText().toString());
 
@@ -188,7 +197,17 @@ public class SectionSListingActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01);
+        if (!ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01)) return false;
+
+        if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
+
+            if (schoolMap.get(bi.autoCompleteSName.getText().toString()) != null) return true;
+
+            return ValidatorClass.EmptyTextBoxCustom(this, bi.autoCompleteSName, "This data is not accurate!!");
+
+        }
+
+        return true;
     }
 
     public void BtnEnd() {
