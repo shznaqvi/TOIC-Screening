@@ -57,7 +57,7 @@ public class SectionSListingActivity extends AppCompatActivity {
     private void filledSpinners() {
         String[] schTypes = {"....", "Government Boys Secondary School", "Government Girls Secondary School",
                 "Government Boys Primary School", "Government Girls Primary School", "Private", "Madarasa", "Other"};
-        bi.tcvsl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(schTypes)));
+        bi.tcvsl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(MainApp.schTypes)));
 
 
         ArrayList<String> ucsNames = new ArrayList<>();
@@ -81,7 +81,7 @@ public class SectionSListingActivity extends AppCompatActivity {
 
                 if (i != 0) {
 
-                    if (i > 5) {
+                    if (i > 3) {
                         bi.tcvsl01Name.setVisibility(View.VISIBLE);
                         bi.tcvsl01Name.setHint(bi.tcvsl00.getSelectedItem().toString() + " Name");
 

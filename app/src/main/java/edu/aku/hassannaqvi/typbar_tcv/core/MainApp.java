@@ -86,6 +86,10 @@ public class MainApp extends Application {
     public static Integer areaCode;
     protected static LocationManager locationManager;
 
+    public static String[] schTypes = new String[]{"....",
+            "Government Boys/Girls Primary School",
+            "Government Boys/Girls Secondary School", "Private", "Madarasa", "Other"};
+
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 
         Calendar start = Calendar.getInstance();

@@ -55,9 +55,7 @@ public class SectionCListingActivity extends AppCompatActivity {
     }
 
     private void filledSpinners() {
-        String[] schTypes = {"....", "Government Boys Secondary School", "Government Girls Secondary School",
-                "Government Boys Primary School", "Government Girls Primary School", "Private", "Madarasa", "Other"};
-        bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(schTypes)));
+        bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(MainApp.schTypes)));
     }
 
     private void setListeners() {
