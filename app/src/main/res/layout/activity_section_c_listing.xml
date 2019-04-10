@@ -230,9 +230,19 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvsl05" />
 
+                            <TextView
+                                style="@style/textview"
+                                android:background="@color/grayOverlay"
+                                android:padding="8dp"
+                                android:text="Use ' , ' and ' - ' for seperation in address"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/red"
+                                android:textStyle="normal" />
+
                             <EditText
                                 android:id="@+id/tcvcl08"
-                                style="@style/EditText"
+                                style="@style/EditTextAlphaNumeric"
+                                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,-"
                                 android:hint="@string/tcvsl05"
                                 android:maxLines="2" />
 
