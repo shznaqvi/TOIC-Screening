@@ -148,8 +148,8 @@ public class SectionSListingActivity extends AppCompatActivity {
 
         DatabaseHelper db = new DatabaseHelper(this);
         long updcount = db.addForm(MainApp.fc);
-        MainApp.fc.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
+            MainApp.fc.set_ID(String.valueOf(updcount));
             MainApp.fc.setUID((MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
             db.updateFormID();
 
@@ -171,20 +171,19 @@ public class SectionSListingActivity extends AppCompatActivity {
         MainApp.fc.setFormtype("sl");
 
         JSONObject sA = new JSONObject();
-        sA.put("tcvsl00", bi.tcvsl00.getSelectedItem());
+//        sA.put("tcvsl00", bi.tcvsl00.getSelectedItem());
 
         if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
             sA.put("sch_code", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_code());
             sA.put("sch_add", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_add());
             sA.put("sch_type", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_type());
             sA.put("tcvsl01", bi.autoCompleteSName.getText().toString());
-        } else
+        } else {
             sA.put("tcvsl01Name", bi.tcvsl01Name.getText().toString());
+            sA.put("sch_type", bi.tcvsl00.getSelectedItem().equals("Other") ? "96" : String.valueOf(bi.tcvsl00.getSelectedItemPosition()));
+        }
 
-        /*sA.put("tcvsl02", bi.tcvsl02a.isChecked() ? "1" : bi.tcvsl02b.isChecked() ? "2" :
-                bi.tcvsl02c.isChecked() ? "3" : bi.tcvsl0296.isChecked() ? "96" : "0");*/
-
-        sA.put("tcvsl03", bi.tcvsl03.getSelectedItem().toString());
+//        sA.put("tcvsl03", bi.tcvsl03.getSelectedItem().toString());
         sA.put("tcvsl03_code", ucMap.get(bi.tcvsl03.getSelectedItem().toString()));
         sA.put("tcvsl04", bi.tcvsl04.getText().toString());
         sA.put("tcvsl05", bi.tcvsl05.getText().toString());

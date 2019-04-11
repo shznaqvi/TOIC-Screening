@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setCustomTitle(img);
 
         final EditText input = new EditText(MainActivity.this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
         input.requestFocus();
         input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 m_Text = input.getText().toString();
                 if (!m_Text.equals("")) {
-                    editor.putString("tagName", m_Text);
+                    editor.putString("tagName", "T-" + m_Text);
                     editor.commit();
                 }
             }
@@ -206,13 +206,22 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
             builder = new AlertDialog.Builder(MainActivity.this);
+            final AlertDialog dialog = builder.create();
             ImageView img = new ImageView(getApplicationContext());
             img.setImageResource(R.drawable.tagimg);
             img.setPadding(0, 15, 0, 15);
             builder.setCustomTitle(img);
 
             final EditText input = new EditText(MainActivity.this);
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean b) {
+                    if (b) {
+                        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                    }
+                }
+            });
             builder.setView(input);
 
 
@@ -221,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     m_Text = input.getText().toString();
                     if (!m_Text.equals("")) {
-                        editor.putString("tagName", m_Text);
+                        editor.putString("tagName", "T-" + m_Text);
                         editor.commit();
 
                         if (!MainApp.userName.equals("0000")) {

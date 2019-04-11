@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.SectionCListingActivity">
 
@@ -50,14 +51,26 @@
                             style="@style/i_textview"
                             android:text="@string/tcvcl01" />
 
-                        <Spinner
+                        <AutoCompleteTextView
                             android:id="@+id/tcvcl01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="20dp" />
+                            android:hint="@string/tcvcl01"
+                            android:inputType="textCapCharacters" />
 
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
+
+                <!--Check school id-->
+                <Button
+                    android:id="@+id/btn_check"
+                    style="@style/buttons"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:background="@color/red"
+                    android:onClick="@{() -> callback.BtnCheckSchool()}"
+                    android:text="CHECK SCHOOL"
+                    android:textColor="@color/white" />
 
                 <LinearLayout
                     android:id="@+id/childSec00"
@@ -124,7 +137,8 @@
                                 android:id="@+id/tcvcl03"
                                 style="@style/EditText"
                                 android:hint="@string/tcvcl03"
-                                android:text='@{!tcvcl034a.checked ?  "" : tcvcl03.getText.toString }' />
+                                android:text='@{!tcvcl034a.checked ?  "" : tcvcl03.getText.toString }'
+                                app:dateFormat="dd-MM-yyyy" />
 
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
@@ -474,88 +488,79 @@
                             </LinearLayout>
                         </android.support.v7.widget.CardView>
 
-                        <!--Radio tcvcl17-->
-                        <android.support.v7.widget.CardView style="@style/cardView">
+                        <LinearLayout
+                            style="@style/linearlayout_view_wt_bound"
+                            android:visibility="@{tcvcl12a.checked &amp;&amp; tcvcl13a.checked &amp;&amp; tcvcl14a.checked &amp;&amp; tcvcl15a.checked &amp;&amp; tcvcl16a.checked ? View.VISIBLE : View.GONE}">
 
-                            <LinearLayout style="@style/linearlayout_view_wt_bound">
+                            <!--tcvcl17-->
+                            <android.support.v7.widget.CardView style="@style/cardView">
 
-                                <TextView
-                                    style="@style/i_textview"
-                                    android:text="@string/tcvcl17" />
+                                <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                                <RadioGroup
-                                    android:id="@+id/tcvcl17"
-                                    style="@style/i_radiogroup">
+                                    <TextView
+                                        style="@style/h_textview"
+                                        android:text="@string/tcvcl17" />
 
-                                    <RadioButton
-                                        android:id="@+id/tcvcl17a"
-                                        style="@style/i_radiobutton"
-                                        android:text="@string/yes" />
+                                </LinearLayout>
+                            </android.support.v7.widget.CardView>
 
-                                    <RadioButton
-                                        android:id="@+id/tcvcl17b"
-                                        style="@style/i_radiobutton"
-                                        android:text="@string/no" />
+                            <!--EditText tcvcl18-->
+                            <android.support.v7.widget.CardView style="@style/cardView">
 
-                                </RadioGroup>
+                                <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                            </LinearLayout>
-                        </android.support.v7.widget.CardView>
+                                    <TextView
+                                        style="@style/i_textview"
+                                        android:text="@string/tcvcl18" />
 
-                        <!--EditText tcvcl18-->
-                        <android.support.v7.widget.CardView style="@style/cardView">
+                                    <TextView
+                                        android:id="@+id/tcvcl18"
+                                        style="@style/h_textview"
+                                        android:autoSizeTextType="uniform"
+                                        android:text="SLIP ID:"
+                                        android:textSize="35sp" />
 
-                            <LinearLayout style="@style/linearlayout_view_wt_bound">
+                                </LinearLayout>
+                            </android.support.v7.widget.CardView>
 
-                                <TextView
-                                    style="@style/i_textview"
-                                    android:text="@string/tcvcl18" />
+                            <!--EditText tcvcl19-->
+                            <android.support.v7.widget.CardView style="@style/cardView">
 
-                                <EditText
-                                    android:id="@+id/tcvcl18"
-                                    style="@style/EditText_number"
-                                    android:hint="@string/tcvcl18"
-                                    android:text='@{!tcvcl11a.checked ?  "" : tcvcl18.getText.toString }' />
+                                <LinearLayout style="@style/linearlayout_view_wt_bound">
 
+                                    <TextView
+                                        style="@style/i_textview"
+                                        android:text="@string/tcvcl19" />
 
-                            </LinearLayout>
-                        </android.support.v7.widget.CardView>
+                                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                                        android:id="@+id/tcvcl19"
+                                        style="@style/EditText"
+                                        android:hint="@string/tcvcl19"
+                                        android:text='@{tcvcl12a.checked &amp;&amp; tcvcl13a.checked &amp;&amp; tcvcl14a.checked &amp;&amp; tcvcl15a.checked &amp;&amp; tcvcl16a.checked ? tcvcl19.getText.toString : "" }'
+                                        app:dateFormat="dd-MM-yyyy" />
 
-                        <!--EditText tcvcl19-->
-                        <android.support.v7.widget.CardView style="@style/cardView">
+                                </LinearLayout>
+                            </android.support.v7.widget.CardView>
 
-                            <LinearLayout style="@style/linearlayout_view_wt_bound">
+                            <!--EditText tcvcl20-->
+                            <android.support.v7.widget.CardView style="@style/cardView">
 
-                                <TextView
-                                    style="@style/i_textview"
-                                    android:text="@string/tcvcl19" />
+                                <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                                <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                    android:id="@+id/tcvcl19"
-                                    style="@style/EditText"
-                                    android:hint="@string/tcvcl19"
-                                    android:text='@{!tcvcl11a.checked ?  "" : tcvcl19.getText.toString }' />
+                                    <TextView
+                                        style="@style/i_textview"
+                                        android:text="@string/tcvcl20" />
 
-                            </LinearLayout>
-                        </android.support.v7.widget.CardView>
+                                    <io.blackbox_vision.datetimepickeredittext.view.TimePickerInputEditText
+                                        android:id="@+id/tcvcl20"
+                                        style="@style/EditText"
+                                        android:hint="@string/tcvcl20"
+                                        android:text='@{tcvcl12a.checked &amp;&amp; tcvcl13a.checked &amp;&amp; tcvcl14a.checked &amp;&amp; tcvcl15a.checked &amp;&amp; tcvcl16a.checked ? tcvcl20.getText.toString : "" }' />
 
-                        <!--EditText tcvcl20-->
-                        <android.support.v7.widget.CardView style="@style/cardView">
+                                </LinearLayout>
+                            </android.support.v7.widget.CardView>
 
-                            <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                                <TextView
-                                    style="@style/i_textview"
-                                    android:text="@string/tcvcl20" />
-
-                                <io.blackbox_vision.datetimepickeredittext.view.TimePickerInputEditText
-                                    android:id="@+id/tcvcl20"
-                                    style="@style/EditText"
-                                    android:hint="@string/tcvcl20"
-                                    android:text='@{!tcvcl11a.checked ?  "" : tcvcl20.getText.toString }' />
-
-                            </LinearLayout>
-                        </android.support.v7.widget.CardView>
+                        </LinearLayout>
 
                     </LinearLayout>
 
