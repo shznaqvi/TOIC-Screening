@@ -236,7 +236,7 @@ public class MainApp extends Application {
 //                Toast.makeText(mContext, "GPS set", Toast.LENGTH_SHORT).show();
             }
 
-            String date = DateFormat.format("dd/MM/yyyy hh:mm:ss", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+            String date = DateFormat.format("dd-MM-yyyy hh:mm:ss", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
             return new LocClass(lang, lat, acc, date);
 
