@@ -40,6 +40,7 @@ import edu.aku.hassannaqvi.typbar_tcv.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityMainBinding;
+import edu.aku.hassannaqvi.typbar_tcv.get.GetAllData;
 import edu.aku.hassannaqvi.typbar_tcv.sync.SyncAllData;
 
 public class MainActivity extends AppCompatActivity {
@@ -330,6 +331,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void CheckCluster(View v) {
 
+    }
+
+    public void downloadData(View view) {
+        Toast.makeText(this, "Sync Schools", Toast.LENGTH_LONG).show();
+        new GetAllData(this, "School").execute();
     }
 
     public void syncServer(View view) {

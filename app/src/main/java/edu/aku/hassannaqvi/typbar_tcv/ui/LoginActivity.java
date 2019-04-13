@@ -444,8 +444,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             Toast.makeText(this, "TEAM CREDITS: " +
                             "\r\nHassan Naqvi, " +
                             "Ali Azaz, " +
-                            "Gul Sanober, " +
-                            "Javed Khan",
+                            "Sajid, ",
                     Toast.LENGTH_LONG)
                     .show();
         }
@@ -576,8 +575,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     new GetAllData(mContext, "User").execute();
                     Toast.makeText(mContext, "Sync UCs", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "UC").execute();
-                    Toast.makeText(mContext, "Sync Schools", Toast.LENGTH_LONG).show();
-                    new GetAllData(mContext, "School").execute();
                 }
             });
 
