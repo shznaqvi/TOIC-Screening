@@ -129,6 +129,22 @@ public class SectionCListingActivity extends AppCompatActivity {
             }
         });
 
+        bi.tcvcl11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i != bi.tcvcl11a.getId())
+                    ClearClass.ClearAllFields(bi.childSec01);
+            }
+        });
+
+        bi.tcvcl17.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i != bi.tcvcl17.getId())
+                    ClearClass.ClearAllFields(bi.childSec02);
+            }
+        });
+
     }
 
     public void BtnCheckSchool() {
@@ -235,21 +251,23 @@ public class SectionCListingActivity extends AppCompatActivity {
         child.put("tcvcl01", bi.tcvcl01.getText().toString());
 
         child.put("tcvcl02", bi.tcvcl02.getText().toString());
-        child.put("tcvcl034", bi.tcvcl034a.isChecked() ? "DOB" : bi.tcvcl034b.isChecked() ? "AGE" : "0");
+        child.put("tcvcl03Age", bi.tcvcl03Agea.isChecked() ? "1" : bi.tcvcl03Ageb.isChecked() ? "2" : "0");
         child.put("tcvcl03", bi.tcvcl03.getText().toString());
-        child.put("tcvcl04", bi.tcvcl04.getText().toString());
+        child.put("tcvcl04y", bi.tcvcl04y.getText().toString());
+        child.put("tcvcl04m", bi.tcvcl04m.getText().toString());
         child.put("tcvcl05", bi.tcvcl05a.isChecked() ? "1" : bi.tcvcl05b.isChecked() ? "2" : "0");
         child.put("tcvcl06", bi.tcvcl06.getText().toString());
         child.put("tcvcl07", bi.tcvcl07.getText().toString());
         child.put("tcvcl08", bi.tcvcl08.getText().toString());
         child.put("tcvcl09", bi.tcvcl09.getText().toString());
         child.put("tcvcl10", bi.tcvcl10.getText().toString());
-        child.put("tcvcl11", bi.tcvcl11a.isChecked() ? "1" : bi.tcvcl11b.isChecked() ? "2" : "0");
+        child.put("tcvcl11", bi.tcvcl11a.isChecked() ? "1" : bi.tcvcl11b.isChecked() ? "2" : bi.tcvcl11c.isChecked() ? "3" : "0");
         child.put("tcvcl12", bi.tcvcl12a.isChecked() ? "1" : bi.tcvcl12b.isChecked() ? "2" : "0");
         child.put("tcvcl13", bi.tcvcl13a.isChecked() ? "1" : bi.tcvcl13b.isChecked() ? "2" : "0");
         child.put("tcvcl14", bi.tcvcl14a.isChecked() ? "1" : bi.tcvcl14b.isChecked() ? "2" : "0");
         child.put("tcvcl15", bi.tcvcl15a.isChecked() ? "1" : bi.tcvcl15b.isChecked() ? "2" : "0");
         child.put("tcvcl16", bi.tcvcl16a.isChecked() ? "1" : bi.tcvcl16b.isChecked() ? "2" : "0");
+        child.put("tcvcl17", bi.tcvcl17a.isChecked() ? "1" : bi.tcvcl17b.isChecked() ? "2" : "0");
 
         if (bi.tcvcl12a.isChecked() &&
                 bi.tcvcl13a.isChecked() &&
@@ -261,8 +279,8 @@ public class SectionCListingActivity extends AppCompatActivity {
         else
             child.put("tcvcl18", "");
 
-        child.put("tcvcl19", bi.tcvcl19.getText().toString());
-        child.put("tcvcl20", bi.tcvcl20.getText().toString());
+        child.put("tcvcl19", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
+        child.put("tcvcl20", new SimpleDateFormat("HH:MM:SS").format(new Date().getTime()));
 
         MainApp.fc.setsA(String.valueOf(child));
 

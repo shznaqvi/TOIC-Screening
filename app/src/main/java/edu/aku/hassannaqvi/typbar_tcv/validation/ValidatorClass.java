@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.edittextpicker.aliazaz.EditTextPicker;
+
 import java.lang.reflect.Field;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
@@ -283,9 +285,24 @@ public abstract class ValidatorClass {
                     return false;
                 }
             } else if (view instanceof EditText) {
-                if (!EmptyTextBox(context, (EditText) view, getString(context, getIDComponent(view)))) {
-                    return false;
+
+                if (view instanceof EditTextPicker) {
+
+                    if (!((EditTextPicker) view).isEmptyTextBox())
+                        return false;
+
+                    if (!((EditTextPicker) view).isRangeTextValidate())
+                        return false;
+
+                    if (!((EditTextPicker) view).isTextEqualToPattern())
+                        return false;
+
+                } else {
+                    if (!EmptyTextBox(context, (EditText) view, getString(context, getIDComponent(view)))) {
+                        return false;
+                    }
                 }
+
             } else if (view instanceof LinearLayout) {
                 if (!EmptyCheckingContainer(context, (LinearLayout) view)) {
                     return false;
