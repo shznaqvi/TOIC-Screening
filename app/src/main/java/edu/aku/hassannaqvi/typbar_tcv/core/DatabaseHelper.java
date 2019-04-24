@@ -284,7 +284,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
-    public ArrayList<SchoolContract> getSchoolWRTType(String type) {
+    public ArrayList<SchoolContract> getSchoolWRTType(String type, String check) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -298,7 +298,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         };
 
-        String whereClause = SchoolTable.COLUMN_SCH_TYPE + " =?";
+        String whereClause = SchoolTable.COLUMN_SCH_TYPE + " =? ";
+        if (check.equals("1"))
+            whereClause += "and " + SchoolTable.COLUMN_SCH_STATUS + " is null";
+
         String[] whereArgs = {type};
         String groupBy = null;
         String having = null;

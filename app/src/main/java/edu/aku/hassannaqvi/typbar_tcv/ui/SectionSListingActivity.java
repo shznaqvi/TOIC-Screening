@@ -94,7 +94,7 @@ public class SectionSListingActivity extends AppCompatActivity {
                         ArrayList<String> schNames = new ArrayList<>();
                         /*schNames.add("....");*/
 
-                        ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvsl00.getSelectedItemPosition()));
+                        ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvsl00.getSelectedItemPosition()), "1");
                         schoolMap = new HashMap<>();
 
                         for (SchoolContract school : schoolContract) {

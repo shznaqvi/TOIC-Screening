@@ -87,7 +87,7 @@ public class SectionCListingActivity extends AppCompatActivity {
 
                 if (i != 0) {
 
-                    ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvcl00.getSelectedItemPosition()));
+                    ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvcl00.getSelectedItemPosition()), "0");
                     schoolMap = new HashMap<>();
 
                     for (SchoolContract school : schoolContract) {
@@ -168,7 +168,7 @@ public class SectionCListingActivity extends AppCompatActivity {
             Toast.makeText(SectionCListingActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (!schoolContract.getSch_status().equals("1")) {
+        if (schoolContract.getSch_status() == null) {
             Toast.makeText(SectionCListingActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
             return;
         }
