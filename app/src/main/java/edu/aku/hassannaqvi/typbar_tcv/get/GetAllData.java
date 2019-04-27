@@ -32,14 +32,15 @@ public class GetAllData extends AsyncTask<String, String, String> {
     private String TAG = "";
     private Context mContext;
     private ProgressDialog pd;
-
     private String syncClass;
+    private String URL;
 
 
     public GetAllData(Context context, String syncClass) {
         mContext = context;
         this.syncClass = syncClass;
         TAG = "Get" + syncClass;
+        URL = MainApp._TEST_URL;
     }
 
     @Override
@@ -49,27 +50,33 @@ public class GetAllData extends AsyncTask<String, String, String> {
         pd.setTitle("Syncing " + syncClass);
         pd.setMessage("Getting connected to server...");
         pd.show();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                URL = MainApp.isURLReachable(mContext, MainApp.HOST);
+            }
+        }).start();
     }
 
     @Override
     protected String doInBackground(String... args) {
 
         StringBuilder result = new StringBuilder();
-
         URL url = null;
         try {
             switch (syncClass) {
                 case "User":
-                    url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
+                    url = new URL(URL + UsersContract.UsersTable._URI);
                     break;
                 case "Tehsil":
-                    url = new URL(MainApp._HOST_URL + TehsilsContract.TehsilsTable._URI);
+                    url = new URL(URL + TehsilsContract.TehsilsTable._URI);
                     break;
                 case "UC":
-                    url = new URL(MainApp._HOST_URL + UCsContract.UCsTable._URI);
+                    url = new URL(URL + UCsContract.UCsTable._URI);
                     break;
                 case "School":
-                    url = new URL(MainApp._HOST_URL + SchoolContract.SchoolTable._URI);
+                    url = new URL(URL + SchoolContract.SchoolTable._URI);
                     break;
             }
 

@@ -12,6 +12,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -19,6 +21,10 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -38,9 +44,13 @@ import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 
 public class MainApp extends Application {
 
-    public static final String _IP = "43.245.131.159"; // Test PHP server
-    public static final Integer _PORT = 8080; // Port - with colon (:)
-    public static final String _HOST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/typbar/api/";
+    public static final String[] HOST = new String[]{_HOST_URL_1, _HOST_URL_2};
+    private static final String _IP = "43.245.131.159"; // Test PHP server
+    private static final String _ALTERNATE_IP = "58.65.211.13"; // Test PHP server
+    private static final Integer _PORT = 8080; // Port - with colon (:)
+    public static final String _HOST_URL_1 = "http://" + MainApp._IP + ":" + MainApp._PORT + "/typbar/api/";
+    public static final String _HOST_URL_2 = "http://" + MainApp._ALTERNATE_IP + ":" + MainApp._PORT + "/typbar/api/";
+    public static final String _TEST_URL = "http://f49461:" + MainApp._PORT + "/typbar/api/";
     public static final String _UPDATE_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/typbar/app/app-debug.apk";
 
     public static final Integer MONTHS_LIMIT = 11;
@@ -448,6 +458,33 @@ public class MainApp extends Application {
         public String getTime() {
             return Time;
         }
+    }
+
+    public static String isURLReachable(Context context, String[] hostURL) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+
+        for (String itemURL : hostURL) {
+            if (netInfo != null && netInfo.isConnected()) {
+                try {
+                    URL url = new URL(itemURL);
+                    HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
+                    urlc.setConnectTimeout(10 * 1000);          // 10 s.
+                    urlc.connect();
+                    if (urlc.getResponseCode() == 200) {        // 200 = "OK" code (http connection is fine).
+                        Log.wtf("Connection", "Success !");
+                        return itemURL;
+                    }
+
+                } catch (MalformedURLException e1) {
+                    continue;
+                } catch (IOException e) {
+                    continue;
+                }
+            }
+
+        }
+        return _TEST_URL;
     }
 
 }
