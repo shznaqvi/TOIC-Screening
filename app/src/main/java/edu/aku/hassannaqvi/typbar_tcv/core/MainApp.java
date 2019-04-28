@@ -12,8 +12,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -21,10 +19,6 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -458,33 +452,6 @@ public class MainApp extends Application {
         public String getTime() {
             return Time;
         }
-    }
-
-    public static String isURLReachable(Context context, String[] hostURL) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-
-        for (String itemURL : hostURL) {
-            if (netInfo != null && netInfo.isConnected()) {
-                try {
-                    URL url = new URL(itemURL);
-                    HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
-                    urlc.setConnectTimeout(10 * 1000);          // 10 s.
-                    urlc.connect();
-                    if (urlc.getResponseCode() == 200) {        // 200 = "OK" code (http connection is fine).
-                        Log.wtf("Connection", "Success !");
-                        return itemURL;
-                    }
-
-                } catch (MalformedURLException e1) {
-                    continue;
-                } catch (IOException e) {
-                    continue;
-                }
-            }
-
-        }
-        return _TEST_URL;
     }
 
 }

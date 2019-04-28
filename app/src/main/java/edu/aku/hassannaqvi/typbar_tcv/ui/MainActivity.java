@@ -352,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
                     "Forms",
                     "updateSyncedForms",
                     FormsContract.class,
-                    MainApp._HOST_URL_1 + FormsContract.FormsTable._URL1,
+                    FormsContract.FormsTable._URL1,
                     db.getUnsyncedForms(1)
             ).execute();
 
@@ -362,7 +362,7 @@ public class MainActivity extends AppCompatActivity {
                     "Children",
                     "updateSyncedForms",
                     FormsContract.class,
-                    MainApp._HOST_URL_1 + FormsContract.FormsTable._URL2,
+                    FormsContract.FormsTable._URL2,
                     db.getUnsyncedForms(2)
             ).execute();
 

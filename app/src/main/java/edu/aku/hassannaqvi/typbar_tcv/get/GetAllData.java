@@ -33,14 +33,11 @@ public class GetAllData extends AsyncTask<String, String, String> {
     private Context mContext;
     private ProgressDialog pd;
     private String syncClass;
-    private String URL;
-
 
     public GetAllData(Context context, String syncClass) {
         mContext = context;
         this.syncClass = syncClass;
         TAG = "Get" + syncClass;
-        URL = MainApp._TEST_URL;
     }
 
     @Override
@@ -50,61 +47,61 @@ public class GetAllData extends AsyncTask<String, String, String> {
         pd.setTitle("Syncing " + syncClass);
         pd.setMessage("Getting connected to server...");
         pd.show();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                URL = MainApp.isURLReachable(mContext, MainApp.HOST);
-            }
-        }).start();
     }
 
     @Override
     protected String doInBackground(String... args) {
+        StringBuilder result = null;
 
-        StringBuilder result = new StringBuilder();
-        URL url = null;
-        try {
-            switch (syncClass) {
-                case "User":
-                    url = new URL(URL + UsersContract.UsersTable._URI);
-                    break;
-                case "Tehsil":
-                    url = new URL(URL + TehsilsContract.TehsilsTable._URI);
-                    break;
-                case "UC":
-                    url = new URL(URL + UCsContract.UCsTable._URI);
-                    break;
-                case "School":
-                    url = new URL(URL + SchoolContract.SchoolTable._URI);
-                    break;
-            }
+        for (String hostItem : MainApp.HOST) {
 
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(100000 /* milliseconds */);
-            urlConnection.setConnectTimeout(150000 /* milliseconds */);
-            Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
-            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    Log.i(TAG, syncClass + " In: " + line);
-                    result.append(line);
+            URL url = null;
+            try {
+                switch (syncClass) {
+                    case "User":
+                        url = new URL(hostItem + UsersContract.UsersTable._URI);
+                        break;
+                    case "Tehsil":
+                        url = new URL(hostItem + TehsilsContract.TehsilsTable._URI);
+                        break;
+                    case "UC":
+                        url = new URL(hostItem + UCsContract.UCsTable._URI);
+                        break;
+                    case "School":
+                        url = new URL(hostItem + SchoolContract.SchoolTable._URI);
+                        break;
                 }
+
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(100000 /* milliseconds */);
+                urlConnection.setConnectTimeout(150000 /* milliseconds */);
+                Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
+
+                result = new StringBuilder();
+
+                if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        Log.i(TAG, syncClass + " In: " + line);
+                        result.append(line);
+                    }
+
+                    return result.toString();
+                }
+            } catch (java.net.SocketTimeoutException e) {
+                continue;
+            } catch (java.io.IOException e) {
+                continue;
             }
-        } catch (java.net.SocketTimeoutException e) {
-            return null;
-        } catch (java.io.IOException e) {
-            return null;
-        } finally {
-            urlConnection.disconnect();
         }
 
+        urlConnection.disconnect();
 
-        return result.toString();
+        return result == null ? null : result.toString();
     }
 
     @Override
