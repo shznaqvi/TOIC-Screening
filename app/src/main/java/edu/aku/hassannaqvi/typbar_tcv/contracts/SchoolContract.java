@@ -45,7 +45,8 @@ public class SchoolContract {
         this.sch_code = jsonObject.getString(SchoolTable.COLUMN_SCH_CODE);
         this.sch_name = jsonObject.getString(SchoolTable.COLUMN_SCH_NAME);
         this.sch_add = jsonObject.getString(SchoolTable.COLUMN_SCH_ADD);
-        this.sch_status = jsonObject.getString(SchoolTable.COLUMN_SCH_STATUS);
+        if (!jsonObject.get(SchoolTable.COLUMN_SCH_STATUS).equals(null))
+            this.sch_status = jsonObject.getString(SchoolTable.COLUMN_SCH_STATUS);
         this.sch_type = jsonObject.getString(SchoolTable.COLUMN_SCH_TYPE);
         return this;
     }

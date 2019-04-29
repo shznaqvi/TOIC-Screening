@@ -57,7 +57,7 @@ public class SectionSListingActivity extends AppCompatActivity {
     private void filledSpinners() {
         String[] schTypes = {"....", "Government Boys Secondary School", "Government Girls Secondary School",
                 "Government Boys Primary School", "Government Girls Primary School", "Private", "Madarasa", "Other"};
-        bi.tcvsl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(schTypes)));
+        bi.tcvsl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(MainApp.schTypes)));
 
 
         ArrayList<String> ucsNames = new ArrayList<>();
@@ -78,33 +78,42 @@ public class SectionSListingActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                ArrayList<String> schNames = new ArrayList<>();
-                schNames.add("....");
 
                 if (i != 0) {
 
-                    if (i > 5) {
+                    if (i > 3) {
                         bi.tcvsl01Name.setVisibility(View.VISIBLE);
                         bi.tcvsl01Name.setHint(bi.tcvsl00.getSelectedItem().toString() + " Name");
-                        bi.tcvsl01.setVisibility(View.GONE);
-                        bi.tcvsl01.setSelection(0);
+
+                        bi.autoCompleteSName.setVisibility(View.GONE);
+                        /*bi.tcvsl01.setVisibility(View.GONE);
+                        bi.tcvsl01.setSelection(0);*/
+
                     } else {
 
-                        ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvsl00.getSelectedItemPosition()));
+                        ArrayList<String> schNames = new ArrayList<>();
+                        /*schNames.add("....");*/
+
+                        ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvsl00.getSelectedItemPosition()), "1");
                         schoolMap = new HashMap<>();
 
                         for (SchoolContract school : schoolContract) {
-                            schoolMap.put(school.getSch_name(), school);
-                            schNames.add(school.getSch_name());
+                            schoolMap.put(school.getSch_name().toUpperCase(), school);
+                            schNames.add(school.getSch_name().toUpperCase());
                         }
 
-                        bi.tcvsl01.setVisibility(View.VISIBLE);
+                        /*bi.tcvsl01.setVisibility(View.VISIBLE);*/
+                        bi.autoCompleteSName.setVisibility(View.VISIBLE);
+
                         bi.tcvsl01Name.setVisibility(View.GONE);
                         bi.tcvsl01Name.setText(null);
+
+
+                        bi.autoCompleteSName.setAdapter(new ArrayAdapter<>(SectionSListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
                     }
                 }
 
-                bi.tcvsl01.setAdapter(new ArrayAdapter<>(SectionSListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
+//                bi.tcvsl01.setAdapter(new ArrayAdapter<>(SectionSListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
             }
 
             @Override
@@ -128,6 +137,7 @@ public class SectionSListingActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            finish();
             startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
         } catch (JSONException e) {
             e.printStackTrace();
@@ -138,8 +148,8 @@ public class SectionSListingActivity extends AppCompatActivity {
 
         DatabaseHelper db = new DatabaseHelper(this);
         long updcount = db.addForm(MainApp.fc);
-        MainApp.fc.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
+            MainApp.fc.set_ID(String.valueOf(updcount));
             MainApp.fc.setUID((MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
             db.updateFormID();
 
@@ -161,20 +171,19 @@ public class SectionSListingActivity extends AppCompatActivity {
         MainApp.fc.setFormtype("sl");
 
         JSONObject sA = new JSONObject();
-        sA.put("tcvsl00", bi.tcvsl00.getSelectedItem());
+//        sA.put("tcvsl00", bi.tcvsl00.getSelectedItem());
 
-        if (bi.tcvsl01.getVisibility() == View.VISIBLE) {
-            sA.put("sch_code", schoolMap.get(bi.tcvsl01.getSelectedItem()).getSch_code());
-            sA.put("sch_add", schoolMap.get(bi.tcvsl01.getSelectedItem()).getSch_add());
-            sA.put("sch_type", schoolMap.get(bi.tcvsl01.getSelectedItem()).getSch_type());
-            sA.put("tcvsl01", bi.tcvsl01.getSelectedItem());
-        } else
+        if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
+            sA.put("sch_code", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_code());
+            sA.put("sch_add", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_add());
+            sA.put("sch_type", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_type());
+            sA.put("tcvsl01", bi.autoCompleteSName.getText().toString());
+        } else {
             sA.put("tcvsl01Name", bi.tcvsl01Name.getText().toString());
+            sA.put("sch_type", bi.tcvsl00.getSelectedItem().equals("Other") ? "96" : String.valueOf(bi.tcvsl00.getSelectedItemPosition()));
+        }
 
-        /*sA.put("tcvsl02", bi.tcvsl02a.isChecked() ? "1" : bi.tcvsl02b.isChecked() ? "2" :
-                bi.tcvsl02c.isChecked() ? "3" : bi.tcvsl0296.isChecked() ? "96" : "0");*/
-
-        sA.put("tcvsl03", bi.tcvsl03.getSelectedItem().toString());
+//        sA.put("tcvsl03", bi.tcvsl03.getSelectedItem().toString());
         sA.put("tcvsl03_code", ucMap.get(bi.tcvsl03.getSelectedItem().toString()));
         sA.put("tcvsl04", bi.tcvsl04.getText().toString());
         sA.put("tcvsl05", bi.tcvsl05.getText().toString());
@@ -187,7 +196,17 @@ public class SectionSListingActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01);
+        if (!ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01)) return false;
+
+        if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
+
+            if (schoolMap.get(bi.autoCompleteSName.getText().toString()) != null) return true;
+
+            return ValidatorClass.EmptyTextBoxCustom(this, bi.autoCompleteSName, "This data is not accurate!!");
+
+        }
+
+        return true;
     }
 
     public void BtnEnd() {

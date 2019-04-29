@@ -39,8 +39,12 @@ import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 public class MainApp extends Application {
 
     public static final String _IP = "43.245.131.159"; // Test PHP server
+    public static final String _ALTERNATE_IP = "58.65.211.13"; // Test PHP server
     public static final Integer _PORT = 8080; // Port - with colon (:)
-    public static final String _HOST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/typbar/api/";
+    public static final String _HOST_URL_1 = "http://" + MainApp._IP + ":" + MainApp._PORT + "/typbar/api/";
+    public static final String _HOST_URL_2 = "http://" + MainApp._ALTERNATE_IP + ":" + MainApp._PORT + "/typbar/api/";
+    public static final String _TEST_URL = "http://f49461:" + MainApp._PORT + "/typbar/api/";
+    public static final String[] HOST = new String[]{_HOST_URL_1, _HOST_URL_2};
     public static final String _UPDATE_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/typbar/app/app-debug.apk";
 
     public static final Integer MONTHS_LIMIT = 11;
@@ -85,6 +89,10 @@ public class MainApp extends Application {
     public static String teamNo;
     public static Integer areaCode;
     protected static LocationManager locationManager;
+
+    public static String[] schTypes = new String[]{"....",
+            "Government Boys/Girls Primary School",
+            "Government Boys/Girls Secondary School", "Private", "Madarasa", "Other"};
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 
@@ -232,7 +240,7 @@ public class MainApp extends Application {
 //                Toast.makeText(mContext, "GPS set", Toast.LENGTH_SHORT).show();
             }
 
-            String date = DateFormat.format("dd/MM/yyyy hh:mm:ss", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+            String date = DateFormat.format("dd-MM-yyyy hh:mm:ss", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
             return new LocClass(lang, lat, acc, date);
 

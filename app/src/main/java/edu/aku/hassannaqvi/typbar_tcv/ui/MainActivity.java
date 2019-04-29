@@ -40,6 +40,7 @@ import edu.aku.hassannaqvi.typbar_tcv.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityMainBinding;
+import edu.aku.hassannaqvi.typbar_tcv.get.GetAllData;
 import edu.aku.hassannaqvi.typbar_tcv.sync.SyncAllData;
 
 public class MainActivity extends AppCompatActivity {
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setCustomTitle(img);
 
         final EditText input = new EditText(MainActivity.this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
         input.requestFocus();
         input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 m_Text = input.getText().toString();
                 if (!m_Text.equals("")) {
-                    editor.putString("tagName", m_Text);
+                    editor.putString("tagName", "T-" + m_Text);
                     editor.commit();
                 }
             }
@@ -206,13 +207,22 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
             builder = new AlertDialog.Builder(MainActivity.this);
+            final AlertDialog dialog = builder.create();
             ImageView img = new ImageView(getApplicationContext());
             img.setImageResource(R.drawable.tagimg);
             img.setPadding(0, 15, 0, 15);
             builder.setCustomTitle(img);
 
             final EditText input = new EditText(MainActivity.this);
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean b) {
+                    if (b) {
+                        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                    }
+                }
+            });
             builder.setView(input);
 
 
@@ -221,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     m_Text = input.getText().toString();
                     if (!m_Text.equals("")) {
-                        editor.putString("tagName", m_Text);
+                        editor.putString("tagName", "T-" + m_Text);
                         editor.commit();
 
                         if (!MainApp.userName.equals("0000")) {
@@ -323,6 +333,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void downloadData(View view) {
+        Toast.makeText(this, "Sync Schools", Toast.LENGTH_LONG).show();
+        new GetAllData(this, "School").execute();
+    }
+
     public void syncServer(View view) {
 
         // Require permissions INTERNET & ACCESS_NETWORK_STATE
@@ -337,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
                     "Forms",
                     "updateSyncedForms",
                     FormsContract.class,
-                    MainApp._HOST_URL + FormsContract.FormsTable._URL1,
+                    FormsContract.FormsTable._URL1,
                     db.getUnsyncedForms(1)
             ).execute();
 
@@ -347,7 +362,7 @@ public class MainActivity extends AppCompatActivity {
                     "Children",
                     "updateSyncedForms",
                     FormsContract.class,
-                    MainApp._HOST_URL + FormsContract.FormsTable._URL2,
+                    FormsContract.FormsTable._URL2,
                     db.getUnsyncedForms(2)
             ).execute();
 
