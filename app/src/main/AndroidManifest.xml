@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".ui.CRF"></activity>
         <activity
             android:name=".ui.SplashscreenActivity"
             android:screenOrientation="portrait">
@@ -30,43 +30,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateVisible|adjustPan" />
-
         <activity
-            android:name="edu.aku.hassannaqvi.typbar_tcv.ui.MainActivity"
+            android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
         <activity
             android:name=".core.AndroidDatabaseManager"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
         <activity
             android:name=".ui.EndingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
         <activity
             android:name=".ui.SectionSListingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
         <activity
             android:name=".ui.SectionCListingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
     </application>
 
 </manifest>

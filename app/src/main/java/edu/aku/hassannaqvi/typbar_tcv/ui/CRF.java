@@ -26,20 +26,20 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
-import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCListingBinding;
+import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityCrfBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
-public class SectionCListingActivity extends AppCompatActivity {
+public class CRF extends AppCompatActivity {
 
-    ActivitySectionCListingBinding bi;
+    ActivityCrfBinding bi;
     DatabaseHelper db;
     Map<String, SchoolContract> schoolMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c_listing);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_crf);
         bi.setCallback(this);
 
         setContentUI();
@@ -101,7 +101,7 @@ public class SectionCListingActivity extends AppCompatActivity {
                     bi.childSec00a.setVisibility(View.GONE);
                 }
 
-                bi.tcvcl01.setAdapter(new ArrayAdapter<>(SectionCListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
+                bi.tcvcl01.setAdapter(new ArrayAdapter<>(CRF.this, android.R.layout.simple_spinner_dropdown_item, schNames));
             }
 
             @Override
@@ -126,11 +126,11 @@ public class SectionCListingActivity extends AppCompatActivity {
                         schoolMap.get(bi.tcvcl01.getSelectedItem().toString()).getSch_code());
 
                 if (schoolContract == null) {
-                    Toast.makeText(SectionCListingActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CRF.this, "School not found!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!schoolContract.getSch_status().equals("1")) {
-                    Toast.makeText(SectionCListingActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CRF.this, "School not found!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
