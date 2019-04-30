@@ -287,7 +287,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad31", bi.tcvscad31.getText().toString());
         crfCase.put("tcvscad32", bi.tcvscad32.getText().toString());
 
-        MainApp.fc.setCrfCase(String.valueOf(crfCase));
+        MainApp.fc.setsA(String.valueOf(crfCase));
 
     }
 
