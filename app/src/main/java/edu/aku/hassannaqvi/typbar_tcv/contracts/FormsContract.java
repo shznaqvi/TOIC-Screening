@@ -27,6 +27,7 @@ public class FormsContract {
     private String sB = ""; // sB
     private String sC = ""; //
     private String sD = "";
+    private String CrfCase = "";
 
     private String gpsLat = "";
     private String gpsLng = "";
@@ -53,6 +54,7 @@ public class FormsContract {
         this.sB = jsonObject.getString(FormsTable.COLUMN_SB);
         this.sC = jsonObject.getString(FormsTable.COLUMN_SC);
         this.sD = jsonObject.getString(FormsTable.COLUMN_SD);
+        this.CrfCase = jsonObject.getString(FormsTable.COLUMN_CRFCASE);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
         this.gpsDT = jsonObject.getString(FormsTable.COLUMN_GPSDATE);
@@ -79,6 +81,7 @@ public class FormsContract {
         this.sB = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SB));
         this.sC = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SC));
         this.sD = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SD));
+        this.CrfCase = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CRFCASE));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
         this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSDATE));
@@ -197,7 +200,6 @@ public class FormsContract {
         this.sA = sA;
     }
 
-
     public String getFormtype() {
         return formtype;
     }
@@ -229,6 +231,14 @@ public class FormsContract {
 
     public void setsC(String sC) {
         this.sC = sC;
+    }
+
+    public String getCrfCase() {
+        return CrfCase;
+    }
+
+    public void setCrfCase(String sA) {
+        this.CrfCase = CrfCase;
     }
 
     public String getGpsLat() {
@@ -319,6 +329,7 @@ public class FormsContract {
         public static final String COLUMN_SB = "sb";
         public static final String COLUMN_SC = "sc";
         public static final String COLUMN_SD = "sd";
+        public static final String COLUMN_CRFCASE = "crfcase";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";
         public static final String COLUMN_GPSDATE = "gpsdate";
