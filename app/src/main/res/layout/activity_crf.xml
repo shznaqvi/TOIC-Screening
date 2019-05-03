@@ -1638,7 +1638,6 @@
                             android:visibility='@{tcvscad2896.checked ? View.VISIBLE : View.GONE }'
                             android:text='@{tcvscad2896.checked ? tcvscad2896x.getText.toString : "" }'/>
 
-
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>

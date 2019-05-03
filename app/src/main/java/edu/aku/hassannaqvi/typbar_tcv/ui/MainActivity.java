@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openForm(int type) {
-        final Intent oF = new Intent(MainActivity.this, type == 1 ? SectionSListingActivity.class : SectionCListingActivity.class);
+        final Intent oF = new Intent(MainActivity.this, type == 1 ? SectionSListingActivity.class : type == 2 ? SectionCListingActivity.class : type == 3 ? CRF.class : CrfControl.class);
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
         } else {
