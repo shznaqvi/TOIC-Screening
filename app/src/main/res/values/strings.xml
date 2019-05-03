@@ -163,17 +163,18 @@
     <string name="tcvscad07c"> سویپرلے گیا </string>
     <string name="tcvscad07d"> کوئی اوروضاحت کریں </string>
     <string name="tcvscad08"> ینے کا پانی حاصل کرنے کا ذریعہ کیا ہے؟(ایک یا ایک سے زیادہ موزوں پہ نشان لگا سکتے ہیں) </string>
-    <string name="tcvscad08a"> پائپ کا پانی </string>
-    <string name="tcvscad08b"> ٹینکر </string>
-    <string name="tcvscad08c"> عوام کا نل </string>
-    <string name="tcvscad08d"> بورنگ کا پانی </string>
-    <string name="tcvscad08e"> بوتل والا پانی </string>
+    <string name="tcvscad0801"> پائپ کا پانی </string>
+    <string name="tcvscad0802"> ٹینکر </string>
+    <string name="tcvscad0803"> عوام کا نل </string>
+    <string name="tcvscad0804"> بورنگ کا پانی </string>
+    <string name="tcvscad0805"> بوتل والا پانی </string>
     <string name="tcvscad09"> گھر میں پینے کے پانی کو صاف کرنے کا طریقہ؟ </string>
     <string name="tcvscad09a"> کوئی نہیں (تو سوال نمبر 4.5پر جاہیے) </string>
     <string name="tcvscad09b"> گھرکا فلٹرکیا ہوا (تو سوال نمبر 4.5پر جاہیے) </string>
     <string name="tcvscad09c"> ابلا ہوا (تو سوال نمبر4.3پر جاہیے)؟؟ </string>
-    <string name="tcvscad09d"> پانی صاف کرنے کی گولیاں (تو سوال نمبر 4.5پر جاہیے) </string>
-    <string name="tcvscad09e"> کوئی اوروضاحت کریں (تو سوال نمبر 4.5پر جاہیے) </string>
+    <string name="tcvscad09d"> پھٹکری </string>
+    <string name="tcvscad09e"> پانی صاف کرنے کی گولیاں (تو سوال نمبر 4.5پر جاہیے) </string>
+    <string name="tcvscad09f"> کوئی اوروضاحت کریں (تو سوال نمبر 4.5پر جاہیے) </string>
     <string name="tcvscad10"> پانی کو کتنی دیر کے لیے چولہے پر ابالتے ہیں؟ </string>
     <string name="tcvscad10a"> 1-3منٹ </string>
     <string name="tcvscad10b">  5-3منٹ </string>
@@ -324,12 +325,12 @@
     <string name="tcvsclc05c"> سویپرلے گیا </string>
 
     <string name="tcvsclc06"> پینے کا پانی حاصل کرنے کا ذریعہ کیا ہے؟(ایک یا ایک سے زیادہ موزوں پہ نشان لگا سکتے ہیں) </string>
-    <string name="tcvsclc06a"> پائپ کا پانی </string>
-    <string name="tcvsclc06b"> ٹینکر </string>
-    <string name="tcvsclc06c"> عوام کا نل </string>
-    <string name="tcvsclc06d"> ریڑھی کے ساتھ چھوٹی ٹنکی </string>
-    <string name="tcvsclc06e"> بورنگ کا پانی </string>
-    <string name="tcvsclc06f"> بوتل والا پانی </string>
+    <string name="tcvsclc0601"> پائپ کا پانی </string>
+    <string name="tcvsclc0602"> ٹینکر </string>
+    <string name="tcvsclc0603"> عوام کا نل </string>
+    <string name="tcvsclc0604"> ریڑھی کے ساتھ چھوٹی ٹنکی </string>
+    <string name="tcvsclc0605"> بورنگ کا پانی </string>
+    <string name="tcvsclc0606"> بوتل والا پانی </string>
 
     <string name="tcvsclc07"> گھر میں پینے کے پانی کو صاف کرنے کا طریقہ؟ </string>
     <string name="tcvsclc07a"> کوئی نہیں (تو سوال نمبر 4.5پر جاہیے) </string>
@@ -375,89 +376,89 @@
     <string name="tcvsclc14a"> ہمیشہ </string>
     <string name="tcvsclc14b"> کبھی کبھی </string>
 
-    <string name="tcvscld15"> کیا گھر پر کھانا پکانے والا/والی کو کبھی ٹائیفائیڈ ڈائیگنوس ہوا ہے؟ </string>
-    <string name="tcvscld15a"> ہاں </string>
-    <string name="tcvscld15b"> نہیں </string>
-    <string name="tcvscld15c"> معلوم نہیں </string>
-    <string name="tcvscld15a1"> اگر ” ہاں“تو کلچر لیا تھا؟ </string>
-    <string name="tcvscld15a1a"> نہیں </string>
-    <string name="tcvscld15a1b"> معلوم نہیں </string>
+    <string name="tcvsclc15"> کیا گھر پر کھانا پکانے والا/والی کو کبھی ٹائیفائیڈ ڈائیگنوس ہوا ہے؟ </string>
+    <string name="tcvsclc15a"> ہاں </string>
+    <string name="tcvsclc15b"> نہیں </string>
+    <string name="tcvsclc15c"> معلوم نہیں </string>
+    <string name="tcvsclc15a1"> اگر ” ہاں“تو کلچر لیا تھا؟ </string>
+    <string name="tcvsclc15a1a"> نہیں </string>
+    <string name="tcvsclc15a1b"> معلوم نہیں </string>
 
-    <string name="tcvscld16"> گھر میں ایک دن میں کتنی بارکھاناپکاتے ہیں ؟ </string>
-    <string name="tcvscld16a"> دن میں ایک بار </string>
-    <string name="tcvscld16b"> دن میں دو بار </string>
-    <string name="tcvscld16c"> دن میں تین بار </string>
-    <string name="tcvscld16d"> دن میں تین بارسے زیادہ </string>
+    <string name="tcvsclc16"> گھر میں ایک دن میں کتنی بارکھاناپکاتے ہیں ؟ </string>
+    <string name="tcvsclc16a"> دن میں ایک بار </string>
+    <string name="tcvsclc16b"> دن میں دو بار </string>
+    <string name="tcvsclc16c"> دن میں تین بار </string>
+    <string name="tcvsclc16d"> دن میں تین بارسے زیادہ </string>
 
-    <string name="tcvscld17"> کیا آپ عام طور پرکھاناریفریجریٹر میں رکھتے ہیں؟ </string>
-    <string name="tcvscld17a"> ہمیشہ </string>
-    <string name="tcvscld17b"> کبھی کبھی </string>
+    <string name="tcvsclc17"> کیا آپ عام طور پرکھاناریفریجریٹر میں رکھتے ہیں؟ </string>
+    <string name="tcvsclc17a"> ہمیشہ </string>
+    <string name="tcvsclc17b"> کبھی کبھی </string>
 
-    <string name="tcvscld18"> کیا بچے ہوئے کھانے کو آپ دوبارہ گرم کرکے کھاتےہیں ؟ </string>
-    <string name="tcvscld18a"> ہمیشہ </string>
-    <string name="tcvscld18b"> کبھی کبھی </string>
+    <string name="tcvsclc18"> کیا بچے ہوئے کھانے کو آپ دوبارہ گرم کرکے کھاتےہیں ؟ </string>
+    <string name="tcvsclc18a"> ہمیشہ </string>
+    <string name="tcvsclc18b"> کبھی کبھی </string>
 
-    <string name="tcvscld19"> اندازاً آپ مہینے میں کتنی بار گھر سے باہر کھانا کھا تے ہیں؟ </string>
-    <string name="tcvscld19a"> دن میں ایک بار سے زیادہ </string>
-    <string name="tcvscld19b"> دن میں ایک بار </string>
-    <string name="tcvscld19c"> دن میں دو سے تیں بار </string>
-    <string name="tcvscld19d"> ہفتہ میں ایک بار </string>
-    <string name="tcvscld19e"> مہینے میں دو سے تیں بار </string>
-    <string name="tcvscld19f"> مہینے میں ایک بار </string>
+    <string name="tcvsclc19"> اندازاً آپ مہینے میں کتنی بار گھر سے باہر کھانا کھا تے ہیں؟ </string>
+    <string name="tcvsclc19a"> دن میں ایک بار سے زیادہ </string>
+    <string name="tcvsclc19b"> دن میں ایک بار </string>
+    <string name="tcvsclc19c"> دن میں دو سے تیں بار </string>
+    <string name="tcvsclc19d"> ہفتہ میں ایک بار </string>
+    <string name="tcvsclc19e"> مہینے میں دو سے تیں بار </string>
+    <string name="tcvsclc19f"> مہینے میں ایک بار </string>
 
-    <string name="tcvscld20"> کیا تحقیق میں شامل بچہ اسکول میں دوپہر کے کھانے کےلیے پیسےلے کر جاتا/جاتی ہے؟ </string>
-    <string name="tcvscld20a"> ہر روز </string>
-    <string name="tcvscld20b"> کبھی کبھی </string>
+    <string name="tcvsclc20"> کیا تحقیق میں شامل بچہ اسکول میں دوپہر کے کھانے کےلیے پیسےلے کر جاتا/جاتی ہے؟ </string>
+    <string name="tcvsclc20a"> ہر روز </string>
+    <string name="tcvsclc20b"> کبھی کبھی </string>
 
-    <string name="tcvscld21"> دوپہر کے کھانے کے پیسے کہاں خرچ کرتا ہے؟ </string>
-    <string name="tcvscld21a"> اسکول کینٹین </string>
-    <string name="tcvscld21b"> سڑک کنارے وینڈرز </string>
+    <string name="tcvsclc21"> دوپہر کے کھانے کے پیسے کہاں خرچ کرتا ہے؟ </string>
+    <string name="tcvsclc21a"> اسکول کینٹین </string>
+    <string name="tcvsclc21b"> سڑک کنارے وینڈرز </string>
 
-    <string name="tcvscld22"> کیا تحقیق میں شامل بچہ/شخص اسکول یاکام کی جگہ پر اپنا کھانا دوستوں کے ساتھ بانٹ کے کھاتا ہے؟ </string>
-    <string name="tcvscld22a"> ہر روز </string>
-    <string name="tcvscld22b"> کبھی کبھی </string>
+    <string name="tcvsclc22"> کیا تحقیق میں شامل بچہ/شخص اسکول یاکام کی جگہ پر اپنا کھانا دوستوں کے ساتھ بانٹ کے کھاتا ہے؟ </string>
+    <string name="tcvsclc22a"> ہر روز </string>
+    <string name="tcvsclc22b"> کبھی کبھی </string>
 
-    <string name="tcvscld23"> کیا تحقیق میں شامل بچہ کو پچھلے ۴ ہفتہ میں ٹائیفائیڈ ہوا؟ </string>
+    <string name="tcvsclc23"> کیا تحقیق میں شامل بچہ کو پچھلے ۴ ہفتہ میں ٹائیفائیڈ ہوا؟ </string>
 
-    <string name="tcvscld24"> کیا اس تحقیق میں شامل شخص نے پچھلے ۴ ہفتوں میں نیچے دئیے گئے جگہ کا غیر ابلا ہواپانی پیا ہے </string>
-    <string name="tcvscld2401"> جگہ </string>
-    <string name="tcvscld2402"> کام کی جگہ </string>
-    <string name="tcvscld2403"> اسکول </string>
-    <string name="tcvscld2404"> سڑک کنارے وینڈرز </string>
-    <string name="tcvscld2405"> عوام کا نل </string>
-    <string name="tcvscld2406"> مسجد </string>
-    <string name="tcvscld2407"> دوست/پڑوسی کے گھر </string>
+    <string name="tcvsclc24"> کیا اس تحقیق میں شامل شخص نے پچھلے ۴ ہفتوں میں نیچے دئیے گئے جگہ کا غیر ابلا ہواپانی پیا ہے </string>
+    <string name="tcvsclc2401"> جگہ </string>
+    <string name="tcvsclc2402"> کام کی جگہ </string>
+    <string name="tcvsclc2403"> اسکول </string>
+    <string name="tcvsclc2404"> سڑک کنارے وینڈرز </string>
+    <string name="tcvsclc2405"> عوام کا نل </string>
+    <string name="tcvsclc2406"> مسجد </string>
+    <string name="tcvsclc2407"> دوست/پڑوسی کے گھر </string>
 
-    <string name="tcvscld25"> کیا اس تحقیق میں شامل شخص نے پچھلے ۴ ہفتوں میں نیچے دئیے گئے جگہ کا کھانا کھایا ہے؟ </string>
-    <string name="tcvscld2501"> جگہ </string>
-    <string name="tcvscld2502"> سڑک کنارے وینڈرز </string>
-    <string name="tcvscld2503"> ریستوران </string>
-    <string name="tcvscld2504"> کام کی جگہ/ اسکول </string>
-    <string name="tcvscld2505"> دوست/پڑوسی کے گھر </string>
-    <string name="tcvscld2506"> شادی/ پارٹی </string>
+    <string name="tcvsclc25"> کیا اس تحقیق میں شامل شخص نے پچھلے ۴ ہفتوں میں نیچے دئیے گئے جگہ کا کھانا کھایا ہے؟ </string>
+    <string name="tcvsclc2501"> جگہ </string>
+    <string name="tcvsclc2502"> سڑک کنارے وینڈرز </string>
+    <string name="tcvsclc2503"> ریستوران </string>
+    <string name="tcvsclc2504"> کام کی جگہ/ اسکول </string>
+    <string name="tcvsclc2505"> دوست/پڑوسی کے گھر </string>
+    <string name="tcvsclc2506"> شادی/ پارٹی </string>
 
-    <string name="tcvscld26"> مندرجہ ذیل کھانے کےبارے میں بتائیں (جو کھانا گھر،آفس،اسکول کے باہرکھایا ہے وہ بھی شامل کریں) </string>
-    <string name="tcvscld2601"> کھانے کا نام </string>
-    <string name="tcvscld2602"> آلو چاٹ </string>
-    <string name="tcvscld2603"> گنا </string>
-    <string name="tcvscld2604"> فروٹ چاٹ </string>
-    <string name="tcvscld2605"> مٹھائی </string>
-    <string name="tcvscld2606"> تلی ہوی مچھلی </string>
-    <string name="tcvscld2607"> قلفی </string>
-    <string name="tcvscld2608"> آئسکریم </string>
-    <string name="tcvscld2609"> فرش جوس </string>
+    <string name="tcvsclc26"> مندرجہ ذیل کھانے کےبارے میں بتائیں (جو کھانا گھر،آفس،اسکول کے باہرکھایا ہے وہ بھی شامل کریں) </string>
+    <string name="tcvsclc2601"> کھانے کا نام </string>
+    <string name="tcvsclc2602"> آلو چاٹ </string>
+    <string name="tcvsclc2603"> گنا </string>
+    <string name="tcvsclc2604"> فروٹ چاٹ </string>
+    <string name="tcvsclc2605"> مٹھائی </string>
+    <string name="tcvsclc2606"> تلی ہوی مچھلی </string>
+    <string name="tcvsclc2607"> قلفی </string>
+    <string name="tcvsclc2608"> آئسکریم </string>
+    <string name="tcvsclc2609"> فرش جوس </string>
 
-    <string name="tcvscld27"> کیا تحقیق میں شامل مریض کو ٹائیفائیڈ بخار سے بچاو کا ٹیکہ لگا ہے؟ </string>
-    <string name="tcvscld28"> اگر ہاں ،تو کیا یہ حفاظتی ٹیکہ آغا خان یونیورسٹی والوں نے حالیہ ویکسینیشن مہم میں کھارادر جنرل ہسپتال کے ذریعے مہیا کی تھی؟ </string>
-    <string name="tcvscld29"> اگر ہاں تو ویکسین کاڑد پر درج انرولمنٹ آئی ڈی لکھیں(مطالعہ کے اسٹاف کو اس مطالعے میں فراہم کیا گیا ویکسینشن کارڈ دیکھنا ہو گا) </string>
+    <string name="tcvsclc27"> کیا تحقیق میں شامل مریض کو ٹائیفائیڈ بخار سے بچاو کا ٹیکہ لگا ہے؟ </string>
+    <string name="tcvsclc28"> اگر ہاں ،تو کیا یہ حفاظتی ٹیکہ آغا خان یونیورسٹی والوں نے حالیہ ویکسینیشن مہم میں کھارادر جنرل ہسپتال کے ذریعے مہیا کی تھی؟ </string>
+    <string name="tcvsclc29"> اگر ہاں تو ویکسین کاڑد پر درج انرولمنٹ آئی ڈی لکھیں(مطالعہ کے اسٹاف کو اس مطالعے میں فراہم کیا گیا ویکسینشن کارڈ دیکھنا ہو گا) </string>
 
-    <string name="tcvscld30"> ویکسینیشن کی تاریخ: </string>
-    <string name="tcvscld30dd"> دن </string>
-    <string name="tcvscld30mm"> مہینہ </string>
-    <string name="tcvscld30yy"> سا ل </string>
+    <string name="tcvsclc30"> ویکسینیشن کی تاریخ: </string>
+    <string name="tcvsclc30dd"> دن </string>
+    <string name="tcvsclc30mm"> مہینہ </string>
+    <string name="tcvsclc30yy"> سا ل </string>
 
-    <string name="tcvscld31"> House hold location </string>
-    <string name="tcvscld31a"> Longitude </string>
-    <string name="tcvscld31b"> Latitude </string>
+    <string name="tcvsclc31"> House hold location </string>
+    <string name="tcvsclc31a"> Longitude </string>
+    <string name="tcvsclc31b"> Latitude </string>
 
 </resources>

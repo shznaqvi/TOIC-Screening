@@ -206,7 +206,7 @@ public class CrfControl extends AppCompatActivity {
         //child.put("tcvcl01", bi.tcvcl01.getSelectedItem());
 
 
-        CrfControl.put("tcvscaa01", bi.tcvscaa01a.isChecked() ? "1" : bi.tcvscaa01b.isChecked() ? "2" : "0");
+        /*CrfControl.put("tcvscaa01", bi.tcvscaa01a.isChecked() ? "1" : bi.tcvscaa01b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscaa02", bi.tcvscaa02a.isChecked() ? "1" : bi.tcvscaa02b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscaa03", bi.tcvscaa03a.isChecked() ? "1" : bi.tcvscaa03b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscaa04", bi.tcvscaa04a.isChecked() ? "1" : bi.tcvscaa04b.isChecked() ? "2" : "0");
@@ -239,7 +239,7 @@ public class CrfControl extends AppCompatActivity {
         CrfControl.put("tcvscad08", bi.tcvscad08a.isChecked() ? "1" : bi.tcvscad08b.isChecked() ? "2" : bi.tcvscad08c.isChecked() ? "3" : bi.tcvscad08d.isChecked() ? "4" : bi.tcvscad08e.isChecked() ? "5" : bi.tcvscad0896.isChecked() ? "96" : "0");
         CrfControl.put("tcvscad0896x", bi.tcvscad0896x.getText().toString());
         CrfControl.put("tcvscad09", bi.tcvscad09a.isChecked() ? "1" : bi.tcvscad09b.isChecked() ? "2" : bi.tcvscad09c.isChecked() ? "3" : bi.tcvscad09d.isChecked() ? "4" : bi.tcvscad0996.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad0996x", bi.tcvscad0996x.getText().toString());
+        CrfControl.put("tcvscad0996x", bi.tcvscad0996x.getText().toString());*/
         CrfControl.put("tcvscad10", bi.tcvscad10a.isChecked() ? "1" : bi.tcvscad10b.isChecked() ? "2" : bi.tcvscad10c.isChecked() ? "3" : bi.tcvscad10d.isChecked() ? "4" : "0");
         CrfControl.put("tcvscad11", bi.tcvscad11a.isChecked() ? "1" : bi.tcvscad11b.isChecked() ? "2" : bi.tcvscad11c.isChecked() ? "3" : "0");
         CrfControl.put("tcvscad12", bi.tcvscad12a.isChecked() ? "1" : bi.tcvscad12b.isChecked() ? "2" : bi.tcvscad12c.isChecked() ? "3" : bi.tcvscad12d.isChecked() ? "4" : bi.tcvscad1296.isChecked() ? "96" : "0");
@@ -295,7 +295,7 @@ public class CrfControl extends AppCompatActivity {
         CrfControl.put("tcvscad31", bi.tcvscad31.getText().toString());
         CrfControl.put("tcvscad32", bi.tcvscad32.getText().toString());
 
-        MainApp.fc.setCrfCase(String.valueOf(CrfControl));
+        MainApp.fc.setsA(String.valueOf(CrfControl));
 
     }
 

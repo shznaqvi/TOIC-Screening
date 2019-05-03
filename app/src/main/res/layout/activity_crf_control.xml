@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.typbar_tcv.ui.CrfControl"/>
+            type="edu.aku.hassannaqvi.typbar_tcv.ui.CrfControl" />
 
     </data>
 
@@ -23,28 +23,28 @@
 
             <TextView
                 style="@style/textview_fm_lst_h"
-                android:text="@string/tcvsclah"/>
+                android:text="@string/tcvsclah" />
 
-            <!--Radio tcvscaa01-->
+            <!--Radio tcvscla01-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscaa01" />
+                        android:text="@string/tcvscla01" />
 
                     <RadioGroup
-                        android:id="@+id/tcvscaa01"
+                        android:id="@+id/tcvscla01"
                         style="@style/i_radiogroup">
 
                         <RadioButton
-                            android:id="@+id/tcvscaa01a"
+                            android:id="@+id/tcvscla01a"
                             style="@style/i_radiobutton"
                             android:text="@string/uyes" />
 
                         <RadioButton
-                            android:id="@+id/tcvscaa01b"
+                            android:id="@+id/tcvscla01b"
                             style="@style/i_radiobutton"
                             android:text="@string/uno" />
 
@@ -54,26 +54,26 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--Radio tcvscaa02-->
+            <!--Radio tcvscla02-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscaa02" />
+                        android:text="@string/tcvscla02" />
 
                     <RadioGroup
-                        android:id="@+id/tcvscaa02"
+                        android:id="@+id/tcvscla02"
                         style="@style/i_radiogroup">
 
                         <RadioButton
-                            android:id="@+id/tcvscaa02a"
+                            android:id="@+id/tcvscla02a"
                             style="@style/i_radiobutton"
                             android:text="@string/uyes" />
 
                         <RadioButton
-                            android:id="@+id/tcvscaa02b"
+                            android:id="@+id/tcvscla02b"
                             style="@style/i_radiobutton"
                             android:text="@string/uno" />
 
@@ -83,26 +83,26 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--Radio tcvscaa03-->
+            <!--Radio tcvscla03-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscaa03" />
+                        android:text="@string/tcvscla03" />
 
                     <RadioGroup
-                        android:id="@+id/tcvscaa03"
+                        android:id="@+id/tcvscla03"
                         style="@style/i_radiogroup">
 
                         <RadioButton
-                            android:id="@+id/tcvscaa03a"
+                            android:id="@+id/tcvscla03a"
                             style="@style/i_radiobutton"
                             android:text="@string/uyes" />
 
                         <RadioButton
-                            android:id="@+id/tcvscaa03b"
+                            android:id="@+id/tcvscla03b"
                             style="@style/i_radiobutton"
                             android:text="@string/uno" />
 
@@ -112,26 +112,55 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--Radio tcvscaa04-->
+            <!--Radio tcvscla04-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscaa04" />
+                        android:text="@string/tcvscla04" />
 
                     <RadioGroup
-                        android:id="@+id/tcvscaa04"
+                        android:id="@+id/tcvscla04"
                         style="@style/i_radiogroup">
 
                         <RadioButton
-                            android:id="@+id/tcvscaa04a"
+                            android:id="@+id/tcvscla04a"
                             style="@style/i_radiobutton"
                             android:text="@string/uyes" />
 
                         <RadioButton
-                            android:id="@+id/tcvscaa04b"
+                            android:id="@+id/tcvscla04b"
+                            style="@style/i_radiobutton"
+                            android:text="@string/uno" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--Radio tcvscla05-->
+            <android.support.v7.widget.CardView style="@style/cardView">
+
+                <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/tcvscla05" />
+
+                    <RadioGroup
+                        android:id="@+id/tcvscla05"
+                        style="@style/i_radiogroup">
+
+                        <RadioButton
+                            android:id="@+id/tcvscla05a"
+                            style="@style/i_radiobutton"
+                            android:text="@string/uyes" />
+
+                        <RadioButton
+                            android:id="@+id/tcvscla05b"
                             style="@style/i_radiobutton"
                             android:text="@string/uno" />
 
@@ -144,315 +173,161 @@
 
             <TextView
                 style="@style/textview_fm_lst_h"
-                android:text="@string/tcvscaa05"/>
+                android:text="@string/tcvscla06" />
 
             <TextView
                 style="@style/textview_fm_lst_h"
-                android:text="@string/tcvscabh"/>
+                android:text="@string/tcvsclbh" />
 
-            <!--EditText tcvscab01-->
+            <!--EditText tcvsclb01-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscab01" />
+                        android:text="@string/tcvsclb01" />
 
                     <EditText
-                        android:id="@+id/tcvscab01"
+                        android:id="@+id/tcvsclb01"
                         style="@style/EditText"
-                        android:hint="@string/tcvscab01" />
+                        android:hint="@string/tcvsclb01" />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
-            <!--EditText tcvscab02-->
+            <!--EditText tcvsclb02-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscab02" />
+                        android:text="@string/tcvsclb02" />
 
                     <EditText
-                        android:id="@+id/tcvscab02"
+                        android:id="@+id/tcvsclb02"
                         style="@style/EditText"
-                        android:hint="@string/tcvscab02" />
+                        android:hint="@string/tcvsclb02" />
 
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-            <!--EditText tcvscab03-->
+            <!--EditText tcvsclb03-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscab03" />
+                        android:text="@string/tcvsclb03" />
 
                     <EditText
-                        android:id="@+id/tcvscab03"
+                        android:id="@+id/tcvsclb03"
                         style="@style/EditText"
-                        android:maxLength="11"
-                        android:hint="@string/tcvscab03" />
+                        android:hint="@string/tcvsclb03"
+                        android:maxLength="11" />
 
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-            <!--EditText tcvscab04-->
+            <!--EditText tcvsclb04-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscab04" />
+                        android:text="@string/tcvsclb04" />
 
                     <EditText
-                        android:id="@+id/tcvscab04"
+                        android:id="@+id/tcvsclb04"
                         style="@style/EditText"
-                        android:hint="@string/tcvscab04" />
+                        android:hint="@string/tcvsclb04" />
 
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-            <!--EditText tcvscab05-->
+            <!--EditText tcvsclb05-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscab05" />
+                        android:text="@string/tcvsclb05" />
 
                     <EditText
-                        android:id="@+id/tcvscab05"
+                        android:id="@+id/tcvsclb05"
                         style="@style/EditText"
-                        android:hint="@string/tcvscab05" />
+                        android:hint="@string/tcvsclb05" />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
-            <!--EditText tcvscab06-->
+            <!--EditText tcvsclb06-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscab06" />
+                        android:text="@string/tcvsclb06" />
 
                     <EditText
-                        android:id="@+id/tcvscab06"
+                        android:id="@+id/tcvsclb06"
                         style="@style/EditText"
-                        android:hint="@string/tcvscab06" />
+                        android:hint="@string/tcvsclb06" />
 
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-            <!--EditText tcvscab07-->
+            <!--EditText tcvsclb07-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscab07" />
+                        android:text="@string/tcvsclb07" />
 
                     <EditText
-                        android:id="@+id/tcvscab07"
+                        android:id="@+id/tcvsclb07"
                         style="@style/EditText"
-                        android:hint="@string/tcvscab07" />
+                        android:hint="@string/tcvsclb07" />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
-            <!--Radio tcvscab08-->
+            <!--Radio tcvsclb08-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscab08" />
+                        android:text="@string/tcvsclb08" />
 
                     <RadioGroup
-                        android:id="@+id/tcvscab08"
+                        android:id="@+id/tcvsclb08"
                         style="@style/i_radiogroup">
 
                         <RadioButton
-                            android:id="@+id/tcvscab08a"
+                            android:id="@+id/tcvsclb08a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscab08a" />
+                            android:text="@string/tcvsclb08a" />
 
                         <RadioButton
-                            android:id="@+id/tcvscab08b"
+                            android:id="@+id/tcvsclb08b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscab08b" />
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-
-            <TextView
-                style="@style/textview_fm_lst_h"
-                android:text="@string/tcvscach"/>
-
-            <TextView
-                style="@style/textview_fm_lst_h"
-                android:text="@string/tcvscach1"/>
-
-            <!--Radio tcvscac01-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscac01" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscac01"
-                        style="@style/i_radiogroup">
-
-                        <RadioButton
-                            android:id="@+id/tcvscac01a"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uyes"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscac01b"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uno"/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Radio tcvscac02-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscac02" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscac02"
-                        style="@style/i_radiogroup">
-
-                        <RadioButton
-                            android:id="@+id/tcvscac02a"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uyes"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscac02b"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uno"/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Radio tcvscac03-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscac03" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscac03"
-                        style="@style/i_radiogroup">
-
-                        <RadioButton
-                            android:id="@+id/tcvscac03a"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uyes"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscac03b"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uno"/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Radio tcvscac04-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscac04" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscac04"
-                        style="@style/i_radiogroup">
-
-                        <RadioButton
-                            android:id="@+id/tcvscac04a"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uyes"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscac04b"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uno"/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Radio tcvscac05-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscac05" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscac05"
-                        style="@style/i_radiogroup">
-
-                        <RadioButton
-                            android:id="@+id/tcvscac05a"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uyes"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscac05b"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uno"/>
+                            android:text="@string/tcvsclb08b" />
 
                     </RadioGroup>
 
@@ -463,342 +338,308 @@
 
             <TextView
                 style="@style/textview_fm_lst_h"
-                android:text="@string/tcvscadh"/>
+                android:text="@string/tcvsclc" />
 
-            <!--EditText tcvscad01-->
+            <!--Radio tcvsclc01-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscad01" />
+                        android:text="@string/tcvsclc01" />
+
+                    <RadioGroup
+                        android:id="@+id/tcvsclc01"
+                        style="@style/i_radiogroup">
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc01a"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc01a" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc01b"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc01b" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc01c"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc01c" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--EditText tcvsclc02-->
+            <android.support.v7.widget.CardView style="@style/cardView">
+
+                <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/tcvsclc02" />
 
                     <EditText
-                        android:id="@+id/tcvscad01"
+                        android:id="@+id/tcvsclc02"
                         style="@style/EditText_number"
-                        android:maxLength="2"
-                        android:hint="@string/tcvscad01" />
+                        android:hint="@string/tcvsclc02"
+                        android:maxLength="2" />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
-            <!--EditText tcvscad02-->
+            <!--Radio & EditText tcvsclc03-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscad02" />
+                        android:text="@string/tcvsclc03" />
+
+                    <RadioGroup
+                        android:id="@+id/tcvsclc03"
+                        style="@style/i_radiogroup">
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc03a"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc03a" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc03b"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc03b" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc03c"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc03c" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc0396"
+                            style="@style/i_radiobutton"
+                            android:text="@string/uotherx" />
+
+                        <EditText
+                            android:id="@+id/tcvsclc0396x"
+                            style="@style/EditText"
+                            android:hint="@string/uotherxh"
+                            android:tag="tcvsclc0396"
+                            android:text='@{tcvsclc0396.checked ? tcvsclc0396x.getText.toString : "" }'
+                            android:visibility='@{tcvsclc0396.checked ? View.VISIBLE : View.GONE }' />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--Radio & EditText tcvsclc04-->
+            <android.support.v7.widget.CardView style="@style/cardView">
+
+                <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/tcvsclc04" />
+
+                    <RadioGroup
+                        android:id="@+id/tcvsclc04"
+                        style="@style/i_radiogroup">
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc04a"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc04a" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc04b"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc04b" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc04c"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc04c" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc0496"
+                            style="@style/i_radiobutton"
+                            android:text="@string/uotherx" />
+
+                        <EditText
+                            android:id="@+id/tcvsclc0496x"
+                            style="@style/EditText"
+                            android:hint="@string/uotherxh"
+                            android:tag="tcvsclc0496"
+                            android:text='@{tcvsclc0496.checked ? tcvsclc0496x.getText.toString : "" }'
+                            android:visibility='@{tcvsclc0496.checked ? View.VISIBLE : View.GONE }' />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--Radio & EditText tcvsclc05-->
+            <android.support.v7.widget.CardView style="@style/cardView">
+
+                <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/tcvsclc05" />
+
+                    <RadioGroup
+                        android:id="@+id/tcvsclc05"
+                        style="@style/i_radiogroup">
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc05a"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc05a" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc05b"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc05b" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc05c"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc05c" />
+
+                        <RadioButton
+                            android:id="@+id/tcvsclc0596"
+                            style="@style/i_radiobutton"
+                            android:text="@string/uotherx" />
+
+                        <EditText
+                            android:id="@+id/tcvsclc0596x"
+                            style="@style/EditText"
+                            android:hint="@string/uotherxh"
+                            android:tag="tcvsclc0596"
+                            android:text='@{tcvsclc0596.checked ? tcvsclc0596x.getText.toString : "" }'
+                            android:visibility='@{tcvsclc0596.checked ? View.VISIBLE : View.GONE }' />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!--CheckBox & EditText tcvsclc06-->
+            <android.support.v7.widget.CardView style="@style/cardView">
+
+                <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/tcvsclc06" />
+
+                    <CheckBox
+                        android:id="@+id/tcvsclc0601"
+                        style="@style/i_checkbox"
+                        android:text="@string/tcvsclc0601" />
+
+                    <CheckBox
+                        android:id="@+id/tcvsclc0602"
+                        style="@style/i_checkbox"
+                        android:text="@string/tcvsclc0602" />
+
+                    <CheckBox
+                        android:id="@+id/tcvsclc0603"
+                        style="@style/i_checkbox"
+                        android:text="@string/tcvsclc0603" />
+
+                    <CheckBox
+                        android:id="@+id/tcvsclc0604"
+                        style="@style/i_checkbox"
+                        android:text="@string/tcvsclc0604" />
+
+                    <CheckBox
+                        android:id="@+id/tcvsclc0605"
+                        style="@style/i_checkbox"
+                        android:text="@string/tcvsclc0605" />
+
+                    <CheckBox
+                        android:id="@+id/tcvsclc0606"
+                        style="@style/i_checkbox"
+                        android:text="@string/tcvsclc0606" />
+
+                    <CheckBox
+                        android:id="@+id/tcvsclc0696"
+                        style="@style/i_checkbox"
+                        android:text="@string/uotherx" />
 
                     <EditText
-                        android:id="@+id/tcvscad02"
-                        style="@style/EditText_number"
-                        android:maxLength="2"
-                        android:hint="@string/tcvscad02" />
+                        android:id="@+id/tcvsclc0696x"
+                        style="@style/EditText"
+                        android:hint="@string/uotherxh"
+                        android:tag="tcvsclc0696"
+                        android:text='@{tcvsclc0696.checked ? tcvsclc0696x.getText.toString : "" }'
+                        android:visibility='@{tcvsclc0696.checked ? View.VISIBLE : View.GONE }' />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
-            <!--Radio tcvscad03-->
+            <!--Radio tcvsclc07-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscad03" />
+                        android:text="@string/tcvsclc07" />
 
                     <RadioGroup
-                        android:id="@+id/tcvscad03"
+                        android:id="@+id/tcvsclc07"
                         style="@style/i_radiogroup">
 
                         <RadioButton
-                            android:id="@+id/tcvscad03a"
+                            android:id="@+id/tcvsclc07a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad03a"/>
+                            android:text="@string/tcvsclc07a" />
 
                         <RadioButton
-                            android:id="@+id/tcvscad03b"
+                            android:id="@+id/tcvsclc07b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad03b"/>
+                            android:text="@string/tcvsclc07b" />
 
                         <RadioButton
-                            android:id="@+id/tcvscad03c"
+                            android:id="@+id/tcvsclc07c"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad03c"/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--EditText tcvscad04-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscad04" />
-
-                    <EditText
-                        android:id="@+id/tcvscad04"
-                        style="@style/EditText_number"
-                        android:maxLength="2"
-                        android:hint="@string/tcvscad04" />
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Radio tcvscad05-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscad05" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscad05"
-                        style="@style/i_radiogroup">
+                            android:text="@string/tcvsclc07c" />
 
                         <RadioButton
-                            android:id="@+id/tcvscad05a"
+                            android:id="@+id/tcvsclc07d"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad05a"/>
+                            android:text="@string/tcvsclc07d" />
 
                         <RadioButton
-                            android:id="@+id/tcvscad05b"
+                            android:id="@+id/tcvsclc07e"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad05b"/>
+                            android:text="@string/tcvsclc07e" />
 
                         <RadioButton
-                            android:id="@+id/tcvscad05c"
+                            android:id="@+id/tcvsclc0796"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad05c"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad0596"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uotherx"/>
+                            android:text="@string/uotherx" />
 
                         <EditText
-                            android:id="@+id/tcvscad0596x"
+                            android:id="@+id/tcvsclc0796x"
                             style="@style/EditText"
-                            android:tag="tcvscad0596"
                             android:hint="@string/uotherxh"
-                            android:text='@{tcvscad0596.checked ? tcvscad0596x.getText.toString : "" }'
-                            android:visibility='@{tcvscad0596.checked ? View.VISIBLE : View.GONE }'/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Radio tcvscad06-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscad06" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscad06"
-                        style="@style/i_radiogroup">
-
-                        <RadioButton
-                            android:id="@+id/tcvscad06a"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad06a"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad06b"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad06b"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad06c"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad06c"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad0696"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uotherx"/>
-
-                        <EditText
-                            android:id="@+id/tcvscad0696x"
-                            style="@style/EditText"
-                            android:tag="tcvscad0696"
-                            android:hint="@string/uotherxh"
-                            android:text='@{tcvscad0696.checked ? tcvscad0696x.getText.toString : "" }'
-                            android:visibility='@{tcvscad0696.checked ? View.VISIBLE : View.GONE }'/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Radio tcvscad07-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscad07" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscad07"
-                        style="@style/i_radiogroup">
-
-                        <RadioButton
-                            android:id="@+id/tcvscad07a"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad07a"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad07b"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad07b"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad07c"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad07c"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad0796"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uotherx"/>
-
-                        <EditText
-                            android:id="@+id/tcvscad0796x"
-                            style="@style/EditText"
-                            android:tag="tcvscad0796"
-                            android:hint="@string/uotherxh"
-                            android:text='@{tcvscad0796.checked ? tcvscad0796x.getText.toString : "" }'
-                            android:visibility='@{tcvscad0796.checked ? View.VISIBLE : View.GONE }'/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Radio tcvscad08-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscad08" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscad08"
-                        style="@style/i_radiogroup">
-
-                        <RadioButton
-                            android:id="@+id/tcvscad08a"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad08a"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad08b"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad08b"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad08c"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad08c"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad08d"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad08d"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad08e"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad08e"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad0896"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uotherx"/>
-
-                        <EditText
-                            android:id="@+id/tcvscad0896x"
-                            style="@style/EditText"
-                            android:tag="tcvscad0896"
-                            android:hint="@string/uotherxh"
-                            android:visibility='@{tcvscad0896.checked ? View.VISIBLE : View.GONE }'
-                            android:text='@{tcvscad0896.checked ? tcvscad0896x.getText.toString : "" }'/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Radio tcvscad09-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscad09" />
-
-                    <RadioGroup
-                        android:id="@+id/tcvscad09"
-                        style="@style/i_radiogroup">
-
-                        <RadioButton
-                            android:id="@+id/tcvscad09a"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad09a"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad09b"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad09b"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad09c"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad09c"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad09d"
-                            style="@style/i_radiobutton"
-                            android:text="@string/tcvscad09d"/>
-
-                        <RadioButton
-                            android:id="@+id/tcvscad0996"
-                            style="@style/i_radiobutton"
-                            android:text="@string/uotherx"/>
-
-                        <EditText
-                            android:id="@+id/tcvscad0996x"
-                            style="@style/EditText"
-                            android:tag="tcvscad0996"
-                            android:hint="@string/uotherxh"
-                            android:visibility='@{tcvscad0996.checked ? View.VISIBLE : View.GONE }'
-                            android:text='@{tcvscad0996.checked ? tcvscad0996x.getText.toString : "" }'/>
+                            android:tag="tcvsclc0796"
+                            android:text='@{tcvsclc0796.checked ? tcvsclc0796x.getText.toString : "" }'
+                            android:visibility='@{tcvsclc0796.checked ? View.VISIBLE : View.GONE }' />
 
                     </RadioGroup>
 
@@ -822,22 +663,22 @@
                         <RadioButton
                             android:id="@+id/tcvscad10a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad10a"/>
+                            android:text="@string/tcvscad10a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad10b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad10b"/>
+                            android:text="@string/tcvscad10b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad10c"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad10c"/>
+                            android:text="@string/tcvscad10c" />
 
                         <RadioButton
                             android:id="@+id/tcvscad10d"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad10d"/>
+                            android:text="@string/tcvscad10d" />
 
                     </RadioGroup>
 
@@ -861,17 +702,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad11a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad11a"/>
+                            android:text="@string/tcvscad11a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad11b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad11b"/>
+                            android:text="@string/tcvscad11b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad11c"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad11c"/>
+                            android:text="@string/tcvscad11c" />
 
                     </RadioGroup>
 
@@ -895,35 +736,35 @@
                         <RadioButton
                             android:id="@+id/tcvscad12a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad12a"/>
+                            android:text="@string/tcvscad12a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad12b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad12b"/>
+                            android:text="@string/tcvscad12b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad12c"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad12c"/>
+                            android:text="@string/tcvscad12c" />
 
                         <RadioButton
                             android:id="@+id/tcvscad12d"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad12d"/>
+                            android:text="@string/tcvscad12d" />
 
                         <RadioButton
                             android:id="@+id/tcvscad1296"
                             style="@style/i_radiobutton"
-                            android:text="@string/uotherx"/>
+                            android:text="@string/uotherx" />
 
                         <EditText
                             android:id="@+id/tcvscad1296x"
                             style="@style/EditText"
-                            android:tag="tcvscad1296"
                             android:hint="@string/uotherxh"
-                            android:visibility='@{tcvscad1296.checked ? View.VISIBLE : View.GONE }'
-                            android:text='@{tcvscad1296.checked ? tcvscad1296x.getText.toString : "" }'/>
+                            android:tag="tcvscad1296"
+                            android:text='@{tcvscad1296.checked ? tcvscad1296x.getText.toString : "" }'
+                            android:visibility='@{tcvscad1296.checked ? View.VISIBLE : View.GONE }' />
 
                     </RadioGroup>
 
@@ -947,30 +788,30 @@
                         <RadioButton
                             android:id="@+id/tcvscad13a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad13a"/>
+                            android:text="@string/tcvscad13a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad13b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad13b"/>
+                            android:text="@string/tcvscad13b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad13c"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad13c"/>
+                            android:text="@string/tcvscad13c" />
 
                         <RadioButton
                             android:id="@+id/tcvscad1396"
                             style="@style/i_radiobutton"
-                            android:text="@string/uotherx"/>
+                            android:text="@string/uotherx" />
 
                         <EditText
                             android:id="@+id/tcvscad1396x"
                             style="@style/EditText"
-                            android:tag="tcvscad1396"
                             android:hint="@string/uotherxh"
-                            android:visibility='@{tcvscad1396.checked ? View.VISIBLE : View.GONE }'
-                            android:text='@{tcvscad1396.checked ? tcvscad1396x.getText.toString : "" }'/>
+                            android:tag="tcvscad1396"
+                            android:text='@{tcvscad1396.checked ? tcvscad1396x.getText.toString : "" }'
+                            android:visibility='@{tcvscad1396.checked ? View.VISIBLE : View.GONE }' />
 
                     </RadioGroup>
 
@@ -994,17 +835,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad14a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad14a"/>
+                            android:text="@string/tcvscad14a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad14b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad14b"/>
+                            android:text="@string/tcvscad14b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad1497"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad14c"/>
+                            android:text="@string/tcvscad14c" />
 
                     </RadioGroup>
 
@@ -1028,33 +869,33 @@
                         <RadioButton
                             android:id="@+id/tcvscad15a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad15a"/>
+                            android:text="@string/tcvscad15a" />
 
                         <EditText
                             android:id="@+id/tcvscad15ax"
                             style="@style/EditText"
-                            android:tag="tcvscad15a"
                             android:hint="@string/tcvscad15c"
-                            android:visibility='@{tcvscad15a.checked ? View.VISIBLE : View.GONE }'
-                            android:text='@{tcvscad15a.checked ? tcvscad15ax.getText.toString : "" }'/>
+                            android:tag="tcvscad15a"
+                            android:text='@{tcvscad15a.checked ? tcvscad15ax.getText.toString : "" }'
+                            android:visibility='@{tcvscad15a.checked ? View.VISIBLE : View.GONE }' />
 
                         <RadioButton
                             android:id="@+id/tcvscad15b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad15b"/>
+                            android:text="@string/tcvscad15b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad1596"
                             style="@style/i_radiobutton"
-                            android:text="@string/uotherx"/>
+                            android:text="@string/uotherx" />
 
                         <EditText
                             android:id="@+id/tcvscad1596x"
                             style="@style/EditText"
-                            android:tag="tcvscad1596"
                             android:hint="@string/uotherxh"
-                            android:visibility='@{tcvscad1596.checked ? View.VISIBLE : View.GONE }'
-                            android:text='@{tcvscad1596.checked ? tcvscad1596x.getText.toString : "" }'/>
+                            android:tag="tcvscad1596"
+                            android:text='@{tcvscad1596.checked ? tcvscad1596x.getText.toString : "" }'
+                            android:visibility='@{tcvscad1596.checked ? View.VISIBLE : View.GONE }' />
 
                     </RadioGroup>
 
@@ -1078,17 +919,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad16a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad16a"/>
+                            android:text="@string/tcvscad16a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad16b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad16b"/>
+                            android:text="@string/tcvscad16b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad1697"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad16c"/>
+                            android:text="@string/tcvscad16c" />
 
                     </RadioGroup>
 
@@ -1112,17 +953,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad17a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad17a"/>
+                            android:text="@string/tcvscad17a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad17b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad17b"/>
+                            android:text="@string/tcvscad17b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad1798"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad17c"/>
+                            android:text="@string/tcvscad17c" />
 
                     </RadioGroup>
 
@@ -1148,17 +989,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad17a01a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad17a"/>
+                            android:text="@string/tcvscad17a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad17a01b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad17b"/>
+                            android:text="@string/tcvscad17b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad17a0198"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad17c"/>
+                            android:text="@string/tcvscad17c" />
 
                     </RadioGroup>
 
@@ -1182,22 +1023,22 @@
                         <RadioButton
                             android:id="@+id/tcvscad18a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad18a"/>
+                            android:text="@string/tcvscad18a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad18b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad18b"/>
+                            android:text="@string/tcvscad18b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad18c"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad18c"/>
+                            android:text="@string/tcvscad18c" />
 
                         <RadioButton
                             android:id="@+id/tcvscad18d"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad18d"/>
+                            android:text="@string/tcvscad18d" />
 
                     </RadioGroup>
 
@@ -1221,17 +1062,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad19a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad19a"/>
+                            android:text="@string/tcvscad19a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad19b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad19b"/>
+                            android:text="@string/tcvscad19b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad1997"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad19c"/>
+                            android:text="@string/tcvscad19c" />
 
                     </RadioGroup>
 
@@ -1255,17 +1096,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad20a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad20a"/>
+                            android:text="@string/tcvscad20a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad20b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad20b"/>
+                            android:text="@string/tcvscad20b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad2097"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad20c"/>
+                            android:text="@string/tcvscad20c" />
 
                     </RadioGroup>
 
@@ -1289,37 +1130,37 @@
                         <RadioButton
                             android:id="@+id/tcvscad21a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad21a"/>
+                            android:text="@string/tcvscad21a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad21b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad21b"/>
+                            android:text="@string/tcvscad21b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad21c"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad21c"/>
+                            android:text="@string/tcvscad21c" />
 
                         <RadioButton
                             android:id="@+id/tcvscad21d"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad21d"/>
+                            android:text="@string/tcvscad21d" />
 
                         <RadioButton
                             android:id="@+id/tcvscad21e"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad21e"/>
+                            android:text="@string/tcvscad21e" />
 
                         <RadioButton
                             android:id="@+id/tcvscad21f"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad21f"/>
+                            android:text="@string/tcvscad21f" />
 
                         <RadioButton
                             android:id="@+id/tcvscad2197"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad21g"/>
+                            android:text="@string/tcvscad21g" />
 
                     </RadioGroup>
 
@@ -1343,17 +1184,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad22a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad22a"/>
+                            android:text="@string/tcvscad22a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad22b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad22b"/>
+                            android:text="@string/tcvscad22b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad2297"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad22c"/>
+                            android:text="@string/tcvscad22c" />
 
                     </RadioGroup>
 
@@ -1377,25 +1218,25 @@
                         <RadioButton
                             android:id="@+id/tcvscad23a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad23a"/>
+                            android:text="@string/tcvscad23a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad23b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad23b"/>
+                            android:text="@string/tcvscad23b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad2396"
                             style="@style/i_radiobutton"
-                            android:text="@string/uotherx"/>
+                            android:text="@string/uotherx" />
 
                         <EditText
                             android:id="@+id/tcvscad2396x"
                             style="@style/EditText"
-                            android:tag="tcvscad2396"
                             android:hint="@string/uotherxh"
-                            android:visibility='@{tcvscad2396.checked ? View.VISIBLE : View.GONE }'
-                            android:text='@{tcvscad2396.checked ? tcvscad2396x.getText.toString : "" }'/>
+                            android:tag="tcvscad2396"
+                            android:text='@{tcvscad2396.checked ? tcvscad2396x.getText.toString : "" }'
+                            android:visibility='@{tcvscad2396.checked ? View.VISIBLE : View.GONE }' />
 
                     </RadioGroup>
 
@@ -1419,17 +1260,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad24a"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad24a"/>
+                            android:text="@string/tcvscad24a" />
 
                         <RadioButton
                             android:id="@+id/tcvscad24b"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad24b"/>
+                            android:text="@string/tcvscad24b" />
 
                         <RadioButton
                             android:id="@+id/tcvscad2497"
                             style="@style/i_radiobutton"
-                            android:text="@string/tcvscad24c"/>
+                            android:text="@string/tcvscad24c" />
 
                     </RadioGroup>
 
@@ -1453,12 +1294,12 @@
                         <RadioButton
                             android:id="@+id/tcvscad25a"
                             style="@style/i_radiobutton"
-                            android:text="@string/uyes"/>
+                            android:text="@string/uyes" />
 
                         <RadioButton
                             android:id="@+id/tcvscad25b"
                             style="@style/i_radiobutton"
-                            android:text="@string/uno"/>
+                            android:text="@string/uno" />
 
                     </RadioGroup>
 
@@ -1479,45 +1320,45 @@
                     <CheckBox
                         android:id="@+id/tcvscad2601"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2601"/>
+                        android:text="@string/tcvscad2601" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2602"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2602"/>
+                        android:text="@string/tcvscad2602" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2603"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2603"/>
+                        android:text="@string/tcvscad2603" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2604"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2604"/>
+                        android:text="@string/tcvscad2604" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2605"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2605"/>
+                        android:text="@string/tcvscad2605" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2606"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2606"/>
+                        android:text="@string/tcvscad2606" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2696"
                         style="@style/i_checkbox"
-                        android:text="@string/uotherx"/>
+                        android:text="@string/uotherx" />
 
                     <EditText
                         android:id="@+id/tcvscad2696x"
                         style="@style/EditText"
-                        android:tag="tcvscad2696"
                         android:hint="@string/uotherxh"
-                        android:visibility='@{tcvscad2696.checked ? View.VISIBLE : View.GONE }'
-                        android:text='@{tcvscad2696.checked ? tcvscad2696x.getText.toString : "" }'/>
+                        android:tag="tcvscad2696"
+                        android:text='@{tcvscad2696.checked ? tcvscad2696x.getText.toString : "" }'
+                        android:visibility='@{tcvscad2696.checked ? View.VISIBLE : View.GONE }' />
 
 
                 </LinearLayout>
@@ -1536,40 +1377,40 @@
                     <CheckBox
                         android:id="@+id/tcvscad2701"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2701"/>
+                        android:text="@string/tcvscad2701" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2702"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2702"/>
+                        android:text="@string/tcvscad2702" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2703"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2703"/>
+                        android:text="@string/tcvscad2703" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2704"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2704"/>
+                        android:text="@string/tcvscad2704" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2705"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2705"/>
+                        android:text="@string/tcvscad2705" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2796"
                         style="@style/i_checkbox"
-                        android:text="@string/uotherx"/>
+                        android:text="@string/uotherx" />
 
                     <EditText
                         android:id="@+id/tcvscad2796x"
                         style="@style/EditText"
-                        android:tag="tcvscad2796"
                         android:hint="@string/uotherxh"
-                        android:visibility='@{tcvscad2796.checked ? View.VISIBLE : View.GONE }'
-                        android:text='@{tcvscad2796.checked ? tcvscad2796x.getText.toString : "" }'/>
+                        android:tag="tcvscad2796"
+                        android:text='@{tcvscad2796.checked ? tcvscad2796x.getText.toString : "" }'
+                        android:visibility='@{tcvscad2796.checked ? View.VISIBLE : View.GONE }' />
 
 
                 </LinearLayout>
@@ -1588,60 +1429,59 @@
                     <CheckBox
                         android:id="@+id/tcvscad2801"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2801"/>
+                        android:text="@string/tcvscad2801" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2802"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2802"/>
+                        android:text="@string/tcvscad2802" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2803"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2803"/>
+                        android:text="@string/tcvscad2803" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2804"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2804"/>
+                        android:text="@string/tcvscad2804" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2805"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2805"/>
+                        android:text="@string/tcvscad2805" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2806"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2806"/>
+                        android:text="@string/tcvscad2806" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2807"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2807"/>
+                        android:text="@string/tcvscad2807" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2808"
                         style="@style/i_checkbox"
-                        android:text="@string/tcvscad2808"/>
+                        android:text="@string/tcvscad2808" />
 
                     <CheckBox
                         android:id="@+id/tcvscad2896"
                         style="@style/i_checkbox"
-                        android:text="@string/uotherx"/>
+                        android:text="@string/uotherx" />
 
                     <EditText
                         android:id="@+id/tcvscad2896x"
                         style="@style/EditText"
-                        android:tag="tcvscad2896"
                         android:hint="@string/uotherxh"
-                        android:visibility='@{tcvscad2896.checked ? View.VISIBLE : View.GONE }'
-                        android:text='@{tcvscad2896.checked ? tcvscad2896x.getText.toString : "" }'/>
+                        android:tag="tcvscad2896"
+                        android:text='@{tcvscad2896.checked ? tcvscad2896x.getText.toString : "" }'
+                        android:visibility='@{tcvscad2896.checked ? View.VISIBLE : View.GONE }' />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
-
 
 
             <!--Radio tcvscad29-->
@@ -1660,17 +1500,17 @@
                         <RadioButton
                             android:id="@+id/tcvscad29a"
                             style="@style/i_radiobutton"
-                            android:text="@string/uyes"/>
+                            android:text="@string/uyes" />
 
                         <RadioButton
                             android:id="@+id/tcvscad29b"
                             style="@style/i_radiobutton"
-                            android:text="@string/uno"/>
+                            android:text="@string/uno" />
 
                         <RadioButton
                             android:id="@+id/tcvscad2998"
                             style="@style/i_radiobutton"
-                            android:text="@string/udnt"/>
+                            android:text="@string/udnt" />
 
                     </RadioGroup>
 
@@ -1694,12 +1534,12 @@
                         <RadioButton
                             android:id="@+id/tcvscad30a"
                             style="@style/i_radiobutton"
-                            android:text="@string/uyes"/>
+                            android:text="@string/uyes" />
 
                         <RadioButton
                             android:id="@+id/tcvscad30b"
                             style="@style/i_radiobutton"
-                            android:text="@string/uno"/>
+                            android:text="@string/uno" />
 
                     </RadioGroup>
 
@@ -1719,8 +1559,8 @@
                     <EditText
                         android:id="@+id/tcvscad31"
                         style="@style/EditText_number"
-                        android:maxLength="11"
-                        android:hint="@string/tcvscad31" />
+                        android:hint="@string/tcvscad31"
+                        android:maxLength="11" />
 
                 </LinearLayout>
 
@@ -1745,7 +1585,6 @@
             </android.support.v7.widget.CardView>
 
         </LinearLayout>
-
 
 
         <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
