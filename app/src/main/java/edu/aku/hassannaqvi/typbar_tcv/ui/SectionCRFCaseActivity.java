@@ -5,20 +5,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
@@ -26,20 +19,19 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
-import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityCrfBinding;
-import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
+import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCrfCaseBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
-public class CRF extends AppCompatActivity {
+public class SectionCRFCaseActivity extends AppCompatActivity {
 
-    ActivityCrfBinding bi;
+    ActivitySectionCrfCaseBinding bi;
     DatabaseHelper db;
     Map<String, SchoolContract> schoolMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_crf);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_crf_case);
         bi.setCallback(this);
 
         setContentUI();
@@ -102,7 +94,7 @@ public class CRF extends AppCompatActivity {
                     bi.childSec00a.setVisibility(View.GONE);
                 }
 
-                bi.tcvcl01.setAdapter(new ArrayAdapter<>(CRF.this, android.R.layout.simple_spinner_dropdown_item, schNames));
+                bi.tcvcl01.setAdapter(new ArrayAdapter<>(SectionCRFCaseActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
             }
 
             @Override
@@ -127,11 +119,11 @@ public class CRF extends AppCompatActivity {
                         schoolMap.get(bi.tcvcl01.getSelectedItem().toString()).getSch_code());
 
                 if (schoolContract == null) {
-                    Toast.makeText(CRF.this, "School not found!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SectionCRFCaseActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!schoolContract.getSch_status().equals("1")) {
-                    Toast.makeText(CRF.this, "School not found!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SectionCRFCaseActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -295,7 +287,7 @@ public class CRF extends AppCompatActivity {
         crfCase.put("tcvscad31", bi.tcvscad31.getText().toString());
         crfCase.put("tcvscad32", bi.tcvscad32.getText().toString());
 
-        MainApp.fc.setCrfCase(String.valueOf(crfCase));
+        MainApp.fc.setsA(String.valueOf(crfCase));
 
     }
 
