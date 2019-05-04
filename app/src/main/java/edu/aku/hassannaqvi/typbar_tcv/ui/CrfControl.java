@@ -206,94 +206,203 @@ public class CrfControl extends AppCompatActivity {
         //child.put("tcvcl01", bi.tcvcl01.getSelectedItem());
 
 
-        /*CrfControl.put("tcvscaa01", bi.tcvscaa01a.isChecked() ? "1" : bi.tcvscaa01b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscaa02", bi.tcvscaa02a.isChecked() ? "1" : bi.tcvscaa02b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscaa03", bi.tcvscaa03a.isChecked() ? "1" : bi.tcvscaa03b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscaa04", bi.tcvscaa04a.isChecked() ? "1" : bi.tcvscaa04b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvscla01", bi.tcvscla01a.isChecked() ? "1" : bi.tcvscla01b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvscla02", bi.tcvscla02a.isChecked() ? "1" : bi.tcvscla02b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvscla03", bi.tcvscla03a.isChecked() ? "1" : bi.tcvscla03b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvscla04", bi.tcvscla04a.isChecked() ? "1" : bi.tcvscla04b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvscla05", bi.tcvscla05a.isChecked() ? "1" : bi.tcvscla05b.isChecked() ? "2" : "0");
 
-        CrfControl.put("tcvscab01", bi.tcvscab01.getText().toString());
-        CrfControl.put("tcvscab02", bi.tcvscab02.getText().toString());
-        CrfControl.put("tcvscab03", bi.tcvscab03.getText().toString());
-        CrfControl.put("tcvscab04", bi.tcvscab04.getText().toString());
-        CrfControl.put("tcvscab05", bi.tcvscab05.getText().toString());
-        CrfControl.put("tcvscab06", bi.tcvscab06.getText().toString());
-        CrfControl.put("tcvscab07", bi.tcvscab07.getText().toString());
-        CrfControl.put("tcvscab08", bi.tcvscab08a.isChecked() ? "1" : bi.tcvscab08b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvsclb01", bi.tcvsclb01.getText().toString());
+        CrfControl.put("tcvsclb02", bi.tcvsclb02.getText().toString());
+        CrfControl.put("tcvsclb03", bi.tcvsclb03.getText().toString());
+        CrfControl.put("tcvsclb04", bi.tcvsclb04.getText().toString());
+        CrfControl.put("tcvsclb05", bi.tcvsclb05.getText().toString());
+        CrfControl.put("tcvsclb06", bi.tcvsclb06.getText().toString());
+        CrfControl.put("tcvsclb07", bi.tcvsclb07.getText().toString());
+        CrfControl.put("tcvsclb08", bi.tcvsclb08a.isChecked() ? "1" : bi.tcvsclb08b.isChecked() ? "2" : "0");
+        
+        CrfControl.put("tcvsclc01", bi.tcvsclc01a.isChecked() ? "1" 
+                : bi.tcvsclc01b.isChecked() ? "2" 
+                : bi.tcvsclc01c.isChecked() ? "3" 
+                : "0");
+        
+        CrfControl.put("tcvsclc02", bi.tcvsclc02.getText().toString());
+        
+        CrfControl.put("tcvsclc03", bi.tcvsclc03a.isChecked() ? "1" 
+                : bi.tcvsclc03b.isChecked() ? "2" 
+                : bi.tcvsclc03c.isChecked() ? "3" 
+                : bi.tcvsclc0396.isChecked() ? "96" 
+                : "0");
+        CrfControl.put("tcvsclc0396x", bi.tcvsclc0396x.getText().toString());
+        
+        CrfControl.put("tcvsclc04", bi.tcvsclc04a.isChecked() ? "1" 
+                : bi.tcvsclc04b.isChecked() ? "2" 
+                : bi.tcvsclc04c.isChecked() ? "3" 
+                : bi.tcvsclc0496.isChecked() ? "96" 
+                : "0");
+        CrfControl.put("tcvsclc0496x", bi.tcvsclc0496x.getText().toString());
+        
+        CrfControl.put("tcvsclc05", bi.tcvsclc05a.isChecked() ? "1"
+                : bi.tcvsclc05b.isChecked() ? "2"
+                : bi.tcvsclc05c.isChecked() ? "3"
+                : bi.tcvsclc0596.isChecked() ? "96"
+                : "0");
+        CrfControl.put("tcvsclc0596x", bi.tcvsclc0596x.getText().toString());
+        
+        CrfControl.put("tcvsclc0601", bi.tcvsclc0601.isChecked() ? "1" : "0");
+        CrfControl.put("tcvsclc0602", bi.tcvsclc0602.isChecked() ? "2" : "0");
+        CrfControl.put("tcvsclc0603", bi.tcvsclc0603.isChecked() ? "3" : "0");
+        CrfControl.put("tcvsclc0604", bi.tcvsclc0604.isChecked() ? "4" : "0");
+        CrfControl.put("tcvsclc0605", bi.tcvsclc0605.isChecked() ? "5" : "0");
+        CrfControl.put("tcvsclc0606", bi.tcvsclc0606.isChecked() ? "6" : "0");
+        CrfControl.put("tcvsclc0696", bi.tcvsclc0696.isChecked() ? "96" : "0");
+        CrfControl.put("tcvsclc0696x", bi.tcvsclc0696x.getText().toString());
+        
+        CrfControl.put("tcvsclc07", bi.tcvsclc07a.isChecked() ? "1"
+                : bi.tcvsclc07b.isChecked() ? "2"
+                : bi.tcvsclc07c.isChecked() ? "3"
+                : bi.tcvsclc07d.isChecked() ? "4"
+                : bi.tcvsclc07e.isChecked() ? "5"
+                : bi.tcvsclc0796.isChecked() ? "96"
+                : "0");
+        CrfControl.put("tcvsclc0796x", bi.tcvsclc0796x.getText().toString());
 
-        CrfControl.put("tcvscac01", bi.tcvscac01a.isChecked() ? "1" : bi.tcvscac01b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscac02", bi.tcvscac02a.isChecked() ? "1" : bi.tcvscac02b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscac03", bi.tcvscac03a.isChecked() ? "1" : bi.tcvscac03b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscac04", bi.tcvscac04a.isChecked() ? "1" : bi.tcvscac04b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscac05", bi.tcvscac05a.isChecked() ? "1" : bi.tcvscac05b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvsclc08", bi.tcvsclc08a.isChecked() ? "1" 
+                : bi.tcvsclc08b.isChecked() ? "2" 
+                : bi.tcvsclc08c.isChecked() ? "3" 
+                : bi.tcvsclc08d.isChecked() ? "4" 
+                : "0");
+        
+        CrfControl.put("tcvsclc09", bi.tcvsclc09a.isChecked() ? "1" 
+                : bi.tcvsclc09b.isChecked() ? "2" 
+                : bi.tcvsclc09c.isChecked() ? "3" 
+                : "0");
+        
+        CrfControl.put("tcvsclc10", bi.tcvsclc10a.isChecked() ? "1" 
+                : bi.tcvsclc10b.isChecked() ? "2" 
+                : bi.tcvsclc10c.isChecked() ? "3" 
+                : bi.tcvsclc10d.isChecked() ? "4" 
+                : bi.tcvsclc1096.isChecked() ? "96" 
+                : "0");
+        CrfControl.put("tcvsclc1096x", bi.tcvsclc1096x.getText().toString());
+        
+        CrfControl.put("tcvsclc11", bi.tcvsclc11a.isChecked() ? "1" 
+                : bi.tcvsclc11b.isChecked() ? "2" 
+                : bi.tcvsclc11c.isChecked() ? "3" 
+                : bi.tcvsclc1196.isChecked() ? "96" 
+                : "0");
+        CrfControl.put("tcvsclc1196x", bi.tcvsclc1196x.getText().toString());
+        
+        CrfControl.put("tcvsclc12", bi.tcvsclc12a.isChecked() ? "1" 
+                : bi.tcvsclc12b.isChecked() ? "2" 
+                : bi.tcvsclc1297.isChecked() ? "97" 
+                : "0");
+        
+        CrfControl.put("tcvsclc13", bi.tcvsclc13a.isChecked() ? "1" 
+                : bi.tcvsclc13b.isChecked() ? "2" 
+                : bi.tcvsclc1396.isChecked() ? "96" 
+                : "0");
+        CrfControl.put("tcvsclc1396x", bi.tcvsclc1396x.getText().toString());
+        CrfControl.put("tcvsclc13ax", bi.tcvsclc13ax.getText().toString());
+        
+        CrfControl.put("tcvsclc14", bi.tcvsclc14a.isChecked() ? "1"
+                : bi.tcvsclc14b.isChecked() ? "2"
+                : bi.tcvsclc1497.isChecked() ? "97"
+                : "0");
 
-        CrfControl.put("tcvscad01", bi.tcvscad01.getText().toString());
-        CrfControl.put("tcvscad02", bi.tcvscad02.getText().toString());
-        CrfControl.put("tcvscad03", bi.tcvscad03a.isChecked() ? "1" : bi.tcvscad03b.isChecked() ? "2" : bi.tcvscad03c.isChecked() ? "3" : "0");
-        CrfControl.put("tcvscad04", bi.tcvscad04.getText().toString());
-        CrfControl.put("tcvscad05", bi.tcvscad05a.isChecked() ? "1" : bi.tcvscad05b.isChecked() ? "2" : bi.tcvscad05c.isChecked() ? "3" : bi.tcvscad0596.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad0596x", bi.tcvscad0596x.getText().toString());
-        CrfControl.put("tcvscad06", bi.tcvscad06a.isChecked() ? "1" : bi.tcvscad06b.isChecked() ? "2" : bi.tcvscad06c.isChecked() ? "3" : bi.tcvscad0696.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad0696x", bi.tcvscad0696x.getText().toString());
-        CrfControl.put("tcvscad07", bi.tcvscad07a.isChecked() ? "1" : bi.tcvscad07b.isChecked() ? "2" : bi.tcvscad07c.isChecked() ? "3" : bi.tcvscad0796.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad0796x", bi.tcvscad0796x.getText().toString());
-        CrfControl.put("tcvscad08", bi.tcvscad08a.isChecked() ? "1" : bi.tcvscad08b.isChecked() ? "2" : bi.tcvscad08c.isChecked() ? "3" : bi.tcvscad08d.isChecked() ? "4" : bi.tcvscad08e.isChecked() ? "5" : bi.tcvscad0896.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad0896x", bi.tcvscad0896x.getText().toString());
-        CrfControl.put("tcvscad09", bi.tcvscad09a.isChecked() ? "1" : bi.tcvscad09b.isChecked() ? "2" : bi.tcvscad09c.isChecked() ? "3" : bi.tcvscad09d.isChecked() ? "4" : bi.tcvscad0996.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad0996x", bi.tcvscad0996x.getText().toString());*/
-        CrfControl.put("tcvscad10", bi.tcvscad10a.isChecked() ? "1" : bi.tcvscad10b.isChecked() ? "2" : bi.tcvscad10c.isChecked() ? "3" : bi.tcvscad10d.isChecked() ? "4" : "0");
-        CrfControl.put("tcvscad11", bi.tcvscad11a.isChecked() ? "1" : bi.tcvscad11b.isChecked() ? "2" : bi.tcvscad11c.isChecked() ? "3" : "0");
-        CrfControl.put("tcvscad12", bi.tcvscad12a.isChecked() ? "1" : bi.tcvscad12b.isChecked() ? "2" : bi.tcvscad12c.isChecked() ? "3" : bi.tcvscad12d.isChecked() ? "4" : bi.tcvscad1296.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad1296x", bi.tcvscad1296x.getText().toString());
-        CrfControl.put("tcvscad13", bi.tcvscad13a.isChecked() ? "1" : bi.tcvscad13b.isChecked() ? "2" : bi.tcvscad13c.isChecked() ? "3" : bi.tcvscad1396.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad1396x", bi.tcvscad1396x.getText().toString());
-        CrfControl.put("tcvscad14", bi.tcvscad14a.isChecked() ? "1" : bi.tcvscad14b.isChecked() ? "2" : bi.tcvscad1497.isChecked() ? "97" : "0");
-        CrfControl.put("tcvscad15", bi.tcvscad15a.isChecked() ? "1" : bi.tcvscad15b.isChecked() ? "2" : bi.tcvscad1596.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad1596x", bi.tcvscad1596x.getText().toString());
-        CrfControl.put("tcvscad15ax", bi.tcvscad15ax.getText().toString());
-        CrfControl.put("tcvscad16", bi.tcvscad16a.isChecked() ? "1" : bi.tcvscad16b.isChecked() ? "2" : bi.tcvscad1697.isChecked() ? "97" : "0");
-        CrfControl.put("tcvscad17", bi.tcvscad17a.isChecked() ? "1" : bi.tcvscad17b.isChecked() ? "2" : bi.tcvscad1798.isChecked() ? "98" : "0");
-        CrfControl.put("tcvscad17a01", bi.tcvscad17a01a.isChecked() ? "1" : bi.tcvscad17a01b.isChecked() ? "2" : bi.tcvscad17a0198.isChecked() ? "98" : "0");
-        CrfControl.put("tcvscad18", bi.tcvscad18a.isChecked() ? "1" : bi.tcvscad18b.isChecked() ? "2" : bi.tcvscad18c.isChecked() ? "3" : bi.tcvscad18d.isChecked() ? "4" : "0");
-        CrfControl.put("tcvscad19", bi.tcvscad19a.isChecked() ? "1" : bi.tcvscad19b.isChecked() ? "2" : bi.tcvscad1997.isChecked() ? "97" : "0");
-        CrfControl.put("tcvscad20", bi.tcvscad20a.isChecked() ? "1" : bi.tcvscad20b.isChecked() ? "2" : bi.tcvscad2097.isChecked() ? "97" : "0");
-        CrfControl.put("tcvscad21", bi.tcvscad21a.isChecked() ? "1" : bi.tcvscad21b.isChecked() ? "2" : bi.tcvscad21c.isChecked() ? "3" : bi.tcvscad21d.isChecked() ? "4" : bi.tcvscad21e.isChecked() ? "5" : bi.tcvscad21f.isChecked() ? "6" : bi.tcvscad2197.isChecked() ? "97" : "0");
-        CrfControl.put("tcvscad22", bi.tcvscad22a.isChecked() ? "1" : bi.tcvscad22b.isChecked() ? "2" : bi.tcvscad2297.isChecked() ? "97" : "0");
-        CrfControl.put("tcvscad23", bi.tcvscad23a.isChecked() ? "1" : bi.tcvscad23b.isChecked() ? "2" : bi.tcvscad2396.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad2396x", bi.tcvscad2396x.getText().toString());
-        CrfControl.put("tcvscad24", bi.tcvscad24a.isChecked() ? "1" : bi.tcvscad24b.isChecked() ? "2" : bi.tcvscad2497.isChecked() ? "97" : "0");
-        CrfControl.put("tcvscad25", bi.tcvscad25a.isChecked() ? "1" : bi.tcvscad25b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvsclc15", bi.tcvsclc15a.isChecked() ? "1"
+                : bi.tcvsclc15b.isChecked() ? "2"
+                : bi.tcvsclc1598.isChecked() ? "98"
+                : "0");
 
-        CrfControl.put("tcvscad2601", bi.tcvscad2601.isChecked() ? "1" : "0");
-        CrfControl.put("tcvscad2602", bi.tcvscad2602.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscad2603", bi.tcvscad2603.isChecked() ? "3" : "0");
-        CrfControl.put("tcvscad2604", bi.tcvscad2604.isChecked() ? "4" : "0");
-        CrfControl.put("tcvscad2605", bi.tcvscad2605.isChecked() ? "5" : "0");
-        CrfControl.put("tcvscad2606", bi.tcvscad2606.isChecked() ? "6" : "0");
-        CrfControl.put("tcvscad2696", bi.tcvscad2696.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad2696x", bi.tcvscad2696x.getText().toString());
+        CrfControl.put("tcvsclc15a01", bi.tcvsclc15a01a.isChecked() ? "1"
+                : bi.tcvsclc15a01b.isChecked() ? "2"
+                : bi.tcvsclc15a0198.isChecked() ? "98"
+                : "0");
+        
+        CrfControl.put("tcvsclc16", bi.tcvsclc16a.isChecked() ? "1" 
+                : bi.tcvsclc16b.isChecked() ? "2" 
+                : bi.tcvsclc16c.isChecked() ? "3" 
+                : bi.tcvsclc16d.isChecked() ? "4" 
+                : "0");
+        
+        CrfControl.put("tcvsclc17", bi.tcvsclc17a.isChecked() ? "1" 
+                : bi.tcvsclc17b.isChecked() ? "2" 
+                : bi.tcvsclc1797.isChecked() ? "97" 
+                : "0");
+        
+        CrfControl.put("tcvsclc18", bi.tcvsclc18a.isChecked() ? "1" 
+                : bi.tcvsclc18b.isChecked() ? "2" 
+                : bi.tcvsclc1897.isChecked() ? "97" 
+                : "0");
+        
+        CrfControl.put("tcvsclc19", bi.tcvsclc19a.isChecked() ? "1" 
+                : bi.tcvsclc19b.isChecked() ? "2" 
+                : bi.tcvsclc19c.isChecked() ? "3" 
+                : bi.tcvsclc19d.isChecked() ? "4" 
+                : bi.tcvsclc19e.isChecked() ? "5" 
+                : bi.tcvsclc19f.isChecked() ? "6" 
+                : bi.tcvsclc1997.isChecked() ? "97" 
+                : "0");
+        
+        CrfControl.put("tcvsclc20", bi.tcvsclc20a.isChecked() ? "1" 
+                : bi.tcvsclc20b.isChecked() ? "2" 
+                : bi.tcvsclc2097.isChecked() ? "97" 
+                : "0");
+        
+        CrfControl.put("tcvsclc21", bi.tcvsclc21a.isChecked() ? "1" 
+                : bi.tcvsclc21b.isChecked() ? "2" 
+                : bi.tcvsclc2196.isChecked() ? "96" 
+                : "0");
+        CrfControl.put("tcvsclc2196x", bi.tcvsclc2196x.getText().toString());
+        
+        CrfControl.put("tcvsclc22", bi.tcvsclc22a.isChecked() ? "1" 
+                : bi.tcvsclc22b.isChecked() ? "2" 
+                : bi.tcvsclc2297.isChecked() ? "97" 
+                : "0");
+        
+        CrfControl.put("tcvsclc23", bi.tcvsclc23a.isChecked() ? "1" 
+                : bi.tcvsclc23b.isChecked() ? "2" 
+                : "0");
 
-        CrfControl.put("tcvscad2701", bi.tcvscad2701.isChecked() ? "1" : "0");
-        CrfControl.put("tcvscad2702", bi.tcvscad2702.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscad2703", bi.tcvscad2703.isChecked() ? "3" : "0");
-        CrfControl.put("tcvscad2704", bi.tcvscad2704.isChecked() ? "4" : "0");
-        CrfControl.put("tcvscad2705", bi.tcvscad2705.isChecked() ? "5" : "0");
-        CrfControl.put("tcvscad2796", bi.tcvscad2796.isChecked() ? "96" : "0");
-        CrfControl.put("tcvscad2796x", bi.tcvscad2796x.getText().toString());
+        CrfControl.put("tcvsclc2401", bi.tcvsclc2401.isChecked() ? "1" : "0");
+        CrfControl.put("tcvsclc2402", bi.tcvsclc2402.isChecked() ? "2" : "0");
+        CrfControl.put("tcvsclc2403", bi.tcvsclc2403.isChecked() ? "3" : "0");
+        CrfControl.put("tcvsclc2404", bi.tcvsclc2404.isChecked() ? "4" : "0");
+        CrfControl.put("tcvsclc2405", bi.tcvsclc2405.isChecked() ? "5" : "0");
+        CrfControl.put("tcvsclc2406", bi.tcvsclc2406.isChecked() ? "6" : "0");
+        CrfControl.put("tcvsclc2496", bi.tcvsclc2496.isChecked() ? "96" : "0");
+        CrfControl.put("tcvsclc2496x", bi.tcvsclc2496x.getText().toString());
 
-        CrfControl.put("tcvscad2801", bi.tcvscad2801.isChecked() ? "1" : "0");
-        CrfControl.put("tcvscad2802", bi.tcvscad2802.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscad2803", bi.tcvscad2803.isChecked() ? "3" : "0");
-        CrfControl.put("tcvscad2804", bi.tcvscad2804.isChecked() ? "4" : "0");
-        CrfControl.put("tcvscad2805", bi.tcvscad2805.isChecked() ? "5" : "0");
-        CrfControl.put("tcvscad2806", bi.tcvscad2806.isChecked() ? "6" : "0");
-        CrfControl.put("tcvscad2807", bi.tcvscad2807.isChecked() ? "7" : "0");
-        CrfControl.put("tcvscad2808", bi.tcvscad2808.isChecked() ? "8" : "0");
+        CrfControl.put("tcvsclc2501", bi.tcvsclc2501.isChecked() ? "1" : "0");
+        CrfControl.put("tcvsclc2502", bi.tcvsclc2502.isChecked() ? "2" : "0");
+        CrfControl.put("tcvsclc2503", bi.tcvsclc2503.isChecked() ? "3" : "0");
+        CrfControl.put("tcvsclc2504", bi.tcvsclc2504.isChecked() ? "4" : "0");
+        CrfControl.put("tcvsclc2505", bi.tcvsclc2505.isChecked() ? "5" : "0");
+        CrfControl.put("tcvsclc2596", bi.tcvsclc2596.isChecked() ? "96" : "0");
+        CrfControl.put("tcvsclc2596x", bi.tcvsclc2596x.getText().toString());
 
-        CrfControl.put("tcvscad29", bi.tcvscad29a.isChecked() ? "1" : bi.tcvscad29b.isChecked() ? "2" : bi.tcvscad2998.isChecked() ? "98" : "0");
-        CrfControl.put("tcvscad30", bi.tcvscad30a.isChecked() ? "1" : bi.tcvscad30b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvsclc2601", bi.tcvsclc2601.isChecked() ? "1" : "0");
+        CrfControl.put("tcvsclc2602", bi.tcvsclc2602.isChecked() ? "2" : "0");
+        CrfControl.put("tcvsclc2603", bi.tcvsclc2603.isChecked() ? "3" : "0");
+        CrfControl.put("tcvsclc2604", bi.tcvsclc2604.isChecked() ? "4" : "0");
+        CrfControl.put("tcvsclc2605", bi.tcvsclc2605.isChecked() ? "5" : "0");
+        CrfControl.put("tcvsclc2606", bi.tcvsclc2606.isChecked() ? "6" : "0");
+        CrfControl.put("tcvsclc2607", bi.tcvsclc2607.isChecked() ? "7" : "0");
+        CrfControl.put("tcvsclc2608", bi.tcvsclc2608.isChecked() ? "8" : "0");
 
-        CrfControl.put("tcvscad31", bi.tcvscad31.getText().toString());
-        CrfControl.put("tcvscad32", bi.tcvscad32.getText().toString());
+        CrfControl.put("tcvsclc27", bi.tcvsclc27a.isChecked() ? "1" 
+                : bi.tcvsclc27b.isChecked() ? "2" 
+                : bi.tcvsclc2798.isChecked() ? "98" 
+                : "0");
+        
+        CrfControl.put("tcvsclc28", bi.tcvsclc28a.isChecked() ? "1" 
+                : bi.tcvsclc28b.isChecked() ? "2" 
+                : "0");
+
+        CrfControl.put("tcvsclc29", bi.tcvsclc29.getText().toString());
+        
+        CrfControl.put("tcvsclc30", bi.tcvsclc30.getText().toString());
 
         MainApp.fc.setsA(String.valueOf(CrfControl));
 
