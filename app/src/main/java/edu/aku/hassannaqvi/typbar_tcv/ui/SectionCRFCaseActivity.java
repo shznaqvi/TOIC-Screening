@@ -333,20 +333,38 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
 
     void events_call() {
 
-        bi.tcvscaa01 && bi.tcvscaa02 && bi.tcvscaa03 && bi.tcvscaa04.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        bi.tcvscaa01.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (!bi.tcvscaa01a.isChecked() && !bi.tcvscaa02a.isChecked() && !bi.tcvscaa03a.isChecked() && !bi.tcvscaa04a.isChecked()) {
+                if (!bi.tcvscaa01a.isChecked()) {
                     ClearClass.ClearAllFields(bi.llcrf01, null);
                 }
             }
         });
 
-        bi.pofi09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        bi.tcvscaa02.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (bi.pofi09b.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrppofi11, null);
+                if (!bi.tcvscaa02a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.llcrf01, null);
+                }
+            }
+        });
+
+        bi.tcvscaa03.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (!bi.tcvscaa03a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.llcrf01, null);
+                }
+            }
+        });
+
+        bi.tcvscaa04.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (!bi.tcvscaa04a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.llcrf01, null);
                 }
             }
         });
