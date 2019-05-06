@@ -5,20 +5,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
@@ -26,20 +19,19 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
-import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityCrfControlBinding;
-import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
+import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCrfControlBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
-public class CrfControl extends AppCompatActivity {
+public class SectionCRFControlActivity extends AppCompatActivity {
 
-    ActivityCrfControlBinding bi;
+    ActivitySectionCrfControlBinding bi;
     DatabaseHelper db;
     Map<String, SchoolContract> schoolMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_crf_control);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_crf_control);
         bi.setCallback(this);
 
         setContentUI();
@@ -198,7 +190,7 @@ public class CrfControl extends AppCompatActivity {
 
         JSONObject CrfControl = new JSONObject();
 
-        //CrfControl.put("tcvcl00", bi.tcvcl00.getSelectedItem());
+        //SectionCRFControlActivity.put("tcvcl00", bi.tcvcl00.getSelectedItem());
 
         //child.put("sch_code", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_code());
         //child.put("sch_add", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_add());

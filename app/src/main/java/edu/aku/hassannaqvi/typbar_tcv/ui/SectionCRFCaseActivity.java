@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -20,6 +21,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCrfCaseBinding;
+import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class SectionCRFCaseActivity extends AppCompatActivity {
@@ -33,6 +35,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_crf_case);
         bi.setCallback(this);
+        events_call();
 
         setContentUI();
         //setListeners();
@@ -326,6 +329,28 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         fc.setGpsDT(locClass.getTime());
     }
 
-    //
+    //ClearAllFields
+
+    void events_call() {
+
+        bi.tcvscaa01 && bi.tcvscaa02 && bi.tcvscaa03 && bi.tcvscaa04.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (!bi.tcvscaa01a.isChecked() && !bi.tcvscaa02a.isChecked() && !bi.tcvscaa03a.isChecked() && !bi.tcvscaa04a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.llcrf01, null);
+                }
+            }
+        });
+
+        bi.pofi09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (bi.pofi09b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrppofi11, null);
+                }
+            }
+        });
+
+    }
 
 }
