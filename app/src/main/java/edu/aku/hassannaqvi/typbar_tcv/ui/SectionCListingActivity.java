@@ -66,7 +66,7 @@ public class SectionCListingActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == bi.tcvcl11b.getId())
-                    ClearClass.ClearAllFields(bi.childSec01);
+                    ClearClass.ClearAllFields(bi.childSec01, null);
             }
         });
 
@@ -97,7 +97,7 @@ public class SectionCListingActivity extends AppCompatActivity {
 
                 } else {
                     bi.childSec00.setVisibility(View.GONE);
-                    ClearClass.ClearAllFields(bi.childSec00);
+                    ClearClass.ClearAllFields(bi.childSec00, null);
                     bi.childSec00a.setVisibility(View.GONE);
                 }
 
@@ -133,7 +133,7 @@ public class SectionCListingActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i != bi.tcvcl11a.getId())
-                    ClearClass.ClearAllFields(bi.childSec01);
+                    ClearClass.ClearAllFields(bi.childSec01, null);
             }
         });
 
@@ -141,7 +141,7 @@ public class SectionCListingActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i != bi.tcvcl17.getId())
-                    ClearClass.ClearAllFields(bi.childSec02);
+                    ClearClass.ClearAllFields(bi.childSec02, null);
             }
         });
 
@@ -161,7 +161,7 @@ public class SectionCListingActivity extends AppCompatActivity {
                 schoolMap.get(bi.tcvcl01.getText().toString()).getSch_code());
 
         bi.childSec00.setVisibility(View.GONE);
-        ClearClass.ClearAllFields(bi.childSec00);
+        ClearClass.ClearAllFields(bi.childSec00, null);
         bi.childSec00a.setVisibility(View.GONE);
 
         if (schoolContract == null) {
