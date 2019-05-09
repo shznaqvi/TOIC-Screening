@@ -175,7 +175,7 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
 
 
         if (CheckingID.checkFile(SectionMImmunizeActivity.this, MainApp.massImunization)) {
-            String vacID = CheckingID.accessingFile(getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null), MainApp.massImunization, false);
+            String vacID = CheckingID.accessingFile("MI" + getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null), MainApp.massImunization, false);
             bi.tcvmi18.setText(vacID);
         }
 
