@@ -94,6 +94,12 @@ public class MainApp extends Application {
             "Government Boys/Girls Primary School",
             "Government Boys/Girls Secondary School", "Private", "Madarasa", "Other"};
 
+    public static String childListing = "SECRET";
+    public static String massImunization = "SECRETMI";
+    public static String CHILDLISTINGTYPE = "cl";
+    public static String SCHOOLLISTINGTYPE = "sl";
+    public static String MASSIMMUNIZATIONTYPE = "mi";
+
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 
         Calendar start = Calendar.getInstance();

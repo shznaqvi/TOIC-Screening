@@ -330,5 +330,6 @@ public class FormsContract {
 
         public static String _URL1 = "forms.php";
         public static String _URL2 = "forms_mi.php";
+        public static String _URL3 = "forms_crf_mi.php";
     }
 }

@@ -619,7 +619,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public Collection<FormsContract> getUnsyncedForms(int type) {
+    public Collection<FormsContract> getUnsyncedForms(String type) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -646,9 +646,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
 
-        if (type != 0) {
+        if (type != null) {
             whereClause += " AND " + FormsTable.COLUMN_FORMTYPE + " =?";
-            whereArgs = new String[]{type == 1 ? "sl" : "cl"};
+            whereArgs = new String[]{type};
         }
 
         String groupBy = null;

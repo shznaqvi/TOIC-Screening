@@ -168,7 +168,7 @@ public class SectionSListingActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("sl");
+        MainApp.fc.setFormtype(MainApp.SCHOOLLISTINGTYPE);
 
         JSONObject sA = new JSONObject();
 //        sA.put("tcvsl00", bi.tcvsl00.getSelectedItem());

@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             bi.adminsec.setVisibility(View.VISIBLE);
 
             Collection<FormsContract> todaysForms = db.getTodayForms();
-            Collection<FormsContract> unsyncedForms = db.getUnsyncedForms(0);
+            Collection<FormsContract> unsyncedForms = db.getUnsyncedForms(null);
 
             rSumText += "TODAY'S RECORDS SUMMARY\r\n";
 
@@ -349,21 +349,31 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Syncing School Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
-                    "Forms",
+                    "School-Listings",
                     "updateSyncedForms",
                     FormsContract.class,
                     FormsContract.FormsTable._URL1,
-                    db.getUnsyncedForms(1)
+                    db.getUnsyncedForms(MainApp.SCHOOLLISTINGTYPE)
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
-                    "Children",
+                    "Children-Listings",
                     "updateSyncedForms",
                     FormsContract.class,
                     FormsContract.FormsTable._URL2,
-                    db.getUnsyncedForms(2)
+                    db.getUnsyncedForms(MainApp.CHILDLISTINGTYPE)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Mass Immunization Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "CRF-MI's",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    FormsContract.FormsTable._URL3,
+                    db.getUnsyncedForms(MainApp.MASSIMMUNIZATIONTYPE)
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
