@@ -70,14 +70,6 @@ public class SectionCListingActivity extends AppCompatActivity {
             }
         });
 
-        //setting dates
-        String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
-        bi.tcvcl03.setManager(getSupportFragmentManager());
-        bi.tcvcl03.setMaxDate(dateToday);
-        bi.tcvcl19.setManager(getSupportFragmentManager());
-        bi.tcvcl19.setMaxDate(dateToday);
-        bi.tcvcl20.setManager(getSupportFragmentManager());
-
         //settting spinner listeners
         bi.tcvcl00.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
