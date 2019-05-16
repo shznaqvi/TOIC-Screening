@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -20,6 +21,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCrfControlBinding;
+import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class SectionCRFControlActivity extends AppCompatActivity {
@@ -35,7 +37,39 @@ public class SectionCRFControlActivity extends AppCompatActivity {
         bi.setCallback(this);
 
         setContentUI();
-        //setListeners();
+        setListeners();
+    }
+
+    private void setListeners() {
+
+        bi.tcvsclc28.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvsclc28a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvsclc29, null);
+                }
+            }
+        });
+        bi.tcvsclc27.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvsclc27a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvsclc28, null);
+                }
+            }
+        });
+        bi.tcvsclc15.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvsclc15a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvsclc15a01, null);
+                }
+            }
+        });
+
     }
 
     private void setContentUI() {
@@ -43,104 +77,8 @@ public class SectionCRFControlActivity extends AppCompatActivity {
 
         // Initialize db
         db = new DatabaseHelper(this);
-        //filledSpinners();
     }
 
-  /*
-    private void filledSpinners() {
-        String[] schTypes = {"....", "Government Boys Secondary School", "Government Girls Secondary School",
-                "Government Boys Primary School", "Government Girls Primary School", "Private", "Madarasa", "Other"};
-        bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(schTypes)));
-    }
-
-    private void setListeners() {
-        bi.tcvcl11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == bi.tcvcl11b.getId())
-                    ClearClass.ClearAllFields(bi.childSec01);
-            }
-        });
-
-        //setting dates
-        String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
-        bi.tcvcl03.setManager(getSupportFragmentManager());
-        bi.tcvcl03.setMaxDate(dateToday);
-        bi.tcvcl19.setManager(getSupportFragmentManager());
-        bi.tcvcl19.setMaxDate(dateToday);
-        bi.tcvcl20.setManager(getSupportFragmentManager());
-
-        //settting spinner listeners
-        bi.tcvcl00.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                ArrayList<String> schNames = new ArrayList<>();
-                schNames.add("....");
-
-                if (i != 0) {
-
-                    ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvcl00.getSelectedItemPosition()));
-                    schoolMap = new HashMap<>();
-
-                    for (SchoolContract school : schoolContract) {
-                        schoolMap.put(school.getSch_name(), school);
-                        schNames.add(school.getSch_name());
-                    }
-
-                } else {
-                    bi.childSec00.setVisibility(View.GONE);
-                    ClearClass.ClearAllFields(bi.childSec00);
-                    bi.childSec00a.setVisibility(View.GONE);
-                }
-
-                bi.tcvcl01.setAdapter(new ArrayAdapter<>(CRF.this, android.R.layout.simple_spinner_dropdown_item, schNames));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        bi.tcvcl01.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                if (i == 0) {
-                    bi.childSec00.setVisibility(View.GONE);
-                    ClearClass.ClearAllFields(bi.childSec00);
-                    bi.childSec00a.setVisibility(View.GONE);
-                    return;
-                }
-
-                SchoolContract schoolContract = db.getSchoolWRTTypeAndCode(
-                        String.valueOf(bi.tcvcl00.getSelectedItemPosition()),
-                        schoolMap.get(bi.tcvcl01.getSelectedItem().toString()).getSch_code());
-
-                if (schoolContract == null) {
-                    Toast.makeText(CRF.this, "School not found!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (!schoolContract.getSch_status().equals("1")) {
-                    Toast.makeText(CRF.this, "School not found!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                bi.childSec00.setVisibility(View.VISIBLE);
-                bi.childSec00a.setVisibility(View.VISIBLE);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-    }
-
-    */
 
     public void BtnContinue() {
         try {

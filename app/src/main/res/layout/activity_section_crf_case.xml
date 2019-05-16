@@ -243,7 +243,8 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvscab05" />
 
-                            <EditText
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                                app:dateFormat="dd-MM-yyyy"
                                 android:id="@+id/tcvscab05"
                                 style="@style/EditText"
                                 android:hint="@string/tcvscab05" />
@@ -263,7 +264,7 @@
 
                             <EditText
                                 android:id="@+id/tcvscab06"
-                                style="@style/EditText"
+                                style="@style/EditText_number"
                                 android:hint="@string/tcvscab06" />
 
 
@@ -279,7 +280,8 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvscab07" />
 
-                            <EditText
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                                app:dateFormat="dd-MM-yyyy"
                                 android:id="@+id/tcvscab07"
                                 style="@style/EditText"
                                 android:hint="@string/tcvscab07" />
@@ -989,7 +991,11 @@
                     </android.support.v7.widget.CardView>
 
                     <!--Radio tcvscad14-->
-                    <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/fldGrptcvscad14"
+                        android:visibility='@{tcvscad13a.checked? View.VISIBLE : View.GONE}'
+                        style="@style/cardView">
 
                         <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -1043,7 +1049,7 @@
                                 <EditText
                                     android:id="@+id/tcvscad15ax"
                                     style="@style/EditText"
-                                    android:hint="@string/tcvscad15c"
+                                    android:hint="@string/tcvscad15d"
                                     android:tag="tcvscad15a"
                                     android:text='@{tcvscad15a.checked ? tcvscad15ax.getText.toString : "" }'
                                     android:visibility='@{tcvscad15a.checked ? View.VISIBLE : View.GONE }' />
@@ -1142,6 +1148,7 @@
 
                     <!--Radio tcvscad17a01-->
                     <android.support.v7.widget.CardView
+                        android:id="@+id/fldGrptcvscad17a01"
                         style="@style/cardView"
                         android:visibility='@{tcvscad17a.checked ? View.VISIBLE : View.GONE }'>
 
@@ -1688,7 +1695,10 @@
                     </android.support.v7.widget.CardView>
 
                     <!--Radio tcvscad30-->
-                    <android.support.v7.widget.CardView style="@style/cardView">
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/fldgrptcvscad30"
+                        android:visibility='@{tcvscad29a.checked? View.VISIBLE : View.GONE}'
+                        style="@style/cardView">
 
                         <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -1744,7 +1754,8 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvscad32" />
 
-                            <EditText
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                                app:dateFormat="dd-MM-yyyy"
                                 android:id="@+id/tcvscad32"
                                 style="@style/EditText_number"
                                 android:hint="@string/tcvscad32" />
