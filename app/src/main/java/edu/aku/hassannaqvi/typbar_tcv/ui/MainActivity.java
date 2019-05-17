@@ -381,6 +381,26 @@ public class MainActivity extends AppCompatActivity {
                     db.getUnsyncedForms(MainApp.MASSIMMUNIZATIONTYPE)
             ).execute();
 
+            Toast.makeText(getApplicationContext(), "Syncing CRF Case Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "CRF-Case",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    FormsContract.FormsTable._URL4,
+                    db.getUnsyncedForms(MainApp.CRFCase)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing CRF Control Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "CRF-Control",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    FormsContract.FormsTable._URL5,
+                    db.getUnsyncedForms(MainApp.CRFControl)
+            ).execute();
+
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
 

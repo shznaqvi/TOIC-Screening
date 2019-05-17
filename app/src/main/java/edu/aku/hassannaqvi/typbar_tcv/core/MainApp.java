@@ -99,6 +99,8 @@ public class MainApp extends Application {
     public static String CHILDLISTINGTYPE = "cl";
     public static String SCHOOLLISTINGTYPE = "sl";
     public static String MASSIMMUNIZATIONTYPE = "mi";
+    public static String CRFCase = "sca";
+    public static String CRFControl = "scl";
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 

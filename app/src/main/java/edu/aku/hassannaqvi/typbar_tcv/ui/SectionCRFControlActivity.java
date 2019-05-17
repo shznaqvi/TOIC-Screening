@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -12,11 +13,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
@@ -29,6 +36,8 @@ public class SectionCRFControlActivity extends AppCompatActivity {
     ActivitySectionCrfControlBinding bi;
     DatabaseHelper db;
     Map<String, SchoolContract> schoolMap;
+    Map<String, HFContract> hfMap;
+    List<String> hfName = new ArrayList<>(Arrays.asList("...."));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,24 @@ public class SectionCRFControlActivity extends AppCompatActivity {
 
         setContentUI();
         setListeners();
+        loadHFFromDB();
+    }
+
+    private void loadHFFromDB() {
+        Collection<HFContract> allHF = db.getAllHF();
+        if (allHF.size() == 0) return;
+        hfName = new ArrayList<>();
+        hfName.add("....");
+        hfMap = new HashMap<>();
+        for (HFContract hf : allHF) {
+            hfName.add(hf.getHfname());
+            hfMap.put(hf.getHfname(), hf);
+        }
+        filledSpinners(hfName);
+    }
+
+    private void filledSpinners(List<String> hfNames) {
+        bi.tcvmi01.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hfNames));
     }
 
     private void setListeners() {
@@ -124,18 +151,11 @@ public class SectionCRFControlActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("cl");
+        MainApp.fc.setFormtype("scl");
 
         JSONObject CrfControl = new JSONObject();
 
-        //SectionCRFControlActivity.put("tcvcl00", bi.tcvcl00.getSelectedItem());
-
-        //child.put("sch_code", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_code());
-        //child.put("sch_add", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_add());
-        //child.put("sch_type", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_type());
-        //child.put("tcvcl01", bi.tcvcl01.getSelectedItem());
-
-
+        CrfControl.put("hf_code", hfMap.get(bi.tcvmi01.getSelectedItem().toString()).getHfcode());
         CrfControl.put("tcvscla01", bi.tcvscla01a.isChecked() ? "1" : bi.tcvscla01b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla02", bi.tcvscla02a.isChecked() ? "1" : bi.tcvscla02b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla03", bi.tcvscla03a.isChecked() ? "1" : bi.tcvscla03b.isChecked() ? "2" : "0");

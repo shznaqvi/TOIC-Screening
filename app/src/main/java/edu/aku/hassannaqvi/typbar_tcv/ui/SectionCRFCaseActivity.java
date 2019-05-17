@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -12,11 +13,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
@@ -28,7 +35,8 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
 
     ActivitySectionCrfCaseBinding bi;
     DatabaseHelper db;
-    Map<String, SchoolContract> schoolMap;
+    Map<String, HFContract> hfMap;
+    List<String> hfName = new ArrayList<>(Arrays.asList("...."));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +46,26 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         events_call();
 
         setContentUI();
+        loadHFFromDB();
+
         //setListeners();
+    }
+
+    private void loadHFFromDB() {
+        Collection<HFContract> allHF = db.getAllHF();
+        if (allHF.size() == 0) return;
+        hfName = new ArrayList<>();
+        hfName.add("....");
+        hfMap = new HashMap<>();
+        for (HFContract hf : allHF) {
+            hfName.add(hf.getHfname());
+            hfMap.put(hf.getHfname(), hf);
+        }
+        filledSpinners(hfName);
+    }
+
+    private void filledSpinners(List<String> hfNames) {
+        bi.tcvmi01.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hfNames));
     }
 
     private void setContentUI() {
@@ -48,102 +75,6 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         //filledSpinners();
     }
-
-  /*
-    private void filledSpinners() {
-        String[] schTypes = {"....", "Government Boys Secondary School", "Government Girls Secondary School",
-                "Government Boys Primary School", "Government Girls Primary School", "Private", "Madarasa", "Other"};
-        bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(schTypes)));
-    }
-
-    private void setListeners() {
-        bi.tcvcl11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == bi.tcvcl11b.getId())
-                    ClearClass.ClearAllFields(bi.childSec01);
-            }
-        });
-
-        //setting dates
-        String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
-        bi.tcvcl03.setManager(getSupportFragmentManager());
-        bi.tcvcl03.setMaxDate(dateToday);
-        bi.tcvcl19.setManager(getSupportFragmentManager());
-        bi.tcvcl19.setMaxDate(dateToday);
-        bi.tcvcl20.setManager(getSupportFragmentManager());
-
-        //settting spinner listeners
-        bi.tcvcl00.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                ArrayList<String> schNames = new ArrayList<>();
-                schNames.add("....");
-
-                if (i != 0) {
-
-                    ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvcl00.getSelectedItemPosition()));
-                    schoolMap = new HashMap<>();
-
-                    for (SchoolContract school : schoolContract) {
-                        schoolMap.put(school.getSch_name(), school);
-                        schNames.add(school.getSch_name());
-                    }
-
-                } else {
-                    bi.childSec00.setVisibility(View.GONE);
-                    ClearClass.ClearAllFields(bi.childSec00);
-                    bi.childSec00a.setVisibility(View.GONE);
-                }
-
-                bi.tcvcl01.setAdapter(new ArrayAdapter<>(SectionCRFCaseActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        bi.tcvcl01.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                if (i == 0) {
-                    bi.childSec00.setVisibility(View.GONE);
-                    ClearClass.ClearAllFields(bi.childSec00);
-                    bi.childSec00a.setVisibility(View.GONE);
-                    return;
-                }
-
-                SchoolContract schoolContract = db.getSchoolWRTTypeAndCode(
-                        String.valueOf(bi.tcvcl00.getSelectedItemPosition()),
-                        schoolMap.get(bi.tcvcl01.getSelectedItem().toString()).getSch_code());
-
-                if (schoolContract == null) {
-                    Toast.makeText(SectionCRFCaseActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (!schoolContract.getSch_status().equals("1")) {
-                    Toast.makeText(SectionCRFCaseActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                bi.childSec00.setVisibility(View.VISIBLE);
-                bi.childSec00a.setVisibility(View.VISIBLE);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-    }
-
-    */
 
     public void BtnContinue() {
         try {
@@ -189,7 +120,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("cl");
+        MainApp.fc.setFormtype("sca");
 
         JSONObject crfCase = new JSONObject();
 
@@ -201,6 +132,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         //child.put("tcvcl01", bi.tcvcl01.getSelectedItem());
 
 
+        crfCase.put("hf_code", hfMap.get(bi.tcvmi01.getSelectedItem().toString()).getHfcode());
         crfCase.put("tcvscaa01", bi.tcvscaa01a.isChecked() ? "1" : bi.tcvscaa01b.isChecked() ? "2" : "0");
         crfCase.put("tcvscaa02", bi.tcvscaa02a.isChecked() ? "1" : bi.tcvscaa02b.isChecked() ? "2" : "0");
         crfCase.put("tcvscaa03", bi.tcvscaa03a.isChecked() ? "1" : bi.tcvscaa03b.isChecked() ? "2" : "0");

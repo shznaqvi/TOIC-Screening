@@ -29,6 +29,23 @@
                     style="@style/textview_fm_lst_h"
                     android:text="@string/tcvscaah" />
 
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/tcvmi01" />
+
+                        <Spinner
+                            android:id="@+id/tcvmi01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="20dp" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
                 <!--Radio tcvscaa01-->
                 <android.support.v7.widget.CardView style="@style/cardView">
 
