@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             bi.adminsec.setVisibility(View.VISIBLE);
 
             Collection<FormsContract> todaysForms = db.getTodayForms();
-            Collection<FormsContract> unsyncedForms = db.getUnsyncedForms(0);
+            Collection<FormsContract> unsyncedForms = db.getUnsyncedForms(null);
 
             rSumText += "TODAY'S RECORDS SUMMARY\r\n";
 
@@ -201,7 +201,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openForm(int type) {
-        final Intent oF = new Intent(MainActivity.this, type == 1 ? SectionSListingActivity.class : type == 2 ? SectionCListingActivity.class : type == 3 ? SectionCRFCaseActivity.class : SectionCRFControlActivity.class);
+        final Intent oF = new Intent(MainActivity.this,
+                type == 1 ? SectionSListingActivity.class :
+                        type == 2 ? SectionCListingActivity.class :
+                                type == 3 ? SectionCRFCaseActivity.class :
+                                        type == 4 ? SectionCRFControlActivity.class
+                                                : SectionMImmunizeActivity.class);
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             startActivity(oF);
         } else {
@@ -349,21 +354,51 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Syncing School Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
-                    "Forms",
+                    "School-Listings",
                     "updateSyncedForms",
                     FormsContract.class,
                     FormsContract.FormsTable._URL1,
-                    db.getUnsyncedForms(1)
+                    db.getUnsyncedForms(MainApp.SCHOOLLISTINGTYPE)
             ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
-                    "Children",
+                    "Children-Listings",
                     "updateSyncedForms",
                     FormsContract.class,
                     FormsContract.FormsTable._URL2,
-                    db.getUnsyncedForms(2)
+                    db.getUnsyncedForms(MainApp.CHILDLISTINGTYPE)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Mass Immunization Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "CRF-MI's",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    FormsContract.FormsTable._URL3,
+                    db.getUnsyncedForms(MainApp.MASSIMMUNIZATIONTYPE)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing CRF Case Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "CRF-Case",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    FormsContract.FormsTable._URL4,
+                    db.getUnsyncedForms(MainApp.CRFCase)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing CRF Control Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "CRF-Control",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    FormsContract.FormsTable._URL5,
+                    db.getUnsyncedForms(MainApp.CRFControl)
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

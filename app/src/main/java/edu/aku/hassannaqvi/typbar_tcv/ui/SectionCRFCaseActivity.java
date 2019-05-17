@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -12,11 +13,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
@@ -28,7 +35,8 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
 
     ActivitySectionCrfCaseBinding bi;
     DatabaseHelper db;
-    Map<String, SchoolContract> schoolMap;
+    Map<String, HFContract> hfMap;
+    List<String> hfName = new ArrayList<>(Arrays.asList("...."));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +46,26 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         events_call();
 
         setContentUI();
+        loadHFFromDB();
+
         //setListeners();
+    }
+
+    private void loadHFFromDB() {
+        Collection<HFContract> allHF = db.getAllHF();
+        if (allHF.size() == 0) return;
+        hfName = new ArrayList<>();
+        hfName.add("....");
+        hfMap = new HashMap<>();
+        for (HFContract hf : allHF) {
+            hfName.add(hf.getHfname());
+            hfMap.put(hf.getHfname(), hf);
+        }
+        filledSpinners(hfName);
+    }
+
+    private void filledSpinners(List<String> hfNames) {
+        bi.tcvmi01.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hfNames));
     }
 
     private void setContentUI() {
@@ -48,102 +75,6 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         //filledSpinners();
     }
-
-  /*
-    private void filledSpinners() {
-        String[] schTypes = {"....", "Government Boys Secondary School", "Government Girls Secondary School",
-                "Government Boys Primary School", "Government Girls Primary School", "Private", "Madarasa", "Other"};
-        bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(schTypes)));
-    }
-
-    private void setListeners() {
-        bi.tcvcl11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == bi.tcvcl11b.getId())
-                    ClearClass.ClearAllFields(bi.childSec01);
-            }
-        });
-
-        //setting dates
-        String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
-        bi.tcvcl03.setManager(getSupportFragmentManager());
-        bi.tcvcl03.setMaxDate(dateToday);
-        bi.tcvcl19.setManager(getSupportFragmentManager());
-        bi.tcvcl19.setMaxDate(dateToday);
-        bi.tcvcl20.setManager(getSupportFragmentManager());
-
-        //settting spinner listeners
-        bi.tcvcl00.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                ArrayList<String> schNames = new ArrayList<>();
-                schNames.add("....");
-
-                if (i != 0) {
-
-                    ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvcl00.getSelectedItemPosition()));
-                    schoolMap = new HashMap<>();
-
-                    for (SchoolContract school : schoolContract) {
-                        schoolMap.put(school.getSch_name(), school);
-                        schNames.add(school.getSch_name());
-                    }
-
-                } else {
-                    bi.childSec00.setVisibility(View.GONE);
-                    ClearClass.ClearAllFields(bi.childSec00);
-                    bi.childSec00a.setVisibility(View.GONE);
-                }
-
-                bi.tcvcl01.setAdapter(new ArrayAdapter<>(SectionCRFCaseActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        bi.tcvcl01.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                if (i == 0) {
-                    bi.childSec00.setVisibility(View.GONE);
-                    ClearClass.ClearAllFields(bi.childSec00);
-                    bi.childSec00a.setVisibility(View.GONE);
-                    return;
-                }
-
-                SchoolContract schoolContract = db.getSchoolWRTTypeAndCode(
-                        String.valueOf(bi.tcvcl00.getSelectedItemPosition()),
-                        schoolMap.get(bi.tcvcl01.getSelectedItem().toString()).getSch_code());
-
-                if (schoolContract == null) {
-                    Toast.makeText(SectionCRFCaseActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (!schoolContract.getSch_status().equals("1")) {
-                    Toast.makeText(SectionCRFCaseActivity.this, "School not found!!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                bi.childSec00.setVisibility(View.VISIBLE);
-                bi.childSec00a.setVisibility(View.VISIBLE);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-    }
-
-    */
 
     public void BtnContinue() {
         try {
@@ -189,7 +120,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("cl");
+        MainApp.fc.setFormtype("sca");
 
         JSONObject crfCase = new JSONObject();
 
@@ -200,7 +131,8 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         //child.put("sch_type", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_type());
         //child.put("tcvcl01", bi.tcvcl01.getSelectedItem());
 
-        
+
+        crfCase.put("hf_code", hfMap.get(bi.tcvmi01.getSelectedItem().toString()).getHfcode());
         crfCase.put("tcvscaa01", bi.tcvscaa01a.isChecked() ? "1" : bi.tcvscaa01b.isChecked() ? "2" : "0");
         crfCase.put("tcvscaa02", bi.tcvscaa02a.isChecked() ? "1" : bi.tcvscaa02b.isChecked() ? "2" : "0");
         crfCase.put("tcvscaa03", bi.tcvscaa03a.isChecked() ? "1" : bi.tcvscaa03b.isChecked() ? "2" : "0");
@@ -232,12 +164,12 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad07", bi.tcvscad07a.isChecked() ? "1" : bi.tcvscad07b.isChecked() ? "2" : bi.tcvscad07c.isChecked() ? "3" : bi.tcvscad0796.isChecked() ? "96" : "0");
         crfCase.put("tcvscad0796x", bi.tcvscad0796x.getText().toString());
 
-        crfCase.put("tcvscad0801", bi.tcvscad0801.isChecked() ? "1" :  "0");
-        crfCase.put("tcvscad0801", bi.tcvscad0802.isChecked() ? "2" :  "0");
-        crfCase.put("tcvscad0802", bi.tcvscad0803.isChecked() ? "3" :  "0");
-        crfCase.put("tcvscad0804", bi.tcvscad0804.isChecked() ? "4" :  "0");
-        crfCase.put("tcvscad0805", bi.tcvscad0805.isChecked() ? "5" :  "0");
-        crfCase.put("tcvscad0896", bi.tcvscad0896.isChecked() ? "96" :  "0");
+        crfCase.put("tcvscad0801", bi.tcvscad0801.isChecked() ? "1" : "0");
+        crfCase.put("tcvscad0801", bi.tcvscad0802.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad0802", bi.tcvscad0803.isChecked() ? "3" : "0");
+        crfCase.put("tcvscad0804", bi.tcvscad0804.isChecked() ? "4" : "0");
+        crfCase.put("tcvscad0805", bi.tcvscad0805.isChecked() ? "5" : "0");
+        crfCase.put("tcvscad0896", bi.tcvscad0896.isChecked() ? "96" : "0");
         crfCase.put("tcvscad0896x", bi.tcvscad0896x.getText().toString());
 
         crfCase.put("tcvscad09", bi.tcvscad09a.isChecked() ? "1"
@@ -276,7 +208,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad2396x", bi.tcvscad2396x.getText().toString());
         crfCase.put("tcvscad24", bi.tcvscad24a.isChecked() ? "1" : bi.tcvscad24b.isChecked() ? "2" : bi.tcvscad2497.isChecked() ? "97" : "0");
         crfCase.put("tcvscad25", bi.tcvscad25a.isChecked() ? "1" : bi.tcvscad25b.isChecked() ? "2" : "0");
-        
+
         crfCase.put("tcvscad2601", bi.tcvscad2601.isChecked() ? "1" : "0");
         crfCase.put("tcvscad2602", bi.tcvscad2602.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2603", bi.tcvscad2603.isChecked() ? "3" : "0");
@@ -285,7 +217,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad2606", bi.tcvscad2606.isChecked() ? "6" : "0");
         crfCase.put("tcvscad2696", bi.tcvscad2696.isChecked() ? "96" : "0");
         crfCase.put("tcvscad2696x", bi.tcvscad2696x.getText().toString());
-        
+
         crfCase.put("tcvscad2701", bi.tcvscad2701.isChecked() ? "1" : "0");
         crfCase.put("tcvscad2702", bi.tcvscad2702.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2703", bi.tcvscad2703.isChecked() ? "3" : "0");
@@ -293,7 +225,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad2705", bi.tcvscad2705.isChecked() ? "5" : "0");
         crfCase.put("tcvscad2796", bi.tcvscad2796.isChecked() ? "96" : "0");
         crfCase.put("tcvscad2796x", bi.tcvscad2796x.getText().toString());
-        
+
         crfCase.put("tcvscad2801", bi.tcvscad2801.isChecked() ? "1" : "0");
         crfCase.put("tcvscad2802", bi.tcvscad2802.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2803", bi.tcvscad2803.isChecked() ? "3" : "0");
@@ -365,6 +297,36 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (!bi.tcvscaa04a.isChecked()) {
                     ClearClass.ClearAllFields(bi.llcrf01, null);
+                }
+            }
+        });
+
+        bi.tcvscad13.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscad13a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad14, null);
+                }
+            }
+        });
+
+        bi.tcvscad17.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscad17a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad17a01, null);
+                }
+            }
+        });
+
+        bi.tcvscad29.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscad29a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldgrptcvscad30, null);
                 }
             }
         });

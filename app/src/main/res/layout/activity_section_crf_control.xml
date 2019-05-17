@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.SectionCRFControlActivity">
 
     <data>
@@ -14,9 +15,9 @@
     </data>
 
     <ScrollView
-        android:layoutDirection="rtl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl">
 
         <LinearLayout style="@style/linearlayout_view">
 
@@ -27,6 +28,23 @@
                 <TextView
                     style="@style/textview_fm_lst_h"
                     android:text="@string/tcvsclah" />
+
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/tcvmi01" />
+
+                        <Spinner
+                            android:id="@+id/tcvmi01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="20dp" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
                 <!--Radio tcvscla01-->
                 <android.support.v7.widget.CardView style="@style/cardView">
@@ -246,7 +264,8 @@
                             style="@style/i_textview"
                             android:text="@string/tcvsclb04" />
 
-                        <EditText
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                            app:dateFormat="dd-MM-yyy"
                             android:id="@+id/tcvsclb04"
                             style="@style/EditText"
                             android:hint="@string/tcvsclb04" />
@@ -264,7 +283,8 @@
                             style="@style/i_textview"
                             android:text="@string/tcvsclb05" />
 
-                        <EditText
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                            app:dateFormat="dd-MM-yyyy"
                             android:id="@+id/tcvsclb05"
                             style="@style/EditText"
                             android:hint="@string/tcvsclb05" />
@@ -282,7 +302,8 @@
                             style="@style/i_textview"
                             android:text="@string/tcvsclb06" />
 
-                        <EditText
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                            app:dateFormat="dd-MM-yyyy"
                             android:id="@+id/tcvsclb06"
                             style="@style/EditText"
                             android:hint="@string/tcvsclb06" />
@@ -300,7 +321,8 @@
                             style="@style/i_textview"
                             android:text="@string/tcvsclb07" />
 
-                        <EditText
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                            app:dateFormat="dd-MM-yyyy"
                             android:id="@+id/tcvsclb07"
                             style="@style/EditText"
                             android:hint="@string/tcvsclb07" />
@@ -823,7 +845,9 @@
                 </android.support.v7.widget.CardView>
 
                 <!--Radio tcvsclc12-->
-                <android.support.v7.widget.CardView style="@style/cardView">
+                <android.support.v7.widget.CardView
+                    style="@style/cardView"
+                    android:visibility='@{tcvsclc11a.checked? View.VISIBLE : View.GONE}'>
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -877,7 +901,7 @@
                             <EditText
                                 android:id="@+id/tcvsclc13ax"
                                 style="@style/EditText"
-                                android:hint="@string/tcvsclc13c"
+                                android:hint="@string/tcvsclc13d"
                                 android:tag="tcvsclc13a"
                                 android:text='@{tcvsclc13a.checked ? tcvsclc13ax.getText.toString : "" }'
                                 android:visibility='@{tcvsclc13a.checked ? View.VISIBLE : View.GONE }' />
@@ -976,6 +1000,7 @@
 
                 <!--Radio tcvsclc15a01-->
                 <android.support.v7.widget.CardView
+                    android:id="@+id/fldGrptcvsclc15a01"
                     style="@style/cardView"
                     android:visibility='@{tcvsclc15a.checked ? View.VISIBLE : View.GONE }'>
 
@@ -1509,7 +1534,10 @@
                 </android.support.v7.widget.CardView>
 
                 <!--Radio tcvsclc28-->
-                <android.support.v7.widget.CardView style="@style/cardView">
+                <android.support.v7.widget.CardView
+                    android:id="@+id/fldGrptcvsclc28"
+                    style="@style/cardView"
+                    android:visibility='@{tcvsclc27a.checked? View.VISIBLE : View.GONE}'>
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -1538,7 +1566,10 @@
                 </android.support.v7.widget.CardView>
 
                 <!--EditText tcvsclc29-->
-                <android.support.v7.widget.CardView style="@style/cardView">
+                <android.support.v7.widget.CardView
+                    android:id="@+id/fldGrptcvsclc29"
+                    style="@style/cardView"
+                    android:visibility='@{tcvsclc28a.checked? View.VISIBLE : View.GONE}'>
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -1549,7 +1580,7 @@
                         <EditText
                             android:id="@+id/tcvsclc29"
                             style="@style/EditText_number"
-                            android:hint="@string/tcvsclc29"
+                            android:hint="ID"
                             android:maxLength="11" />
 
                     </LinearLayout>

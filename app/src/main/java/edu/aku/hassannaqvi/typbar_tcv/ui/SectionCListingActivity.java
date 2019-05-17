@@ -70,14 +70,6 @@ public class SectionCListingActivity extends AppCompatActivity {
             }
         });
 
-        //setting dates
-        String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
-        bi.tcvcl03.setManager(getSupportFragmentManager());
-        bi.tcvcl03.setMaxDate(dateToday);
-        bi.tcvcl19.setManager(getSupportFragmentManager());
-        bi.tcvcl19.setMaxDate(dateToday);
-        bi.tcvcl20.setManager(getSupportFragmentManager());
-
         //settting spinner listeners
         bi.tcvcl00.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -174,8 +166,8 @@ public class SectionCListingActivity extends AppCompatActivity {
         }
 
 
-        if (CheckingID.checkFile(SectionCListingActivity.this)) {
-            String vacID = CheckingID.accessingFile(getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null), false);
+        if (CheckingID.checkFile(SectionCListingActivity.this, MainApp.childListing)) {
+            String vacID = CheckingID.accessingFile(getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null), MainApp.childListing, false);
             bi.tcvcl18.setText(vacID);
         }
 
@@ -223,7 +215,7 @@ public class SectionCListingActivity extends AppCompatActivity {
                     bi.tcvcl15a.isChecked() &&
                     bi.tcvcl16a.isChecked()
             )
-                CheckingID.accessingFile(null, true);
+                CheckingID.accessingFile(null, MainApp.childListing, true);
 
             return true;
         }
@@ -240,7 +232,7 @@ public class SectionCListingActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("cl");
+        MainApp.fc.setFormtype(MainApp.CHILDLISTINGTYPE);
 
         JSONObject child = new JSONObject();
 //        child.put("tcvcl00", bi.tcvcl00.getSelectedItem());

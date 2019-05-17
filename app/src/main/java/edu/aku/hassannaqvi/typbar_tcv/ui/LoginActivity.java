@@ -60,7 +60,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.typbar_tcv.R;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.TehsilsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
@@ -85,7 +85,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     ArrayAdapter<String> dataAdapter;
 
     ArrayList<String> lablesTalukas;
-    Collection<TehsilsContract> TalukasList;
+    Collection<HFContract> TalukasList;
     Map<String, String> talukasMap;
 
     ArrayList<String> lablesUCs;
@@ -575,6 +575,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     new GetAllData(mContext, "User").execute();
                     Toast.makeText(mContext, "Sync UCs", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "UC").execute();
+                    Toast.makeText(mContext, "Sync HF", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "HF").execute();
                 }
             });
 

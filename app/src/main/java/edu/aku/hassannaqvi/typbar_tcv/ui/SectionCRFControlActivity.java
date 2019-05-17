@@ -5,21 +5,30 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCrfControlBinding;
+import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class SectionCRFControlActivity extends AppCompatActivity {
@@ -27,6 +36,8 @@ public class SectionCRFControlActivity extends AppCompatActivity {
     ActivitySectionCrfControlBinding bi;
     DatabaseHelper db;
     Map<String, SchoolContract> schoolMap;
+    Map<String, HFContract> hfMap;
+    List<String> hfName = new ArrayList<>(Arrays.asList("...."));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +46,57 @@ public class SectionCRFControlActivity extends AppCompatActivity {
         bi.setCallback(this);
 
         setContentUI();
-        //setListeners();
+        setListeners();
+        loadHFFromDB();
+    }
+
+    private void loadHFFromDB() {
+        Collection<HFContract> allHF = db.getAllHF();
+        if (allHF.size() == 0) return;
+        hfName = new ArrayList<>();
+        hfName.add("....");
+        hfMap = new HashMap<>();
+        for (HFContract hf : allHF) {
+            hfName.add(hf.getHfname());
+            hfMap.put(hf.getHfname(), hf);
+        }
+        filledSpinners(hfName);
+    }
+
+    private void filledSpinners(List<String> hfNames) {
+        bi.tcvmi01.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hfNames));
+    }
+
+    private void setListeners() {
+
+        bi.tcvsclc28.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvsclc28a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvsclc29, null);
+                }
+            }
+        });
+        bi.tcvsclc27.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvsclc27a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvsclc28, null);
+                }
+            }
+        });
+        bi.tcvsclc15.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvsclc15a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvsclc15a01, null);
+                }
+            }
+        });
+
     }
 
     private void setContentUI() {
@@ -43,9 +104,7 @@ public class SectionCRFControlActivity extends AppCompatActivity {
 
         // Initialize db
         db = new DatabaseHelper(this);
-        //filledSpinners();
     }
-
 
 
     public void BtnContinue() {
@@ -92,18 +151,11 @@ public class SectionCRFControlActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("cl");
+        MainApp.fc.setFormtype("scl");
 
         JSONObject CrfControl = new JSONObject();
 
-        //SectionCRFControlActivity.put("tcvcl00", bi.tcvcl00.getSelectedItem());
-
-        //child.put("sch_code", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_code());
-        //child.put("sch_add", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_add());
-        //child.put("sch_type", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_type());
-        //child.put("tcvcl01", bi.tcvcl01.getSelectedItem());
-
-
+        CrfControl.put("hf_code", hfMap.get(bi.tcvmi01.getSelectedItem().toString()).getHfcode());
         CrfControl.put("tcvscla01", bi.tcvscla01a.isChecked() ? "1" : bi.tcvscla01b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla02", bi.tcvscla02a.isChecked() ? "1" : bi.tcvscla02b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla03", bi.tcvscla03a.isChecked() ? "1" : bi.tcvscla03b.isChecked() ? "2" : "0");
@@ -118,35 +170,35 @@ public class SectionCRFControlActivity extends AppCompatActivity {
         CrfControl.put("tcvsclb06", bi.tcvsclb06.getText().toString());
         CrfControl.put("tcvsclb07", bi.tcvsclb07.getText().toString());
         CrfControl.put("tcvsclb08", bi.tcvsclb08a.isChecked() ? "1" : bi.tcvsclb08b.isChecked() ? "2" : "0");
-        
-        CrfControl.put("tcvsclc01", bi.tcvsclc01a.isChecked() ? "1" 
-                : bi.tcvsclc01b.isChecked() ? "2" 
-                : bi.tcvsclc01c.isChecked() ? "3" 
+
+        CrfControl.put("tcvsclc01", bi.tcvsclc01a.isChecked() ? "1"
+                : bi.tcvsclc01b.isChecked() ? "2"
+                : bi.tcvsclc01c.isChecked() ? "3"
                 : "0");
-        
+
         CrfControl.put("tcvsclc02", bi.tcvsclc02.getText().toString());
-        
-        CrfControl.put("tcvsclc03", bi.tcvsclc03a.isChecked() ? "1" 
-                : bi.tcvsclc03b.isChecked() ? "2" 
-                : bi.tcvsclc03c.isChecked() ? "3" 
-                : bi.tcvsclc0396.isChecked() ? "96" 
+
+        CrfControl.put("tcvsclc03", bi.tcvsclc03a.isChecked() ? "1"
+                : bi.tcvsclc03b.isChecked() ? "2"
+                : bi.tcvsclc03c.isChecked() ? "3"
+                : bi.tcvsclc0396.isChecked() ? "96"
                 : "0");
         CrfControl.put("tcvsclc0396x", bi.tcvsclc0396x.getText().toString());
-        
-        CrfControl.put("tcvsclc04", bi.tcvsclc04a.isChecked() ? "1" 
-                : bi.tcvsclc04b.isChecked() ? "2" 
-                : bi.tcvsclc04c.isChecked() ? "3" 
-                : bi.tcvsclc0496.isChecked() ? "96" 
+
+        CrfControl.put("tcvsclc04", bi.tcvsclc04a.isChecked() ? "1"
+                : bi.tcvsclc04b.isChecked() ? "2"
+                : bi.tcvsclc04c.isChecked() ? "3"
+                : bi.tcvsclc0496.isChecked() ? "96"
                 : "0");
         CrfControl.put("tcvsclc0496x", bi.tcvsclc0496x.getText().toString());
-        
+
         CrfControl.put("tcvsclc05", bi.tcvsclc05a.isChecked() ? "1"
                 : bi.tcvsclc05b.isChecked() ? "2"
                 : bi.tcvsclc05c.isChecked() ? "3"
                 : bi.tcvsclc0596.isChecked() ? "96"
                 : "0");
         CrfControl.put("tcvsclc0596x", bi.tcvsclc0596x.getText().toString());
-        
+
         CrfControl.put("tcvsclc0601", bi.tcvsclc0601.isChecked() ? "1" : "0");
         CrfControl.put("tcvsclc0602", bi.tcvsclc0602.isChecked() ? "2" : "0");
         CrfControl.put("tcvsclc0603", bi.tcvsclc0603.isChecked() ? "3" : "0");
@@ -155,7 +207,7 @@ public class SectionCRFControlActivity extends AppCompatActivity {
         CrfControl.put("tcvsclc0606", bi.tcvsclc0606.isChecked() ? "6" : "0");
         CrfControl.put("tcvsclc0696", bi.tcvsclc0696.isChecked() ? "96" : "0");
         CrfControl.put("tcvsclc0696x", bi.tcvsclc0696x.getText().toString());
-        
+
         CrfControl.put("tcvsclc07", bi.tcvsclc07a.isChecked() ? "1"
                 : bi.tcvsclc07b.isChecked() ? "2"
                 : bi.tcvsclc07c.isChecked() ? "3"
@@ -165,44 +217,44 @@ public class SectionCRFControlActivity extends AppCompatActivity {
                 : "0");
         CrfControl.put("tcvsclc0796x", bi.tcvsclc0796x.getText().toString());
 
-        CrfControl.put("tcvsclc08", bi.tcvsclc08a.isChecked() ? "1" 
-                : bi.tcvsclc08b.isChecked() ? "2" 
-                : bi.tcvsclc08c.isChecked() ? "3" 
-                : bi.tcvsclc08d.isChecked() ? "4" 
+        CrfControl.put("tcvsclc08", bi.tcvsclc08a.isChecked() ? "1"
+                : bi.tcvsclc08b.isChecked() ? "2"
+                : bi.tcvsclc08c.isChecked() ? "3"
+                : bi.tcvsclc08d.isChecked() ? "4"
                 : "0");
-        
-        CrfControl.put("tcvsclc09", bi.tcvsclc09a.isChecked() ? "1" 
-                : bi.tcvsclc09b.isChecked() ? "2" 
-                : bi.tcvsclc09c.isChecked() ? "3" 
+
+        CrfControl.put("tcvsclc09", bi.tcvsclc09a.isChecked() ? "1"
+                : bi.tcvsclc09b.isChecked() ? "2"
+                : bi.tcvsclc09c.isChecked() ? "3"
                 : "0");
-        
-        CrfControl.put("tcvsclc10", bi.tcvsclc10a.isChecked() ? "1" 
-                : bi.tcvsclc10b.isChecked() ? "2" 
-                : bi.tcvsclc10c.isChecked() ? "3" 
-                : bi.tcvsclc10d.isChecked() ? "4" 
-                : bi.tcvsclc1096.isChecked() ? "96" 
+
+        CrfControl.put("tcvsclc10", bi.tcvsclc10a.isChecked() ? "1"
+                : bi.tcvsclc10b.isChecked() ? "2"
+                : bi.tcvsclc10c.isChecked() ? "3"
+                : bi.tcvsclc10d.isChecked() ? "4"
+                : bi.tcvsclc1096.isChecked() ? "96"
                 : "0");
         CrfControl.put("tcvsclc1096x", bi.tcvsclc1096x.getText().toString());
-        
-        CrfControl.put("tcvsclc11", bi.tcvsclc11a.isChecked() ? "1" 
-                : bi.tcvsclc11b.isChecked() ? "2" 
-                : bi.tcvsclc11c.isChecked() ? "3" 
-                : bi.tcvsclc1196.isChecked() ? "96" 
+
+        CrfControl.put("tcvsclc11", bi.tcvsclc11a.isChecked() ? "1"
+                : bi.tcvsclc11b.isChecked() ? "2"
+                : bi.tcvsclc11c.isChecked() ? "3"
+                : bi.tcvsclc1196.isChecked() ? "96"
                 : "0");
         CrfControl.put("tcvsclc1196x", bi.tcvsclc1196x.getText().toString());
-        
-        CrfControl.put("tcvsclc12", bi.tcvsclc12a.isChecked() ? "1" 
-                : bi.tcvsclc12b.isChecked() ? "2" 
-                : bi.tcvsclc1297.isChecked() ? "97" 
+
+        CrfControl.put("tcvsclc12", bi.tcvsclc12a.isChecked() ? "1"
+                : bi.tcvsclc12b.isChecked() ? "2"
+                : bi.tcvsclc1297.isChecked() ? "97"
                 : "0");
-        
-        CrfControl.put("tcvsclc13", bi.tcvsclc13a.isChecked() ? "1" 
-                : bi.tcvsclc13b.isChecked() ? "2" 
-                : bi.tcvsclc1396.isChecked() ? "96" 
+
+        CrfControl.put("tcvsclc13", bi.tcvsclc13a.isChecked() ? "1"
+                : bi.tcvsclc13b.isChecked() ? "2"
+                : bi.tcvsclc1396.isChecked() ? "96"
                 : "0");
         CrfControl.put("tcvsclc1396x", bi.tcvsclc1396x.getText().toString());
         CrfControl.put("tcvsclc13ax", bi.tcvsclc13ax.getText().toString());
-        
+
         CrfControl.put("tcvsclc14", bi.tcvsclc14a.isChecked() ? "1"
                 : bi.tcvsclc14b.isChecked() ? "2"
                 : bi.tcvsclc1497.isChecked() ? "97"
@@ -217,50 +269,50 @@ public class SectionCRFControlActivity extends AppCompatActivity {
                 : bi.tcvsclc15a01b.isChecked() ? "2"
                 : bi.tcvsclc15a0198.isChecked() ? "98"
                 : "0");
-        
-        CrfControl.put("tcvsclc16", bi.tcvsclc16a.isChecked() ? "1" 
-                : bi.tcvsclc16b.isChecked() ? "2" 
-                : bi.tcvsclc16c.isChecked() ? "3" 
-                : bi.tcvsclc16d.isChecked() ? "4" 
+
+        CrfControl.put("tcvsclc16", bi.tcvsclc16a.isChecked() ? "1"
+                : bi.tcvsclc16b.isChecked() ? "2"
+                : bi.tcvsclc16c.isChecked() ? "3"
+                : bi.tcvsclc16d.isChecked() ? "4"
                 : "0");
-        
-        CrfControl.put("tcvsclc17", bi.tcvsclc17a.isChecked() ? "1" 
-                : bi.tcvsclc17b.isChecked() ? "2" 
-                : bi.tcvsclc1797.isChecked() ? "97" 
+
+        CrfControl.put("tcvsclc17", bi.tcvsclc17a.isChecked() ? "1"
+                : bi.tcvsclc17b.isChecked() ? "2"
+                : bi.tcvsclc1797.isChecked() ? "97"
                 : "0");
-        
-        CrfControl.put("tcvsclc18", bi.tcvsclc18a.isChecked() ? "1" 
-                : bi.tcvsclc18b.isChecked() ? "2" 
-                : bi.tcvsclc1897.isChecked() ? "97" 
+
+        CrfControl.put("tcvsclc18", bi.tcvsclc18a.isChecked() ? "1"
+                : bi.tcvsclc18b.isChecked() ? "2"
+                : bi.tcvsclc1897.isChecked() ? "97"
                 : "0");
-        
-        CrfControl.put("tcvsclc19", bi.tcvsclc19a.isChecked() ? "1" 
-                : bi.tcvsclc19b.isChecked() ? "2" 
-                : bi.tcvsclc19c.isChecked() ? "3" 
-                : bi.tcvsclc19d.isChecked() ? "4" 
-                : bi.tcvsclc19e.isChecked() ? "5" 
-                : bi.tcvsclc19f.isChecked() ? "6" 
-                : bi.tcvsclc1997.isChecked() ? "97" 
+
+        CrfControl.put("tcvsclc19", bi.tcvsclc19a.isChecked() ? "1"
+                : bi.tcvsclc19b.isChecked() ? "2"
+                : bi.tcvsclc19c.isChecked() ? "3"
+                : bi.tcvsclc19d.isChecked() ? "4"
+                : bi.tcvsclc19e.isChecked() ? "5"
+                : bi.tcvsclc19f.isChecked() ? "6"
+                : bi.tcvsclc1997.isChecked() ? "97"
                 : "0");
-        
-        CrfControl.put("tcvsclc20", bi.tcvsclc20a.isChecked() ? "1" 
-                : bi.tcvsclc20b.isChecked() ? "2" 
-                : bi.tcvsclc2097.isChecked() ? "97" 
+
+        CrfControl.put("tcvsclc20", bi.tcvsclc20a.isChecked() ? "1"
+                : bi.tcvsclc20b.isChecked() ? "2"
+                : bi.tcvsclc2097.isChecked() ? "97"
                 : "0");
-        
-        CrfControl.put("tcvsclc21", bi.tcvsclc21a.isChecked() ? "1" 
-                : bi.tcvsclc21b.isChecked() ? "2" 
-                : bi.tcvsclc2196.isChecked() ? "96" 
+
+        CrfControl.put("tcvsclc21", bi.tcvsclc21a.isChecked() ? "1"
+                : bi.tcvsclc21b.isChecked() ? "2"
+                : bi.tcvsclc2196.isChecked() ? "96"
                 : "0");
         CrfControl.put("tcvsclc2196x", bi.tcvsclc2196x.getText().toString());
-        
-        CrfControl.put("tcvsclc22", bi.tcvsclc22a.isChecked() ? "1" 
-                : bi.tcvsclc22b.isChecked() ? "2" 
-                : bi.tcvsclc2297.isChecked() ? "97" 
+
+        CrfControl.put("tcvsclc22", bi.tcvsclc22a.isChecked() ? "1"
+                : bi.tcvsclc22b.isChecked() ? "2"
+                : bi.tcvsclc2297.isChecked() ? "97"
                 : "0");
-        
-        CrfControl.put("tcvsclc23", bi.tcvsclc23a.isChecked() ? "1" 
-                : bi.tcvsclc23b.isChecked() ? "2" 
+
+        CrfControl.put("tcvsclc23", bi.tcvsclc23a.isChecked() ? "1"
+                : bi.tcvsclc23b.isChecked() ? "2"
                 : "0");
 
         CrfControl.put("tcvsclc2401", bi.tcvsclc2401.isChecked() ? "1" : "0");
@@ -289,17 +341,17 @@ public class SectionCRFControlActivity extends AppCompatActivity {
         CrfControl.put("tcvsclc2607", bi.tcvsclc2607.isChecked() ? "7" : "0");
         CrfControl.put("tcvsclc2608", bi.tcvsclc2608.isChecked() ? "8" : "0");
 
-        CrfControl.put("tcvsclc27", bi.tcvsclc27a.isChecked() ? "1" 
-                : bi.tcvsclc27b.isChecked() ? "2" 
-                : bi.tcvsclc2798.isChecked() ? "98" 
+        CrfControl.put("tcvsclc27", bi.tcvsclc27a.isChecked() ? "1"
+                : bi.tcvsclc27b.isChecked() ? "2"
+                : bi.tcvsclc2798.isChecked() ? "98"
                 : "0");
-        
-        CrfControl.put("tcvsclc28", bi.tcvsclc28a.isChecked() ? "1" 
-                : bi.tcvsclc28b.isChecked() ? "2" 
+
+        CrfControl.put("tcvsclc28", bi.tcvsclc28a.isChecked() ? "1"
+                : bi.tcvsclc28b.isChecked() ? "2"
                 : "0");
 
         CrfControl.put("tcvsclc29", bi.tcvsclc29.getText().toString());
-        
+
         CrfControl.put("tcvsclc30", bi.tcvsclc30.getText().toString());
 
         MainApp.fc.setsA(String.valueOf(CrfControl));
