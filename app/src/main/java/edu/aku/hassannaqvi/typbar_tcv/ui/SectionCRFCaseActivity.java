@@ -43,7 +43,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_crf_case);
         bi.setCallback(this);
-        events_call();
+        EventsCall();
 
         setContentUI();
         loadHFFromDB();
@@ -263,7 +263,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
 
     //ClearAllFields
 
-    void events_call() {
+    void EventsCall() {
 
         bi.tcvscaa01.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
