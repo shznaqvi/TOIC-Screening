@@ -266,16 +266,14 @@ public class SectionCListingActivity extends AppCompatActivity {
                 bi.tcvcl14a.isChecked() &&
                 bi.tcvcl15a.isChecked() &&
                 bi.tcvcl16a.isChecked()
-        )
+        ) {
             child.put("tcvcl18", bi.tcvcl18.getText().toString());
-        else
+            child.put("tcvcl19", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
+            child.put("tcvcl20", new SimpleDateFormat("HH:MM:SS").format(new Date().getTime()));
+        } else
             child.put("tcvcl18", "");
 
-        child.put("tcvcl19", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
-        child.put("tcvcl20", new SimpleDateFormat("HH:MM:SS").format(new Date().getTime()));
-
         MainApp.fc.setsA(String.valueOf(child));
-
     }
 
     private boolean formValidation() {
@@ -293,7 +291,4 @@ public class SectionCListingActivity extends AppCompatActivity {
         fc.setGpsAcc(locClass.getAccuracy());
         fc.setGpsDT(locClass.getTime());
     }
-
-    //
-
 }

@@ -412,8 +412,6 @@ public class SectionCRFControlActivity extends AppCompatActivity {
         try {
             if (!ValidatorClass.EmptyCheckingContainer(this, bi.ll0105)) return;
 
-//            if (!MainApp.checkingGPSRules(this)) return;
-
             SaveDraft();
 
             if (!UpdateDB()) {
