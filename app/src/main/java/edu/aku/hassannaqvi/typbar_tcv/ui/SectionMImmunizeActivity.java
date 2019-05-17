@@ -184,13 +184,13 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
                 bi.tcvmi14a.isChecked() &&
                 bi.tcvmi15a.isChecked() &&
                 bi.tcvmi16a.isChecked()
-        )
+        ) {
             child.put("tcvmi18", bi.tcvmi18.getText().toString());
-        else
+            child.put("tcvmi19", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
+            child.put("tcvmi20", new SimpleDateFormat("HH:MM:SS").format(new Date().getTime()));
+        } else
             child.put("tcvmi18", "");
 
-        child.put("tcvmi19", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
-        child.put("tcvmi20", new SimpleDateFormat("HH:MM:SS").format(new Date().getTime()));
 
         MainApp.fc.setsA(String.valueOf(child));
 
