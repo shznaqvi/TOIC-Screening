@@ -250,7 +250,21 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this, false);
+        try {
+            if (!ValidatorClass.EmptyCheckingContainer(this, bi.ll0104)) return;
+
+//            if (!MainApp.checkingGPSRules(this)) return;
+            SaveDraft();
+
+            if (!UpdateDB()) {
+                Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void settingGPS(FormsContract fc) {

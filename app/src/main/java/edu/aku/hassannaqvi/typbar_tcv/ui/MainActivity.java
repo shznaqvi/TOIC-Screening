@@ -367,7 +367,8 @@ public class MainActivity extends AppCompatActivity {
                     "Children-Listings",
                     "updateSyncedForms",
                     FormsContract.class,
-                    FormsContract.FormsTable._URL2,
+                    FormsContract.FormsTable._URL2
+                    ,
                     db.getUnsyncedForms(MainApp.CHILDLISTINGTYPE)
             ).execute();
 

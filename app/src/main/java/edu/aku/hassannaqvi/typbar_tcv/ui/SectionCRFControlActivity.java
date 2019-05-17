@@ -69,6 +69,52 @@ public class SectionCRFControlActivity extends AppCompatActivity {
 
     private void setListeners() {
 
+        bi.tcvscla01.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscla01a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
+                }
+            }
+        });
+        bi.tcvscla02.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscla02a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
+                }
+            }
+        });
+        bi.tcvscla03.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscla03a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
+                }
+            }
+        });
+        bi.tcvscla04.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscla04a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
+                }
+            }
+        });
+        bi.tcvscla05.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscla05a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
+                }
+            }
+        });
+
         bi.tcvsclc28.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -363,7 +409,22 @@ public class SectionCRFControlActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        MainApp.endActivity(this, this, false);
+        try {
+            if (!ValidatorClass.EmptyCheckingContainer(this, bi.ll0105)) return;
+
+//            if (!MainApp.checkingGPSRules(this)) return;
+
+            SaveDraft();
+
+            if (!UpdateDB()) {
+                Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void settingGPS(FormsContract fc) {
