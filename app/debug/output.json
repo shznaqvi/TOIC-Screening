@@ -6,8 +6,8 @@
     "apkInfo": {
       "type": "MAIN",
       "splits": [],
-      "versionCode": 230,
-      "versionName": "1.0",
+      "versionCode": 341,
+      "versionName": "1.3",
       "enabled": true,
       "outputFile": "app-debug.apk",
       "fullName": "debug",
