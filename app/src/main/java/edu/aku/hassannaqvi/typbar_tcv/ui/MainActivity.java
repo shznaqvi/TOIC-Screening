@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -201,58 +202,89 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openForm(int type) {
-        final Intent oF = new Intent(MainActivity.this,
-                type == 1 ? SectionSListingActivity.class :
-                        type == 2 ? SectionCListingActivity.class :
-                                type == 3 ? SectionCRFCaseActivity.class :
-                                        type == 4 ? SectionCRFControlActivity.class
-                                                : SectionMImmunizeActivity.class);
-        if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
-            startActivity(oF);
-        } else {
 
-            builder = new AlertDialog.Builder(MainActivity.this);
-            final AlertDialog dialog = builder.create();
-            ImageView img = new ImageView(getApplicationContext());
-            img.setImageResource(R.drawable.tagimg);
-            img.setPadding(0, 15, 0, 15);
-            builder.setCustomTitle(img);
-
-            final EditText input = new EditText(MainActivity.this);
-            input.setInputType(InputType.TYPE_CLASS_NUMBER);
-            input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View view, boolean b) {
-                    if (b) {
-                        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                    }
-                }
-            });
-            builder.setView(input);
+        LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
 
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    m_Text = input.getText().toString();
-                    if (!m_Text.equals("")) {
-                        editor.putString("tagName", "T-" + m_Text);
-                        editor.commit();
+            final Intent oF = new Intent(MainActivity.this,
+                    type == 1 ? SectionSListingActivity.class :
+                            type == 2 ? SectionCListingActivity.class :
+                                    type == 3 ? SectionCRFCaseActivity.class :
+                                            type == 4 ? SectionCRFControlActivity.class
+                                                    : SectionMImmunizeActivity.class);
+            if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
+                startActivity(oF);
+            } else {
 
-                        if (!MainApp.userName.equals("0000")) {
-                            startActivity(oF);
+                builder = new AlertDialog.Builder(MainActivity.this);
+                final AlertDialog dialog = builder.create();
+                ImageView img = new ImageView(getApplicationContext());
+                img.setImageResource(R.drawable.tagimg);
+                img.setPadding(0, 15, 0, 15);
+                builder.setCustomTitle(img);
+
+                final EditText input = new EditText(MainActivity.this);
+                input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View view, boolean b) {
+                        if (b) {
+                            dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                         }
                     }
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+                });
+                builder.setView(input);
 
-            builder.show();
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        m_Text = input.getText().toString();
+                        if (!m_Text.equals("")) {
+                            editor.putString("tagName", "T-" + m_Text);
+                            editor.commit();
+
+                            if (!MainApp.userName.equals("0000")) {
+                                startActivity(oF);
+                            }
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
+
+        } else {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    MainActivity.this);
+            alertDialogBuilder
+                    .setMessage("GPS is disabled in your device. Enable it?")
+                    .setCancelable(false)
+                    .setPositiveButton("Enable GPS",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+                                    Intent callGPSSettingIntent = new Intent(
+                                            android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                    startActivity(callGPSSettingIntent);
+                                }
+                            });
+            alertDialogBuilder.setNegativeButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = alertDialogBuilder.create();
+            alert.show();
+
         }
     }
 
