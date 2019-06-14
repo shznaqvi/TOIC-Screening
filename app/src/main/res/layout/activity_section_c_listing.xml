@@ -243,7 +243,6 @@
                             <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/tcvcl07"
                                 style="@style/EditText_number"
-                                android:digits="0123456789-"
                                 android:hint="#####-#######-#"
                                 android:maxLength="15"
                                 app:mask="#####-#######-#"
