@@ -120,13 +120,14 @@
     <string name="tcvscaa05"> اگر اوپر دیے گے سوالات کے جوابات "ہاں" ہیں تو مریض مطالعہ میں شرکت کے لئے اہل ہے مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
 
     <string name="tcvscabh"> سیکشن :1 </string>
-    <string name="tcvscab01"> نام: </string>
-    <string name="tcvscab02"> پتہ: </string>
-    <string name="tcvscab03"> فون نمبر: </string>
-    <string name="tcvscab04"> انرولمنٹ کی تاریخ: </string>
-    <string name="tcvscab05"> بچے کی تاریخ پیدائش: </string>
-    <string name="tcvscab06"> عمر(مہینے): </string>
-    <string name="tcvscab07"> بیماری کی تاریخ: </string>
+    <string name="tcvscab01"> نام </string>
+    <string name="tcvscab02"> پتہ </string>
+    <string name="tcvscab03"> فون نمبر </string>
+    <string name="tcvscab04"> انرولمنٹ کی تاریخ </string>
+    <string name="tcvscab05ageDob"> بچے کی تاریخ پیدائش/عمر </string>
+    <string name="tcvscab05"> بچے کی تاریخ پیدائش </string>
+    <string name="tcvscab06"> عمر </string>
+    <string name="tcvscab07"> بیماری کی تاریخ </string>
     <string name="tcvscab08"> مریض کی جنس کیا ہے؟ </string>
     <string name="tcvscab08a"> لڑکا </string>
     <string name="tcvscab08b"> لڑکی </string>

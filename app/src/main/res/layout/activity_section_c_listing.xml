@@ -218,7 +218,7 @@
                                 android:text="@string/tcvcl06" />
 
                             <EditText
-                                android:id="@+id/tcvcl06"
+                                    android:id="@+id/tcvcl06"
                                 style="@style/EditText"
                                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ."
                                 android:hint="@string/tcvcl06" />
