@@ -128,7 +128,7 @@
                     android:layout_marginBottom="8dp"
                     android:onClick="@{(v) -> callback.openForm(3)}"
                     android:text="CASE REPORT FORM - CASE"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <Button
                     android:layout_width="match_parent"

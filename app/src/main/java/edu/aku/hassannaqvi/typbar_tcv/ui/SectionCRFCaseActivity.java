@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -24,10 +26,10 @@ import java.util.Map;
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCrfCaseBinding;
+import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
@@ -71,6 +73,57 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
     private void setContentUI() {
         this.setTitle(R.string.CrfCase);
 
+        bi.tcvscab05.setMaxDate(DateUtils.getMonthsBack("dd/MM/yyyy", -6));
+
+
+        bi.tcvscab04.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!s.toString().isEmpty() && !s.toString().equalsIgnoreCase("")) {
+
+                    bi.tcvscab07.setMaxDate(s.toString());
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        bi.tcvscad09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (checkedId != bi.tcvscad09c.getId()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad10, false);
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad11, false);
+
+                } else {
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad10, true);
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad11, true);
+                }
+            }
+        });
+
+        bi.tcvscad22.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == bi.tcvscad2297.getId()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad23, false);
+                } else {
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad23, true);
+                }
+            }
+        });
         // Initialize db
         db = new DatabaseHelper(this);
         //filledSpinners();
@@ -212,14 +265,15 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad24", bi.tcvscad24a.isChecked() ? "1" : bi.tcvscad24b.isChecked() ? "2" : bi.tcvscad2497.isChecked() ? "97" : "0");
         crfCase.put("tcvscad25", bi.tcvscad25a.isChecked() ? "1" : bi.tcvscad25b.isChecked() ? "2" : "0");
 
-        crfCase.put("tcvscad2601", bi.tcvscad2601.isChecked() ? "1" : "0");
-        crfCase.put("tcvscad2602", bi.tcvscad2602.isChecked() ? "2" : "0");
-        crfCase.put("tcvscad2603", bi.tcvscad2603.isChecked() ? "3" : "0");
-        crfCase.put("tcvscad2604", bi.tcvscad2604.isChecked() ? "4" : "0");
-        crfCase.put("tcvscad2605", bi.tcvscad2605.isChecked() ? "5" : "0");
-        crfCase.put("tcvscad2606", bi.tcvscad2606.isChecked() ? "6" : "0");
-        crfCase.put("tcvscad2696", bi.tcvscad2696.isChecked() ? "96" : "0");
+        crfCase.put("tcvscad2601", bi.tcvscad2601a.isChecked() ? "1" : bi.tcvscad2601b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad2602", bi.tcvscad2602a.isChecked() ? "1" : bi.tcvscad2602b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad2603", bi.tcvscad2603a.isChecked() ? "1" : bi.tcvscad2603b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad2604", bi.tcvscad2604a.isChecked() ? "1" : bi.tcvscad2604b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad2605", bi.tcvscad2605a.isChecked() ? "1" : bi.tcvscad2605b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad2606", bi.tcvscad2606a.isChecked() ? "1" : bi.tcvscad2606b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad2696", bi.tcvscad2696a.isChecked() ? "1" : bi.tcvscad2696b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2696x", bi.tcvscad2696x.getText().toString());
+
 
         crfCase.put("tcvscad2701", bi.tcvscad2701.isChecked() ? "1" : "0");
         crfCase.put("tcvscad2702", bi.tcvscad2702.isChecked() ? "2" : "0");
