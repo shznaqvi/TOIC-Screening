@@ -78,6 +78,7 @@
     <string name="sec_clisting">CHILD LISTING</string>
     <string name="tcvcl01">School Name/Code</string>
     <string name="tcvcl02">Name of Child</string>
+    <string name="tcvcl21">Class</string>
     <string name="tcvcl03">Date of Birth or Age</string>
     <string name="tcvcl03a">Date of Birth</string>
     <string name="tcvcl03b">Age</string>
