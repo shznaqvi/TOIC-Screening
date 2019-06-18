@@ -31,6 +31,8 @@ import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionMassImunizeBind
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SectionMImmunizeActivity extends AppCompatActivity {
 
     ActivitySectionMassImunizeBinding bi;

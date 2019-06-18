@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
             final Intent oF = new Intent(MainActivity.this,
                     type == 1 ? SectionSListingActivity.class :
                             type == 2 ? SectionCListingActivity.class :
-                                    type == 3 ? SectionCRFCaseActivity.class :
+                                    type == 3 ? Section01CRFCaseActivity.class :
                                             type == 4 ? SectionCRFControlActivity.class
                                                     : SectionMImmunizeActivity.class);
             if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {

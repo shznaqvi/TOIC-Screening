@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -24,16 +26,16 @@ import java.util.Map;
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
-import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCrfCaseBinding;
+import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01CrfCaseBinding;
+import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
-public class SectionCRFCaseActivity extends AppCompatActivity {
+public class Section01CRFCaseActivity extends AppCompatActivity {
 
-    ActivitySectionCrfCaseBinding bi;
+    ActivitySection01CrfCaseBinding bi;
     DatabaseHelper db;
     Map<String, HFContract> hfMap;
     List<String> hfName = new ArrayList<>(Arrays.asList("...."));
@@ -41,7 +43,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_crf_case);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_01_crf_case);
         bi.setCallback(this);
         EventsCall();
 
@@ -71,6 +73,48 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
     private void setContentUI() {
         this.setTitle(R.string.CrfCase);
 
+        bi.tcvscab05.setMaxDate(DateUtils.getMonthsBack("dd/MM/yyyy", -6));
+
+
+        bi.tcvscab04.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!s.toString().isEmpty() && !s.toString().equalsIgnoreCase("")) {
+
+                    bi.tcvscab07.setMaxDate(s.toString());
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        bi.tcvscad09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (checkedId != bi.tcvscad09c.getId()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad10, false);
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad11, false);
+
+                } else {
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad10, true);
+                    ClearClass.ClearAllFields(bi.fldGrptcvscad11, true);
+                }
+            }
+        });
+
+
         // Initialize db
         db = new DatabaseHelper(this);
         //filledSpinners();
@@ -89,7 +133,12 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             }
-            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+            if (bi.tcvscaa02a.isChecked() && bi.tcvscaa03a.isChecked() && bi.tcvscaa04a.isChecked() && bi.tcvscaa05a.isChecked() && bi.tcvscaa05a.isChecked()) {
+                startActivity(new Intent(this, Section02CRFCaseActivity.class));
+            } else {
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+            }
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -133,7 +182,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
 
 
         crfCase.put("hf_code", hfMap.get(bi.tcvmi01.getSelectedItem().toString()).getHfcode());
-        crfCase.put("tcvscaa01", bi.tcvscaa01a.isChecked() ? "1" : bi.tcvscaa01b.isChecked() ? "2" : "0");
+//        crfCase.put("tcvscaa01", bi.tcvscaa01a.isChecked() ? "1" : bi.tcvscaa01b.isChecked() ? "2" : "0");
         crfCase.put("tcvscaa02", bi.tcvscaa02a.isChecked() ? "1" : bi.tcvscaa02b.isChecked() ? "2" : "0");
         crfCase.put("tcvscaa03", bi.tcvscaa03a.isChecked() ? "1" : bi.tcvscaa03b.isChecked() ? "2" : "0");
         crfCase.put("tcvscaa04", bi.tcvscaa04a.isChecked() ? "1" : bi.tcvscaa04b.isChecked() ? "2" : "0");
@@ -142,8 +191,11 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscab02", bi.tcvscab02.getText().toString());
         crfCase.put("tcvscab03", bi.tcvscab03.getText().toString());
         crfCase.put("tcvscab04", bi.tcvscab04.getText().toString());
+        crfCase.put("tcvscaa04", bi.tcvscaa04a.isChecked() ? "1" : bi.tcvscaa04b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscab05DobAge", bi.tcvscab05Dob.isChecked() ? "1" : bi.tcvscab05Age.isChecked() ? "2" : "0");
         crfCase.put("tcvscab05", bi.tcvscab05.getText().toString());
-        crfCase.put("tcvscab06", bi.tcvscab06.getText().toString());
+        crfCase.put("tcvscab06y", bi.tcvscab06y.getText().toString());
+        crfCase.put("tcvscab06m", bi.tcvscab06m.getText().toString());
         crfCase.put("tcvscab07", bi.tcvscab07.getText().toString());
         crfCase.put("tcvscab08", bi.tcvscab08a.isChecked() ? "1" : bi.tcvscab08b.isChecked() ? "2" : "0");
 
@@ -165,8 +217,8 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad0796x", bi.tcvscad0796x.getText().toString());
 
         crfCase.put("tcvscad0801", bi.tcvscad0801.isChecked() ? "1" : "0");
-        crfCase.put("tcvscad0801", bi.tcvscad0802.isChecked() ? "2" : "0");
-        crfCase.put("tcvscad0802", bi.tcvscad0803.isChecked() ? "3" : "0");
+        crfCase.put("tcvscad0802", bi.tcvscad0802.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad0803", bi.tcvscad0803.isChecked() ? "3" : "0");
         crfCase.put("tcvscad0804", bi.tcvscad0804.isChecked() ? "4" : "0");
         crfCase.put("tcvscad0805", bi.tcvscad0805.isChecked() ? "5" : "0");
         crfCase.put("tcvscad0896", bi.tcvscad0896.isChecked() ? "96" : "0");
@@ -202,44 +254,7 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad18", bi.tcvscad18a.isChecked() ? "1" : bi.tcvscad18b.isChecked() ? "2" : bi.tcvscad18c.isChecked() ? "3" : bi.tcvscad18d.isChecked() ? "4" : "0");
         crfCase.put("tcvscad19", bi.tcvscad19a.isChecked() ? "1" : bi.tcvscad19b.isChecked() ? "2" : bi.tcvscad1997.isChecked() ? "97" : "0");
         crfCase.put("tcvscad20", bi.tcvscad20a.isChecked() ? "1" : bi.tcvscad20b.isChecked() ? "2" : bi.tcvscad2097.isChecked() ? "97" : "0");
-        crfCase.put("tcvscad21", bi.tcvscad21a.isChecked() ? "1" : bi.tcvscad21b.isChecked() ? "2" : bi.tcvscad21c.isChecked() ? "3" : bi.tcvscad21d.isChecked() ? "4" : bi.tcvscad21e.isChecked() ? "5" : bi.tcvscad21f.isChecked() ? "6" : bi.tcvscad2197.isChecked() ? "97" : "0");
-        crfCase.put("tcvscad22", bi.tcvscad22a.isChecked() ? "1" : bi.tcvscad22b.isChecked() ? "2" : bi.tcvscad2297.isChecked() ? "97" : "0");
-        crfCase.put("tcvscad23", bi.tcvscad23a.isChecked() ? "1" : bi.tcvscad23b.isChecked() ? "2" : bi.tcvscad2396.isChecked() ? "96" : "0");
-        crfCase.put("tcvscad2396x", bi.tcvscad2396x.getText().toString());
-        crfCase.put("tcvscad24", bi.tcvscad24a.isChecked() ? "1" : bi.tcvscad24b.isChecked() ? "2" : bi.tcvscad2497.isChecked() ? "97" : "0");
-        crfCase.put("tcvscad25", bi.tcvscad25a.isChecked() ? "1" : bi.tcvscad25b.isChecked() ? "2" : "0");
 
-        crfCase.put("tcvscad2601", bi.tcvscad2601.isChecked() ? "1" : "0");
-        crfCase.put("tcvscad2602", bi.tcvscad2602.isChecked() ? "2" : "0");
-        crfCase.put("tcvscad2603", bi.tcvscad2603.isChecked() ? "3" : "0");
-        crfCase.put("tcvscad2604", bi.tcvscad2604.isChecked() ? "4" : "0");
-        crfCase.put("tcvscad2605", bi.tcvscad2605.isChecked() ? "5" : "0");
-        crfCase.put("tcvscad2606", bi.tcvscad2606.isChecked() ? "6" : "0");
-        crfCase.put("tcvscad2696", bi.tcvscad2696.isChecked() ? "96" : "0");
-        crfCase.put("tcvscad2696x", bi.tcvscad2696x.getText().toString());
-
-        crfCase.put("tcvscad2701", bi.tcvscad2701.isChecked() ? "1" : "0");
-        crfCase.put("tcvscad2702", bi.tcvscad2702.isChecked() ? "2" : "0");
-        crfCase.put("tcvscad2703", bi.tcvscad2703.isChecked() ? "3" : "0");
-        crfCase.put("tcvscad2704", bi.tcvscad2704.isChecked() ? "4" : "0");
-        crfCase.put("tcvscad2705", bi.tcvscad2705.isChecked() ? "5" : "0");
-        crfCase.put("tcvscad2796", bi.tcvscad2796.isChecked() ? "96" : "0");
-        crfCase.put("tcvscad2796x", bi.tcvscad2796x.getText().toString());
-
-        crfCase.put("tcvscad2801", bi.tcvscad2801.isChecked() ? "1" : "0");
-        crfCase.put("tcvscad2802", bi.tcvscad2802.isChecked() ? "2" : "0");
-        crfCase.put("tcvscad2803", bi.tcvscad2803.isChecked() ? "3" : "0");
-        crfCase.put("tcvscad2804", bi.tcvscad2804.isChecked() ? "4" : "0");
-        crfCase.put("tcvscad2805", bi.tcvscad2805.isChecked() ? "5" : "0");
-        crfCase.put("tcvscad2806", bi.tcvscad2806.isChecked() ? "6" : "0");
-        crfCase.put("tcvscad2807", bi.tcvscad2807.isChecked() ? "7" : "0");
-        crfCase.put("tcvscad2808", bi.tcvscad2808.isChecked() ? "8" : "0");
-
-        crfCase.put("tcvscad29", bi.tcvscad29a.isChecked() ? "1" : bi.tcvscad29b.isChecked() ? "2" : bi.tcvscad2998.isChecked() ? "98" : "0");
-        crfCase.put("tcvscad30", bi.tcvscad30a.isChecked() ? "1" : bi.tcvscad30b.isChecked() ? "2" : "0");
-
-        crfCase.put("tcvscad31", bi.tcvscad31.getText().toString());
-        crfCase.put("tcvscad32", bi.tcvscad32.getText().toString());
 
         MainApp.fc.setsA(String.valueOf(crfCase));
 
@@ -279,10 +294,10 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
 
     void EventsCall() {
 
-        bi.tcvscaa01.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        bi.tcvscaa02.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (!bi.tcvscaa01a.isChecked()) {
+                if (!bi.tcvscaa02a.isChecked()) {
                     ClearClass.ClearAllFields(bi.llcrf01, null);
                 }
             }
@@ -335,15 +350,6 @@ public class SectionCRFCaseActivity extends AppCompatActivity {
             }
         });
 
-        bi.tcvscad29.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvscad29a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldgrptcvscad30, null);
-                }
-            }
-        });
 
     }
 
