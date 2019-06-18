@@ -1805,43 +1805,208 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvscad27" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2701"
-                                style="@style/i_checkbox"
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2701" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2702"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2701"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2701a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2701b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2702" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2703"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2702"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2702a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2702b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2703" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2704"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2703"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2703a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2703b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2704" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2705"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2704"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2704a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2704b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2705" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2796"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2705"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2705a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2705b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
+                                android:text="@string/tcvscad2706" />
+
+                            <RadioGroup
+                                android:id="@+id/tcvscad2706"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2706a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2706b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/uotherx" />
+
+                            <RadioGroup
+                                android:id="@+id/tcvscad2796"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2796a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2796b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
 
                             <EditText
                                 android:id="@+id/tcvscad2796x"
                                 style="@style/EditText"
                                 android:hint="@string/uotherxh"
                                 android:tag="tcvscad2796"
-                                android:text='@{tcvscad2796.checked ? tcvscad2796x.getText.toString : "" }'
-                                android:visibility='@{tcvscad2796.checked ? View.VISIBLE : View.GONE }' />
+                                android:text='@{tcvscad2796a.checked ? tcvscad2796x.getText.toString : "" }'
+                                android:visibility='@{tcvscad2796a.checked ? View.VISIBLE : View.GONE }' />
 
 
                         </LinearLayout>
@@ -1857,58 +2022,260 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvscad28" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2801"
-                                style="@style/i_checkbox"
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2801" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2802"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2801"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2801a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2801b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2802" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2803"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2802"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2802a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2802b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2803" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2804"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2803"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2803a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2803b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2804" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2805"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2804"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2804a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2804b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2805" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2806"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2805"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2805a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2805b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2806" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2807"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2806"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2806a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2806b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2807" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2808"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2807"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2807a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2807b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/tcvscad2808" />
 
-                            <CheckBox
-                                android:id="@+id/tcvscad2896"
-                                style="@style/i_checkbox"
+                            <RadioGroup
+                                android:id="@+id/tcvscad2808"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2808a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2808b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:background="@color/colorPrimaryDark"
                                 android:text="@string/uotherx" />
+
+                            <RadioGroup
+                                android:id="@+id/tcvscad2896"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2896a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2896b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/uyes" />
+
+                            </RadioGroup>
 
                             <EditText
                                 android:id="@+id/tcvscad2896x"
                                 style="@style/EditText"
                                 android:hint="@string/uotherxh"
                                 android:tag="tcvscad2896"
-                                android:text='@{tcvscad2896.checked ? tcvscad2896x.getText.toString : "" }'
-                                android:visibility='@{tcvscad2896.checked ? View.VISIBLE : View.GONE }' />
+                                android:text='@{tcvscad2896a.checked ? tcvscad2896x.getText.toString : "" }'
+                                android:visibility='@{tcvscad2896a.checked ? View.VISIBLE : View.GONE }' />
 
                         </LinearLayout>
 
@@ -1950,6 +2317,7 @@
                     </android.support.v7.widget.CardView>
 
                     <!--Radio tcvscad30-->
+
                     <android.support.v7.widget.CardView
                         android:id="@+id/fldgrptcvscad30"
                         style="@style/cardView"
@@ -1982,7 +2350,9 @@
                     </android.support.v7.widget.CardView>
 
                     <!--EditText tcvscad31-->
-                    <android.support.v7.widget.CardView style="@style/cardView">
+                    <android.support.v7.widget.CardView
+                        android:visibility='@{tcvscad29a.checked? View.VISIBLE : View.GONE}'
+                        style="@style/cardView">
 
                         <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -2001,7 +2371,9 @@
                     </android.support.v7.widget.CardView>
 
                     <!--EditText tcvscad32-->
-                    <android.support.v7.widget.CardView style="@style/cardView">
+                    <android.support.v7.widget.CardView
+                        android:visibility='@{tcvscad29a.checked? View.VISIBLE : View.GONE}'
+                        style="@style/cardView">
 
                         <LinearLayout style="@style/linearlayout_view_wt_bound">
 

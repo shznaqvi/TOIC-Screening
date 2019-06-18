@@ -253,9 +253,10 @@
     <string name="tcvscad27"> کیا اس تحقیق میں شامل شخص نے پچھلے ۴ ہفتوں میں نیچے دئیے گئے جگہ کا کھانا کھایا ہے؟ </string>
     <string name="tcvscad2701"> سڑک کنارے وینڈرز </string>
     <string name="tcvscad2702"> ریستوران </string>
-    <string name="tcvscad2703"> کام کی جگہ/ اسکول </string>
-    <string name="tcvscad2704"> دوست/پڑوسی کے گھر </string>
-    <string name="tcvscad2705"> شادی/ پارٹی </string>
+    <string name="tcvscad2703"> ٹھیلا </string>
+    <string name="tcvscad2704"> کام کی جگہ/ اسکول </string>
+    <string name="tcvscad2705"> دوست/پڑوسی کے گھر </string>
+    <string name="tcvscad2706"> شادی/ پارٹی </string>
     <string name="tcvscad28"> مندرجہ ذیل کھانے کےبارے میں بتائیں (جو کھانا گھر،آفس،اسکول کے باہرکھایا ہے وہ بھی شامل کریں) </string>
     <string name="tcvscad2801"> آلو چاٹ </string>
     <string name="tcvscad2802"> گنا </string>
