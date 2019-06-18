@@ -133,7 +133,12 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             }
-            startActivity(new Intent(this, Section02CRFCaseActivity.class));
+            if (bi.tcvscaa02a.isChecked() && bi.tcvscaa03a.isChecked() && bi.tcvscaa04a.isChecked() && bi.tcvscaa05a.isChecked() && bi.tcvscaa05a.isChecked()) {
+                startActivity(new Intent(this, Section02CRFCaseActivity.class));
+            } else {
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+            }
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -344,7 +349,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
                 }
             }
         });
-
 
 
     }
