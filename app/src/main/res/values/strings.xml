@@ -113,11 +113,12 @@
     <!---FAZAL RIZVI  -->
     <string name="CrfCase"> Case Report Form - Impact Assessment (CASE) </string>
     <string name="tcvscaah"> اہلیت کی اسکریننگ </string>
-    <string name="tcvscaa01"> کیا مریض ۶ ماہ سے ۱۵ سال کے درمیان میں ہے؟ </string>
-    <string name="tcvscaa02"> کیا مریض کم سے کم پچھلے ۱ماہ سے لیاری میں رہتا ہے ؟ </string>
-    <string name="tcvscaa03"> کیا مریض کے کلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت ہے ؟ </string>
-    <string name="tcvscaa04"> کیا مریض یا والدین مطالعہ میں شمو لیت کے لیے رضا مند ہے ؟ </string>
-    <string name="tcvscaa05"> اگر اوپر دیے گے سوالات کے جوابات "ہاں" ہیں تو مریض مطالعہ میں شرکت کے لئے اہل ہے مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
+    <string name="tcvscaa01">اسکرین آئی ڈی</string>
+    <string name="tcvscaa02"> کیا مریض ۶ ماہ سے ۱۵ سال کے درمیان میں ہے؟ </string>
+    <string name="tcvscaa03"> کیا مریض کم سے کم پچھلے ۱ماہ سے لیاری میں رہتا ہے ؟ </string>
+    <string name="tcvscaa04"> کیا مریض کے کلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت ہے ؟ </string>
+    <string name="tcvscaa05"> کیا مریض یا والدین مطالعہ میں شمو لیت کے لیے رضا مند ہے ؟ </string>
+    <string name="tcvscaa06"> اگر اوپر دیے گے سوالات کے جوابات "ہاں" ہیں تو مریض مطالعہ میں شرکت کے لئے اہل ہے مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
 
     <string name="tcvscabh"> سیکشن :1 </string>
     <string name="tcvscab01"> نام </string>
