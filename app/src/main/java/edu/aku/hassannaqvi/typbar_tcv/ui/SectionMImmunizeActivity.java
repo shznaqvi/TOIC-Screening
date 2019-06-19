@@ -278,12 +278,11 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
             }
         }
 
-        if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
-
-            if (schoolMap.get(bi.autoCompleteSName.getText().toString()) != null) return true;
-
-            return ValidatorClass.EmptyTextBoxCustom(this, bi.autoCompleteSName, "This data is not accurate!!");
-
+        if (bi.tcvmi21a.isChecked()) {
+            if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
+                if (schoolMap.get(bi.autoCompleteSName.getText().toString()) != null) return true;
+                return ValidatorClass.EmptyTextBoxCustom(this, bi.autoCompleteSName, "This data is not accurate!!");
+            }
         }
 
         return true;
