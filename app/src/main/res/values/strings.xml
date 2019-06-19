@@ -464,5 +464,7 @@
     <string name="tcvmi18">Vaccination ID:</string>
     <string name="tcvmi19">Vaccination Date</string>
     <string name="tcvmi20">Vaccination Time</string>
+    <string name="tcvmi21">Is the child is School going?</string>
+    <string name="tcvmi24">Class</string>
 
 </resources>
