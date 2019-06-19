@@ -294,6 +294,107 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
+                <!--21-->
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/tcvmi21" />
+
+                        <RadioGroup
+                            android:id="@+id/tcvmi21"
+                            style="@style/i_radiogroup">
+
+                            <RadioButton
+                                android:id="@+id/tcvmi21a"
+                                style="@style/i_radiobutton"
+                                android:text="@string/yes" />
+
+                            <RadioButton
+                                android:id="@+id/tcvmi21b"
+                                style="@style/i_radiobutton"
+                                android:text="@string/no" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/fldGrpmi01"
+                    style="@style/linearlayout_view_wt_bound"
+                    android:visibility="@{tcvmi21a.checked ? View.VISIBLE : View.GONE}">
+
+                    <!--tcvmi22-->
+                    <android.support.v7.widget.CardView style="@style/cardView">
+
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvsl00" />
+
+                            <Spinner
+                                android:id="@+id/tcvmi22"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="20dp" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <!--tcvmi23-->
+                    <android.support.v7.widget.CardView style="@style/cardView">
+
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvsl01" />
+
+                            <EditText
+                                android:id="@+id/tcvmi23_name"
+                                style="@style/EditText"
+                                android:inputType="textCapCharacters"
+                                android:maxLength="60"
+                                android:visibility="gone" />
+
+                            <AutoCompleteTextView
+                                android:id="@+id/autoCompleteSName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/tcvsl01"
+                                android:inputType="textCapCharacters" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <!--EditText tcvmi24-->
+                    <android.support.v7.widget.CardView style="@style/cardView">
+
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvmi24" />
+
+                            <EditText
+                                android:id="@+id/tcvmi24"
+                                style="@style/EditText_number"
+                                android:hint="@string/tcvmi24"
+                                android:maxLength="1"
+                                android:text='@{tcvmi21a.checked ? tcvmi24.getText.toString : "" }'
+                                android:visibility='@{tcvmi21a.checked ? View.VISIBLE : View.GONE }' />
+
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+
                 <!--Radio tcvmi11-->
                 <android.support.v7.widget.CardView style="@style/cardView">
 

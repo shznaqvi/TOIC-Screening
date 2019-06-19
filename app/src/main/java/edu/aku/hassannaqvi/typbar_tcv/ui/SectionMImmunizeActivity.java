@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -24,6 +26,7 @@ import java.util.Map;
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.CheckingID;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
@@ -31,13 +34,12 @@ import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionMassImunizeBind
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class SectionMImmunizeActivity extends AppCompatActivity {
 
     ActivitySectionMassImunizeBinding bi;
     DatabaseHelper db;
     Map<String, HFContract> hfMap;
+    Map<String, SchoolContract> schoolMap;
     List<String> hfName = new ArrayList<>(Arrays.asList("...."));
 
     @Override
@@ -82,6 +84,8 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
 
     private void filledSpinners(List<String> hfNames) {
         bi.tcvmi01.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hfNames));
+
+        bi.tcvmi22.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(MainApp.schTypes)));
     }
 
     private void setListeners() {
@@ -106,6 +110,57 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i != bi.tcvmi17.getId())
                     ClearClass.ClearAllFields(bi.childSec02, null);
+            }
+        });
+
+        bi.tcvmi21.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == bi.tcvmi21b.getId())
+                    ClearClass.ClearAllFields(bi.fldGrpmi01, null);
+            }
+        });
+
+        bi.tcvmi22.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                if (i != 0) {
+
+                    if (i > 3) {
+                        bi.tcvmi23Name.setVisibility(View.VISIBLE);
+                        bi.tcvmi23Name.setHint(bi.tcvmi22.getSelectedItem().toString() + " Name");
+
+                        bi.autoCompleteSName.setVisibility(View.GONE);
+
+                    } else {
+
+                        ArrayList<String> schNames = new ArrayList<>();
+
+                        ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvmi22.getSelectedItemPosition()), "1");
+                        schoolMap = new HashMap<>();
+
+                        for (SchoolContract school : schoolContract) {
+                            schoolMap.put(school.getSch_name().toUpperCase(), school);
+                            schNames.add(school.getSch_name().toUpperCase());
+                        }
+
+                        bi.autoCompleteSName.setVisibility(View.VISIBLE);
+
+                        bi.tcvmi23Name.setVisibility(View.GONE);
+                        bi.tcvmi23Name.setText(null);
+
+
+                        bi.autoCompleteSName.setAdapter(new ArrayAdapter<>(SectionMImmunizeActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
+                    }
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
@@ -173,6 +228,19 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
         child.put("tcvmi08", bi.tcvmi08.getText().toString());
         child.put("tcvmi09", bi.tcvmi09.getText().toString());
         child.put("tcvmi10", bi.tcvmi10.getText().toString());
+        child.put("tcvmi21", bi.tcvmi21a.isChecked() ? "1" : bi.tcvmi21b.isChecked() ? "2" : "0");
+
+        if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
+            child.put("sch_code", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_code());
+            child.put("sch_add", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_add());
+            child.put("tcvmi22", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_type());
+            child.put("tcvmi23", bi.autoCompleteSName.getText().toString());
+        } else {
+            child.put("tcvmi23Name", bi.tcvmi23Name.getText().toString());
+            child.put("tcvmi22", bi.tcvmi22.getSelectedItem().equals("Other") ? "96" : String.valueOf(bi.tcvmi22.getSelectedItemPosition()));
+        }
+        child.put("tcvmi24", bi.tcvmi24.getText().toString());
+
         child.put("tcvmi11", bi.tcvmi11a.isChecked() ? "1" : bi.tcvmi11b.isChecked() ? "2" : bi.tcvmi11c.isChecked() ? "3" : "0");
         child.put("tcvmi12", bi.tcvmi12a.isChecked() ? "1" : bi.tcvmi12b.isChecked() ? "2" : "0");
         child.put("tcvmi13", bi.tcvmi13a.isChecked() ? "1" : bi.tcvmi13b.isChecked() ? "2" : "0");
@@ -207,6 +275,13 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
                 Toast.makeText(this, "Both Year and Month can't be zero!!", Toast.LENGTH_SHORT).show();
                 bi.tcvmi04m.setError("Both Year and Month can't be zero!!");
                 return false;
+            }
+        }
+
+        if (bi.tcvmi21a.isChecked()) {
+            if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
+                if (schoolMap.get(bi.autoCompleteSName.getText().toString()) != null) return true;
+                return ValidatorClass.EmptyTextBoxCustom(this, bi.autoCompleteSName, "This data is not accurate!!");
             }
         }
 
