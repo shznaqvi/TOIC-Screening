@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
                     type == 1 ? SectionSListingActivity.class :
                             type == 2 ? SectionCListingActivity.class :
                                     type == 3 ? Section01CRFCaseActivity.class :
-                                            type == 4 ? SectionCRFControlActivity.class
+                                            type == 4 ? Section01CRFControlActivity.class
                                                     : SectionMImmunizeActivity.class);
             if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
                 startActivity(oF);

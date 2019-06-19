@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -13,71 +12,33 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
-import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySectionCrfControlBinding;
+import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01CrfControlBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
-public class SectionCRFControlActivity extends AppCompatActivity {
+public class Section01CRFControlActivity extends AppCompatActivity {
 
-    ActivitySectionCrfControlBinding bi;
+    ActivitySection01CrfControlBinding bi;
     DatabaseHelper db;
-    Map<String, SchoolContract> schoolMap;
-    Map<String, HFContract> hfMap;
-    List<String> hfName = new ArrayList<>(Arrays.asList("...."));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_crf_control);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_crf_control);
         bi.setCallback(this);
 
         setContentUI();
         setListeners();
-        loadHFFromDB();
-    }
-
-    private void loadHFFromDB() {
-        Collection<HFContract> allHF = db.getAllHF();
-        if (allHF.size() == 0) return;
-        hfName = new ArrayList<>();
-        hfName.add("....");
-        hfMap = new HashMap<>();
-        for (HFContract hf : allHF) {
-            hfName.add(hf.getHfname());
-            hfMap.put(hf.getHfname(), hf);
-        }
-        filledSpinners(hfName);
-    }
-
-    private void filledSpinners(List<String> hfNames) {
-        bi.tcvmi01.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hfNames));
     }
 
     private void setListeners() {
 
-        bi.tcvscla01.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvscla01a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
-                }
-            }
-        });
         bi.tcvscla02.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -114,22 +75,12 @@ public class SectionCRFControlActivity extends AppCompatActivity {
                 }
             }
         });
-
-        bi.tcvsclc28.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        bi.tcvscla06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (!bi.tcvsclc28a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrptcvsclc29, null);
-                }
-            }
-        });
-        bi.tcvsclc27.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvsclc27a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrptcvsclc28, null);
+                if (!bi.tcvscla06a.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
                 }
             }
         });
@@ -137,11 +88,32 @@ public class SectionCRFControlActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (!bi.tcvsclc15a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrptcvsclc15a01, null);
+                if (!bi.tcvsclc15a.isChecked())
+                    bi.tcvsclc15a01.clearCheck();
+
+            }
+        });
+
+        bi.tcvsclc17.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvsclc1797.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvsclc18, null);
                 }
             }
         });
+
+        bi.tcvsclc07.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (checkedId != bi.tcvsclc07c.getId()) {
+                    ClearClass.ClearAllFields(bi.fldGrptcvsclc08, null);
+                }
+            }
+        });
+
 
     }
 
@@ -166,7 +138,12 @@ public class SectionCRFControlActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             }
-            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+
+            if (bi.tcvscla02a.isChecked() && bi.tcvscla03a.isChecked() && bi.tcvscla04a.isChecked() && bi.tcvscla05a.isChecked() && bi.tcvscla06a.isChecked()) {
+                startActivity(new Intent(this, Section02CRFControlActivity.class));
+            } else {
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -201,21 +178,31 @@ public class SectionCRFControlActivity extends AppCompatActivity {
 
         JSONObject CrfControl = new JSONObject();
 
-        CrfControl.put("hf_code", hfMap.get(bi.tcvmi01.getSelectedItem().toString()).getHfcode());
-        CrfControl.put("tcvscla01", bi.tcvscla01a.isChecked() ? "1" : bi.tcvscla01b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla02", bi.tcvscla02a.isChecked() ? "1" : bi.tcvscla02b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla03", bi.tcvscla03a.isChecked() ? "1" : bi.tcvscla03b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla04", bi.tcvscla04a.isChecked() ? "1" : bi.tcvscla04b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla05", bi.tcvscla05a.isChecked() ? "1" : bi.tcvscla05b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvscla06", bi.tcvscla06a.isChecked() ? "1" : bi.tcvscla06b.isChecked() ? "2" : "0");
 
         CrfControl.put("tcvsclb01", bi.tcvsclb01.getText().toString());
         CrfControl.put("tcvsclb02", bi.tcvsclb02.getText().toString());
         CrfControl.put("tcvsclb03", bi.tcvsclb03.getText().toString());
         CrfControl.put("tcvsclb04", bi.tcvsclb04.getText().toString());
+
+        CrfControl.put("tcvsclb05Age", bi.tcvsclb05Agea.isChecked() ? "1" : bi.tcvsclb05Ageb.isChecked() ? "2" : "0");
         CrfControl.put("tcvsclb05", bi.tcvsclb05.getText().toString());
         CrfControl.put("tcvsclb06", bi.tcvsclb06.getText().toString());
-        CrfControl.put("tcvsclb07", bi.tcvsclb07.getText().toString());
-        CrfControl.put("tcvsclb08", bi.tcvsclb08a.isChecked() ? "1" : bi.tcvsclb08b.isChecked() ? "2" : "0");
+
+        CrfControl.put("tcvsclb07", bi.tcvsclb07a.isChecked() ? "1" : bi.tcvsclb07b.isChecked() ? "2" : "0");
+        CrfControl.put("tcvsclb08", bi.tcvsclb08.getText().toString());
+        CrfControl.put("tcvsclb09", bi.tcvsclb09.getText().toString());
+        CrfControl.put("tcvsclb10", bi.tcvsclb10.getText().toString());
+        CrfControl.put("tcvsclb10", bi.tcvsclb11a.isChecked() ? "1" : bi.tcvsclb11b.isChecked() ? "2" : "0");
+
+        /*New question added in between form*/
+
+        CrfControl.put("tcvsclc32", bi.tcvsclc02.getText().toString());
+        CrfControl.put("tcvsclc33", bi.tcvsclc02.getText().toString());
 
         CrfControl.put("tcvsclc01", bi.tcvsclc01a.isChecked() ? "1"
                 : bi.tcvsclc01b.isChecked() ? "2"
@@ -340,65 +327,6 @@ public class SectionCRFControlActivity extends AppCompatActivity {
                 : bi.tcvsclc19f.isChecked() ? "6"
                 : bi.tcvsclc1997.isChecked() ? "97"
                 : "0");
-
-        CrfControl.put("tcvsclc20", bi.tcvsclc20a.isChecked() ? "1"
-                : bi.tcvsclc20b.isChecked() ? "2"
-                : bi.tcvsclc2097.isChecked() ? "97"
-                : "0");
-
-        CrfControl.put("tcvsclc21", bi.tcvsclc21a.isChecked() ? "1"
-                : bi.tcvsclc21b.isChecked() ? "2"
-                : bi.tcvsclc2196.isChecked() ? "96"
-                : "0");
-        CrfControl.put("tcvsclc2196x", bi.tcvsclc2196x.getText().toString());
-
-        CrfControl.put("tcvsclc22", bi.tcvsclc22a.isChecked() ? "1"
-                : bi.tcvsclc22b.isChecked() ? "2"
-                : bi.tcvsclc2297.isChecked() ? "97"
-                : "0");
-
-        CrfControl.put("tcvsclc23", bi.tcvsclc23a.isChecked() ? "1"
-                : bi.tcvsclc23b.isChecked() ? "2"
-                : "0");
-
-        CrfControl.put("tcvsclc2401", bi.tcvsclc2401.isChecked() ? "1" : "0");
-        CrfControl.put("tcvsclc2402", bi.tcvsclc2402.isChecked() ? "2" : "0");
-        CrfControl.put("tcvsclc2403", bi.tcvsclc2403.isChecked() ? "3" : "0");
-        CrfControl.put("tcvsclc2404", bi.tcvsclc2404.isChecked() ? "4" : "0");
-        CrfControl.put("tcvsclc2405", bi.tcvsclc2405.isChecked() ? "5" : "0");
-        CrfControl.put("tcvsclc2406", bi.tcvsclc2406.isChecked() ? "6" : "0");
-        CrfControl.put("tcvsclc2496", bi.tcvsclc2496.isChecked() ? "96" : "0");
-        CrfControl.put("tcvsclc2496x", bi.tcvsclc2496x.getText().toString());
-
-        CrfControl.put("tcvsclc2501", bi.tcvsclc2501.isChecked() ? "1" : "0");
-        CrfControl.put("tcvsclc2502", bi.tcvsclc2502.isChecked() ? "2" : "0");
-        CrfControl.put("tcvsclc2503", bi.tcvsclc2503.isChecked() ? "3" : "0");
-        CrfControl.put("tcvsclc2504", bi.tcvsclc2504.isChecked() ? "4" : "0");
-        CrfControl.put("tcvsclc2505", bi.tcvsclc2505.isChecked() ? "5" : "0");
-        CrfControl.put("tcvsclc2596", bi.tcvsclc2596.isChecked() ? "96" : "0");
-        CrfControl.put("tcvsclc2596x", bi.tcvsclc2596x.getText().toString());
-
-        CrfControl.put("tcvsclc2601", bi.tcvsclc2601.isChecked() ? "1" : "0");
-        CrfControl.put("tcvsclc2602", bi.tcvsclc2602.isChecked() ? "2" : "0");
-        CrfControl.put("tcvsclc2603", bi.tcvsclc2603.isChecked() ? "3" : "0");
-        CrfControl.put("tcvsclc2604", bi.tcvsclc2604.isChecked() ? "4" : "0");
-        CrfControl.put("tcvsclc2605", bi.tcvsclc2605.isChecked() ? "5" : "0");
-        CrfControl.put("tcvsclc2606", bi.tcvsclc2606.isChecked() ? "6" : "0");
-        CrfControl.put("tcvsclc2607", bi.tcvsclc2607.isChecked() ? "7" : "0");
-        CrfControl.put("tcvsclc2608", bi.tcvsclc2608.isChecked() ? "8" : "0");
-
-        CrfControl.put("tcvsclc27", bi.tcvsclc27a.isChecked() ? "1"
-                : bi.tcvsclc27b.isChecked() ? "2"
-                : bi.tcvsclc2798.isChecked() ? "98"
-                : "0");
-
-        CrfControl.put("tcvsclc28", bi.tcvsclc28a.isChecked() ? "1"
-                : bi.tcvsclc28b.isChecked() ? "2"
-                : "0");
-
-        CrfControl.put("tcvsclc29", bi.tcvsclc29.getText().toString());
-
-        CrfControl.put("tcvsclc30", bi.tcvsclc30.getText().toString());
 
         MainApp.fc.setsA(String.valueOf(CrfControl));
 
