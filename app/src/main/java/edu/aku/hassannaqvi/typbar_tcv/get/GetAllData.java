@@ -19,6 +19,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UsersContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 
@@ -69,6 +70,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                         break;
                     case "School":
                         url = new URL(hostItem + SchoolContract.SchoolTable._URI);
+                        break;
+                    case "appversion":
+                        url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URL);
                         break;
                 }
 
@@ -127,6 +131,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             break;
                         case "School":
                             db.syncSchools(jsonArray);
+                            break;
+                        case "appversion":
+                            MainApp.savingAppVersion(mContext, jsonArray);
                             break;
                     }
 

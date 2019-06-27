@@ -19,6 +19,12 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,6 +35,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.ChildContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.EnrollmentContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
 import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 
@@ -45,8 +52,9 @@ public class MainApp extends Application {
     public static final String _HOST_URL_2 = "http://" + MainApp._ALTERNATE_IP + ":" + MainApp._PORT + "/typbar/api/";
     public static final String _TEST_URL = "http://f49461:" + MainApp._PORT + "/typbar/api/";
     public static final String[] HOST = new String[]{_HOST_URL_1, _HOST_URL_2};
-    public static final String _UPDATE_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/typbar/app/app-debug.apk";
+    public static final String _UPDATE_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/typbar/app/";
 
+    public  static String DATABASE_NAME = "typbar_tcv";
     public static final Integer MONTHS_LIMIT = 11;
     public static final Integer DAYS_LIMIT = 29;
     private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 1; // in Meters
@@ -172,6 +180,22 @@ public class MainApp extends Application {
                 });
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
+    }
+
+    public static void savingAppVersion(Context context, JSONArray array) {
+
+        JSONObject object = null;
+        try {
+            object = array.getJSONObject(0);
+            VersionAppContract contract = new VersionAppContract();
+            contract.Sync(object);
+            String json = new Gson().toJson(contract);
+            context.getSharedPreferences("main", MODE_PRIVATE).edit().putString("appVersion", json).apply();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public static void endActivity(final Context context, final Activity activity, final boolean flag) {

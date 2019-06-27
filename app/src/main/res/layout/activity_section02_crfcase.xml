@@ -1030,7 +1030,8 @@
                             android:id="@+id/tcvscad32"
                             style="@style/EditText_number"
                             android:hint="@string/tcvscad32"
-                            app:dateFormat="dd-MM-yyyy" />
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE" />
 
                     </LinearLayout>
 
@@ -1072,13 +1073,9 @@
                 </LinearLayout>
 
 
-
-
-
             </LinearLayout>
 
         </ScrollView>
-
 
 
     </LinearLayout>
