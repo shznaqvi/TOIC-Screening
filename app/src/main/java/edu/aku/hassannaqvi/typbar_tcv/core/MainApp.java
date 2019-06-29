@@ -54,7 +54,7 @@ public class MainApp extends Application {
     public static final String[] HOST = new String[]{_HOST_URL_1, _HOST_URL_2};
     public static final String _UPDATE_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/typbar/app/";
 
-    public  static String DATABASE_NAME = "typbar_tcv";
+    public static String DATABASE_NAME = "typbar_tcv";
     public static final Integer MONTHS_LIMIT = 11;
     public static final Integer DAYS_LIMIT = 29;
     private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 1; // in Meters
@@ -101,6 +101,12 @@ public class MainApp extends Application {
     public static String[] schTypes = new String[]{"....",
             "Government Boys/Girls Primary School",
             "Government Boys/Girls Secondary School", "Private", "Madarasa", "Other"};
+
+    public static String[] schClasses = new String[]{"....",
+            "Playgroup", "KG-I", "KG-II", "Montessori-J", "Montessori-S", "Class-I", "Class-II",
+            "Class-III", "Class-IV", "Class-V", "Class-VI", "Class-VII", "Class-VIII",
+            "Class-IX", "Class-X"
+    };
 
     public static String childListing = "SECRET";
     public static String massImunization = "SECRETMI";

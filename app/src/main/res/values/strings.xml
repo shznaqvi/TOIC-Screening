@@ -75,7 +75,7 @@
     <string name="tcvsl07"> Name of School Administrator </string>
     <string name="tcvsl08"> Contact No </string>
 
-    <string name="sec_clisting">CHILD LISTING</string>
+    <string name="sec_clisting">SCHOOL IMMUNIZATION FORM</string>
     <string name="tcvcl01">School Name/Code</string>
     <string name="tcvcl02">Name of Child</string>
     <string name="tcvcl21">Class</string>
@@ -441,7 +441,7 @@
 
 
     <!--Mass Imunization-->
-    <string name="sec_mi">TCV-MASS IMMUNIZATION</string>
+    <string name="sec_mi">HEALTH FACILITY IMMUNIZATION FORM</string>
     <string name="tcvmi00"> School Type </string>
     <string name="tcvmi01"> Health Facility </string>
     <string name="tcvmi02"> Name of Child </string>

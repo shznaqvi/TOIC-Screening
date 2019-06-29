@@ -103,11 +103,21 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvcl21" />
 
-                            <EditText
+                            <!--<EditText
                                 android:id="@+id/tcvcl21"
                                 style="@style/EditText_number"
                                 android:hint="@string/tcvcl21"
-                                android:maxLength="1" />
+                                android:maxLength="1" />-->
+
+                            <Spinner
+                                android:id="@+id/tcvcl21"
+                                style="@style/Widget.AppCompat.Spinner.Underlined"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="35"
+                                android:gravity="center"
+                                android:popupBackground="#ffffff" />
 
 
                         </LinearLayout>

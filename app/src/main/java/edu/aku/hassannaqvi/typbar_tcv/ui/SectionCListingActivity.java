@@ -59,6 +59,7 @@ public class SectionCListingActivity extends AppCompatActivity {
 
     private void filledSpinners() {
         bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(MainApp.schTypes)));
+        bi.tcvcl21.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, MainApp.schClasses));
     }
 
     private void setListeners() {
@@ -243,7 +244,7 @@ public class SectionCListingActivity extends AppCompatActivity {
         child.put("tcvcl01", bi.tcvcl01.getText().toString());
 
         child.put("tcvcl02", bi.tcvcl02.getText().toString());
-        child.put("tcvcl21", bi.tcvcl21.getText().toString()); //Newly added when the app is already on field
+        child.put("tcvcl21", bi.tcvcl21.getSelectedItem().toString()); //Newly added when the app is already on field
 
         child.put("tcvcl03Age", bi.tcvcl03Agea.isChecked() ? "1" : bi.tcvcl03Ageb.isChecked() ? "2" : "0");
         child.put("tcvcl03", bi.tcvcl03.getText().toString());

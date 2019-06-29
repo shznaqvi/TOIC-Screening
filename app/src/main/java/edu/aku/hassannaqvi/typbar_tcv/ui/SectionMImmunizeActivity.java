@@ -58,6 +58,7 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
         // Initialize db
         db = new DatabaseHelper(this);
         loadHFFromDB();
+        bi.tcvmi24.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, MainApp.schClasses));
         filledSpinners(hfName);
         settingVacinnationID();
     }
@@ -138,7 +139,7 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
 
                         ArrayList<String> schNames = new ArrayList<>();
 
-                        ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvmi22.getSelectedItemPosition()), "1");
+                        ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvmi22.getSelectedItemPosition()), "0");
                         schoolMap = new HashMap<>();
 
                         for (SchoolContract school : schoolContract) {
@@ -241,7 +242,7 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
                 child.put("tcvmi22", bi.tcvmi22.getSelectedItem().equals("Other") ? "96" : String.valueOf(bi.tcvmi22.getSelectedItemPosition()));
             }
         }
-        child.put("tcvmi24", bi.tcvmi24.getText().toString());
+        child.put("tcvmi24", bi.tcvmi24.getSelectedItem().toString());
 
         child.put("tcvmi11", bi.tcvmi11a.isChecked() ? "1" : bi.tcvmi11b.isChecked() ? "2" : bi.tcvmi11c.isChecked() ? "3" : "0");
         child.put("tcvmi12", bi.tcvmi12a.isChecked() ? "1" : bi.tcvmi12b.isChecked() ? "2" : "0");

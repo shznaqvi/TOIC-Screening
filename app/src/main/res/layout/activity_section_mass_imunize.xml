@@ -357,6 +357,7 @@
                             <EditText
                                 android:id="@+id/tcvmi23_name"
                                 style="@style/EditText"
+                                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789"
                                 android:inputType="textCapCharacters"
                                 android:maxLength="60"
                                 android:visibility="gone" />
@@ -380,13 +381,26 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvmi24" />
 
-                            <EditText
+                            <!--<com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/tcvmi24"
                                 style="@style/EditText_number"
                                 android:hint="@string/tcvmi24"
-                                android:maxLength="1"
+                                android:maxLength="2"
                                 android:text='@{tcvmi21a.checked ? tcvmi24.getText.toString : "" }'
-                                android:visibility='@{tcvmi21a.checked ? View.VISIBLE : View.GONE }' />
+                                android:visibility='@{tcvmi21a.checked ? View.VISIBLE : View.GONE }'
+                                app:maxValue="15"
+                                app:minValue="0"
+                                app:type="range" />-->
+
+                            <Spinner
+                                android:id="@+id/tcvmi24"
+                                style="@style/Widget.AppCompat.Spinner.Underlined"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="35"
+                                android:gravity="center"
+                                android:popupBackground="#ffffff" />
 
 
                         </LinearLayout>
