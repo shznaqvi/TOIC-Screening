@@ -357,7 +357,7 @@
                             <EditText
                                 android:id="@+id/tcvmi23_name"
                                 style="@style/EditText"
-                                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789"
+                                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
                                 android:inputType="textCapCharacters"
                                 android:maxLength="60"
                                 android:visibility="gone" />
