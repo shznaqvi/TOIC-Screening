@@ -279,7 +279,25 @@ public class SectionCListingActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.childSec);
+        if (!ValidatorClass.EmptyCheckingContainer(this, bi.childSec))
+            return false;
+
+        if (!bi.tcvcl07.getText().toString().isEmpty()) {
+            if (bi.tcvcl07.getText().toString().length() != 15)
+                return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvcl07, "Length is not accurate!!");
+        }
+
+        if (!bi.tcvcl09.getText().toString().isEmpty()) {
+            if (bi.tcvcl09.getText().toString().length() != 11)
+                return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvcl09, "Length is not accurate!!");
+        }
+
+        if (!bi.tcvcl10.getText().toString().isEmpty()) {
+            if (bi.tcvcl10.getText().toString().length() != 11)
+                return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvcl10, "Length is not accurate!!");
+        }
+
+        return true;
     }
 
     public void BtnEnd() {
