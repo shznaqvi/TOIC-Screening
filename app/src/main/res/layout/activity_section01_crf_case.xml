@@ -853,7 +853,7 @@
                                 android:text="@string/tcvscad19b" />
 
                             <RadioButton
-                                android:id="@+id/tcvscad19c"
+                                android:id="@+id/tcvscad1997"
                                 style="@style/i_radiobutton"
                                 android:text="@string/tcvscad19c" />
 

@@ -33,6 +33,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -326,8 +327,10 @@ public class MainActivity extends AppCompatActivity {
                     type == 1 ? SectionSListingActivity.class :
                             type == 2 ? SectionCListingActivity.class :
                                     type == 3 ? Section00CRFCaseActivity.class :
-                                            type == 4 ? Section01CRFControlActivity.class
-                                                    : SectionMImmunizeActivity.class);
+                                            type == 4 ? Section01CRFCaseActivity.class :
+                                                    type == 5 ? Section00CRFControlActivity.class :
+                                                            type == 6 ? Section01CRFControlActivity.class
+                                                                    : SectionMImmunizeActivity.class);
             if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
                 startActivity(oF);
             } else {

@@ -3,16 +3,20 @@ package edu.aku.hassannaqvi.typbar_tcv.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -94,14 +98,12 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
 
             SaveDraft();
 
-            /*if (!UpdateDB()) {
+            if (!UpdateDB()) {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             } else {
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
-            }*/
-
-            startActivity(new Intent(this, Section02CRFCaseActivity.class));
+                startActivity(new Intent(this, Section02CRFCaseActivity.class));
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -124,7 +126,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
-        /*MainApp.fc = new FormsContract();
+        MainApp.fc = new FormsContract();
         MainApp.fc.setDevicetagID(getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null));
         MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
         MainApp.fc.setUser(MainApp.userName);
@@ -132,7 +134,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("sca");
+        MainApp.fc.setFormtype("sca_enroll");
 
         JSONObject crfCase = new JSONObject();
 
@@ -189,7 +191,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad19", bi.tcvscad19a.isChecked() ? "1" : bi.tcvscad19b.isChecked() ? "2" : bi.tcvscad1997.isChecked() ? "97" : "0");
         crfCase.put("tcvscad20", bi.tcvscad20a.isChecked() ? "1" : bi.tcvscad20b.isChecked() ? "2" : bi.tcvscad2097.isChecked() ? "97" : "0");
 
-        MainApp.fc.setsA(String.valueOf(crfCase));*/
+        MainApp.fc.setsA(String.valueOf(crfCase));
 
     }
 

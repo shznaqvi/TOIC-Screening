@@ -3,12 +3,17 @@ package edu.aku.hassannaqvi.typbar_tcv.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
@@ -87,14 +92,12 @@ public class Section01CRFControlActivity extends AppCompatActivity {
 
             SaveDraft();
 
-            /*if (!UpdateDB()) {
+            if (!UpdateDB()) {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             } else {
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
-            }*/
-
-            startActivity(new Intent(this, Section02CRFControlActivity.class));
+                startActivity(new Intent(this, Section02CRFControlActivity.class));
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -117,7 +120,7 @@ public class Section01CRFControlActivity extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
-        /*MainApp.fc = new FormsContract();
+        MainApp.fc = new FormsContract();
         MainApp.fc.setDevicetagID(getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null));
         MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
         MainApp.fc.setUser(MainApp.userName);
@@ -125,11 +128,11 @@ public class Section01CRFControlActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("scl");
+        MainApp.fc.setFormtype("scl_enroll");
 
         JSONObject CrfControl = new JSONObject();
 
-        *//*New question added in between form*//*
+//        New question added in between form
         CrfControl.put("tcvsclc01", bi.tcvsclc01.getText().toString());
         CrfControl.put("tcvsclc02", bi.tcvsclc02.getText().toString());
 
@@ -257,7 +260,7 @@ public class Section01CRFControlActivity extends AppCompatActivity {
                 : bi.tcvsclc2197.isChecked() ? "97"
                 : "0");
 
-        MainApp.fc.setsA(String.valueOf(CrfControl));*/
+        MainApp.fc.setsA(String.valueOf(CrfControl));
 
     }
 

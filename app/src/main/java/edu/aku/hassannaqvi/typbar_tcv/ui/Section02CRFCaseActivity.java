@@ -73,8 +73,8 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
             if (!UpdateDB()) {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
-            }
-            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+            } else
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -88,15 +88,8 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.addForm(fc);
-        fc.set_ID(String.valueOf(updcount));
-        if (updcount > 0) {
-            fc.setUID((fc.getDeviceID() + fc.get_ID()));
-            db.updateFormID();
-            return true;
-        }
-
-        return false;
+        long updcount = db.updateSA();
+        return updcount != -1;
     }
 
     private void SaveDraft() throws JSONException {
@@ -109,7 +102,6 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad2396x", bi.tcvscad2396x.getText().toString());
         crfCase.put("tcvscad24", bi.tcvscad24a.isChecked() ? "1" : bi.tcvscad24b.isChecked() ? "2" : bi.tcvscad2497.isChecked() ? "97" : "0");
         crfCase.put("tcvscad25", bi.tcvscad25a.isChecked() ? "1" : bi.tcvscad25b.isChecked() ? "2" : "0");
-
         crfCase.put("tcvscad2601", bi.tcvscad2601a.isChecked() ? "1" : bi.tcvscad2601b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2602", bi.tcvscad2602a.isChecked() ? "1" : bi.tcvscad2602b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2603", bi.tcvscad2603a.isChecked() ? "1" : bi.tcvscad2603b.isChecked() ? "2" : "0");
@@ -118,16 +110,13 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad2606", bi.tcvscad2606a.isChecked() ? "1" : bi.tcvscad2606b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2696", bi.tcvscad2696a.isChecked() ? "1" : bi.tcvscad2696b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2696x", bi.tcvscad2696x.getText().toString());
-
         crfCase.put("tcvscad2701", bi.tcvscad2701a.isChecked() ? "1" : bi.tcvscad2701b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2702", bi.tcvscad2702a.isChecked() ? "1" : bi.tcvscad2702b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2703", bi.tcvscad2703a.isChecked() ? "1" : bi.tcvscad2703b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2704", bi.tcvscad2704a.isChecked() ? "1" : bi.tcvscad2704b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2705", bi.tcvscad2705a.isChecked() ? "1" : bi.tcvscad2705b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2796", bi.tcvscad2796a.isChecked() ? "1" : bi.tcvscad2796b.isChecked() ? "2" : "0");
-
         crfCase.put("tcvscad2796x", bi.tcvscad2796x.getText().toString());
-
         crfCase.put("tcvscad2801", bi.tcvscad2801a.isChecked() ? "1" : bi.tcvscad2801b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2802", bi.tcvscad2802a.isChecked() ? "1" : bi.tcvscad2802b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2803", bi.tcvscad2803a.isChecked() ? "1" : bi.tcvscad2803b.isChecked() ? "2" : "0");
