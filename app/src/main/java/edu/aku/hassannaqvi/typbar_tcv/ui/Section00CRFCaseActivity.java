@@ -118,14 +118,6 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
 
         JSONObject crfCase = new JSONObject();
 
-        //crfCase.put("tcvcl00", bi.tcvcl00.getSelectedItem());
-
-        //child.put("sch_code", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_code());
-        //child.put("sch_add", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_add());
-        //child.put("sch_type", schoolMap.get(bi.tcvcl01.getSelectedItem()).getSch_type());
-        //child.put("tcvcl01", bi.tcvcl01.getSelectedItem());
-
-
         crfCase.put("tcvscaa01", bi.tcvscaa01.getText().toString());
         crfCase.put("tcvscaa02", bi.tcvscaa02.getText().toString());
         crfCase.put("tcvscaa03", bi.tcvscaa03.getText().toString());
@@ -183,8 +175,8 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
             if (!UpdateDB()) {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
-            }
-            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+            } else
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -200,7 +192,6 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
     }
 
     //ClearAllFields
-
     void EventsCall() {
 
 

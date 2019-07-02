@@ -157,8 +157,8 @@ public class Section00CRFControlActivity extends AppCompatActivity {
             if (!UpdateDB()) {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
-            }
-            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+            } else
+                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
 
         } catch (JSONException e) {
             e.printStackTrace();

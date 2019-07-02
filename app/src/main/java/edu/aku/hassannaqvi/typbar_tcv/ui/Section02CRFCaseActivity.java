@@ -12,7 +12,6 @@ import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
-import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection02CrfcaseBinding;
 import edu.aku.hassannaqvi.typbar_tcv.utils.JsonUtils;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
@@ -69,8 +68,6 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
 
             if (!formValidation()) return;
 
-//            if (!MainApp.checkingGPSRules(this)) return;
-
             SaveDraft();
 
             if (!UpdateDB()) {
@@ -85,19 +82,7 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        try {
-//            if (!MainApp.checkingGPSRules(this)) return;
-            SaveDraft();
-
-            if (!UpdateDB()) {
-                Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
     }
 
     private boolean UpdateDB() {
