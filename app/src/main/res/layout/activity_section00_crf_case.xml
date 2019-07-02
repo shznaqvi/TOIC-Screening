@@ -22,11 +22,11 @@
         <LinearLayout style="@style/linearlayout_view">
 
             <LinearLayout
-                android:id="@+id/llcrfControl"
+                android:id="@+id/llcrfCase"
                 style="@style/linearlayout_view">
 
                 <LinearLayout
-                    android:id="@+id/llcrf01"
+                    android:id="@+id/llcacrf01"
                     style="@style/linearlayout_view">
 
                     <TextView
@@ -127,29 +127,9 @@
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
-                    <!--EditText tcvscaa05ageDob-->
+
+                    <!--Radio tcvscaa05_age-->
                     <android.support.v7.widget.CardView style="@style/cardView">
-
-                        <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                            <TextView
-                                style="@style/i_textview"
-                                android:text="@string/tcvscaa05ageDob" />
-
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/tcvscaa05ageDob"
-                                style="@style/EditText"
-                                android:hint="@string/tcvscaa05ageDob"
-                                app:dateFormat="dd-MM-yyyy"
-                                app:maxDate="CR_DATE" />
-
-
-                        </LinearLayout>
-                    </android.support.v7.widget.CardView>
-
-                    <!--Radio tcvscaa05-->
-                    <android.support.v7.widget.CardView style="@style/cardView"
-                        android:layoutDirection="ltr">
 
                         <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -158,23 +138,82 @@
                                 android:text="@string/tcvscaa05" />
 
                             <RadioGroup
-                                android:id="@+id/tcvscaa05"
+                                android:id="@+id/tcvscaa05Age"
                                 style="@style/i_radiogroup">
 
                                 <RadioButton
-                                    android:id="@+id/tcvscaa05aAgea"
+                                    android:id="@+id/tcvscaa05Agea"
                                     style="@style/i_radiobutton"
-                                    android:text="@string/tcvscaa05ageDob" />
+                                    android:text="@string/tcvscaa05a" />
 
                                 <RadioButton
-                                    android:id="@+id/tcvscaa05aAgeb"
+                                    android:id="@+id/tcvscaa05Ageb"
                                     style="@style/i_radiobutton"
-                                    android:text="@string/tcvscaa05" />
+                                    android:text="@string/tcvscaa05b" />
 
                             </RadioGroup>
 
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
+
+                    <!--EditText tcvscaa05DOB-->
+                    <android.support.v7.widget.CardView
+                        style="@style/cardView"
+                        android:visibility='@{tcvscaa05Agea.checked ? View.VISIBLE : View.GONE}'>
+
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvscaa05a" />
+
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                                android:id="@+id/tcvscaa05"
+                                style="@style/EditText"
+                                android:hint="@string/tcvscaa05"
+                                android:text='@{!tcvscaa05Agea.checked ?  "" : tcvscaa05.getText.toString }'
+                                app:dateFormat="dd-MM-yyyy"
+                                app:maxDate="CR_DATE" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <!--EditText tcvscaa05-->
+                    <android.support.v7.widget.CardView
+                        style="@style/cardView"
+                        android:visibility='@{tcvscaa05Ageb.checked ? View.VISIBLE : View.GONE}'>
+
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvscaa06b" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/tcvscaa05y"
+                                style="@style/EditText_number"
+                                android:hint="@string/year"
+                                android:maxLength="2"
+                                android:text='@{!tcvscaa05Ageb.checked ?  "" : tcvscaa05y.getText.toString }'
+                                app:maxValue="15"
+                                app:minValue="1"
+                                app:required="true"
+                                app:type="range" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/tcvscaa05m"
+                                style="@style/EditText_number"
+                                android:hint="@string/month"
+                                android:maxLength="2"
+                                android:text='@{!tcvscaa05Ageb.checked ?  "" : tcvscaa05m.getText.toString }'
+                                app:maxValue="11"
+                                app:minValue="0"
+                                app:required="true"
+                                app:type="range" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
 
                     <!--Radio tcvscaa06-->
                     <android.support.v7.widget.CardView style="@style/cardView">
@@ -218,26 +257,6 @@
                                 android:id="@+id/tcvscaa07"
                                 style="@style/EditText_number"
                                 android:hint="@string/tcvscaa07" />
-
-                        </LinearLayout>
-
-                    </android.support.v7.widget.CardView>
-
-                    <!--EditText tcvscaa08-->
-                    <android.support.v7.widget.CardView style="@style/cardView">
-
-                        <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                            <TextView
-                                style="@style/i_textview"
-                                android:text="@string/tcvscaa08" />
-
-                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                                android:id="@+id/tcvscaa08"
-                                style="@style/EditText"
-                                android:hint="@string/tcvscaa08"
-                                app:dateFormat="dd/MM/yyyy"
-                                app:maxDate="CR_DATE" />
 
                         </LinearLayout>
 

@@ -76,9 +76,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
             if (!UpdateDB()) {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
-            }
-
-            else {
+            } else {
                 startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
             }
 
@@ -120,13 +118,13 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         CrfControl.put("tcvscla03", bi.tcvscla03.getText().toString());
         CrfControl.put("tcvscla03a", bi.tcvscla03a.getText().toString());
         CrfControl.put("tcvscla04", bi.tcvscla04.getText().toString());
+        CrfControl.put("tcvscla05Age", bi.tcvscla05Agea.isChecked() ? "1" : bi.tcvscla05Ageb.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla05", bi.tcvscla05.getText().toString());
-        CrfControl.put("tcvscla05aAge", bi.tcvscla05aAgea.isChecked() ? "1" : bi.tcvscla05aAgeb.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscla05a", bi.tcvscla05a.getText().toString());
+        CrfControl.put("tcvscla05y", bi.tcvscla05y.getText().toString());
+        CrfControl.put("tcvscla05m", bi.tcvscla05m.getText().toString());
         CrfControl.put("tcvscla06", bi.tcvscla06a.isChecked() ? "1" : bi.tcvscla06b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla07", bi.tcvscla07a.isChecked() ? "1" : bi.tcvscla07b.isChecked() ? "2" : "0");
         CrfControl.put("tcvscla08", bi.tcvscla08.getText().toString());
-        CrfControl.put("tcvscla09", bi.tcvscla09.getText().toString());
 
         /*New question added in between form*/
 
@@ -151,7 +149,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         try {
-            if (!ValidatorClass.EmptyTextBox(this, bi.tcvscla09, getString(R.string.tcvsclc34)))
+            if (!ValidatorClass.EmptyCheckingContainer(this, bi.llclacrf01))
                 return;
 
             SaveDraft();

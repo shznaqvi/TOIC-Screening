@@ -119,8 +119,10 @@
     <string name="tcvscaa03"> فون نمبر: </string>
     <string name="tcvscaa03a"> متبادل فون نمبر:  </string>
     <string name="tcvscaa04"> مکمل پتہ :    </string>
-    <string name="tcvscaa05ageDob"> بچے کی تاریخ پیدائش/عمر </string>
-    <string name="tcvscaa05"> عمر: </string>
+    <string name="tcvscaa05"> بچے کی تاریخ پیدائش/عمر </string>
+    <string name="tcvscaa05a"> بچے کی تاریخ پیدائش </string>
+    <string name="tcvscaa05b"> عمر </string>
+
     <string name="tcvscaa06"> مریض کی جنس کیا ہے؟ </string>
     <string name="tcvscaa06a"> لڑکا </string>
     <string name="tcvscaa06b"> لڑکی </string>
@@ -464,8 +466,9 @@
     <string name="tcvscla03"> فون نمبر: </string>
     <string name="tcvscla03a"> متبادل فون نمبر </string>
     <string name="tcvscla04"> مکمل پتہ: </string>
-    <string name="tcvscla05"> بچے کی تاریخ پیدائش: </string>
-    <string name="tcvscla05a"> عمر </string>
+    <string name="tcvscla05"> بچے کی تاریخ پیدائش/عمر </string>
+    <string name="tcvscla05a"> بچے کی تاریخ پیدائش </string>
+    <string name="tcvscla05b"> عمر </string>
     <string name="tcvscla06"> مریض کی جنس کیا ہے؟ </string>
     <string name="tcvscla06a"> لڑکا </string>
     <string name="tcvscla06b"> لڑکی </string>

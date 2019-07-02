@@ -34,7 +34,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/llcrf01"
+                    android:id="@+id/llcacrf01"
                     style="@style/linearlayout_view"
                     android:visibility='@{ tcvscaa02a.checked &amp;&amp; tcvscaa03a.checked &amp;&amp; tcvscaa04a.checked &amp;&amp; tcvscaa05a.checked &amp;&amp; tcvscaa06a.checked ? View.VISIBLE : View.GONE}'>
 

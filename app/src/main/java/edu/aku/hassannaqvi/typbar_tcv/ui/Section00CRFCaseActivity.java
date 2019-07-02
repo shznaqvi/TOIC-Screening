@@ -5,10 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ArrayAdapter;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -29,8 +25,6 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection00CrfCaseBinding;
-import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
-import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class Section00CRFCaseActivity extends AppCompatActivity {
@@ -82,15 +76,12 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
 
             if (!formValidation()) return;
 
-//            if (!MainApp.checkingGPSRules(this)) return;
-
             SaveDraft();
 
             if (!UpdateDB()) {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
-            }
-             else {
+            } else {
                 startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
             }
 
@@ -140,12 +131,12 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscaa03", bi.tcvscaa03.getText().toString());
         crfCase.put("tcvscaa03a", bi.tcvscaa03a.getText().toString());
         crfCase.put("tcvscaa04", bi.tcvscaa04.getText().toString());
-
-        crfCase.put("tcvscaa05ageDob", bi.tcvscaa05ageDob.getText().toString());
-        crfCase.put("tcvscaa05", bi.tcvscaa05aAgea.isChecked() ? "1" : bi.tcvscaa05aAgeb.isChecked() ? "2" : "0");
+        crfCase.put("tcvscaa05Age", bi.tcvscaa05Agea.isChecked() ? "1" : bi.tcvscaa05Ageb.isChecked() ? "2" : "0");
+        crfCase.put("tcvscaa05", bi.tcvscaa05.getText().toString());
+        crfCase.put("tcvscaa05y", bi.tcvscaa05y.getText().toString());
+        crfCase.put("tcvscaa05m", bi.tcvscaa05m.getText().toString());
         crfCase.put("tcvscaa06", bi.tcvscaa06a.isChecked() ? "1" : bi.tcvscaa06b.isChecked() ? "2" : "0");
         crfCase.put("tcvscaa07", bi.tcvscaa07.getText().toString());
-        crfCase.put("tcvscaa08", bi.tcvscaa08.getText().toString());
 
         crfCase.put("tcvscab09", bi.tcvscab09a.isChecked() ? "1" : bi.tcvscab09b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab10", bi.tcvscab10a.isChecked() ? "1" : bi.tcvscab10b.isChecked() ? "2" : "0");
@@ -180,14 +171,13 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.llcrf);
+        return ValidatorClass.EmptyCheckingContainer(this, bi.llcrfCase);
     }
 
     public void BtnEnd() {
         try {
-            if (!ValidatorClass.EmptyCheckingContainer(this, bi.ll0104)) return;
+            if (!ValidatorClass.EmptyCheckingContainer(this, bi.llcacrf01)) return;
 
-//            if (!MainApp.checkingGPSRules(this)) return;
             SaveDraft();
 
             if (!UpdateDB()) {
