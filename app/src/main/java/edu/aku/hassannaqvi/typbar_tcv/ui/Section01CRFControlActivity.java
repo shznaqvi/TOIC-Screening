@@ -38,52 +38,6 @@ public class Section01CRFControlActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
-
-        bi.tcvscla02.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvscla02a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
-                }
-            }
-        });
-        bi.tcvscla03.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvscla03a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
-                }
-            }
-        });
-        bi.tcvscla04.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvscla04a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
-                }
-            }
-        });
-        bi.tcvscla05.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvscla05a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
-                }
-            }
-        });
-        bi.tcvscla06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvscla06a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
-                }
-            }
-        });
         bi.tcvsclc15.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -117,6 +71,10 @@ public class Section01CRFControlActivity extends AppCompatActivity {
 
     }
 
+    public void BtnCheckControl() {
+
+    }
+
     private void setContentUI() {
         this.setTitle(R.string.CrfControl);
 
@@ -139,9 +97,7 @@ public class Section01CRFControlActivity extends AppCompatActivity {
                 return;
             }
 
-            if (bi.tcvscla02a.isChecked() && bi.tcvscla03a.isChecked() && bi.tcvscla04a.isChecked() && bi.tcvscla05a.isChecked() && bi.tcvscla06a.isChecked()) {
-                startActivity(new Intent(this, Section02CRFControlActivity.class));
-            } else {
+            else {
                 startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
             }
 
@@ -177,27 +133,6 @@ public class Section01CRFControlActivity extends AppCompatActivity {
         MainApp.fc.setFormtype("scl");
 
         JSONObject CrfControl = new JSONObject();
-
-        CrfControl.put("tcvscla02", bi.tcvscla02a.isChecked() ? "1" : bi.tcvscla02b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscla03", bi.tcvscla03a.isChecked() ? "1" : bi.tcvscla03b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscla04", bi.tcvscla04a.isChecked() ? "1" : bi.tcvscla04b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscla05", bi.tcvscla05a.isChecked() ? "1" : bi.tcvscla05b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvscla06", bi.tcvscla06a.isChecked() ? "1" : bi.tcvscla06b.isChecked() ? "2" : "0");
-
-        CrfControl.put("tcvsclb01", bi.tcvsclb01.getText().toString());
-        CrfControl.put("tcvsclb02", bi.tcvsclb02.getText().toString());
-        CrfControl.put("tcvsclb03", bi.tcvsclb03.getText().toString());
-        CrfControl.put("tcvsclb04", bi.tcvsclb04.getText().toString());
-
-        CrfControl.put("tcvsclb05Age", bi.tcvsclb05Agea.isChecked() ? "1" : bi.tcvsclb05Ageb.isChecked() ? "2" : "0");
-        CrfControl.put("tcvsclb05", bi.tcvsclb05.getText().toString());
-        CrfControl.put("tcvsclb06", bi.tcvsclb06.getText().toString());
-
-        CrfControl.put("tcvsclb07", bi.tcvsclb07a.isChecked() ? "1" : bi.tcvsclb07b.isChecked() ? "2" : "0");
-        CrfControl.put("tcvsclb08", bi.tcvsclb08.getText().toString());
-        CrfControl.put("tcvsclb09", bi.tcvsclb09.getText().toString());
-        CrfControl.put("tcvsclb10", bi.tcvsclb10.getText().toString());
-        CrfControl.put("tcvsclb10", bi.tcvsclb11a.isChecked() ? "1" : bi.tcvsclb11b.isChecked() ? "2" : "0");
 
         /*New question added in between form*/
 
@@ -338,7 +273,8 @@ public class Section01CRFControlActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         try {
-            if (!ValidatorClass.EmptyCheckingContainer(this, bi.ll0105)) return;
+            if (!ValidatorClass.EmptyTextBox(this, bi.tcvsclc34, getString(R.string.tcvsclc34)))
+                return;
 
             SaveDraft();
 
@@ -360,7 +296,5 @@ public class Section01CRFControlActivity extends AppCompatActivity {
         fc.setGpsAcc(locClass.getAccuracy());
         fc.setGpsDT(locClass.getTime());
     }
-
-    //
 
 }

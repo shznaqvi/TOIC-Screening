@@ -43,7 +43,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_01_crf_case);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_crf_case);
         bi.setCallback(this);
         EventsCall();
 
@@ -90,7 +90,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
                     bi.tcvscab07.setMaxDate(s.toString());
                 }
 
-
             }
 
             @Override
@@ -114,7 +113,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
             }
         });
 
-
         // Initialize db
         db = new DatabaseHelper(this);
         //filledSpinners();
@@ -133,12 +131,9 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (bi.tcvscaa02a.isChecked() && bi.tcvscaa03a.isChecked() && bi.tcvscaa04a.isChecked() && bi.tcvscaa05a.isChecked() && bi.tcvscaa05a.isChecked()) {
-                startActivity(new Intent(this, Section02CRFCaseActivity.class));
-            } else {
+             else {
                 startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
             }
-
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -181,29 +176,9 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         //child.put("tcvcl01", bi.tcvcl01.getSelectedItem());
 
 
-        crfCase.put("hf_code", hfMap.get(bi.tcvmi01.getSelectedItem().toString()).getHfcode());
 //        crfCase.put("tcvscaa01", bi.tcvscaa01a.isChecked() ? "1" : bi.tcvscaa01b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscaa02", bi.tcvscaa02a.isChecked() ? "1" : bi.tcvscaa02b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscaa03", bi.tcvscaa03a.isChecked() ? "1" : bi.tcvscaa03b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscaa04", bi.tcvscaa04a.isChecked() ? "1" : bi.tcvscaa04b.isChecked() ? "2" : "0");
-
-        crfCase.put("tcvscab01", bi.tcvscab01.getText().toString());
-        crfCase.put("tcvscab02", bi.tcvscab02.getText().toString());
-        crfCase.put("tcvscab03", bi.tcvscab03.getText().toString());
-        crfCase.put("tcvscab04", bi.tcvscab04.getText().toString());
-        crfCase.put("tcvscaa04", bi.tcvscaa04a.isChecked() ? "1" : bi.tcvscaa04b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab05DobAge", bi.tcvscab05Dob.isChecked() ? "1" : bi.tcvscab05Age.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab05", bi.tcvscab05.getText().toString());
-        crfCase.put("tcvscab06y", bi.tcvscab06y.getText().toString());
-        crfCase.put("tcvscab06m", bi.tcvscab06m.getText().toString());
-        crfCase.put("tcvscab07", bi.tcvscab07.getText().toString());
-        crfCase.put("tcvscab08", bi.tcvscab08a.isChecked() ? "1" : bi.tcvscab08b.isChecked() ? "2" : "0");
-
-        crfCase.put("tcvscac01", bi.tcvscac01a.isChecked() ? "1" : bi.tcvscac01b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscac02", bi.tcvscac02a.isChecked() ? "1" : bi.tcvscac02b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscac03", bi.tcvscac03a.isChecked() ? "1" : bi.tcvscac03b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscac04", bi.tcvscac04a.isChecked() ? "1" : bi.tcvscac04b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscac05", bi.tcvscac05a.isChecked() ? "1" : bi.tcvscac05b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad33", bi.tcvscad33.getText().toString());
+        crfCase.put("tcvscad34", bi.tcvscad34.getText().toString());
 
         crfCase.put("tcvscad01", bi.tcvscad01.getText().toString());
         crfCase.put("tcvscad02", bi.tcvscad02.getText().toString());
@@ -255,7 +230,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad19", bi.tcvscad19a.isChecked() ? "1" : bi.tcvscad19b.isChecked() ? "2" : bi.tcvscad1997.isChecked() ? "97" : "0");
         crfCase.put("tcvscad20", bi.tcvscad20a.isChecked() ? "1" : bi.tcvscad20b.isChecked() ? "2" : bi.tcvscad2097.isChecked() ? "97" : "0");
 
-
         MainApp.fc.setsA(String.valueOf(crfCase));
 
     }
@@ -294,42 +268,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
 
     void EventsCall() {
 
-        bi.tcvscaa02.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (!bi.tcvscaa02a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.llcrf01, null);
-                }
-            }
-        });
-
-        bi.tcvscaa02.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (!bi.tcvscaa02a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.llcrf01, null);
-                }
-            }
-        });
-
-        bi.tcvscaa03.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (!bi.tcvscaa03a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.llcrf01, null);
-                }
-            }
-        });
-
-        bi.tcvscaa04.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (!bi.tcvscaa04a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.llcrf01, null);
-                }
-            }
-        });
-
         bi.tcvscad13.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -349,7 +287,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 

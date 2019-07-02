@@ -69,7 +69,6 @@ public abstract class ValidatorClass {
                             break;
                         }
                     }
-
                 }
             }
         }
@@ -115,7 +114,6 @@ public abstract class ValidatorClass {
             return true;
         }
     }
-
 
     public static boolean RangeTextBox(Context context, EditText txt, double min, double max, String msg, String type) {
 
@@ -206,7 +204,6 @@ public abstract class ValidatorClass {
     }
 
     public static boolean EmptyCheckBox(Context context, LinearLayout container, CheckBox cbx, EditText txt, String msg) {
-
         Boolean flag = false;
         for (int i = 0; i < container.getChildCount(); i++) {
             View v = container.getChildAt(i);

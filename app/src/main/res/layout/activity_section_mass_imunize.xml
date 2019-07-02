@@ -408,7 +408,6 @@
 
                 </LinearLayout>
 
-
                 <!--Radio tcvmi11-->
                 <android.support.v7.widget.CardView style="@style/cardView">
 

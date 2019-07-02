@@ -113,35 +113,55 @@
 
     <!---FAZAL RIZVI  -->
     <string name="CrfCase"> Case Report Form - Impact Assessment (CASE) </string>
-    <string name="tcvscaah"> اہلیت کی اسکریننگ </string>
-    <string name="tcvscaa01">اسکرین آئی ڈی</string>
-    <string name="tcvscaa02"> کیا مریض ۶ ماہ سے ۱۵ سال کے درمیان میں ہے؟ </string>
-    <string name="tcvscaa03"> کیا مریض کم سے کم پچھلے ۱ماہ سے لیاری میں رہتا ہے ؟ </string>
-    <string name="tcvscaa04"> کیا مریض کے کلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت ہے ؟ </string>
-    <string name="tcvscaa05"> کیا مریض یا والدین مطالعہ میں شمو لیت کے لیے رضا مند ہے ؟ </string>
-    <string name="tcvscaa06"> اگر اوپر دیے گے سوالات کے جوابات "ہاں" ہیں تو مریض مطالعہ میں شرکت کے لئے اہل ہے مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
+    <string name="tcvscaah"> سیکشن :1 </string>
+    <string name="tcvscaa01"> نام: </string>
+    <string name="tcvscaa02"> باپ کا نام:  </string>
+    <string name="tcvscaa03"> فون نمبر: </string>
+    <string name="tcvscaa03a"> متبادل فون نمبر:  </string>
+    <string name="tcvscaa04"> مکمل پتہ :    </string>
+    <string name="tcvscaa05ageDob"> بچے کی تاریخ پیدائش/عمر </string>
+    <string name="tcvscaa05"> عمر: </string>
+    <string name="tcvscaa06"> مریض کی جنس کیا ہے؟ </string>
+    <string name="tcvscaa06a"> لڑکا </string>
+    <string name="tcvscaa06b"> لڑکی </string>
+    <string name="tcvscaa07"> اسکرین آئی ڈی: </string>
+    <string name="tcvscaa08"> اسکرین کی تاریخ: </string>
 
-    <string name="tcvscabh"> سیکشن :1 </string>
-    <string name="tcvscab01"> نام </string>
-    <string name="tcvscab02"> پتہ </string>
-    <string name="tcvscab03"> فون نمبر </string>
-    <string name="tcvscab04"> انرولمنٹ کی تاریخ </string>
-    <string name="tcvscab05ageDob"> بچے کی تاریخ پیدائش/عمر </string>
-    <string name="tcvscab05"> بچے کی تاریخ پیدائش </string>
-    <string name="tcvscab06"> عمر </string>
-    <string name="tcvscab07"> بیماری کی تاریخ </string>
-    <string name="tcvscab08"> مریض کی جنس کیا ہے؟ </string>
-    <string name="tcvscab08a"> لڑکا </string>
-    <string name="tcvscab08b"> لڑکی </string>
+    <string name="tcvscabh"> اہلیت کی اسکریننگ </string>
+    <string name="tcvscab09">کیا مریض ۷ ماہ سے ۱۵ سال کے درمیان میں ہے؟</string>
+    <string name="tcvscab10"> کیا مریض کم سے کم پچھلے ۱ماہ سے لیاری میں رہتا ہے ؟ </string>
+    <string name="tcvscab11"> کیا مریض 3دن یا 3دن سے زیادہ بخار کی شکایت کےساتھ مرکزصحت آیا ہے؟ </string>
+    <string name="tcvscab12"> بیماری  کی تاریخ : </string>  //
+    <string name="tcvscab13"> کیا مریض کے پاس پچھلے کلچرکی رپورٹ موجود ہے؟ </string>
+    <string name="tcvscab14"> اگرہاں،تو رپورٹ کی تاریخ بتائیں </string> //
+    <string name="tcvscab15"> کیا مریض  کے پاس موجودکلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت ہے ؟ </string>
+    <string name="tcvscab16"> لیباٹری رسیدنمبر: </string>
+    <string name="tcvscabh17"> اگر  کلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت  ہوتو،مائکروبیل ریززٹینس پیٹرن بتائیں۔ </string>
+    <string name="tcvscab171"> Ampicillin </string>
+    <string name="tcvscab172"> Chloramphenicol </string>
+    <string name="tcvscab173"> Co-trimoxazole </string>
+    <string name="tcvscab174"> Fluoroquinolone </string>
+    <string name="tcvscab175"> Ceftriaxone </string>
+    <string name="tcvscab176"> other </string>
+    <string name="tcvscab18"> کیا  وزٹ کےدوران مریض کا خون کا نمونہ لیا  گیاہے. </string>
+    <string name="tcvscab19">لیباٹری رسیدنمبر: نوٹ: اگر اس وزٹ کے دوران خون کانمونہ لیاگیاہےتولیبارٹری کی آئی ڈی درج کی جائےگی اوربقایافارم کلچرکےنتیجہ آنےکےبعد بھراجائےگا۔</string>
+    <string name="tcvscab20"> کیا مریض  کے کلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت ہے ؟ </string>
+    <string name="tcvscab20c"> نتیجہ رُکاہوا ہے </string>
+    <string name="tcvscabh21"> اگر  کلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت  ہوتو،مائکروبیل ریززٹینس پیٹرن بتائیں۔ </string>
+    <string name="tcvscab211"> Ampicillin </string>
+    <string name="tcvscab212"> Chloramphenicol </string>
+    <string name="tcvscab213"> Co-trimoxazole </string>
+    <string name="tcvscab214"> Fluoroquinolone </string>
+    <string name="tcvscab215"> Ceftriaxone </string>
+    <string name="tcvscab216"> other </string>
+    <string name="tcvscab22"> کیا مریض یا والدین  مطالعہ میں  شمو لیت کے لیے  رضا مند ہے ؟ </string>
+    <string name="tcvscabh22"> اگر اوپر دیے گے سوالات (22،11،10،9اور15 یا20)کے جوابات"ہاں" ہیں تو مریض  مطالعہ میں شرکت کے لئے اہل ہے   مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
+    <string name="tcvscab23"> کیس آئی ڈی : </string>
 
     <string name="tcvscach"> سیکشن :2 </string>
-    <string name="tcvscach1"> مائکروبیل ریززٹینس پیٹرن: </string>
-    <string name="tcvscac01"> Ampicillin </string>
-    <string name="tcvscac02"> Chloramphenicol </string>
-    <string name="tcvscac03"> Co-trimoxazole </string>
-    <string name="tcvscac04"> Fluoroquinolone </string>
-    <string name="tcvscac05"> Ceftriaxone </string>
     <string name="tcvscadh"> سیکشن :3 </string>
+    <string name="tcvscad33"> کیس آئی ڈی : </string>
+    <string name="tcvscad34"> انرولمنٹ کی تاریخ: </string>
     <string name="tcvscad01"> اس گھر میں کتنے افراد رہتے ہیں؟ </string>
     <string name="tcvscad02"> اس گھر میں کتنے کمرے ہیں؟ </string>
     <string name="tcvscad03"> گھر کس قسم کا ہے ؟ </string>
@@ -279,12 +299,6 @@
     <!---FAZAL RIZVI  -->
     <string name="CrfControl"> Case Report Form - Impact Assessment (CONTROL) </string>
     <string name="tcvsclah"> اہلیت کی اسکریننگ </string>
-    <string name="tcvscla01"> اسکرین آئی ڈی:  </string>
-    <string name="tcvscla02"> کیا شرکاء کی عمر متعلقہ کیس کی عمر میں ۶ماہ یا ۶ماہ سے کم کا فاصلہ ہے ؟ </string>
-    <string name="tcvscla03"> کیا شرکاء متعلقہ کیس کا پروسی ہے؟(صرف کمیونٹی کنٹرول) </string>
-    <string name="tcvscla04"> کیا شرکاء ٹائیفائیڈ کےعلاوہ کسی سرجیکل کنڈیشن کی وجہ سے ہسپتال آیا ہے ؟(صرف ہسپتال کنٹرول) </string>
-    <string name="tcvscla05"> کیا شرکاءکم سے کم پچھلے ۴ہفتوں سے صحت مند ہے؟(صرف کمیونٹی کنٹرول) </string>
-    <string name="tcvscla06"> کیا شرکاء اور اس کے والدین مطالعہ میں حصہ لینے کے لیے رضا مند ہیں؟ </string>
     <string name="tcvsclah1"> اگر اوپر دیے گے سوالات کے جوابات "ہاں" ہیں تو مریض مطالعہ میں شرکت کے لئے اہل ہے مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
     <string name="tcvsclbh"> سیکشن :1 </string>
     <string name="tcvsclb01"> نام: </string>
@@ -303,6 +317,8 @@
     <string name="tcvsclb11a"> کمیونٹی  </string>
     <string name="tcvsclb11b"> ہسپتال  </string>
     <string name="tcvsclc"> سیکشن :2 </string>
+    <string name="tcvsclc34"> کنٹرو ل آئی ڈی: </string>
+    <string name="tcvsclc35"> انرولمنٹ کی تاریخ: </string>
     <string name="tcvsclc32"> اس  گھر میں کتنے افراد رہتے ہیں؟ </string>
     <string name="tcvsclc33"> اس  گھر میں کتنے کمرے ہیں؟ </string>
     <string name="tcvsclc01"> گھر کس قسم کا ہے ؟ </string>
@@ -438,6 +454,56 @@
     <string name="tcvsclc31"> House hold location </string>
     <string name="tcvsclc31a"> Longitude </string>
     <string name="tcvsclc31b"> Latitude </string>
+
+
+
+    <!--- Waqar Farooqui (CRF Control)-->
+    <string name="tcvsclah01"> سیکشن :1 </string>
+    <string name="tcvscla01"> نام: </string>
+    <string name="tcvscla02"> باپ کا نام: </string>
+    <string name="tcvscla03"> فون نمبر: </string>
+    <string name="tcvscla03a"> متبادل فون نمبر </string>
+    <string name="tcvscla04"> مکمل پتہ: </string>
+    <string name="tcvscla05"> بچے کی تاریخ پیدائش: </string>
+    <string name="tcvscla05a"> عمر </string>
+    <string name="tcvscla06"> مریض کی جنس کیا ہے؟ </string>
+    <string name="tcvscla06a"> لڑکا </string>
+    <string name="tcvscla06b"> لڑکی </string>
+    <string name="tcvscla07"> کنٹرول کی قسم: </string>
+    <string name="tcvscla07a"> کمیونٹی </string>
+    <string name="tcvscla07b"> ہسپتال </string>
+    <string name="tcvscla08"> اسکرین آئی ڈی: </string>
+    <string name="tcvscla09">اسکرین کی تاریخ:</string>
+    <string name="tcvsclah02"> اہلیت کی اسکریننگ </string>
+    <string name="tcvscla10">کیاکیس کی عمر 6  سے 36 ماہ کے درمیان ہو نے کی صور ت میں شرکاء کی عمر کا فرق متعلقہ کیس کی عمر سے 6 ماہ سے زیادہ یا کم ہے ؟ یا</string>
+    <string name="tcvscla10a">کیس کی عمر 3  سے 15 سال کے درمیان ہو نے کی صور ت میں شرکاء کی عمر کا فرق متعلقہ کیس کی عمر سے 3سال سے زیادہ یا کم ہے ؟اور بچے کی عمر 7ماہ سے پندرہ سال کے درمیان ہے؟ </string>
+    <string name="tcvscla11">کیا شرکاء متعلقہ کیس کا پروسی ہے؟(صرف کمیونٹی کنٹرول)</string>
+    <string name="tcvscla12">کیا شرکاء ٹائیفائیڈ کےعلاوہ  کسی سرجیکل کنڈیشن کی وجہ سے ہسپتال آیا ہے اور"بخار"یا "انفیکشن" کی شکایت کےساتھ نہ آیا ہو؟(صرف ہسپتال کنٹرول)</string>
+    <string name="tcvscla13">کیا شرکاءکم سے کم پچھلے ۴ہفتوں سے صحت مند ہے؟(صرف کمیونٹی کنٹرول)</string>
+    <string name="tcvscla14">کیا شرکاء اور اس کے والدین مطالعہ میں حصہ لینے کے لیے رضا مند ہیں؟</string>
+    <string name="tcvscla15">کیامریض کو مطالعہ میں شامل کر لیا گیا ہے؟</string>
+    <string name="tcvscla16">اگر نہیں تو وجہ بیان کریں</string>
+    <string name="tcvsclah03">اگر اوپر دیے گے سوالات کے جوابات"ہاں" ہیں تو مریض  مطالعہ میں شرکت کے لئے اہل ہے مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔</string>
+    <string name="tcvscla17">متعلقہ کیس کی شناخت آئی ڈی :</string>
+    <string name="tcvscla18">کنٹرو ل نمبر :</string>
+    <string name="tcvscla19">کنٹرو ل آئی ڈی :</string>
+
+    <!--- Waqar Farooqui (CRF Case)-->
+    <string name="tcvsclaah01"> سیکشن :1 </string>
+    <string name="tcvsclaa001"> نام: </string>
+    <string name="tcvsclaa002"> باپ کا نام: </string>
+    <string name="tcvsclaa003"> فون نمبر: </string>
+    <string name="tcvsclaa003a"> متبادل فون نمبر </string>
+    <string name="tcvsclaa004"> مکمل پتہ: </string>
+    <string name="tcvsclaa005"> بچے کی تاریخ پیدائش: </string>
+    <string name="tcvsclaa005a"> عمر </string>
+    <string name="tcvsclaa006"> مریض کی جنس کیا ہے؟ </string>
+    <string name="tcvsclaa006a"> لڑکا </string>
+    <string name="tcvsclaa006b"> لڑکی </string>
+    <string name="tcvsclaa007"> اسکرین آئی ڈی: </string>
+    <string name="tcvsclaa008">اسکرین کی تاریخ:</string>
+
+
 
 
     <!--Mass Imunization-->
