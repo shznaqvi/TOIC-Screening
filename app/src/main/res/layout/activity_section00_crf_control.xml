@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.Section01CRFControlActivity">
+    tools:context=".ui.Section00CRFControlActivity">
 
     <data>
 
@@ -81,7 +81,7 @@
 
                             <TextView
                                 style="@style/i_textview"
-                                android:text="@string/tcvscla03"/>
+                                android:text="@string/tcvscla03" />
 
                             <EditText
                                 android:id="@+id/tcvscla03"
@@ -100,7 +100,7 @@
 
                             <TextView
                                 style="@style/i_textview"
-                                android:text="@string/tcvscla03a"/>
+                                android:text="@string/tcvscla03a" />
 
                             <EditText
                                 android:id="@+id/tcvscla03a"
@@ -302,8 +302,7 @@
                     android:id="@+id/fldGrp0130"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility='@{tcvscla2a.checked &amp;&amp; tcvscla3a.checked &amp;&amp; tcvscla4a.checked &amp;&amp; tcvscla5a.checked &amp;&amp; tcvscla6a.checked? View.VISIBLE : View.GONE }'>
+                    android:orientation="vertical">
 
                     <TextView
                         style="@style/textview_fm_lst_h"

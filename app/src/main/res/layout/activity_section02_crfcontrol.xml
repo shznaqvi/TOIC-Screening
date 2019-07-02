@@ -1053,7 +1053,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/childSec00a"
                 style="@style/linearlayout_view"
                 android:layout_marginTop="30dp"
                 android:orientation="horizontal">

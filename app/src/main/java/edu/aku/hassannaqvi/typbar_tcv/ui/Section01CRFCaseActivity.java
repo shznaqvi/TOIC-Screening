@@ -7,6 +7,7 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -26,12 +27,16 @@ import java.util.Map;
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
+import edu.aku.hassannaqvi.typbar_tcv.core.CheckingID;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01CrfCaseBinding;
 import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
+
+import static java.nio.file.Paths.get;
 
 public class Section01CRFCaseActivity extends AppCompatActivity {
 
@@ -63,40 +68,12 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
             hfName.add(hf.getHfname());
             hfMap.put(hf.getHfname(), hf);
         }
-        filledSpinners(hfName);
     }
 
-    private void filledSpinners(List<String> hfNames) {
-        bi.tcvmi01.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hfNames));
-    }
+
 
     private void setContentUI() {
         this.setTitle(R.string.CrfCase);
-
-        bi.tcvscab05.setMaxDate(DateUtils.getMonthsBack("dd/MM/yyyy", -6));
-
-
-        bi.tcvscab04.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                if (!s.toString().isEmpty() && !s.toString().equalsIgnoreCase("")) {
-
-                    bi.tcvscab07.setMaxDate(s.toString());
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         bi.tcvscad09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -117,6 +94,11 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         //filledSpinners();
     }
+
+    public void BtnCheckCase() {
+        }
+
+
 
     public void BtnContinue() {
         try {
@@ -240,7 +222,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         try {
-            if (!ValidatorClass.EmptyCheckingContainer(this, bi.ll0104)) return;
+            if (!ValidatorClass.EmptyCheckingContainer(this, bi.llcrf)) return;
 
 //            if (!MainApp.checkingGPSRules(this)) return;
             SaveDraft();

@@ -54,7 +54,7 @@
     <string name="uyes"> ہاں </string>
     <string name="uno"> نہیں </string>
     <string name="uother"> کوئی اور وضاحت کریں </string>
-    <string name="uotherx"> کوئی اور </string>
+    <string name="uotherx"> کوئی اور وضاحت کریں</string>
     <string name="uotherxh">وضاحت کریں </string>
     <string name="udnt"> معلوم نہیں </string>
     <string name="unone"> کبھی نہیں </string>
@@ -453,9 +453,6 @@
     <string name="tcvsclc30dd"> دن </string>
     <string name="tcvsclc30mm"> مہینہ </string>
     <string name="tcvsclc30yy"> سا ل </string>
-    <string name="tcvsclc31"> House hold location </string>
-    <string name="tcvsclc31a"> Longitude </string>
-    <string name="tcvsclc31b"> Latitude </string>
 
 
 

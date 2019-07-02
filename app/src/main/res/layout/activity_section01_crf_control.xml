@@ -326,48 +326,54 @@
                             style="@style/i_textview"
                             android:text="@string/tcvsclc06" />
 
-                        <CheckBox
-                            android:id="@+id/tcvsclc0601"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvsclc0601" />
+                        <LinearLayout
+                            android:id="@+id/fldGrptcvsclc06"
+                            style="@style/linearlayout_view_wt_bound">
 
-                        <CheckBox
-                            android:id="@+id/tcvsclc0602"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvsclc0602" />
+                            <CheckBox
+                                android:id="@+id/tcvsclc0601"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvsclc0601" />
 
-                        <CheckBox
-                            android:id="@+id/tcvsclc0603"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvsclc0603" />
+                            <CheckBox
+                                android:id="@+id/tcvsclc0602"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvsclc0602" />
 
-                        <CheckBox
-                            android:id="@+id/tcvsclc0604"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvsclc0604" />
+                            <CheckBox
+                                android:id="@+id/tcvsclc0603"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvsclc0603" />
 
-                        <CheckBox
-                            android:id="@+id/tcvsclc0605"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvsclc0605" />
+                            <CheckBox
+                                android:id="@+id/tcvsclc0604"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvsclc0604" />
 
-                        <CheckBox
-                            android:id="@+id/tcvsclc0606"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvsclc0606" />
+                            <CheckBox
+                                android:id="@+id/tcvsclc0605"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvsclc0605" />
 
-                        <CheckBox
-                            android:id="@+id/tcvsclc0696"
-                            style="@style/i_checkbox"
-                            android:text="@string/uotherx" />
+                            <CheckBox
+                                android:id="@+id/tcvsclc0606"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvsclc0606" />
 
-                        <EditText
-                            android:id="@+id/tcvsclc0696x"
-                            style="@style/EditText"
-                            android:hint="@string/uotherxh"
-                            android:tag="tcvsclc0696"
-                            android:text='@{tcvsclc0696.checked ? tcvsclc0696x.getText.toString : "" }'
-                            android:visibility='@{tcvsclc0696.checked ? View.VISIBLE : View.GONE }' />
+                            <CheckBox
+                                android:id="@+id/tcvsclc0696"
+                                style="@style/i_checkbox"
+                                android:text="@string/uotherx" />
+
+                            <EditText
+                                android:id="@+id/tcvsclc0696x"
+                                style="@style/EditText"
+                                android:hint="@string/uotherxh"
+                                android:tag="tcvsclc0696"
+                                android:text='@{tcvsclc0696.checked ? tcvsclc0696x.getText.toString : "" }'
+                                android:visibility='@{tcvsclc0696.checked ? View.VISIBLE : View.GONE }' />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -468,7 +474,17 @@
 
                         </RadioGroup>
 
-                        <!--Radio tcvsclc09-->
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--Radio tcvsclc09-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/fldGrptcvsclc09"
+                    style="@style/cardView"
+                    android:visibility='@{tcvsclc07c.checked? View.VISIBLE : View.GONE}'>
+
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                         <TextView
                             style="@style/i_textview"
@@ -498,7 +514,6 @@
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
-
 
                 <!--Radio tcvsclc10-->
                 <android.support.v7.widget.CardView style="@style/cardView">
