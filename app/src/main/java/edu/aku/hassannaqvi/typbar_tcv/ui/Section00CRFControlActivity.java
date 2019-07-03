@@ -27,6 +27,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
     ActivitySection00CrfControlBinding bi;
     DatabaseHelper db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +62,8 @@ public class Section00CRFControlActivity extends AppCompatActivity {
 
         // Initialize db
         db = new DatabaseHelper(this);
+
+
     }
 
 

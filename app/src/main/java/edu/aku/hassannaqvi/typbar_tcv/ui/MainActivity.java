@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding bi;
     VersionAppContract versionAppContract;
     String m_Text = "", preVer = "", newVer = "";
+    Class<?> classTo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -319,24 +320,52 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void openForm(int type) {
-
+    public void openForm(final int type) {
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-
-
-            final Intent oF = new Intent(MainActivity.this,
-                    type == 1 ? SectionSListingActivity.class :
-                            type == 2 ? SectionCListingActivity.class :
-                                    type == 3 ? Section00CRFCaseActivity.class :
-                                            type == 4 ? Section01CRFCaseActivity.class :
-                                                    type == 5 ? Section00CRFControlActivity.class :
-                                                            type == 6 ? Section01CRFControlActivity.class
-                                                                    : SectionMImmunizeActivity.class);
             if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
-                startActivity(oF);
-            } else {
+                switch (type) {
+                    case 1:
+                        startActivity(new Intent(MainActivity.this, SectionSListingActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(MainActivity.this, SectionCListingActivity.class));
+                        break;
+                    case 3:
+                    case 4:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.setTitle("Please Select");
+                        builder.setMessage("Where you want to go?");
+                        builder.setIcon(android.R.drawable.ic_dialog_info);
+                        builder.setNegativeButton("Screening", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
 
+                                startActivity(new Intent(MainActivity.this, type == 3 ? Section00CRFCaseActivity.class : Section00CRFControlActivity.class));
+                                dialogInterface.dismiss();
+
+
+                            }
+                        });
+                        builder.setPositiveButton("Enrollment", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                startActivity(new Intent(MainActivity.this, type == 3 ? Section01CRFCaseActivity.class : Section01CRFControlActivity.class));
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, SectionMImmunizeActivity.class));
+                        break;
+
+
+                }
+
+            } else {
                 builder = new AlertDialog.Builder(MainActivity.this);
                 final AlertDialog dialog = builder.create();
                 ImageView img = new ImageView(getApplicationContext());
@@ -356,7 +385,6 @@ public class MainActivity extends AppCompatActivity {
                 });
                 builder.setView(input);
 
-
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -366,7 +394,7 @@ public class MainActivity extends AppCompatActivity {
                             editor.commit();
 
                             if (!MainApp.userName.equals("0000")) {
-                                startActivity(oF);
+//                                startActivity(oF);
                             }
                         }
                     }
@@ -380,6 +408,16 @@ public class MainActivity extends AppCompatActivity {
 
                 builder.show();
             }
+
+//            final Intent oF = new Intent(MainActivity.this,
+//                    type == 1 ? SectionSListingActivity.class :
+//                            type == 2 ? SectionCListingActivity.class :
+//                                    type == 3 ? Section00CRFCaseActivity.class :
+//                                            type == 4 ? Section01CRFCaseActivity.class :
+//                                                    type == 5 ? Section00CRFControlActivity.class :
+//                                                            type == 6 ? Section01CRFControlActivity.class
+//
+//                                                                    : SectionMImmunizeActivity.class);
 
         } else {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -406,8 +444,8 @@ public class MainActivity extends AppCompatActivity {
             alert.show();
 
         }
-    }
 
+    }
 
     public void openA(View v) {
         Intent iA = new Intent(this, SectionSListingActivity.class);

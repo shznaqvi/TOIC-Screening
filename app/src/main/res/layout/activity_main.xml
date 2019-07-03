@@ -140,13 +140,14 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:onClick="@{(v) -> callback.openForm(3)}"
-                    android:text="CASE REPORT FORM - SCREENING - CASE" />
+                    android:text="CASE REPORT FORM - Case" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
+                    android:visibility="gone"
                     android:onClick="@{(v) -> callback.openForm(4)}"
                     android:text="CASE REPORT FORM - ENROLLMENT - CASE" />
 
@@ -155,10 +156,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
-                    android:onClick="@{(v) -> callback.openForm(5)}"
-                    android:text="CASE REPORT FORM - SCREENING - CONTROL" />
+                    android:onClick="@{(v) -> callback.openForm(4)}"
+                    android:text="CASE REPORT FORM - CONTROL" />
 
                 <Button
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -171,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
-                    android:onClick="@{(v) -> callback.openForm(7)}"
+                    android:onClick="@{(v) -> callback.openForm(5)}"
                     android:text="HEALTH FACILITY IMMUNIZATION FORM" />
 
                 <Button

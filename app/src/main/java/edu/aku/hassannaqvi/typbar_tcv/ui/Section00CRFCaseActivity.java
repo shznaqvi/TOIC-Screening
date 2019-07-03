@@ -94,6 +94,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
 
         // Initialize db
         db = new DatabaseHelper(this);
+
     }
 
     public void BtnContinue() {

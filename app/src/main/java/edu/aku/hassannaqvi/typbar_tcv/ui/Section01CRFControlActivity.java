@@ -28,6 +28,8 @@ public class Section01CRFControlActivity extends AppCompatActivity {
     ActivitySection01CrfControlBinding bi;
     DatabaseHelper db;
 
+    int type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +84,8 @@ public class Section01CRFControlActivity extends AppCompatActivity {
 
         // Initialize db
         db = new DatabaseHelper(this);
+
+        type = getIntent().getIntExtra("type",0);
     }
 
 

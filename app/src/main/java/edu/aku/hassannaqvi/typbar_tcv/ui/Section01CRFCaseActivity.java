@@ -37,6 +37,8 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
     Map<String, HFContract> hfMap;
     List<String> hfName = new ArrayList<>(Arrays.asList("...."));
 
+    int type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,8 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
 
     private void setContentUI() {
         this.setTitle(R.string.CrfCase);
+
+        type = getIntent().getIntExtra("type",0);
 
         bi.tcvscad09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
