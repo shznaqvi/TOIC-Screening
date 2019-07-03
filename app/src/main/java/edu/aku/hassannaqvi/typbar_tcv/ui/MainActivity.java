@@ -35,6 +35,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Collection;

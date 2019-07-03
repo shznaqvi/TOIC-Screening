@@ -50,6 +50,18 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         //setListeners();
     }
 
+    //private void setListeners() {
+
+        /*bi.tcvscad09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscad09c.isChecked()) {
+                    ClearClass.ClearAllFields(bi.llcrfCase03, null);
+                }
+            }
+        });*/
+
     private void loadHFFromDB() {
         Collection<HFContract> allHF = db.getAllHF();
         if (allHF.size() == 0) return;
@@ -190,6 +202,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad18", bi.tcvscad18a.isChecked() ? "1" : bi.tcvscad18b.isChecked() ? "2" : bi.tcvscad18c.isChecked() ? "3" : bi.tcvscad18d.isChecked() ? "4" : "0");
         crfCase.put("tcvscad19", bi.tcvscad19a.isChecked() ? "1" : bi.tcvscad19b.isChecked() ? "2" : bi.tcvscad1997.isChecked() ? "97" : "0");
         crfCase.put("tcvscad20", bi.tcvscad20a.isChecked() ? "1" : bi.tcvscad20b.isChecked() ? "2" : bi.tcvscad2097.isChecked() ? "97" : "0");
+        crfCase.put("tcvscad21", bi.tcvscad21a.isChecked() ? "1" : bi.tcvscad21b.isChecked() ? "2" : bi.tcvscad21c.isChecked() ? "3" : bi.tcvscad21d.isChecked() ? "4" : bi.tcvscad21e.isChecked() ? "5" : bi.tcvscad21f.isChecked() ? "6" : bi.tcvscad2197.isChecked() ? "97" : "0");
 
         MainApp.fc.setsA(String.valueOf(crfCase));
 

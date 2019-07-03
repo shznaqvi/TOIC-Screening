@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -25,6 +26,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection00CrfCaseBinding;
+import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class Section00CRFCaseActivity extends AppCompatActivity {
@@ -44,7 +46,30 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         setContentUI();
         loadHFFromDB();
 
-        //setListeners();
+        setListeners();
+    }
+
+    private void setListeners() {
+
+        bi.tcvscab13.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscab13b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.llcrfCase01, null);
+                }
+            }
+        });
+
+        bi.tcvscab18.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (!bi.tcvscab18b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.llcrfCase02, null);
+                }
+            }
+        });
     }
 
     private void loadHFFromDB() {
