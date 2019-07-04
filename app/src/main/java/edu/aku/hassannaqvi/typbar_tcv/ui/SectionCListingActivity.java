@@ -84,8 +84,8 @@ public class SectionCListingActivity extends AppCompatActivity {
                     schoolMap = new HashMap<>();
 
                     for (SchoolContract school : schoolContract) {
-                        schoolMap.put(school.getSch_name().toUpperCase(), school);
-                        schNames.add(school.getSch_name().toUpperCase());
+                        schoolMap.put(school.getSch_name().toUpperCase() + "-" + school.getSch_code(), school);
+                        schNames.add(school.getSch_name().toUpperCase() + "-" + school.getSch_code());
                     }
 
                 } else {
@@ -96,6 +96,7 @@ public class SectionCListingActivity extends AppCompatActivity {
 
                 bi.tcvcl01.setText(null);
                 bi.tcvcl01.setAdapter(new ArrayAdapter<>(SectionCListingActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
+
             }
 
             @Override
@@ -114,11 +115,24 @@ public class SectionCListingActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 bi.childSec00.setVisibility(View.GONE);
                 bi.childSec00a.setVisibility(View.GONE);
+                settingSchLabels(null, null);
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+            }
+        });
 
+        bi.tcvcl01.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (schoolMap.get(bi.tcvcl01.getText().toString()) == null) {
+                    settingSchLabels(null, null);
+                    return;
+                }
+
+                settingSchLabels(schoolMap.get(bi.tcvcl01.getText().toString()).getSch_code(), schoolMap.get(bi.tcvcl01.getText().toString()).getSch_add());
             }
         });
 
@@ -138,6 +152,11 @@ public class SectionCListingActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void settingSchLabels(String schCode, String schAdd) {
+        bi.txtschcode.setText(schCode);
+        bi.txtschadd.setText(schAdd);
     }
 
     public void BtnCheckSchool() {
@@ -175,7 +194,6 @@ public class SectionCListingActivity extends AppCompatActivity {
 
         bi.childSec00.setVisibility(View.VISIBLE);
         bi.childSec00a.setVisibility(View.VISIBLE);
-
     }
 
     public void BtnContinue() {

@@ -143,8 +143,8 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
                         schoolMap = new HashMap<>();
 
                         for (SchoolContract school : schoolContract) {
-                            schoolMap.put(school.getSch_name().toUpperCase(), school);
-                            schNames.add(school.getSch_name().toUpperCase());
+                            schoolMap.put(school.getSch_name().toUpperCase() + "-" + school.getSch_code(), school);
+                            schNames.add(school.getSch_name().toUpperCase() + "-" + school.getSch_code());
                         }
 
                         bi.autoCompleteSName.setVisibility(View.VISIBLE);
@@ -165,6 +165,24 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
             }
         });
 
+        bi.autoCompleteSName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (schoolMap.get(bi.autoCompleteSName.getText().toString()) == null) {
+                    settingSchLabels(null, null);
+                    return;
+                }
+
+                settingSchLabels(schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_code(), schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_add());
+            }
+        });
+
+    }
+
+    private void settingSchLabels(String schCode, String schAdd) {
+        bi.txtschcode.setText(schCode);
+        bi.txtschadd.setText(schAdd);
     }
 
     public void BtnContinue() {
