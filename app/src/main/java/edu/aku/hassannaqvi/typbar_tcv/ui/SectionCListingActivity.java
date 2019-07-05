@@ -259,7 +259,7 @@ public class SectionCListingActivity extends AppCompatActivity {
         child.put("sch_code", schoolMap.get(bi.tcvcl01.getText().toString()).getSch_code());
         child.put("sch_add", schoolMap.get(bi.tcvcl01.getText().toString()).getSch_add());
         child.put("sch_type", schoolMap.get(bi.tcvcl01.getText().toString()).getSch_type());
-        child.put("tcvcl01", bi.tcvcl01.getText().toString());
+        child.put("tcvcl01", schoolMap.get(bi.tcvcl01.getText().toString()).getSch_name());
 
         child.put("tcvcl02", bi.tcvcl02.getText().toString());
         child.put("tcvcl21", bi.tcvcl21.getSelectedItem().toString()); //Newly added when the app is already on field

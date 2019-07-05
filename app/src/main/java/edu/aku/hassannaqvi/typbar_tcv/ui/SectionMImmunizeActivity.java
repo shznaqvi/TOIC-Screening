@@ -254,7 +254,7 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
                 child.put("sch_code", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_code());
                 child.put("sch_add", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_add());
                 child.put("tcvmi22", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_type());
-                child.put("tcvmi23", bi.autoCompleteSName.getText().toString());
+                child.put("tcvmi23", schoolMap.get(bi.autoCompleteSName.getText().toString()).getSch_name());
             } else {
                 child.put("tcvmi23Name", bi.tcvmi23Name.getText().toString());
                 child.put("tcvmi22", bi.tcvmi22.getSelectedItem().equals("Other") ? "96" : String.valueOf(bi.tcvmi22.getSelectedItemPosition()));
