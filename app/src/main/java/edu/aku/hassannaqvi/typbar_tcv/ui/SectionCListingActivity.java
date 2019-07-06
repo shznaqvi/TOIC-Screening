@@ -18,9 +18,9 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
@@ -58,7 +58,15 @@ public class SectionCListingActivity extends AppCompatActivity {
     }
 
     private void filledSpinners() {
-        bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Arrays.asList(MainApp.schTypes)));
+
+        List<String> temp_type = new ArrayList<>();
+
+        for (String stype : MainApp.schTypes) {
+            if (stype.equals("Other")) continue;
+            temp_type.add(stype);
+        }
+
+        bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, temp_type));
         bi.tcvcl21.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, MainApp.schClasses));
     }
 

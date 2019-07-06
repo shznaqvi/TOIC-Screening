@@ -129,7 +129,7 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
 
                 if (i != 0) {
 
-                    if (i > 3) {
+                    if (i > 4) {
                         bi.tcvmi23Name.setVisibility(View.VISIBLE);
                         bi.tcvmi23Name.setHint(bi.tcvmi22.getSelectedItem().toString() + " Name");
 
