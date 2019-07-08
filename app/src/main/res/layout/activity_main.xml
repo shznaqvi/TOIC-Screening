@@ -140,16 +140,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:onClick="@{(v) -> callback.openForm(3)}"
-                    android:text="CASE REPORT FORM - Case" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"
-                    android:onClick="@{(v) -> callback.openForm(4)}"
-                    android:text="CASE REPORT FORM - ENROLLMENT - CASE" />
+                    android:text="CASE REPORT FORM - Case"
+                    android:visibility="gone" />
 
                 <Button
                     android:layout_width="match_parent"
@@ -157,16 +149,26 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:onClick="@{(v) -> callback.openForm(4)}"
-                    android:text="CASE REPORT FORM - CONTROL" />
+                    android:text="CASE REPORT FORM - ENROLLMENT - CASE"
+                    android:visibility="gone" />
 
                 <Button
-                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="@{(v) -> callback.openForm(4)}"
+                    android:text="CASE REPORT FORM - CONTROL"
+                    android:visibility="gone" />
+
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:onClick="@{(v) -> callback.openForm(6)}"
-                    android:text="CASE REPORT FORM - ENROLLMENT - CONTROL" />
+                    android:text="CASE REPORT FORM - ENROLLMENT - CONTROL"
+                    android:visibility="gone" />
 
                 <Button
                     android:layout_width="match_parent"
