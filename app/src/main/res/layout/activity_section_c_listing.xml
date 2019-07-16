@@ -102,7 +102,7 @@
 
                         <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                            <TextView
+                            ;<TextView
                                 style="@style/i_textview"
                                 android:text="@string/tcvcl02" />
 
