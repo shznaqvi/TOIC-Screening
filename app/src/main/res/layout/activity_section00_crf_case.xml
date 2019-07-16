@@ -475,7 +475,7 @@
 
                             <EditText
                                 android:id="@+id/tcvscab16"
-                                style="@style/EditText"
+                                style="@style/EditText_number"
                                 android:hint="@string/tcvscab16" />
 
                         </LinearLayout>
