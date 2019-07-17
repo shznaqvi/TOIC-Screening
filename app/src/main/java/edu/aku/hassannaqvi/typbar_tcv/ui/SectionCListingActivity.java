@@ -309,6 +309,11 @@ public class SectionCListingActivity extends AppCompatActivity {
         if (!ValidatorClass.EmptyCheckingContainer(this, bi.childSec))
             return false;
 
+        if (bi.tcvcl03Ageb.isChecked()) {
+            if (Integer.valueOf(bi.tcvcl04y.getText().toString()) == 0 && Integer.valueOf(bi.tcvcl04m.getText().toString()) == 0)
+                return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvcl04y, "Days and Months can't be zero!!");
+        }
+
         if (!bi.tcvcl07.getText().toString().isEmpty()) {
             if (bi.tcvcl07.getText().toString().length() != 15)
                 return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvcl07, "Length is not accurate!!");
