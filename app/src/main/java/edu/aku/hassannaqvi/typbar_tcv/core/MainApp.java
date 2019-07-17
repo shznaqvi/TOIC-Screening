@@ -105,7 +105,7 @@ public class MainApp extends Application {
     public static String[] schClasses = new String[]{"....",
             "Playgroup", "KG-I", "KG-II", "Montessori-J", "Montessori-S", "Class-I", "Class-II",
             "Class-III", "Class-IV", "Class-V", "Class-VI", "Class-VII", "Class-VIII",
-            "Class-IX", "Class-X"
+            "Class-IX", "Class-X", "Other"
     };
 
     public static String childListing = "SECRET";
