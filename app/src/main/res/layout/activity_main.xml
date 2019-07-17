@@ -149,25 +149,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:onClick="@{(v) -> callback.openForm(4)}"
-                    android:text="CASE REPORT FORM - ENROLLMENT - CASE"
-                    android:visibility="visible" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:onClick="@{(v) -> callback.openForm(4)}"
                     android:text="CASE REPORT FORM - CONTROL"
-                    android:visibility="visible" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:onClick="@{(v) -> callback.openForm(6)}"
-                    android:text="CASE REPORT FORM - ENROLLMENT - CONTROL"
                     android:visibility="visible" />
 
                 <Button
