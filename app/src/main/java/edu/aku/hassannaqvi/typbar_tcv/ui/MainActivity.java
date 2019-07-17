@@ -35,8 +35,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import com.google.gson.Gson;
-
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -244,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
                             editorDownload.commit();
 
                             Toast.makeText(context, "New App downloaded!!", Toast.LENGTH_SHORT).show();
-                            bi.lblAppVersion.setText("HFA App New Version " + newVer + "  Downloaded.");
+                            bi.lblAppVersion.setText("Typbar App New Version " + newVer + "  Downloaded.");
 
                             ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
                             List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
@@ -320,10 +318,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private boolean permissiongrantedStuff() {
+        if (versionAppContract.getVersioncode() != null) {
+            if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
+                if (sharedPrefDownload.getBoolean("flag", true) && file.exists()) {
+                    showDialog(newVer, preVer);
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            Toast.makeText(this, "First Sync data!!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
     public void openForm(final int type) {
         LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
+
+                if (!permissiongrantedStuff()) return;
+
                 switch (type) {
                     case 1:
                         startActivity(new Intent(MainActivity.this, SectionSListingActivity.class));
@@ -408,16 +427,6 @@ public class MainActivity extends AppCompatActivity {
 
                 builder.show();
             }
-
-//            final Intent oF = new Intent(MainActivity.this,
-//                    type == 1 ? SectionSListingActivity.class :
-//                            type == 2 ? SectionCListingActivity.class :
-//                                    type == 3 ? Section00CRFCaseActivity.class :
-//                                            type == 4 ? Section01CRFCaseActivity.class :
-//                                                    type == 5 ? Section00CRFControlActivity.class :
-//                                                            type == 6 ? Section01CRFControlActivity.class
-//
-//                                                                    : SectionMImmunizeActivity.class);
 
         } else {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
