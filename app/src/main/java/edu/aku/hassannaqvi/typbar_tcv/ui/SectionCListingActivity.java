@@ -310,8 +310,8 @@ public class SectionCListingActivity extends AppCompatActivity {
             return false;
 
         if (bi.tcvcl03Ageb.isChecked()) {
-            if (Integer.valueOf(bi.tcvcl04y.getText().toString()) == 0 && Integer.valueOf(bi.tcvcl04m.getText().toString()) == 0)
-                return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvcl04y, "Days and Months can't be zero!!");
+            if (Integer.valueOf(bi.tcvcl04y.getText().toString()) == 0 && Integer.valueOf(bi.tcvcl04m.getText().toString()) < 6)
+                return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvcl04y, "Days and Months criteria not meet!!");
         }
 
         if (!bi.tcvcl07.getText().toString().isEmpty()) {
