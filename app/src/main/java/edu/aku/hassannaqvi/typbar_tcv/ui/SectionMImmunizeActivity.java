@@ -292,9 +292,9 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
             return false;
 
         if (bi.tcvmi03Ageb.isChecked()) {
-            if (Integer.valueOf(bi.tcvmi04y.getText().toString()) == 0 && Integer.valueOf(bi.tcvmi04m.getText().toString()) == 0) {
-                Toast.makeText(this, "Both Year and Month can't be zero!!", Toast.LENGTH_SHORT).show();
-                bi.tcvmi04m.setError("Both Year and Month can't be zero!!");
+            if (Integer.valueOf(bi.tcvmi04y.getText().toString()) == 0 && Integer.valueOf(bi.tcvmi04m.getText().toString()) < 6) {
+                Toast.makeText(this, "Both Year and Month criteria not meet!!", Toast.LENGTH_SHORT).show();
+                bi.tcvmi04m.setError("Both Year and Month criteria not meet!!");
                 return false;
             }
         }
