@@ -5,6 +5,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection00CrfCaseBinding;
+import edu.aku.hassannaqvi.typbar_tcv.other.CheckingIDCC;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
@@ -45,7 +49,6 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
 
         setContentUI();
         loadHFFromDB();
-
         setListeners();
     }
 
@@ -70,6 +73,20 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
                 }
             }
         });
+
+        bi.hfcode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i == 0) return;
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     private void loadHFFromDB() {
@@ -86,15 +103,16 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
     }
 
     private void filledSpinners(List<String> hfNames) {
+        bi.hfcode.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hfNames));
     }
 
     private void setContentUI() {
         this.setTitle(R.string.CrfCase);
-
-
         // Initialize db
         db = new DatabaseHelper(this);
 
+//        ACCESSING FILE FOR CASE
+        CheckingIDCC.creatingFile(this, MainApp.casecontrol);
     }
 
     public void BtnContinue() {
@@ -144,6 +162,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
 
         JSONObject crfCase = new JSONObject();
 
+        crfCase.put("hf_code", hfMap.get(bi.hfcode.getSelectedItem().toString()).getHfcode());
         crfCase.put("tcvscaa01", bi.tcvscaa01.getText().toString());
         crfCase.put("tcvscaa02", bi.tcvscaa02.getText().toString());
         crfCase.put("tcvscaa03", bi.tcvscaa03.getText().toString());

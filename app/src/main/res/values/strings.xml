@@ -157,7 +157,7 @@
     <string name="tcvscab215"> Ceftriaxone </string>
     <string name="tcvscab216"> other </string>
     <string name="tcvscab22"> کیا مریض یا والدین  مطالعہ میں  شمو لیت کے لیے  رضا مند ہے ؟ </string>
-    <string name="tcvscabh22"> اگر اوپر دیے گے سوالات (22،11،10،9اور15 یا20)کے جوابات"ہاں" ہیں تو مریض  مطالعہ میں شرکت کے لئے اہل ہے   مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
+    <string name="tcvscabh22"> اگر اوپر دیے گے سوالات (22،11،10،9اور15 یا20)کے جوابات ہاں ہیں تو مریض  مطالعہ میں شرکت کے لئے اہل ہے \n مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
     <string name="tcvscab23"> کیس آئی ڈی : </string>
 
     <string name="tcvscach"> سیکشن :2 </string>

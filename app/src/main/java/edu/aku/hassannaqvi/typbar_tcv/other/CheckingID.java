@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.typbar_tcv.core;
+package edu.aku.hassannaqvi.typbar_tcv.other;
 
 import android.content.Context;
 import android.os.Environment;
@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 
 public final class CheckingID {
 

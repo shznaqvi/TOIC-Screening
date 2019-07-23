@@ -110,6 +110,7 @@ public class MainApp extends Application {
 
     public static String childListing = "SECRET";
     public static String massImunization = "SECRETMI";
+    public static String casecontrol = "SECRETCC";
     public static String CHILDLISTINGTYPE = "cl";
     public static String SCHOOLLISTINGTYPE = "sl";
     public static String MASSIMMUNIZATIONTYPE = "mi";
