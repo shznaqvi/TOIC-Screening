@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.typbar_tcv.core;
+package edu.aku.hassannaqvi.typbar_tcv.other;
 
 import android.content.Context;
 import android.os.Environment;
@@ -10,9 +10,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
+
 public final class CheckingID {
 
-    public static final boolean checkFile(Context mContext) {
+    public static final boolean checkFile(Context mContext, String fName) {
 
         String DirectoryName = Environment.getExternalStorageDirectory() + File.separator + DatabaseHelper.PROJECT_NAME;
 
@@ -23,7 +25,7 @@ public final class CheckingID {
         }
         if (success) {
 
-            File idFile = new File(folder, "SECRET");
+            File idFile = new File(folder, fName);
 
             if (!idFile.exists()) {
                 try {
@@ -42,13 +44,13 @@ public final class CheckingID {
         return false;
     }
 
-    public static final String accessingFile(String tagID, boolean increment) {
+    public static final String accessingFile(String tagID, String fName, boolean increment) {
         try {
             String fileName = Environment.getExternalStorageDirectory()
                     + File.separator
                     + DatabaseHelper.PROJECT_NAME
                     + File.separator
-                    + "SECRET";
+                    + fName;
             String ID = "";
             tagID = tagID != null ? tagID : "";
             BufferedReader reader = new BufferedReader(new FileReader(fileName));

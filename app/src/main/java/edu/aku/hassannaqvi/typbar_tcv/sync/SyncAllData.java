@@ -24,6 +24,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
+import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 
 
 /**
@@ -71,90 +72,99 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
 
     private String downloadUrl(Class<?> contractClass) {
         String line = "No Response";
-
+        HttpURLConnection connection = null;
         Collection<?> DBData = dbData; // pass data that's coming from db
 
         Log.d(TAG, String.valueOf(DBData.size()));
 
         if (DBData.size() > 0) {
 
-            HttpURLConnection connection = null;
-            try {
-                String request = url;
+            for (String hostItem : MainApp.HOST) {
 
-                URL url = new URL(request);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
-                int HttpResult = connection.getResponseCode();
-                if (HttpResult == HttpURLConnection.HTTP_OK) {
-                    JSONArray jsonSync = new JSONArray();
+                try {
+                    String request = hostItem + url;
+
+                    URL url = new URL(request);
                     connection = (HttpURLConnection) url.openConnection();
-
-                    connection.setDoOutput(true);
-                    connection.setDoInput(true);
-                    connection.setInstanceFollowRedirects(false);
-                    connection.setRequestMethod("POST");
-                    connection.setRequestProperty("Content-Type", "application/json");
-                    connection.setRequestProperty("charset", "utf-8");
-                    connection.setUseCaches(false);
                     connection.connect();
+                    int HttpResult = connection.getResponseCode();
+                    if (HttpResult == HttpURLConnection.HTTP_OK) {
+                        JSONArray jsonSync = new JSONArray();
+                        connection = (HttpURLConnection) url.openConnection();
 
-                    DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+                        connection.setDoOutput(true);
+                        connection.setDoInput(true);
+                        connection.setInstanceFollowRedirects(false);
+                        connection.setRequestMethod("POST");
+                        connection.setRequestProperty("Content-Type", "application/json");
+                        connection.setRequestProperty("charset", "utf-8");
+                        connection.setUseCaches(false);
+                        connection.connect();
 
-                    try {
-                        while (contractClass != null) {
-                            for (Method method : contractClass.getDeclaredMethods()) {
-                                String methodName = method.getName();
-                                if (methodName.equals("toJSONObject")) {
-                                    for (Object fc : DBData) {
-                                        jsonSync.put(fc.getClass().getMethod(methodName).invoke(fc));
+                        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+
+                        try {
+                            while (contractClass != null) {
+                                for (Method method : contractClass.getDeclaredMethods()) {
+                                    String methodName = method.getName();
+                                    if (methodName.equals("toJSONObject")) {
+                                        for (Object fc : DBData) {
+                                            jsonSync.put(fc.getClass().getMethod(methodName).invoke(fc));
+                                        }
+                                        break;
                                     }
-                                    break;
                                 }
+                                break;
                             }
-                            break;
+
+                        } catch (NoSuchMethodException e) {
+                            e.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (InvocationTargetException e) {
+                            e.printStackTrace();
                         }
 
-                    } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
+                        wr.writeBytes(jsonSync.toString().replace("\uFEFF", "") + "\n");
+                        wr.flush();
+
+
+                        BufferedReader br = new BufferedReader(new InputStreamReader(
+                                connection.getInputStream(), StandardCharsets.UTF_8));
+                        StringBuffer sb = new StringBuffer();
+
+                        while ((line = br.readLine()) != null) {
+                            sb.append(line + "\n");
+                        }
+                        br.close();
+
+                        System.out.println("" + sb.toString());
+                        return sb.toString();
+                    } else {
+                        System.out.println(connection.getResponseMessage());
+                        return connection.getResponseMessage();
                     }
-
-                    wr.writeBytes(jsonSync.toString().replace("\uFEFF", "") + "\n");
-                    wr.flush();
-
-
-                    BufferedReader br = new BufferedReader(new InputStreamReader(
-                            connection.getInputStream(), StandardCharsets.UTF_8));
-                    StringBuffer sb = new StringBuffer();
-
-                    while ((line = br.readLine()) != null) {
-                        sb.append(line + "\n");
-                    }
-                    br.close();
-
-                    System.out.println("" + sb.toString());
-                    return sb.toString();
-                } else {
-                    System.out.println(connection.getResponseMessage());
-                    return connection.getResponseMessage();
+                } catch (MalformedURLException e) {
+//                    e.printStackTrace();
+                    continue;
+                } catch (IOException e) {
+//                    e.printStackTrace();
+                    continue;
                 }
-            } catch (MalformedURLException e) {
+                /*finally {
+                    if (connection != null)
+                        connection.disconnect();
+                }*/
 
-                e.printStackTrace();
-            } catch (IOException e) {
-
-                e.printStackTrace();
-            } finally {
-                if (connection != null)
-                    connection.disconnect();
             }
+
         } else {
             return "No new records to sync";
         }
+
+        if (connection != null)
+            connection.disconnect();
+
         return line;
     }
 

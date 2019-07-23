@@ -15,10 +15,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.TehsilsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UsersContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 
@@ -32,9 +33,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
     private String TAG = "";
     private Context mContext;
     private ProgressDialog pd;
-
     private String syncClass;
-
 
     public GetAllData(Context context, String syncClass) {
         mContext = context;
@@ -53,51 +52,60 @@ public class GetAllData extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... args) {
+        StringBuilder result = null;
 
-        StringBuilder result = new StringBuilder();
+        for (String hostItem : MainApp.HOST) {
 
-        URL url = null;
-        try {
-            switch (syncClass) {
-                case "User":
-                    url = new URL(MainApp._HOST_URL + UsersContract.UsersTable._URI);
-                    break;
-                case "Tehsil":
-                    url = new URL(MainApp._HOST_URL + TehsilsContract.TehsilsTable._URI);
-                    break;
-                case "UC":
-                    url = new URL(MainApp._HOST_URL + UCsContract.UCsTable._URI);
-                    break;
-                case "School":
-                    url = new URL(MainApp._HOST_URL + SchoolContract.SchoolTable._URI);
-                    break;
-            }
-
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(100000 /* milliseconds */);
-            urlConnection.setConnectTimeout(150000 /* milliseconds */);
-            Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
-            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    Log.i(TAG, syncClass + " In: " + line);
-                    result.append(line);
+            URL url = null;
+            try {
+                switch (syncClass) {
+                    case "User":
+                        url = new URL(hostItem + UsersContract.UsersTable._URI);
+                        break;
+                    case "HF":
+                        url = new URL(hostItem + HFContract.HFTable._URI);
+                        break;
+                    case "UC":
+                        url = new URL(hostItem + UCsContract.UCsTable._URI);
+                        break;
+                    case "School":
+                        url = new URL(hostItem + SchoolContract.SchoolTable._URI);
+                        break;
+                    case "appversion":
+                        url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URL);
+                        break;
                 }
+
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(100000 /* milliseconds */);
+                urlConnection.setConnectTimeout(150000 /* milliseconds */);
+                Log.d(TAG, "doInBackground: " + urlConnection.getResponseCode());
+
+                result = new StringBuilder();
+
+                if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        Log.i(TAG, syncClass + " In: " + line);
+                        result.append(line);
+                    }
+
+                    return result.toString();
+                }
+            } catch (java.net.SocketTimeoutException e) {
+                continue;
+            } catch (java.io.IOException e) {
+                continue;
             }
-        } catch (java.net.SocketTimeoutException e) {
-            return null;
-        } catch (java.io.IOException e) {
-            return null;
-        } finally {
-            urlConnection.disconnect();
         }
 
+        urlConnection.disconnect();
 
-        return result.toString();
+        return result == null ? null : result.toString();
     }
 
     @Override
@@ -115,14 +123,17 @@ public class GetAllData extends AsyncTask<String, String, String> {
                         case "User":
                             db.syncUser(jsonArray);
                             break;
-                        case "Tehsil":
-                            db.syncTehsils(jsonArray);
+                        case "HF":
+                            db.syncHF(jsonArray);
                             break;
                         case "UC":
                             db.syncUCs(jsonArray);
                             break;
                         case "School":
                             db.syncSchools(jsonArray);
+                            break;
+                        case "appversion":
+                            MainApp.savingAppVersion(mContext, jsonArray);
                             break;
                     }
 

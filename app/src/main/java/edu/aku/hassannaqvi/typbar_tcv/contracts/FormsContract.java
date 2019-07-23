@@ -27,7 +27,6 @@ public class FormsContract {
     private String sB = ""; // sB
     private String sC = ""; //
     private String sD = "";
-
     private String gpsLat = "";
     private String gpsLng = "";
     private String gpsDT = "";
@@ -197,7 +196,6 @@ public class FormsContract {
         this.sA = sA;
     }
 
-
     public String getFormtype() {
         return formtype;
     }
@@ -331,5 +329,8 @@ public class FormsContract {
 
         public static String _URL1 = "forms.php";
         public static String _URL2 = "forms_mi.php";
+        public static String _URL3 = "crf_mi.php";
+        public static String _URL4 = "crf_sca.php";
+        public static String _URL5 = "crf_scl.php";
     }
 }

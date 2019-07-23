@@ -243,10 +243,10 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
-
             </LinearLayout>
 
             <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
+
             <LinearLayout
                 style="@style/linearlayout_view"
                 android:layout_marginTop="30dp"

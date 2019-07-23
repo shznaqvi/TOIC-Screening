@@ -60,7 +60,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.typbar_tcv.R;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.TehsilsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
@@ -85,7 +85,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     ArrayAdapter<String> dataAdapter;
 
     ArrayList<String> lablesTalukas;
-    Collection<TehsilsContract> TalukasList;
+    Collection<HFContract> TalukasList;
     Map<String, String> talukasMap;
 
     ArrayList<String> lablesUCs;
@@ -148,7 +148,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     .getPackageManager()
                     .getPackageInfo(packageName, 0)
                     .versionName;
-            txtinstalldate.setText("Ver. " + MainApp.versionName + "." + String.valueOf(MainApp.versionCode) + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(installedOn)) + " )");
+            txtinstalldate.setText("Ver. " + MainApp.versionName + "." + MainApp.versionCode + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(installedOn)) + " )");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -575,6 +575,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     new GetAllData(mContext, "User").execute();
                     Toast.makeText(mContext, "Sync UCs", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "UC").execute();
+                    Toast.makeText(mContext, "Sync HF", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "HF").execute();
+                    Toast.makeText(mContext, "Sync App version", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "appversion").execute();
                 }
             });
 

@@ -21,7 +21,7 @@
             android:layout_gravity="center_horizontal"
             android:contentDescription="Aga khan LOGO"
             android:paddingTop="73dp"
-            android:src="@drawable/agakhan" />
+            android:src="@drawable/agakhannew" />
 
         <TextView
             android:id="@+id/fullscreen_content"

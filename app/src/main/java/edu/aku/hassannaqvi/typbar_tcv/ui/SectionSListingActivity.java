@@ -94,7 +94,7 @@ public class SectionSListingActivity extends AppCompatActivity {
                         ArrayList<String> schNames = new ArrayList<>();
                         /*schNames.add("....");*/
 
-                        ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvsl00.getSelectedItemPosition()));
+                        ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvsl00.getSelectedItemPosition()), "1");
                         schoolMap = new HashMap<>();
 
                         for (SchoolContract school : schoolContract) {
@@ -168,7 +168,7 @@ public class SectionSListingActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("sl");
+        MainApp.fc.setFormtype(MainApp.SCHOOLLISTINGTYPE);
 
         JSONObject sA = new JSONObject();
 //        sA.put("tcvsl00", bi.tcvsl00.getSelectedItem());

@@ -33,6 +33,19 @@
             android:textAlignment="center"
             android:textStyle="bold" />
 
+
+        <TextView
+            android:id="@+id/lblAppVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/lightOrange"
+            android:textAlignment="center"
+            android:textColor="@color/darkRed"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/testing"
             android:layout_width="match_parent"
@@ -119,7 +132,33 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:onClick="@{(v) -> callback.openForm(2)}"
-                    android:text="CHILD LISTING FORM" />
+                    android:text="SCHOOL IMMUNIZATION FORM" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="@{(v) -> callback.openForm(3)}"
+                    android:text="CASE REPORT FORM - Case"
+                    android:visibility="gone" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="@{(v) -> callback.openForm(4)}"
+                    android:text="CASE REPORT FORM - CONTROL"
+                    android:visibility="gone" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:onClick="@{(v) -> callback.openForm(5)}"
+                    android:text="CAMP / HEALTH FACILITY IMMUNIZATION FORM" />
 
                 <Button
                     android:layout_width="match_parent"
@@ -172,7 +211,6 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
                         android:background="#D60000"
-                        android:onClick="updateApp"
                         android:text="Update App"
                         android:visibility="gone" />
 
@@ -194,6 +232,7 @@
                         android:onClick="testGPS"
                         android:text="Test GPS Coordinates"
                         android:visibility="gone" />
+
                 </LinearLayout>
 
 

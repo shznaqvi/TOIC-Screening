@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.edittextpicker.aliazaz.EditTextPicker;
+
 import java.lang.reflect.Field;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
@@ -67,7 +69,6 @@ public abstract class ValidatorClass {
                             break;
                         }
                     }
-
                 }
             }
         }
@@ -113,7 +114,6 @@ public abstract class ValidatorClass {
             return true;
         }
     }
-
 
     public static boolean RangeTextBox(Context context, EditText txt, double min, double max, String msg, String type) {
 
@@ -204,7 +204,6 @@ public abstract class ValidatorClass {
     }
 
     public static boolean EmptyCheckBox(Context context, LinearLayout container, CheckBox cbx, EditText txt, String msg) {
-
         Boolean flag = false;
         for (int i = 0; i < container.getChildCount(); i++) {
             View v = container.getChildAt(i);
@@ -283,9 +282,24 @@ public abstract class ValidatorClass {
                     return false;
                 }
             } else if (view instanceof EditText) {
-                if (!EmptyTextBox(context, (EditText) view, getString(context, getIDComponent(view)))) {
-                    return false;
+
+                if (view instanceof EditTextPicker) {
+
+                    if (!((EditTextPicker) view).isEmptyTextBox())
+                        return false;
+
+                    if (!((EditTextPicker) view).isRangeTextValidate())
+                        return false;
+
+                    if (!((EditTextPicker) view).isTextEqualToPattern())
+                        return false;
+
+                } else {
+                    if (!EmptyTextBox(context, (EditText) view, getString(context, getIDComponent(view)))) {
+                        return false;
+                    }
                 }
+
             } else if (view instanceof LinearLayout) {
                 if (!EmptyCheckingContainer(context, (LinearLayout) view)) {
                     return false;
