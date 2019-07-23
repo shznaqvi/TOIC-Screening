@@ -116,6 +116,9 @@ public class MainApp extends Application {
     public static String MASSIMMUNIZATIONTYPE = "mi";
     public static String CRFCase = "sca";
     public static String CRFControl = "scl";
+    public static String HF = "hfType";
+    public static String CAMPHF = "chf";
+    public static String SCHOOLHF = "shf";
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 

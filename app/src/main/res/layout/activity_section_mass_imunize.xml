@@ -30,6 +30,7 @@
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                         <TextView
+                            android:id="@+id/tcvmi01txt"
                             style="@style/i_textview"
                             android:text="@string/tcvmi01" />
 

@@ -29,7 +29,7 @@ public final class CheckingIDCC {
 
             if (!idFile.exists()) {
                 try {
-                    writeInFile(idFile, "CASE\n\n\nCONTROL");
+                    writeInFile(idFile, new StringBuffer().append("CASE\n\n\nCONTROL"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -58,22 +58,19 @@ public final class CheckingIDCC {
             File idFile = new File(fileName);
 
             while ((line = reader.readLine()) != null) {
-                lineBuffer.append(line)
+                lineBuffer.append(line);
             }
 
-            for (int i = 1; i < 7; i++) {
+            for (int i = 0; i < 6; i++) {
                 if (i == getLineInFile(type)) {
                     if (reader.readLine() == null) {
-                        lineBuffer.append(tagID + "-1");
+                        lineBuffer.appendCodePoint(i).append(tagID + "-000000");
                         writeInFile(idFile, lineBuffer);
                         break;
                     }
                 } else
-                    lineBuffer.append(reader.readLine());
-
-
+                    reader.readLine();
             }
-
 
             if (increment)
                 return incrementInFile(idFile, line);
@@ -90,13 +87,13 @@ public final class CheckingIDCC {
     private static int getLineInFile(String type) {
         switch (type) {
             case "cas":
-                return 2;
+                return 1;
             case "cae":
-                return 3;
+                return 2;
             case "cls":
-                return 5;
+                return 4;
             case "cle":
-                return 6;
+                return 5;
             default:
                 return 0;
         }
@@ -116,7 +113,7 @@ public final class CheckingIDCC {
         int lastCont = Integer.valueOf(idLength[idLength.length - 1]) + 1;
         String subStr = fileID.substring(0, fileID.length() - idLength[idLength.length - 1].length());
 
-        writeInFile(idFile, subStr + lastCont);
+//        writeInFile(idFile, subStr + lastCont);
 
         return subStr + lastCont;
     }

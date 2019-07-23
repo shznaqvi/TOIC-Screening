@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     AlertDialog.Builder builder;
+    AlertDialog dialog;
     private Boolean exit = false;
     private String rSumText = "";
     DatabaseHelper db;
@@ -72,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding bi;
     VersionAppContract versionAppContract;
     String m_Text = "", preVer = "", newVer = "";
-    Class<?> classTo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         builder = new AlertDialog.Builder(MainActivity.this);
-        final AlertDialog dialog = builder.create();
+        dialog = builder.create();
 
         ImageView img = new ImageView(getApplicationContext());
         img.setImageResource(R.drawable.tagimg);
@@ -357,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 3:
                     case 4:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder = new AlertDialog.Builder(this);
                         builder.setTitle("Please Select");
                         builder.setMessage("Where you want to go?");
                         builder.setIcon(android.R.drawable.ic_dialog_info);
@@ -379,11 +379,35 @@ public class MainActivity extends AppCompatActivity {
                                 dialogInterface.dismiss();
                             }
                         });
-                        AlertDialog dialog = builder.create();
+                        dialog = builder.create();
                         dialog.show();
                         break;
                     case 5:
-                        startActivity(new Intent(MainActivity.this, SectionMImmunizeActivity.class));
+
+                        builder = new AlertDialog.Builder(this);
+                        builder.setTitle("Please Select");
+                        builder.setMessage("Where you want to go?");
+                        builder.setIcon(android.R.drawable.ic_dialog_info);
+                        builder.setNegativeButton("Camp-HF Immunization", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                startActivity(new Intent(MainActivity.this, SectionMImmunizeActivity.class).putExtra(MainApp.HF, MainApp.CAMPHF));
+                                dialogInterface.dismiss();
+
+
+                            }
+                        });
+                        builder.setPositiveButton("School-HF Immunization", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                startActivity(new Intent(MainActivity.this, SectionMImmunizeActivity.class).putExtra(MainApp.HF, MainApp.SCHOOLHF));
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        dialog = builder.create();
+                        dialog.show();
                         break;
 
 

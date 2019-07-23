@@ -511,6 +511,7 @@
 
     <!--Mass Imunization-->
     <string name="sec_mi">HEALTH FACILITY IMMUNIZATION FORM</string>
+    <string name="sec_mi02">CAMP - HEALTH FACILITY IMMUNIZATION FORM</string>
     <string name="tcvmi00"> School Type </string>
     <string name="tcvmi01"> Health Facility </string>
     <string name="tcvmi02"> Name of Child </string>

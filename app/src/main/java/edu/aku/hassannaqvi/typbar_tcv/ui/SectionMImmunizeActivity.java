@@ -41,6 +41,7 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
     Map<String, HFContract> hfMap;
     Map<String, SchoolContract> schoolMap;
     List<String> hfName = new ArrayList<>(Arrays.asList("...."));
+    String campaign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,9 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
     }
 
     private void setContentUI() {
-        this.setTitle(R.string.sec_mi);
+        campaign = getIntent().getStringExtra(MainApp.HF);
+        this.setTitle(campaign.equals(MainApp.SCHOOLHF) ? R.string.sec_mi : R.string.sec_mi02);
+        bi.tcvmi01txt.setText(campaign.equals(MainApp.CAMPHF) ? "Catchment Area" : bi.tcvmi01txt.getText().toString());
 
         // Initialize db
         db = new DatabaseHelper(this);
@@ -281,6 +284,8 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
             child.put("tcvmi20", new SimpleDateFormat("HH:MM:SS").format(new Date().getTime()));
         } else
             child.put("tcvmi18", "");
+
+        child.put("tcvmi25", campaign);
 
 
         MainApp.fc.setsA(String.valueOf(child));
