@@ -112,7 +112,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
 //        ACCESSING FILE FOR CASE
-        CheckingIDCC.creatingFile(this, MainApp.casecontrol);
+        CheckingIDCC.accessingFile(this, getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null), MainApp.casecontrol, "", "", false);
     }
 
     public void BtnContinue() {

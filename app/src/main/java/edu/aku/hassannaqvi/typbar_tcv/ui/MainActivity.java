@@ -50,7 +50,6 @@ import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.typbar_tcv.get.GetAllData;
-import edu.aku.hassannaqvi.typbar_tcv.other.CheckingIDCC;
 import edu.aku.hassannaqvi.typbar_tcv.sync.SyncAllData;
 
 public class MainActivity extends AppCompatActivity {
@@ -221,9 +220,6 @@ public class MainActivity extends AppCompatActivity {
 
 //        Updating App
         updatingApp();
-
-//        CREATING FILE FOR CASE & CONTROL
-        CheckingIDCC.creatingFile(this, MainApp.casecontrol);
 
     }
 

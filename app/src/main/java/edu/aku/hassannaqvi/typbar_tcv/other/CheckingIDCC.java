@@ -14,66 +14,33 @@ import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 
 public final class CheckingIDCC {
 
-    public static final boolean creatingFile(Context mContext, String fName) {
+    private static final String DirectoryName = Environment.getExternalStorageDirectory() + File.separator + DatabaseHelper.PROJECT_NAME;
 
-        String DirectoryName = Environment.getExternalStorageDirectory() + File.separator + DatabaseHelper.PROJECT_NAME;
-
-        File folder = new File(DirectoryName);
-        boolean success = true;
-        if (!folder.exists()) {
-            success = folder.mkdirs();
-        }
-        if (success) {
-
-            File idFile = new File(folder, fName);
-
-            if (!idFile.exists()) {
-                try {
-                    writeInFile(idFile, new StringBuffer().append("CASE\n\n\nCONTROL"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            return true;
-
-        } else {
-            Toast.makeText(mContext, "Can't create folder!!", Toast.LENGTH_SHORT).show();
-        }
-
-        return false;
-    }
-
-    public static final String accessingFile(String tagID, String fName, String type, boolean increment) {
+    public static final String accessingFile(Context mContext, String tagID, String fName, String type, String autoCode, boolean increment) {
         try {
-            String fileName = Environment.getExternalStorageDirectory()
-                    + File.separator
-                    + DatabaseHelper.PROJECT_NAME
+
+            File idFile = creatingFile(mContext, fName);
+
+            String fileName = DirectoryName
                     + File.separator
                     + fName;
             String line = "";
             StringBuffer lineBuffer = new StringBuffer();
-            tagID = tagID != null ? tagID : "";
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
-            File idFile = new File(fileName);
 
-            while ((line = reader.readLine()) != null) {
-                lineBuffer.append(line);
-            }
+            while ((line = reader.readLine()) == null) {
+                lineBuffer.append("CASE");
+                lineBuffer.append(tagID + "-000000");
+                lineBuffer.append(tagID + "-000000");
+                lineBuffer.append("CONTROL");
+                lineBuffer.append(tagID + "-000000");
+                lineBuffer.append(tagID + "-000000");
 
-            for (int i = 0; i < 6; i++) {
-                if (i == getLineInFile(type)) {
-                    if (reader.readLine() == null) {
-                        lineBuffer.appendCodePoint(i).append(tagID + "-000000");
-                        writeInFile(idFile, lineBuffer);
-                        break;
-                    }
-                } else
-                    reader.readLine();
+                writeInFile(idFile, lineBuffer.toString().getBytes().toString());
             }
 
             if (increment)
-                return incrementInFile(idFile, line);
+                return incrementInFile(idFile, line, tagID, getLineInFile(type), autoCode);
 
             return line;
 
@@ -82,6 +49,24 @@ public final class CheckingIDCC {
 
             return "";
         }
+    }
+
+    private static final File creatingFile(Context mContext, String fName) {
+
+        File folder = new File(DirectoryName);
+        boolean success = true;
+        if (!folder.exists()) {
+            success = folder.mkdirs();
+        }
+        if (success) {
+
+            return new File(folder, fName);
+
+        } else {
+            Toast.makeText(mContext, "Can't create folder!!", Toast.LENGTH_SHORT).show();
+        }
+
+        return new File(DirectoryName + File.separator + fName);
     }
 
     private static int getLineInFile(String type) {
@@ -99,21 +84,21 @@ public final class CheckingIDCC {
         }
     }
 
-    private static final void writeInFile(File file, StringBuffer id) throws IOException {
+    private static final void writeInFile(File file, String line) throws IOException {
         FileWriter writer = new FileWriter(file);
 
-        writer.write(id.toString().getBytes().toString());
+        writer.write(line);
 
         writer.flush();
         writer.close();
     }
 
-    private static final String incrementInFile(File idFile, String fileID) throws IOException {
-        String[] idLength = fileID.split("-");
+    private static final String incrementInFile(File idFile, String fileLine, String tagID, int type, String autoCode) throws IOException {
+        String[] idLength = fileLine.split("-");
         int lastCont = Integer.valueOf(idLength[idLength.length - 1]) + 1;
-        String subStr = fileID.substring(0, fileID.length() - idLength[idLength.length - 1].length());
+        String subStr = fileLine.substring(0, fileLine.length() - idLength[idLength.length - 1].length());
+        writeInFile(idFile, subStr + lastCont);
 
-//        writeInFile(idFile, subStr + lastCont);
 
         return subStr + lastCont;
     }
