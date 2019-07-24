@@ -285,6 +285,7 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
         } else
             child.put("tcvmi18", "");
 
+        //campaign flag
         child.put("tcvmi25", campaign);
 
 
