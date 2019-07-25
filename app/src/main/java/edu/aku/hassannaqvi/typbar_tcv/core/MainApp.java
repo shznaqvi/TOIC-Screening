@@ -108,17 +108,22 @@ public class MainApp extends Application {
             "Class-IX", "Class-X", "Other"
     };
 
-    public static String childListing = "SECRET";
-    public static String massImunization = "SECRETMI";
-    public static String casecontrol = "SECRETCC";
-    public static String CHILDLISTINGTYPE = "cl";
-    public static String SCHOOLLISTINGTYPE = "sl";
-    public static String MASSIMMUNIZATIONTYPE = "mi";
-    public static String CRFCase = "sca";
-    public static String CRFControl = "scl";
-    public static String HF = "hfType";
-    public static String CAMPHF = "chf";
-    public static String SCHOOLHF = "shf";
+    public static final String childListing = "SECRET";
+    public static final String massImunization = "SECRETMI";
+    public static final String casecontrol = "SECRETCC";
+    public static final String CHILDLISTINGTYPE = "cl";
+    public static final String SCHOOLLISTINGTYPE = "sl";
+    public static final String MASSIMMUNIZATIONTYPE = "mi";
+    public static final String CRFCase = "sca";
+    public static final String CRFControl = "scl";
+    public static final String HF = "hfType";
+    public static final String CAMPHF = "chf";
+    public static final String SCHOOLHF = "shf";
+
+    public static final String CASESCR = "cas";
+    public static final String CASEID = "caid";
+    public static final String CONTROLSCR = "cls";
+    public static final String CONTROLID = "clid";
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 

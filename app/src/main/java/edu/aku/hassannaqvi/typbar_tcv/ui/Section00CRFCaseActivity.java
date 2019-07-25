@@ -35,10 +35,11 @@ import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class Section00CRFCaseActivity extends AppCompatActivity {
 
-    ActivitySection00CrfCaseBinding bi;
-    DatabaseHelper db;
-    Map<String, HFContract> hfMap;
-    List<String> hfName = new ArrayList<>(Arrays.asList("...."));
+    private ActivitySection00CrfCaseBinding bi;
+    private DatabaseHelper db;
+    private Map<String, HFContract> hfMap;
+    private List<String> hfName = new ArrayList<>(Arrays.asList("...."));
+    private String screenID = "", caseID = "", tagID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,33 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i == 0) return;
 
+                if (screenID.equals("")) {
+                    // ACCESSING SCREEN FOR CASE
+                    screenID = CheckingIDCC.accessingFile(Section00CRFCaseActivity.this, tagID
+                            , MainApp.casecontrol
+                            , MainApp.CASESCR
+                            , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "1"
+                            , false
+                    );
 
+                    // ACCESSING ID FOR CASE
+                    caseID = CheckingIDCC.accessingFile(Section00CRFCaseActivity.this, tagID
+                            , MainApp.casecontrol
+                            , MainApp.CASEID
+                            , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "4"
+                            , true
+                    );
+
+                } else {
+                    String[] screenIDS = screenID.split("-");
+                    screenID = screenID.replace(screenIDS[screenIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
+
+                    String[] caseIDS = screenID.split("-");
+                    caseID = caseID.replace(caseIDS[caseIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
+                }
+
+                bi.tcvscaa07.setText(screenID);
+                bi.tcvscab23.setText(caseID);
             }
 
             @Override
@@ -110,9 +137,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         this.setTitle(R.string.CrfCase);
         // Initialize db
         db = new DatabaseHelper(this);
-
-//        ACCESSING FILE FOR CASE
-        CheckingIDCC.accessingFile(this, getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null), MainApp.casecontrol, "", "", false);
+        tagID = getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null);
     }
 
     public void BtnContinue() {
@@ -126,6 +151,24 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             } else {
+
+//              INCREMENT SCREEN ID FOR CASE
+                CheckingIDCC.accessingFile(Section00CRFCaseActivity.this, tagID
+                        , MainApp.casecontrol
+                        , MainApp.CASESCR
+                        , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "1"
+                        , true
+                );
+
+//              INCREMENT CASE ID FOR CASE
+                CheckingIDCC.accessingFile(Section00CRFCaseActivity.this, tagID
+                        , MainApp.casecontrol
+                        , MainApp.CASEID
+                        , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "4"
+                        , true
+                );
+
+
                 startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
             }
 
@@ -151,7 +194,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
         MainApp.fc = new FormsContract();
-        MainApp.fc.setDevicetagID(getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null));
+        MainApp.fc.setDevicetagID(tagID);
         MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
         MainApp.fc.setUser(MainApp.userName);
         MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
