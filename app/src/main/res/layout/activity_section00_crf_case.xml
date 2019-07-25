@@ -684,7 +684,8 @@
                                 <EditText
                                     android:id="@+id/tcvscab176x"
                                     style="@style/EditText"
-                                    android:hint="@string/tcvscab176" />
+                                    android:hint="@string/tcvscab176"
+                                    android:visibility='@{tcvscab176a.checked ? View.VISIBLE : View.GONE}'/>
 
                             </LinearLayout>
 
@@ -953,7 +954,8 @@
                                 <EditText
                                     android:id="@+id/tcvscab216x"
                                     style="@style/EditText"
-                                    android:hint="@string/tcvscab216" />
+                                    android:hint="@string/tcvscab216"
+                                    android:visibility='@{tcvscab216a.checked ? View.VISIBLE : View.GONE }'/>
 
                             </LinearLayout>
 
@@ -991,7 +993,8 @@
 
                     <TextView
                         style="@style/textview_fm_lst_h"
-                        android:text="@string/tcvscabh22" />
+                        android:text="@string/tcvscabh22"
+                        android:visibility='@{tcvscab09a.checked &amp;&amp; tcvscab10a.checked &amp;&amp; tcvscab11a.checked &amp;&amp; tcvscab15a.checked &amp;&amp; tcvscab22a.checked &amp;&amp; tcvscab20a.checked ? View.VISIBLE :  View.GONE }'/>
 
                     <!--EditText tcvscab23-->
                     <android.support.v7.widget.CardView style="@style/cardView">
