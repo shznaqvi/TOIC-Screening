@@ -73,7 +73,7 @@
                             android:id="@+id/tcvscad34"
                             style="@style/EditText"
                             android:hint="@string/tcvscad34"
-                            app:dateFormat="dd/MM/yyyy"
+                            app:dateFormat="dd-MM-yyyy"
                             app:maxDate="CR_DATE" />
 
                     </LinearLayout>

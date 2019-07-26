@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection00CrfControlBinding;
+import edu.aku.hassannaqvi.typbar_tcv.other.CheckingIDCC;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
@@ -37,6 +40,8 @@ public class Section00CRFControlActivity extends AppCompatActivity {
     DatabaseHelper db;
     Map<String, HFContract> hfMap;
     List<String> hfName = new ArrayList<>(Arrays.asList("...."));
+    private boolean eligibleFlag = false;
+    private String screenID = "", controlID = "", tagID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +50,8 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         bi.setCallback(this);
 
         setContentUI();
-        setListeners();
         loadHFFromDB();
+        setListeners();
     }
 
     private void setListeners() {
@@ -61,6 +66,45 @@ public class Section00CRFControlActivity extends AppCompatActivity {
             }
         });
 
+        bi.hfcode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i == 0) return;
+
+                if (screenID.equals("")) {
+                    // ACCESSING SCREEN FOR CONTROL
+                    screenID = CheckingIDCC.accessingFile(Section00CRFControlActivity.this, tagID
+                            , MainApp.casecontrol
+                            , MainApp.CONTROLSCR
+                            , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "2"
+                            , false
+                    );
+
+                    // ACCESSING ID FOR CONTROL
+                    controlID = CheckingIDCC.accessingFile(Section00CRFControlActivity.this, tagID
+                            , MainApp.casecontrol
+                            , MainApp.CONTROLID
+                            , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "4"
+                            , false
+                    );
+
+                } else {
+                    String[] screenIDS = screenID.split("-");
+                    screenID = screenID.replace(screenIDS[screenIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
+
+                    String[] caseIDS = screenID.split("-");
+                    controlID = controlID.replace(caseIDS[caseIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
+                }
+
+                bi.tcvscla08.setText(screenID);
+                bi.tcvscla19.setText(controlID);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
     }
 
@@ -81,17 +125,12 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         bi.hfcode.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, hfNames));
     }
 
-    public void BtnCheckControl() {
-
-    }
-
     private void setContentUI() {
         this.setTitle(R.string.CrfControl);
 
         // Initialize db
         db = new DatabaseHelper(this);
-
-
+        tagID = getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null);
     }
 
 
@@ -100,14 +139,33 @@ public class Section00CRFControlActivity extends AppCompatActivity {
 
             if (!formValidation()) return;
 
-//            if (!MainApp.checkingGPSRules(this)) return;
-
             SaveDraft();
 
             if (!UpdateDB()) {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             } else {
+
+//              INCREMENT SCREEN ID FOR CONTROL
+                CheckingIDCC.accessingFile(Section00CRFControlActivity.this, tagID
+                        , MainApp.casecontrol
+                        , MainApp.CONTROLSCR
+                        , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "2"
+                        , true
+                );
+
+                if (eligibleFlag) {
+
+//              INCREMENT CONTROL ID FOR CONTROL
+                    CheckingIDCC.accessingFile(Section00CRFControlActivity.this, tagID
+                            , MainApp.casecontrol
+                            , MainApp.CONTROLID
+                            , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "4"
+                            , true
+                    );
+                }
+
+
                 startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
             }
 
@@ -157,6 +215,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         crfControl.put("tcvscla06", bi.tcvscla06a.isChecked() ? "1" : bi.tcvscla06b.isChecked() ? "2" : "0");
         crfControl.put("tcvscla07", bi.tcvscla07a.isChecked() ? "1" : bi.tcvscla07b.isChecked() ? "2" : "0");
         crfControl.put("tcvscla08", bi.tcvscla08.getText().toString());
+        crfControl.put("tcvscla09", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
 
         /*New question added in between form*/
 
@@ -167,9 +226,15 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         crfControl.put("tcvscla14", bi.tcvscla14a.isChecked() ? "1" : bi.tcvscla14b.isChecked() ? "2" : "0");
         crfControl.put("tcvscla15", bi.tcvscla15a.isChecked() ? "1" : bi.tcvscla15b.isChecked() ? "2" : "0");
         crfControl.put("tcvscla16", bi.tcvscla16.getText().toString());
-        crfControl.put("tcvscla17", bi.tcvscla17.getText().toString());
-        crfControl.put("tcvscla18", bi.tcvscla18.getText().toString());
-        crfControl.put("tcvscla19", bi.tcvscla19.getText().toString());
+
+        eligibleFlag = bi.tcvscla10a.isChecked() && bi.tcvscla11a.isChecked() && bi.tcvscla12a.isChecked() && bi.tcvscla13a.isChecked() && bi.tcvscla14a.isChecked() && bi.tcvscla15a.isChecked();
+        if (eligibleFlag) {
+            crfControl.put("tcvscla17", bi.tcvscla17.getText().toString());
+            crfControl.put("tcvscla18", bi.tcvscla18.getText().toString());
+            crfControl.put("tcvscla19", bi.tcvscla19.getText().toString());
+            crfControl.put("tcvscla20", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
+            crfControl.put("tcvscla21", new SimpleDateFormat("HH:MM:SS").format(new Date().getTime()));
+        }
 
         MainApp.fc.setsA(String.valueOf(crfControl));
 
