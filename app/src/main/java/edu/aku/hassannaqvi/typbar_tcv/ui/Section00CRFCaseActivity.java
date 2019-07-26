@@ -95,7 +95,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
                             , MainApp.casecontrol
                             , MainApp.CASEID
                             , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "4"
-                            , true
+                            , false
                     );
 
                 } else {
