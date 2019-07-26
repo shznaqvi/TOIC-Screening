@@ -40,6 +40,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
     private Map<String, HFContract> hfMap;
     private List<String> hfName = new ArrayList<>(Arrays.asList("...."));
     private String screenID = "", caseID = "", tagID = "";
+    private boolean eligibleFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,13 +161,16 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
                         , true
                 );
 
+                if (eligibleFlag) {
+
 //              INCREMENT CASE ID FOR CASE
-                CheckingIDCC.accessingFile(Section00CRFCaseActivity.this, tagID
-                        , MainApp.casecontrol
-                        , MainApp.CASEID
-                        , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "4"
-                        , true
-                );
+                    CheckingIDCC.accessingFile(Section00CRFCaseActivity.this, tagID
+                            , MainApp.casecontrol
+                            , MainApp.CASEID
+                            , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "4"
+                            , true
+                    );
+                }
 
 
                 startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
@@ -201,7 +205,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("sca");
+        MainApp.fc.setFormtype(MainApp.CRFCase);
 
         JSONObject crfCase = new JSONObject();
 
@@ -217,6 +221,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscaa05m", bi.tcvscaa05m.getText().toString());
         crfCase.put("tcvscaa06", bi.tcvscaa06a.isChecked() ? "1" : bi.tcvscaa06b.isChecked() ? "2" : "0");
         crfCase.put("tcvscaa07", bi.tcvscaa07.getText().toString());
+        crfCase.put("tcvscaa08", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
 
         crfCase.put("tcvscab09", bi.tcvscab09a.isChecked() ? "1" : bi.tcvscab09b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab10", bi.tcvscab10a.isChecked() ? "1" : bi.tcvscab10b.isChecked() ? "2" : "0");
@@ -244,7 +249,14 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscab216", bi.tcvscab216a.isChecked() ? "1" : bi.tcvscab216b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab216x", bi.tcvscab216x.getText().toString());
         crfCase.put("tcvscab22", bi.tcvscab22a.isChecked() ? "1" : bi.tcvscab22b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab23", bi.tcvscab23.getText().toString());
+
+        eligibleFlag = bi.tcvscab09a.isChecked() && bi.tcvscab10a.isChecked() && bi.tcvscab11a.isChecked() && bi.tcvscab15a.isChecked() && bi.tcvscab22a.isChecked() && bi.tcvscab20a.isChecked();
+
+        if (eligibleFlag) {
+            crfCase.put("tcvscab23", bi.tcvscab23.getText().toString());
+            crfCase.put("tcvscab24", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
+            crfCase.put("tcvscab25", new SimpleDateFormat("HH:MM:SS").format(new Date().getTime()));
+        }
 
         MainApp.fc.setsA(String.valueOf(crfCase));
 

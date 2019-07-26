@@ -48,21 +48,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
 
         setContentUI();
         loadHFFromDB();
-
-        //setListeners();
     }
-
-    //private void setListeners() {
-
-        /*bi.tcvscad09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvscad09c.isChecked()) {
-                    ClearClass.ClearAllFields(bi.llcrfCase03, null);
-                }
-            }
-        });*/
 
     private void loadHFFromDB() {
         Collection<HFContract> allHF = db.getAllHF();
