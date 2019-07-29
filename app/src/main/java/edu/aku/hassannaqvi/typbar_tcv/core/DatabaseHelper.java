@@ -18,6 +18,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import edu.aku.hassannaqvi.typbar_tcv.contracts.CCChildrenContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.CCChildrenContract.ChildrenEntry;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.ChildContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.ChildContract.FormsChildTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.EnrollmentContract;
@@ -42,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "typbar_tcv.db";
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_copy.");
     public static final String PROJECT_NAME = "DMU-TYPBAR-TCV";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersContract.UsersTable.TABLE_NAME + "("
             + UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -141,6 +143,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             SchoolTable.COLUMN_SCH_TYPE + " TEXT" +
             ");";
 
+    private final String SQL_CREATE_CCCCHILDREN = "CREATE TABLE " + SchoolTable.TABLE_NAME + " (" +
+            ChildrenEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            ChildrenEntry.COLUMN_LUID + " TEXT," +
+            ChildrenEntry.COLUMN_LFORMDATE + " TEXT," +
+            ChildrenEntry.COLUMN_TCVSCAA01 + " TEXT," +
+            ChildrenEntry.COLUMN_TCVSCAA05 + " TEXT," +
+            ChildrenEntry.COLUMN_TCVSCAA05Y + " TEXT," +
+            ChildrenEntry.COLUMN_TCVSCAA05M + " TEXT," +
+            ChildrenEntry.COLUMN_TCVSCAA07 + " TEXT," +
+            ChildrenEntry.COLUMN_TCVSCAA08 + " TEXT," +
+            ChildrenEntry.COLUMN_TCVSCAB23 + " TEXT" +
+            ");";
+
+
     private final String TAG = "DatabaseHelper";
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
 
@@ -155,6 +171,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_SCHOOL);
         db.execSQL(SQL_CREATE_UC);
         db.execSQL(SQL_CREATE_HF);
+        db.execSQL(SQL_CREATE_CCCCHILDREN);
     }
 
     @Override
@@ -166,6 +183,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         switch (i) {
             case 1:
                 db.execSQL(SQL_CREATE_HF);
+            case 2:
+                db.execSQL(SQL_CREATE_CCCCHILDREN);
 
         }
     }
@@ -238,6 +257,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(SchoolTable.COLUMN_SCH_TYPE, sch.getSch_type());
 
                 db.insert(SchoolTable.TABLE_NAME, null, values);
+            }
+        } catch (Exception e) {
+        } finally {
+            db.close();
+        }
+    }
+
+    public void syncCCChildren(JSONArray cchildrenlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(ChildrenEntry.TABLE_NAME, null, null);
+        try {
+            JSONArray jsonArray = cchildrenlist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObjectCC = jsonArray.getJSONObject(i);
+
+                CCChildrenContract ech = new CCChildrenContract();
+                ech.sync(jsonObjectCC);
+
+                ContentValues values = new ContentValues();
+
+                values.put(ChildrenEntry.COLUMN_LUID, ech.getLuid());
+                values.put(ChildrenEntry.COLUMN_LFORMDATE, ech.getLformdate());
+                values.put(ChildrenEntry.COLUMN_TCVSCAA01, ech.getTcvscaa01());
+                values.put(ChildrenEntry.COLUMN_TCVSCAA05, ech.getTcvscaa05());
+                values.put(ChildrenEntry.COLUMN_TCVSCAA05Y, ech.getTcvscaa05y());
+                values.put(ChildrenEntry.COLUMN_TCVSCAA05M, ech.getTcvscaa05m());
+                values.put(ChildrenEntry.COLUMN_TCVSCAA07, ech.getTcvscaa07());
+                values.put(ChildrenEntry.COLUMN_TCVSCAA08, ech.getTcvscaa08());
+                values.put(ChildrenEntry.COLUMN_TCVSCAB23, ech.getTcvscab23());
+
+                db.insert(ChildrenEntry.TABLE_NAME, null, values);
             }
         } catch (Exception e) {
         } finally {
