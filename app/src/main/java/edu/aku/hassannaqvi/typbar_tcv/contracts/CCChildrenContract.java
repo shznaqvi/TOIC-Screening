@@ -131,7 +131,7 @@ public class CCChildrenContract {
         public static final String COLUMN_TCVSCAA08 = "tcvscaa08";
         public static final String COLUMN_TCVSCAB23 = "tcvscab23";
 
-        public static final String _URL = "children.php";
+        public static final String _URI = "children.php";
     }
 
 }

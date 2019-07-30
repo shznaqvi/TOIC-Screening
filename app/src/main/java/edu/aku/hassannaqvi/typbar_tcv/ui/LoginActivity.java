@@ -154,7 +154,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
 
         // Set up the login form.
-//        mEmailView = findViewById(R.id.email);
         populateAutoComplete();
 
         Target viewTarget = new ViewTarget(R.id.syncData, this);
@@ -166,7 +165,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 .singleShot(42)
                 .build();
 
-//        mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -182,12 +180,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                /*if (spUCs.getSelectedItemPosition() != 0 && spTalukas.getSelectedItemPosition() != 0) {
-                    attemptLogin();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Please Sync Data or select from combobox!!", Toast.LENGTH_LONG).show();
-                }*/
 
                 attemptLogin();
             }
@@ -271,7 +263,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            new syncData(this).execute();
+            new SyncData(this).execute();
 
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
@@ -427,14 +419,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 
-    public void gotoMain(View v) {
-
-        finish();
-
-        Intent im = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(im);
-    }
-
     public void showCredits(View view) {
         if (clicks < 7) {
             clicks++;
@@ -442,9 +426,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         } else {
             clicks = 0;
             Toast.makeText(this, "TEAM CREDITS: " +
-                            "\r\nHassan Naqvi, " +
-                            "Ali Azaz, " +
-                            "Sajid, ",
+                            "\nHassan Naqvi, " +
+                            "\nAli Azaz, " +
+                            "\nSajid, ",
                     Toast.LENGTH_LONG)
                     .show();
         }
@@ -557,11 +541,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
     }
 
-    public class syncData extends AsyncTask<String, String, String> {
+    public class SyncData extends AsyncTask<String, String, String> {
 
         private Context mContext;
 
-        public syncData(Context mContext) {
+        public SyncData(Context mContext) {
             this.mContext = mContext;
         }
 
@@ -577,8 +561,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     new GetAllData(mContext, "UC").execute();
                     Toast.makeText(mContext, "Sync HF", Toast.LENGTH_LONG).show();
                     new GetAllData(mContext, "HF").execute();
+                    Toast.makeText(mContext, "Sync CCChildren", Toast.LENGTH_LONG).show();
+                    new GetAllData(mContext, "CCChildren").execute();
                     Toast.makeText(mContext, "Sync App version", Toast.LENGTH_LONG).show();
-                    new GetAllData(mContext, "appversion").execute();
+                    new GetAllData(mContext, "Appversion").execute();
                 }
             });
 
@@ -592,8 +578,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                 @Override
                 public void run() {
-
-//                    populateSpinner(mContext);
 
                     editor.putBoolean("flag", true);
                     editor.commit();

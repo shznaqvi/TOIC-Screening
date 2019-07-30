@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import edu.aku.hassannaqvi.typbar_tcv.contracts.CCChildrenContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
@@ -71,7 +72,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     case "School":
                         url = new URL(hostItem + SchoolContract.SchoolTable._URI);
                         break;
-                    case "appversion":
+                    case "CCChildren":
+                        url = new URL(hostItem + CCChildrenContract.ChildrenEntry._URI);
+                        break;
+                    case "Appversion":
                         url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URL);
                         break;
                 }
@@ -132,7 +136,10 @@ public class GetAllData extends AsyncTask<String, String, String> {
                         case "School":
                             db.syncSchools(jsonArray);
                             break;
-                        case "appversion":
+                        case "CCChildren":
+                            db.syncCCChildren(jsonArray);
+                            break;
+                        case "Appversion":
                             MainApp.savingAppVersion(mContext, jsonArray);
                             break;
                     }
