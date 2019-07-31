@@ -327,11 +327,13 @@
                 <!--CheckBox & EditText tcvscad08-->
                 <android.support.v7.widget.CardView style="@style/cardView">
 
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+                    <TextView
+                        style="@style/i_textview"
+                        android:text="@string/tcvscad08" />
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvscad08" />
+                    <LinearLayout
+                        style="@style/linearlayout_view_wt_bound"
+                        android:tag="0">
 
                         <CheckBox
                             android:id="@+id/tcvscad0801"
