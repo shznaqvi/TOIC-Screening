@@ -166,7 +166,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
                 }
 
 
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+                startActivity(new Intent(this, Section01CRFControlActivity.class));
             }
 
         } catch (JSONException e) {

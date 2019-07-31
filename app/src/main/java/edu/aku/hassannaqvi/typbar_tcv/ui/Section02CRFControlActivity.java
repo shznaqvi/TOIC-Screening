@@ -13,7 +13,6 @@ import org.json.JSONObject;
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection02CrfcontrolBinding;
-import edu.aku.hassannaqvi.typbar_tcv.utils.JsonUtils;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
@@ -104,7 +103,7 @@ public class Section02CRFControlActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.updateSA();
+        long updcount = db.updateSB();
         return updcount != -1;
     }
 
@@ -180,14 +179,7 @@ public class Section02CRFControlActivity extends AppCompatActivity {
 
         CrfControl.put("tcvsclc33", bi.tcvsclc33.getText().toString());
 
-        try {
-            JSONObject s4_merge = JsonUtils.mergeJSONObjects(new JSONObject(fc.getsA()), CrfControl);
-
-            fc.setsA(String.valueOf(s4_merge));
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        fc.setsB(String.valueOf(CrfControl));
 
     }
 

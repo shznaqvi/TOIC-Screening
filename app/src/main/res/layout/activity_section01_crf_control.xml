@@ -21,36 +21,6 @@
 
         <LinearLayout style="@style/linearlayout_view">
 
-            <!--EditText tcvsclc34-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvsclc34" />
-
-                    <EditText
-                        android:id="@+id/tcvsclc34"
-                        style="@style/EditText_number"
-                        android:hint="@string/tcvsclc34"
-                        android:maxLength="4" />
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--Check CONTROL id-->
-            <Button
-                android:id="@+id/btn_check"
-                style="@style/buttons"
-                android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                android:background="@color/red"
-                android:onClick="@{() -> callback.BtnCheckControl()}"
-                android:text="CHECK CONTROL"
-                android:textColor="@color/white" />
-
             <LinearLayout
                 android:id="@+id/llcrfControl"
                 style="@style/linearlayout_view_wt_bound"

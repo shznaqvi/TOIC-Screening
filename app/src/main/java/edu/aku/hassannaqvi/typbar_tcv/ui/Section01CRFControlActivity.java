@@ -3,20 +3,14 @@ package edu.aku.hassannaqvi.typbar_tcv.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import edu.aku.hassannaqvi.typbar_tcv.R;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01CrfControlBinding;
@@ -74,18 +68,11 @@ public class Section01CRFControlActivity extends AppCompatActivity {
 
     }
 
-    public void BtnCheckControl() {
-        if (!ValidatorClass.EmptyTextBox(this, bi.tcvsclc34, getString(R.string.tcvsclc34))) return;
-        bi.llcrfControl.setVisibility(View.VISIBLE);
-    }
-
     private void setContentUI() {
         this.setTitle(R.string.CrfControl);
 
         // Initialize db
         db = new DatabaseHelper(this);
-
-        type = getIntent().getIntExtra("type",0);
     }
 
 
@@ -111,28 +98,11 @@ public class Section01CRFControlActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.addForm(MainApp.fc);
-        MainApp.fc.set_ID(String.valueOf(updcount));
-        if (updcount > 0) {
-            MainApp.fc.setUID((MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormID();
-
-            return true;
-        }
-
-        return false;
+        long updcount = db.updateSA();
+        return updcount != -1;
     }
 
     private void SaveDraft() throws JSONException {
-        MainApp.fc = new FormsContract();
-        MainApp.fc.setDevicetagID(getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null));
-        MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
-        MainApp.fc.setUser(MainApp.userName);
-        MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID));
-        MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
-        settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("scl_enroll");
 
         JSONObject CrfControl = new JSONObject();
 
@@ -273,29 +243,7 @@ public class Section01CRFControlActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        try {
-            if (!ValidatorClass.EmptyTextBox(this, bi.tcvsclc34, getString(R.string.tcvsclc34)))
-                return;
-
-            SaveDraft();
-
-            if (!UpdateDB()) {
-                Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
-                return;
-            } else
-                startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void settingGPS(FormsContract fc) {
-        MainApp.LocClass locClass = MainApp.setGPS(this);
-        fc.setGpsLat(locClass.getLatitude());
-        fc.setGpsLng(locClass.getLongitude());
-        fc.setGpsAcc(locClass.getAccuracy());
-        fc.setGpsDT(locClass.getTime());
+        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
     }
 
 }

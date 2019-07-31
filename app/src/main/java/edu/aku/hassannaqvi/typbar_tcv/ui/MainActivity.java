@@ -352,7 +352,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, SectionCListingActivity.class));
                         break;
                     case 3:
-                    case 4:
                         builder = new AlertDialog.Builder(this);
                         builder.setTitle("Please Select");
                         builder.setMessage("Where you want to go?");
@@ -361,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                startActivity(new Intent(MainActivity.this, type == 3 ? Section00CRFCaseActivity.class : Section00CRFControlActivity.class));
+                                startActivity(new Intent(MainActivity.this, Section00CRFCaseActivity.class));
                                 dialogInterface.dismiss();
 
 
@@ -371,12 +370,15 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                startActivity(new Intent(MainActivity.this, type == 3 ? Section01CRFCaseActivity.class : Section01CRFControlActivity.class));
+                                startActivity(new Intent(MainActivity.this, Section01CRFCaseActivity.class));
                                 dialogInterface.dismiss();
                             }
                         });
                         dialog = builder.create();
                         dialog.show();
+                        break;
+                    case 4:
+                        startActivity(new Intent(MainActivity.this, Section00CRFControlActivity.class));
                         break;
                     case 5:
 
