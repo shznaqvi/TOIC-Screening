@@ -307,8 +307,11 @@
 
                             <TextView
                                 android:id="@+id/tcvscla08"
-                                style="@style/EditText_number"
-                                android:hint="@string/tcvscla08" />
+                                style="@style/h_textview"
+                                android:autoSizeTextType="uniform"
+                                android:hint="@string/tcvscla08"
+                                android:text="SCREEN ID:"
+                                android:textSize="35sp" />
 
                         </LinearLayout>
 
@@ -545,11 +548,16 @@
                                     style="@style/i_textview"
                                     android:text="@string/tcvscla17" />
 
-                                <EditText
+                                <com.edittextpicker.aliazaz.EditTextPicker
                                     android:id="@+id/tcvscla17"
                                     style="@style/EditText_number"
-                                    android:hint="@string/tcvscla17"
-                                    android:maxLength="6" />
+                                    android:hint="###-######"
+                                    android:layoutDirection="ltr"
+                                    app:defaultValue=""
+                                    app:mask="###-######"
+                                    app:pattern="^(\\d{3,3}\\-\\d{6,6})$"
+                                    app:type="equal" />
+
 
                             </LinearLayout>
 
@@ -568,7 +576,7 @@
                                     android:id="@+id/tcvscla18"
                                     style="@style/EditText_number"
                                     android:hint="@string/tcvscla18"
-                                    android:maxLength="6" />
+                                    android:maxLength="2" />
 
                             </LinearLayout>
 
@@ -585,9 +593,11 @@
 
                                 <TextView
                                     android:id="@+id/tcvscla19"
-                                    style="@style/EditText_number"
+                                    style="@style/h_textview"
+                                    android:autoSizeTextType="uniform"
                                     android:hint="@string/tcvscla19"
-                                    android:maxLength="6" />
+                                    android:text="CONTROL ID:"
+                                    android:textSize="35sp" />
 
                             </LinearLayout>
 
