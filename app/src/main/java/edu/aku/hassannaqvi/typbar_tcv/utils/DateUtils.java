@@ -38,18 +38,6 @@ public class DateUtils {
         return ageInMonths;
     }
 
-    public static String convertDateFormat(String dateStr) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-        try {
-            Date d = sdf.parse(dateStr);
-            return new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(d);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        return "";
-    }
-
     public static Date getDateFormat(String dateStr) {
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
@@ -105,6 +93,30 @@ public class DateUtils {
         cal.add(Calendar.YEAR, year);
         cal.add(Calendar.MONTH, month);
         return new SimpleDateFormat(format).format(cal.getTime()); //"dd-MM-yyyy HH:mm"
+    }
+
+    public static String convertDateFormat(String dateStr) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date d = sdf.parse(dateStr);
+            return new SimpleDateFormat("dd/MM/yyyy").format(d);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        return "";
+    }
+
+    public static String getDOB(String format, int year, int month, int day) {
+
+        int totalmonths = (year * 12) + month;
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(cal.getTime());
+        cal.add(Calendar.MONTH, -totalmonths);
+        cal.add(Calendar.DAY_OF_MONTH, -day);
+
+        return new SimpleDateFormat(format).format(cal.getTime());
     }
 
     public static Long getMinutes(Date startDate, Date endDate) {

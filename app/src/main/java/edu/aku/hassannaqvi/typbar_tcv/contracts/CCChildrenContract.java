@@ -104,7 +104,7 @@ public class CCChildrenContract {
         return this;
     }
 
-    public CCChildrenContract Hydrate(Cursor cursor) {
+    public CCChildrenContract hydrate(Cursor cursor) {
         this.luid = cursor.getString(cursor.getColumnIndex(ChildrenEntry.COLUMN_LUID));
         this.lformdate = cursor.getString(cursor.getColumnIndex(ChildrenEntry.COLUMN_LFORMDATE));
         this.tcvscaa01 = cursor.getString(cursor.getColumnIndex(ChildrenEntry.COLUMN_TCVSCAA01));

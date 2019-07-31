@@ -143,7 +143,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             SchoolTable.COLUMN_SCH_TYPE + " TEXT" +
             ");";
 
-    private final String SQL_CREATE_CCCCHILDREN = "CREATE TABLE " + SchoolTable.TABLE_NAME + " (" +
+    private final String SQL_CREATE_CCCCHILDREN = "CREATE TABLE " + ChildrenEntry.TABLE_NAME + " (" +
             ChildrenEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             ChildrenEntry.COLUMN_LUID + " TEXT," +
             ChildrenEntry.COLUMN_LFORMDATE + " TEXT," +
@@ -419,6 +419,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 allDC = new SchoolContract().hydrate(c);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allDC;
+    }
+
+    public CCChildrenContract getChildWRTCaseID(String cid) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                ChildrenEntry.COLUMN_LUID,
+                ChildrenEntry.COLUMN_LFORMDATE,
+                ChildrenEntry.COLUMN_TCVSCAA01,
+                ChildrenEntry.COLUMN_TCVSCAA05,
+                ChildrenEntry.COLUMN_TCVSCAA05Y,
+                ChildrenEntry.COLUMN_TCVSCAA05M,
+                ChildrenEntry.COLUMN_TCVSCAA07,
+                ChildrenEntry.COLUMN_TCVSCAA08,
+                ChildrenEntry.COLUMN_TCVSCAB23
+
+        };
+
+        String whereClause = ChildrenEntry.COLUMN_TCVSCAB23 + " =? ";
+        String[] whereArgs = {cid};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = ChildrenEntry._ID + " ASC";
+
+        CCChildrenContract allDC = null;
+        try {
+            c = db.query(
+                    ChildrenEntry.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allDC = new CCChildrenContract().hydrate(c);
             }
         } finally {
             if (c != null) {

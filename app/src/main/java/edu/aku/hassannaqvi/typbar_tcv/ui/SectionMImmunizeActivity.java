@@ -307,23 +307,23 @@ public class SectionMImmunizeActivity extends AppCompatActivity {
 
         if (!bi.tcvmi07.getText().toString().isEmpty()) {
             if (bi.tcvmi07.getText().toString().length() != 15)
-                return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvmi07, "Length is not accurate!!");
+                return ValidatorClass.EmptyCustomeTextBox(this, bi.tcvmi07, "Length is not accurate!!");
         }
 
         if (!bi.tcvmi09.getText().toString().isEmpty()) {
             if (bi.tcvmi09.getText().toString().length() != 11)
-                return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvmi09, "Length is not accurate!!");
+                return ValidatorClass.EmptyCustomeTextBox(this, bi.tcvmi09, "Length is not accurate!!");
         }
 
         if (!bi.tcvmi10.getText().toString().isEmpty()) {
             if (bi.tcvmi10.getText().toString().length() != 11)
-                return ValidatorClass.EmptyTextBoxCustom(this, bi.tcvmi10, "Length is not accurate!!");
+                return ValidatorClass.EmptyCustomeTextBox(this, bi.tcvmi10, "Length is not accurate!!");
         }
 
         if (bi.tcvmi21a.isChecked()) {
             if (bi.autoCompleteSName.getVisibility() == View.VISIBLE) {
                 if (schoolMap.get(bi.autoCompleteSName.getText().toString()) != null) return true;
-                return ValidatorClass.EmptyTextBoxCustom(this, bi.autoCompleteSName, "This data is not accurate!!");
+                return ValidatorClass.EmptyCustomeTextBox(this, bi.autoCompleteSName, "This data is not accurate!!");
             }
         }
 

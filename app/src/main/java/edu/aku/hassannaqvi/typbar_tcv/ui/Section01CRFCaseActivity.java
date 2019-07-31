@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -22,22 +24,24 @@ import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.CCChildrenContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01CrfCaseBinding;
+import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class Section01CRFCaseActivity extends AppCompatActivity {
 
     ActivitySection01CrfCaseBinding bi;
-    DatabaseHelper db;
-    Map<String, HFContract> hfMap;
-    List<String> hfName = new ArrayList<>(Arrays.asList("...."));
-
-    int type;
+    private DatabaseHelper db;
+    private Map<String, HFContract> hfMap;
+    private List<String> hfName = new ArrayList<>(Arrays.asList("...."));
+    private CCChildrenContract child;
+    private int type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_crf_case);
         bi.setCallback(this);
         EventsCall();
-
         setContentUI();
         loadHFFromDB();
     }
@@ -66,7 +69,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
     private void setContentUI() {
         this.setTitle(R.string.CrfCase);
 
-        type = getIntent().getIntExtra("type",0);
+        type = getIntent().getIntExtra("type", 0);
 
         bi.tcvscad09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -89,8 +92,33 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
     }
 
     public void BtnCheckCase() {
-        if (!ValidatorClass.EmptyTextBox(this, bi.tcvscad33, getString(R.string.tcvsclc34))) return;
+        if (!ValidatorClass.EmptyEditTextPicker(this, bi.tcvscad33, getString(R.string.tcvscad33)))
+            return;
+
+        child = db.getChildWRTCaseID("T-" + bi.tcvscad33.getText().toString());
+        if (child == null) {
+            Toast.makeText(this, "No CaseID found!!", Toast.LENGTH_SHORT).show();
+            ClearClass.ClearAllFields(bi.llcrf, null);
+            bi.llcrf.setVisibility(View.GONE);
+            return;
+        }
+
+        bi.viewGroup01.chName.setText(child.getTcvscaa01().toUpperCase());
+        bi.viewGroup01.screenId.setText(child.getTcvscaa07());
+        bi.viewGroup01.dob.setText(getDOB(child));
+        bi.viewGroup01.screenDate.setText(child.getTcvscaa08());
+
         bi.llcrf.setVisibility(View.VISIBLE);
+
+    }
+
+    private String getDOB(CCChildrenContract child) {
+        if (!child.getTcvscaa05().equals(""))
+            return DateUtils.convertDateFormat(child.getTcvscaa05());
+        else return DateUtils.getDOB("dd/MM/yyyy",
+                Integer.valueOf(child.getTcvscaa05y()),
+                Integer.valueOf(child.getTcvscaa05m()),
+                Integer.valueOf(0));
     }
 
     public void BtnContinue() {
@@ -114,7 +142,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        DatabaseHelper db = new DatabaseHelper(this);
         long updcount = db.addForm(MainApp.fc);
         MainApp.fc.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
@@ -206,7 +233,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         try {
             if (!ValidatorClass.EmptyCheckingContainer(this, bi.llcrf)) return;
 
-//            if (!MainApp.checkingGPSRules(this)) return;
             SaveDraft();
 
             if (!UpdateDB()) {
@@ -249,6 +275,26 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
                 if (!bi.tcvscad17a.isChecked()) {
                     ClearClass.ClearAllFields(bi.fldGrptcvscad17a01, null);
                 }
+            }
+        });
+
+        bi.tcvscad33.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                ClearClass.ClearAllFields(bi.llcrf, null);
+                bi.llcrf.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
