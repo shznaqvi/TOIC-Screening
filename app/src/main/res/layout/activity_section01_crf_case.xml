@@ -101,11 +101,15 @@
                             style="@style/i_textview"
                             android:text="@string/tcvscad01" />
 
-                        <EditText
+                        <com.edittextpicker.aliazaz.EditTextPicker
                             android:id="@+id/tcvscad01"
                             style="@style/EditText_number"
                             android:hint="@string/tcvscad01"
-                            android:maxLength="2" />
+                            android:maxLength="2"
+                            app:maxValue="30"
+                            app:minValue="0"
+                            app:required="true"
+                            app:type="range"/>
 
                     </LinearLayout>
 
@@ -120,11 +124,15 @@
                             style="@style/i_textview"
                             android:text="@string/tcvscad02" />
 
-                        <EditText
+                        <com.edittextpicker.aliazaz.EditTextPicker
                             android:id="@+id/tcvscad02"
                             style="@style/EditText_number"
                             android:hint="@string/tcvscad02"
-                            android:maxLength="2" />
+                            android:maxLength="2"
+                            app:maxValue="20"
+                            app:minValue="1"
+                            app:required="true"
+                            app:type="range"/>
 
                     </LinearLayout>
 
@@ -173,11 +181,15 @@
                             style="@style/i_textview"
                             android:text="@string/tcvscad04" />
 
-                        <EditText
+                        <com.edittextpicker.aliazaz.EditTextPicker
                             android:id="@+id/tcvscad04"
                             style="@style/EditText_number"
                             android:hint="@string/tcvscad04"
-                            android:maxLength="2" />
+                            android:maxLength="2"
+                            app:maxValue="10"
+                            app:minValue="1"
+                            app:required="true"
+                            app:type="range"/>
 
                     </LinearLayout>
 
