@@ -65,7 +65,6 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         }
     }
 
-
     private void setContentUI() {
         this.setTitle(R.string.CrfCase);
 
@@ -166,6 +165,13 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         MainApp.fc.setFormtype("sca_enroll");
 
         JSONObject crfCase = new JSONObject();
+
+        crfCase.put("ch_name", child.getTcvscaa01().toUpperCase());
+        crfCase.put("ch_screenid", child.getTcvscaa07());
+        crfCase.put("ch_dob", getDOB(child));
+        crfCase.put("ch_screendt", child.getTcvscaa08());
+        crfCase.put("ch_formdt", child.getLformdate());
+        crfCase.put("ch_luid", child.getLuid());
 
         crfCase.put("tcvscad33", bi.tcvscad33.getText().toString());
         crfCase.put("tcvscad34", bi.tcvscad34.getText().toString());
