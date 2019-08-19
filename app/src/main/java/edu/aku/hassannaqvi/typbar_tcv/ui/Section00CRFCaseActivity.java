@@ -47,7 +47,6 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section00_crf_case);
         bi.setCallback(this);
-        EventsCall();
 
         setContentUI();
         loadHFFromDB();
@@ -102,7 +101,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
                     String[] screenIDS = screenID.split("-");
                     screenID = screenID.replace(screenIDS[screenIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
 
-                    String[] caseIDS = screenID.split("-");
+                    String[] caseIDS = caseID.split("-");
                     caseID = caseID.replace(caseIDS[caseIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
                 }
 
@@ -289,12 +288,6 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         fc.setGpsLng(locClass.getLongitude());
         fc.setGpsAcc(locClass.getAccuracy());
         fc.setGpsDT(locClass.getTime());
-    }
-
-    //ClearAllFields
-    void EventsCall() {
-
-
     }
 
 }

@@ -29,11 +29,55 @@
                     style="@style/textview_fm_lst_h"
                     android:text="@string/tcvsclah01" />
 
-                <LinearLayout
-                    android:id="@+id/llclacrf01"
+                <!--EditText tcvscla17-->
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/tcvscla17" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/tcvscla17"
+                            style="@style/EditText_number"
+                            android:hint="###-######"
+                            android:layoutDirection="ltr"
+                            app:defaultValue=""
+                            app:mask="###-######"
+                            app:pattern="^(\\d{3,3}\\-\\d{6,6})$"
+                            app:type="equal" />
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--Check CASE id-->
+                <Button
+                    android:id="@+id/btn_check"
+                    style="@style/buttons"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/red"
+                    android:onClick="@{() -> callback.BtnCheckCase()}"
+                    android:text="CHECK CASE"
+                    android:textColor="@color/white" />
+
+                <LinearLayout
+                    android:id="@+id/llcrf"
+                    style="@style/linearlayout_view"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <!--Child Card-->
+                    <include
+                        android:id="@+id/viewGroup01"
+                        layout="@layout/info_control_card"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
 
                     <!--EditText hfcode-->
                     <android.support.v7.widget.CardView style="@style/cardView">
@@ -237,7 +281,6 @@
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
-
                     <!--Radio tcvscla06-->
                     <android.support.v7.widget.CardView style="@style/cardView">
 
@@ -316,14 +359,6 @@
                         </LinearLayout>
 
                     </android.support.v7.widget.CardView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/fldGrp0130"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
                     <TextView
                         style="@style/textview_fm_lst_h"
@@ -539,30 +574,6 @@
                             style="@style/textview_fm_lst_h"
                             android:text="@string/tcvsclah03" />
 
-                        <!--EditText tcvscla17-->
-                        <android.support.v7.widget.CardView style="@style/cardView">
-
-                            <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                                <TextView
-                                    style="@style/i_textview"
-                                    android:text="@string/tcvscla17" />
-
-                                <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/tcvscla17"
-                                    style="@style/EditText_number"
-                                    android:hint="###-######"
-                                    android:layoutDirection="ltr"
-                                    app:defaultValue=""
-                                    app:mask="###-######"
-                                    app:pattern="^(\\d{3,3}\\-\\d{6,6})$"
-                                    app:type="equal" />
-
-
-                            </LinearLayout>
-
-                        </android.support.v7.widget.CardView>
-
                         <!--EditText tcvscla18-->
                         <android.support.v7.widget.CardView style="@style/cardView">
 
@@ -604,7 +615,6 @@
                         </android.support.v7.widget.CardView>
 
                     </LinearLayout>
-
 
                 </LinearLayout>
 

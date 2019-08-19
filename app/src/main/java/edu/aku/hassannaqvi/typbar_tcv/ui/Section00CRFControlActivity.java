@@ -24,12 +24,14 @@ import java.util.List;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.CCChildrenContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection00CrfControlBinding;
 import edu.aku.hassannaqvi.typbar_tcv.other.CheckingIDCC;
+import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
@@ -42,6 +44,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
     List<String> hfName = new ArrayList<>(Arrays.asList("...."));
     private boolean eligibleFlag = false;
     private String screenID = "", controlID = "", tagID = "";
+    private CCChildrenContract child;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,17 +57,39 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         setListeners();
     }
 
+    public void BtnCheckCase() {
+        if (!ValidatorClass.EmptyEditTextPicker(this, bi.tcvscla17, getString(R.string.tcvscla17)))
+            return;
+
+        if (child == null)
+            child = db.getChildWRTCaseIDDB("T-" + bi.tcvscla17.getText().toString());
+
+        if (child == null) {
+            Toast.makeText(this, "No CaseID found!!", Toast.LENGTH_SHORT).show();
+            ClearClass.ClearAllFields(bi.llcrf, null);
+            bi.llcrf.setVisibility(View.GONE);
+            return;
+        }
+
+        bi.viewGroup01.chName.setText(child.getTcvscaa01().toUpperCase());
+        bi.viewGroup01.screenDate.setText(child.getTcvscaa08());
+
+        bi.viewGroup01.ageNote.setText("Note: Control Child Age must be in range of: ");
+
+        bi.llcrf.setVisibility(View.VISIBLE);
+
+    }
+
+    private String getDOB(CCChildrenContract child) {
+        if (!child.getTcvscaa05().equals(""))
+            return DateUtils.convertDateFormat(child.getTcvscaa05());
+        else return DateUtils.getDOB("dd/MM/yyyy",
+                Integer.valueOf(child.getTcvscaa05y()),
+                Integer.valueOf(child.getTcvscaa05m()),
+                Integer.valueOf(0));
+    }
+
     private void setListeners() {
-
-        bi.tcvscla06.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                if (!bi.tcvscla06a.isChecked()) {
-                    ClearClass.ClearAllFields(bi.fldGrp0130, null);
-                }
-            }
-        });
 
         bi.hfcode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -80,24 +105,12 @@ public class Section00CRFControlActivity extends AppCompatActivity {
                             , false
                     );
 
-                    // ACCESSING ID FOR CONTROL
-                    controlID = CheckingIDCC.accessingFile(Section00CRFControlActivity.this, tagID
-                            , MainApp.casecontrol
-                            , MainApp.CONTROLID
-                            , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "4"
-                            , false
-                    );
-
                 } else {
                     String[] screenIDS = screenID.split("-");
                     screenID = screenID.replace(screenIDS[screenIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
-
-                    String[] caseIDS = screenID.split("-");
-                    controlID = controlID.replace(caseIDS[caseIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
                 }
 
                 bi.tcvscla08.setText(screenID);
-                bi.tcvscla19.setText(controlID);
             }
 
             @Override
@@ -153,18 +166,6 @@ public class Section00CRFControlActivity extends AppCompatActivity {
                         , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "2"
                         , true
                 );
-
-                if (eligibleFlag) {
-
-//              INCREMENT CONTROL ID FOR CONTROL
-                    CheckingIDCC.accessingFile(Section00CRFControlActivity.this, tagID
-                            , MainApp.casecontrol
-                            , MainApp.CONTROLID
-                            , hfMap.get(bi.hfcode.getSelectedItem()).getHfcode() + "4"
-                            , true
-                    );
-                }
-
 
                 startActivity(new Intent(this, Section01CRFControlActivity.class));
             }
@@ -246,7 +247,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         try {
-            if (!ValidatorClass.EmptyCheckingContainer(this, bi.llclacrf01))
+            if (!ValidatorClass.EmptyEditTextPicker(this, bi.tcvscla17, getString(R.string.tcvscla17)))
                 return;
 
             SaveDraft();
