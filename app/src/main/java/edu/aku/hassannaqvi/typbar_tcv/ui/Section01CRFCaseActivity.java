@@ -95,6 +95,10 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
             return;
 
         child = db.getChildWRTCaseID("T-" + bi.tcvscad33.getText().toString());
+
+        if (child == null)
+            child = db.getChildWRTCaseIDDB("T-" + bi.tcvscad33.getText().toString());
+
         if (child == null) {
             Toast.makeText(this, "No CaseID found!!", Toast.LENGTH_SHORT).show();
             ClearClass.ClearAllFields(bi.llcrf, null);

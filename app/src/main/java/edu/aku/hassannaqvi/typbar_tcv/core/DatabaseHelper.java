@@ -480,6 +480,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
+    public CCChildrenContract getChildWRTCaseIDDB(String cid) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_FORMTYPE,
+                FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_ISTATUS
+        };
+
+        String whereClause = FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + " =?";
+        String[] whereArgs = {MainApp.CRFCase, "1"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = ChildrenEntry._ID + " ASC";
+
+        CCChildrenContract allDC = null;
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allDC = new CCChildrenContract().hydrateDB(c);
+                if (allDC.getTcvscab23() == null) {
+                    allDC = null;
+                    continue;
+                }
+                if (!allDC.getTcvscab23().equals(cid)) allDC = null;
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allDC;
+    }
+
     public ArrayList<UCsContract> getAllUCs() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
