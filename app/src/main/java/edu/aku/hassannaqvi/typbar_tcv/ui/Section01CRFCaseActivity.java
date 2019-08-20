@@ -94,10 +94,10 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         if (!ValidatorClass.EmptyEditTextPicker(this, bi.tcvscad33, getString(R.string.tcvscad33)))
             return;
 
-        child = db.getChildWRTCaseID("T-" + bi.tcvscad33.getText().toString());
+        /*child = db.getChildWRTCaseID("T-" + bi.tcvscad33.getText().toString());
 
-        if (child == null)
-            child = db.getChildWRTCaseIDDB("T-" + bi.tcvscad33.getText().toString());
+        if (child == null)*/
+        child = db.getChildWRTCaseIDDB("T-" + bi.tcvscad33.getText().toString());
 
         if (child == null) {
             Toast.makeText(this, "No CaseID found!!", Toast.LENGTH_SHORT).show();
@@ -117,8 +117,8 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
 
     private String getDOB(CCChildrenContract child) {
         if (!child.getTcvscaa05().equals(""))
-            return DateUtils.convertDateFormat(child.getTcvscaa05());
-        else return DateUtils.getDOB("dd/MM/yyyy",
+            return child.getTcvscaa05();
+        else return DateUtils.getDOB("dd-MM-yyyy",
                 Integer.valueOf(child.getTcvscaa05y()),
                 Integer.valueOf(child.getTcvscaa05m()),
                 Integer.valueOf(0));
@@ -166,7 +166,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("sca_enroll");
+        MainApp.fc.setFormtype(MainApp.CRFCaseEnroll);
 
         JSONObject crfCase = new JSONObject();
 
@@ -177,7 +177,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         crfCase.put("ch_formdt", child.getLformdate());
         crfCase.put("ch_luid", child.getLuid());
 
-        crfCase.put("tcvscad33", bi.tcvscad33.getText().toString());
+        crfCase.put("tcvscad33", "T-" + bi.tcvscad33.getText().toString());
         crfCase.put("tcvscad34", bi.tcvscad34.getText().toString());
 
         crfCase.put("tcvscad01", bi.tcvscad01.getText().toString());

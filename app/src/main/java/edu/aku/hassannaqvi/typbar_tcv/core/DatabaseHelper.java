@@ -529,6 +529,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
+    public boolean getChildWRTCaseIDDB02(String uid, String screenID, String screendt, String caseID) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_FORMTYPE,
+                FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_ISTATUS
+        };
+
+        String whereClause = FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + " =?";
+        String[] whereArgs = {MainApp.CRFCaseEnroll, "1"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsTable._ID + " ASC";
+
+        boolean allDC = false;
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allDC = new FormsContract().hydrateDB(c, uid, screenID, screendt, caseID);
+                if (allDC) break;
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allDC;
+    }
+
     public ArrayList<UCsContract> getAllUCs() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;

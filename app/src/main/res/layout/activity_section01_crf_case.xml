@@ -109,7 +109,7 @@
                             android:hint="@string/tcvscad01"
                             android:maxLength="2"
                             app:maxValue="30"
-                            app:minValue="0"
+                            app:minValue="1"
                             app:required="true"
                             app:type="range"/>
 
@@ -1015,7 +1015,7 @@
                         android:layout_weight="1"
                         android:background="#1ed61e"
                         android:onClick="@{() -> callback.BtnContinue()}"
-                        android:text="@string/start_interview"
+                        android:text="@string/nextSection"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 

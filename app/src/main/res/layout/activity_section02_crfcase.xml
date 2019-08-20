@@ -1010,10 +1010,9 @@
                         android:layout_weight="1"
                         android:background="#1ed61e"
                         android:onClick="@{() -> callback.BtnContinue()}"
-                        android:text="@string/start_interview"
+                        android:text="@string/nextSection"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
-
                 </LinearLayout>
 
 

@@ -46,6 +46,8 @@ public class Section00CRFControlActivity extends AppCompatActivity {
     private String screenID = "", controlID = "", tagID = "";
     private CCChildrenContract child;
 
+    private int minMonth, maxMonth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,25 +67,60 @@ public class Section00CRFControlActivity extends AppCompatActivity {
             child = db.getChildWRTCaseIDDB("T-" + bi.tcvscla17.getText().toString());
 
         if (child == null) {
-            Toast.makeText(this, "No CaseID found!!", Toast.LENGTH_SHORT).show();
-            ClearClass.ClearAllFields(bi.llcrf, null);
-            bi.llcrf.setVisibility(View.GONE);
+            notFoundCase();
+            return;
+        }
+
+        if (!db.getChildWRTCaseIDDB02(child.getLuid(), child.getTcvscaa07(), child.getTcvscaa08(), child.getTcvscab23())) {
+            notFoundCase();
+            return;
+        }
+
+        Long ageInMonth = DateUtils.ageInMonthsByDOB(getDOB(child));
+
+        if (!getAgeRange(ageInMonth)) {
+            notFoundCase();
             return;
         }
 
         bi.viewGroup01.chName.setText(child.getTcvscaa01().toUpperCase());
         bi.viewGroup01.screenDate.setText(child.getTcvscaa08());
-
-        bi.viewGroup01.ageNote.setText("Note: Control Child Age must be in range of: ");
+        bi.viewGroup01.ageNote.setText("Note: Case Child Age is " + ageInMonth + " Months" + "\nControl Child range must be in " + minMonth + " to " + maxMonth + " Months");
 
         bi.llcrf.setVisibility(View.VISIBLE);
 
     }
 
+    private void notFoundCase() {
+        Toast.makeText(this, "No CaseID found!!", Toast.LENGTH_SHORT).show();
+        ClearClass.ClearAllFields(bi.llcrf, null);
+        bi.llcrf.setVisibility(View.GONE);
+    }
+
+    private boolean getAgeRange(Long months) {
+
+        //Age must be 7Months to 15Years
+        if (months < 7 && months >= 192) return false;
+
+        if (months >= 6 && months < 36) {
+            minMonth = 7;
+            int maxMonthCalculate = months.intValue() + 6;
+            maxMonth = maxMonthCalculate > 36 ? 36 : maxMonthCalculate;
+        }
+
+        if (months >= 36 && months < 192) {
+            minMonth = 36;
+            int maxMonthCalculate = months.intValue() + 36;
+            maxMonth = maxMonthCalculate > 192 ? 192 : maxMonthCalculate;
+        }
+
+        return true;
+    }
+
     private String getDOB(CCChildrenContract child) {
         if (!child.getTcvscaa05().equals(""))
-            return DateUtils.convertDateFormat(child.getTcvscaa05());
-        else return DateUtils.getDOB("dd/MM/yyyy",
+            return child.getTcvscaa05();
+        else return DateUtils.getDOB("dd-MM-yyyy",
                 Integer.valueOf(child.getTcvscaa05y()),
                 Integer.valueOf(child.getTcvscaa05m()),
                 Integer.valueOf(0));

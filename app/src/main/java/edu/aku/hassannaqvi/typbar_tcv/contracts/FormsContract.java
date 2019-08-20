@@ -3,6 +3,9 @@ package edu.aku.hassannaqvi.typbar_tcv.contracts;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -94,6 +97,15 @@ public class FormsContract {
 
     }
 
+    public boolean hydrateDB(Cursor cursor, String uid, String screenID, String screendt, String caseID) {
+
+        FormsTableCaseForm childCaseForm = new Gson().fromJson(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)), FormsTableCaseForm.class);
+
+        if (childCaseForm.getCh_luid().equals(uid) && childCaseForm.getCh_screenid().equals(screenID) && childCaseForm.getCh_screendt().equals(screendt) && childCaseForm.getTcvscad33().equals(caseID))
+            return true;
+
+        return false;
+    }
 
     public JSONObject toJSONObject() throws JSONException {
 
@@ -300,6 +312,31 @@ public class FormsContract {
     public void setAppversion(String appversion) {
         this.appversion = appversion;
     }
+
+    private class FormsTableCaseForm {
+
+        String ch_screenid, ch_luid, tcvscad33;
+
+        @SerializedName("ch_screendt")
+        String ch_screendt;
+
+        public String getCh_screenid() {
+            return ch_screenid;
+        }
+
+        public String getCh_luid() {
+            return ch_luid;
+        }
+
+        public String getCh_screendt() {
+            return ch_screendt;
+        }
+
+        public String getTcvscad33() {
+            return tcvscad33;
+        }
+    }
+
 
     public static abstract class FormsTable implements BaseColumns {
 
