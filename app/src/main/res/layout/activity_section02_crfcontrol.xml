@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.Section02CRFControlActivity">
 
@@ -1016,10 +1017,12 @@
                             style="@style/i_textview"
                             android:text="@string/tcvsclc33" />
 
-                        <EditText
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                             android:id="@+id/tcvsclc33"
                             style="@style/EditText_number"
-                            android:hint="@string/tcvsclc33" />
+                            android:hint="@string/tcvsclc33"
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE" />
 
                     </LinearLayout>
 

@@ -98,7 +98,7 @@ public class Section01CRFControlActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.updateSA();
+        long updcount = db.updateSB();
         return updcount != -1;
     }
 
@@ -234,7 +234,7 @@ public class Section01CRFControlActivity extends AppCompatActivity {
                 : bi.tcvsclc2197.isChecked() ? "97"
                 : "0");
 
-        MainApp.fc.setsA(String.valueOf(CrfControl));
+        MainApp.fc.setsB(String.valueOf(CrfControl));
 
     }
 

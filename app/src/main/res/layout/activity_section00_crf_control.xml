@@ -64,18 +64,25 @@
                 android:text="CHECK CASE"
                 android:textColor="@color/white" />
 
+            <!--Child Card-->
             <LinearLayout
-                android:id="@+id/llcrf"
-                style="@style/linearlayout_view"
+                android:id="@+id/llsec01"
+                style="@style/linearlayout_view_wt_bound"
                 android:visibility="gone"
                 tools:visibility="visible">
 
-                <!--Child Card-->
                 <include
                     android:id="@+id/viewGroup01"
                     layout="@layout/info_control_card"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llcrf"
+                style="@style/linearlayout_view"
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <!--EditText hfcode-->
                 <android.support.v7.widget.CardView style="@style/cardView">

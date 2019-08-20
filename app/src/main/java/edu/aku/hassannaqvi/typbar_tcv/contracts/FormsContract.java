@@ -109,7 +109,7 @@ public class FormsContract {
 
         FormsTableCaseControlForm childCaseControlForm = new Gson().fromJson(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)), FormsTableCaseControlForm.class);
 
-        if (childCaseControlForm.getCh_luid().equals(uid) && childCaseControlForm.getCh_screenid().equals(screenID) && childCaseControlForm.getCh_screendt().equals(screendt) && childCaseControlForm.getTcvscad33().equals(caseID) && !childCaseControlForm.getTcvscla18().equals(""))
+        if (childCaseControlForm.getCh_luid().equals(uid) && childCaseControlForm.getCh_screenid().equals(screenID) && childCaseControlForm.getCh_screendt().equals(screendt) && childCaseControlForm.getTcvscla17().equals(caseID) && !childCaseControlForm.getTcvscla18().equals(""))
             return Hydrate(cursor);
 
         return null;
@@ -347,7 +347,7 @@ public class FormsContract {
 
     public class FormsTableCaseControlForm extends FormsTableCaseForm {
 
-        String tcvscla18, tcvscla07, tcvscla19;
+        String tcvscla18, tcvscla07, tcvscla19, tcvscla17;
 
         public String getTcvscla18() {
             return tcvscla18;
@@ -359,6 +359,10 @@ public class FormsContract {
 
         public String getTcvscla19() {
             return tcvscla19;
+        }
+
+        public String getTcvscla17() {
+            return tcvscla17;
         }
     }
 

@@ -109,10 +109,13 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         } else
             settingControlIDs("1");
 
+        bi.viewGroup01.hCount.setText(String.valueOf(hospitalCount));
+        bi.viewGroup01.cCount.setText(String.valueOf(communityCount));
         bi.viewGroup01.chName.setText(child.getTcvscaa01().toUpperCase());
         bi.viewGroup01.screenDate.setText(child.getTcvscaa08());
 
         if (childLst.size() == 3) {
+            bi.llsec01.setVisibility(View.VISIBLE);
             bi.llcrf.setVisibility(View.GONE);
             bi.viewGroup01.ageNote.setText("Note: All Control's are filled!!");
             return;
@@ -120,6 +123,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
 
         bi.viewGroup01.ageNote.setText("Note: Case Child Age is " + ageInMonth + " Months" + "\nControl Child range must be in " + minMonth + " to " + maxMonth + " Months");
         bi.llcrf.setVisibility(View.VISIBLE);
+        bi.llsec01.setVisibility(View.VISIBLE);
 
     }
 

@@ -67,7 +67,7 @@
                         android:hint="@string/tcvsclc01"
                         android:maxLength="2"
                         app:maxValue="30"
-                        app:minValue="0"
+                        app:minValue="1"
                         app:required="true"
                         app:type="range" />
 
