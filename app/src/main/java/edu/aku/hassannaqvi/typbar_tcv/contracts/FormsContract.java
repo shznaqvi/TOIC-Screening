@@ -101,10 +101,18 @@ public class FormsContract {
 
         FormsTableCaseForm childCaseForm = new Gson().fromJson(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)), FormsTableCaseForm.class);
 
-        if (childCaseForm.getCh_luid().equals(uid) && childCaseForm.getCh_screenid().equals(screenID) && childCaseForm.getCh_screendt().equals(screendt) && childCaseForm.getTcvscad33().equals(caseID))
-            return true;
+        return childCaseForm.getCh_luid().equals(uid) && childCaseForm.getCh_screenid().equals(screenID) && childCaseForm.getCh_screendt().equals(screendt) && childCaseForm.getTcvscad33().equals(caseID);
 
-        return false;
+    }
+
+    public FormsContract hydrateControlDB(Cursor cursor, String uid, String screenID, String screendt, String caseID) {
+
+        FormsTableCaseControlForm childCaseControlForm = new Gson().fromJson(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)), FormsTableCaseControlForm.class);
+
+        if (childCaseControlForm.getCh_luid().equals(uid) && childCaseControlForm.getCh_screenid().equals(screenID) && childCaseControlForm.getCh_screendt().equals(screendt) && childCaseControlForm.getTcvscad33().equals(caseID) && !childCaseControlForm.getTcvscla18().equals(""))
+            return Hydrate(cursor);
+
+        return null;
     }
 
     public JSONObject toJSONObject() throws JSONException {
@@ -334,6 +342,23 @@ public class FormsContract {
 
         public String getTcvscad33() {
             return tcvscad33;
+        }
+    }
+
+    public class FormsTableCaseControlForm extends FormsTableCaseForm {
+
+        String tcvscla18, tcvscla07, tcvscla19;
+
+        public String getTcvscla18() {
+            return tcvscla18;
+        }
+
+        public String getTcvscla07() {
+            return tcvscla07;
+        }
+
+        public String getTcvscla19() {
+            return tcvscla19;
         }
     }
 

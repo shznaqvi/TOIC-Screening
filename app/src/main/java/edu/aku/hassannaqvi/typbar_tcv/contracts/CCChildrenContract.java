@@ -20,6 +20,15 @@ public class CCChildrenContract {
     private String tcvscaa08;
     private String tcvscab23;
 
+    public CCChildrenContract(String tcvscaa05, String tcvscaa05y, String tcvscaa05m) {
+        this.tcvscaa05 = tcvscaa05;
+        this.tcvscaa05y = tcvscaa05y;
+        this.tcvscaa05m = tcvscaa05m;
+    }
+
+    public CCChildrenContract() {
+    }
+
     public String getLuid() {
         return luid;
     }
