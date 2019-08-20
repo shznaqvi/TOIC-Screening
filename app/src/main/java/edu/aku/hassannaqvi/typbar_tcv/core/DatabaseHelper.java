@@ -574,6 +574,67 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
+    public ArrayList<FormsContract> getChildWRTCaseIDInControl(String uid, String screenID, String screendt, String caseID) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsTable._ID,
+                FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_USER,
+                FormsTable.COLUMN_ISTATUS,
+                FormsTable.COLUMN_FORMTYPE,
+                FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_SB,
+                FormsTable.COLUMN_SC,
+                FormsTable.COLUMN_SD,
+                FormsTable.COLUMN_GPSLAT,
+                FormsTable.COLUMN_GPSLNG,
+                FormsTable.COLUMN_GPSDATE,
+                FormsTable.COLUMN_GPSACC,
+                FormsTable.COLUMN_DEVICETAGID,
+                FormsTable.COLUMN_DEVICEID,
+                FormsTable.COLUMN_SYNCED,
+                FormsTable.COLUMN_SYNCED_DATE,
+                FormsTable.COLUMN_APP_VERSION
+        };
+
+        String whereClause = FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + " =?";
+        String[] whereArgs = {MainApp.CRFControl, "1"};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsTable._ID + " ASC";
+
+        ArrayList<FormsContract> allDC = new ArrayList<>();
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+
+                FormsContract form = new FormsContract().hydrateControlDB(c, uid, screenID, screendt, caseID);
+                if (form == null) continue;
+                allDC.add(form);
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allDC;
+    }
+
     public ArrayList<UCsContract> getAllUCs() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;

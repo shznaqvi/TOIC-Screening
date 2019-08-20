@@ -162,11 +162,16 @@
                             style="@style/i_textview"
                             android:text="@string/tcvscla03a" />
 
+                        <TextView
+                            style="@style/h_textview"
+                            android:text="Can be blank" />
+
                         <EditText
                             android:id="@+id/tcvscla03a"
                             style="@style/EditText_number"
                             android:hint="@string/tcvscla03a"
-                            android:maxLength="11" />
+                            android:maxLength="11"
+                            android:tag="-1" />
 
 
                     </LinearLayout>
@@ -581,11 +586,13 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvscla18" />
 
-                            <EditText
+                            <TextView
                                 android:id="@+id/tcvscla18"
-                                style="@style/EditText_number"
+                                style="@style/h_textview"
+                                android:autoSizeTextType="uniform"
                                 android:hint="@string/tcvscla18"
-                                android:maxLength="2" />
+                                android:text="CONTROL ID:"
+                                android:textSize="30sp" />
 
                         </LinearLayout>
 

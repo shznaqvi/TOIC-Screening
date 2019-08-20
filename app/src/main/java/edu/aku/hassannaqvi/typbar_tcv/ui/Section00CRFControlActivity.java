@@ -8,8 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +27,7 @@ import java.util.Map;
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.CCChildrenContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract.FormsTableCaseControlForm;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
@@ -83,12 +85,47 @@ public class Section00CRFControlActivity extends AppCompatActivity {
             return;
         }
 
+        List<FormsContract> childLst = db.getChildWRTCaseIDInControl(child.getLuid(), child.getTcvscaa07(), child.getTcvscaa08(), child.getTcvscab23());
+
+        int hospitalCount = 0, communityCount = 0;
+
+        for (FormsContract form : childLst) {
+
+            FormsTableCaseControlForm singleForm = new Gson().fromJson(form.getsA(), FormsTableCaseControlForm.class);
+
+            if (singleForm.getTcvscla07().equals("1"))
+                communityCount++;
+            else
+                hospitalCount++;
+        }
+
+        if (hospitalCount > 0)
+            bi.tcvscla07b.setEnabled(false);
+
+        if (childLst.size() > 0) {
+            FormsTableCaseControlForm lastForm = new Gson().fromJson(childLst.get(childLst.size() - 1).getsA(), FormsTableCaseControlForm.class);
+            String controlNo = lastForm.getTcvscla19().substring(lastForm.getTcvscla19().length() - 1);
+            settingControlIDs(String.valueOf(Integer.valueOf(controlNo) + 1));
+        } else
+            settingControlIDs("1");
+
         bi.viewGroup01.chName.setText(child.getTcvscaa01().toUpperCase());
         bi.viewGroup01.screenDate.setText(child.getTcvscaa08());
-        bi.viewGroup01.ageNote.setText("Note: Case Child Age is " + ageInMonth + " Months" + "\nControl Child range must be in " + minMonth + " to " + maxMonth + " Months");
 
+        if (childLst.size() == 3) {
+            bi.llcrf.setVisibility(View.GONE);
+            bi.viewGroup01.ageNote.setText("Note: All Control's are filled!!");
+            return;
+        }
+
+        bi.viewGroup01.ageNote.setText("Note: Case Child Age is " + ageInMonth + " Months" + "\nControl Child range must be in " + minMonth + " to " + maxMonth + " Months");
         bi.llcrf.setVisibility(View.VISIBLE);
 
+    }
+
+    private void settingControlIDs(String controlNo) {
+        bi.tcvscla18.setText(controlNo);
+        bi.tcvscla19.setText("T-" + bi.tcvscla17.getText().toString() + controlNo);
     }
 
     private void notFoundCase() {
@@ -183,7 +220,6 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         tagID = getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null);
     }
 
-
     public void BtnContinue() {
         try {
 
@@ -204,7 +240,8 @@ public class Section00CRFControlActivity extends AppCompatActivity {
                         , true
                 );
 
-                startActivity(new Intent(this, Section01CRFControlActivity.class));
+                startActivity(new Intent(this, eligibleFlag ? Section01CRFControlActivity.class : EndingActivity.class)
+                        .putExtra("complete", true));
             }
 
         } catch (JSONException e) {
@@ -236,10 +273,18 @@ public class Section00CRFControlActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype("scl");
+        MainApp.fc.setFormtype(MainApp.CRFControl);
 
         JSONObject crfControl = new JSONObject();
 
+        crfControl.put("ch_name", child.getTcvscaa01().toUpperCase());
+        crfControl.put("ch_screenid", child.getTcvscaa07());
+        crfControl.put("ch_dob", getDOB(child));
+        crfControl.put("ch_screendt", child.getTcvscaa08());
+        crfControl.put("ch_formdt", child.getLformdate());
+        crfControl.put("ch_luid", child.getLuid());
+
+        crfControl.put("tcvscla17", "T-" + bi.tcvscla17.getText().toString());
         crfControl.put("hf_code", hfMap.get(bi.hfcode.getSelectedItem().toString()).getHfcode());
         crfControl.put("tcvscla01", bi.tcvscla01.getText().toString());
         crfControl.put("tcvscla02", bi.tcvscla02.getText().toString());
@@ -265,9 +310,10 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         crfControl.put("tcvscla15", bi.tcvscla15a.isChecked() ? "1" : bi.tcvscla15b.isChecked() ? "2" : "0");
         crfControl.put("tcvscla16", bi.tcvscla16.getText().toString());
 
+        crfControl.put("tcvscla18", "");
+
         eligibleFlag = bi.tcvscla10a.isChecked() && bi.tcvscla11a.isChecked() && bi.tcvscla12a.isChecked() && bi.tcvscla13a.isChecked() && bi.tcvscla14a.isChecked() && bi.tcvscla15a.isChecked();
         if (eligibleFlag) {
-            crfControl.put("tcvscla17", bi.tcvscla17.getText().toString());
             crfControl.put("tcvscla18", bi.tcvscla18.getText().toString());
             crfControl.put("tcvscla19", bi.tcvscla19.getText().toString());
             crfControl.put("tcvscla20", new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime()));
@@ -279,7 +325,19 @@ public class Section00CRFControlActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.llcrfControl);
+        if (!ValidatorClass.EmptyCheckingContainer(this, bi.llcrfControl))
+            return false;
+
+        String currentDOB = getDOB(new CCChildrenContract(bi.tcvscla05.getText().toString(), bi.tcvscla05y.getText().toString(), bi.tcvscla05m.getText().toString()));
+        Long currentAgeInMonth = DateUtils.ageInMonthsByDOB(currentDOB);
+
+        if (currentAgeInMonth < minMonth || currentAgeInMonth > maxMonth) {
+            Toast.makeText(this, "Age in not coming in range!!", Toast.LENGTH_LONG).show();
+
+            return false;
+        }
+
+        return true;
     }
 
     public void BtnEnd() {
