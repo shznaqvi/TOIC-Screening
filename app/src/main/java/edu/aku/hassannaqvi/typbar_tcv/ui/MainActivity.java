@@ -499,62 +499,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    public void updateApp(View v) {
-//        v.setBackgroundColor(Color.GREEN);
-//
-//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-//                MainActivity.this);
-//        alertDialogBuilder
-//                .setMessage("Are you sure to download new app??")
-//                .setCancelable(false)
-//                .setPositiveButton("Yes",
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog,
-//                                                int id) {
-//                                // this is how you fire the downloader
-//                                try {
-//                                    URL url = new URL(MainApp._UPDATE_URL);
-//                                    HttpURLConnection c = (HttpURLConnection) url.openConnection();
-//                                    c.setRequestMethod("GET");
-//                                    c.setDoOutput(true);
-//                                    c.connect();
-//
-//                                    String PATH = Environment.getExternalStorageDirectory() + "/download/";
-//                                    File file = new File(PATH);
-//                                    file.mkdirs();
-//                                    File outputFile = new File(file, "app.apk");
-//                                    FileOutputStream fos = new FileOutputStream(outputFile);
-//
-//                                    InputStream is = c.getInputStream();
-//
-//                                    byte[] buffer = new byte[1024];
-//                                    int len1 = 0;
-//                                    while ((len1 = is.read(buffer)) != -1) {
-//                                        fos.write(buffer, 0, len1);
-//                                    }
-//                                    fos.close();
-//                                    is.close();//till here, it works fine - .apk is download to my sdcard in download file
-//
-//                                    Intent intent = new Intent(Intent.ACTION_VIEW);
-//                                    intent.setDataAndType(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/download/" + "app.apk")), "application/vnd.android.package-archive");
-//                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                    startActivity(intent);
-//
-//                                } catch (IOException e) {
-//                                    Toast.makeText(getApplicationContext(), "Update error!", Toast.LENGTH_LONG).show();
-//                                }
-//                            }
-//                        });
-//        alertDialogBuilder.setNegativeButton("No",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-//        AlertDialog alert = alertDialogBuilder.create();
-//        alert.show();
-//    }
-
     public void openDB(View v) {
         Intent dbmanager = new Intent(getApplicationContext(), AndroidDatabaseManager.class);
         startActivity(dbmanager);
@@ -608,7 +552,7 @@ public class MainActivity extends AppCompatActivity {
                     db.getUnsyncedForms(MainApp.MASSIMMUNIZATIONTYPE)
             ).execute();
 
-            Toast.makeText(getApplicationContext(), "Syncing CRF Case Forms", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Syncing CRF Case Screening Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
                     "CRF-Case",
@@ -618,13 +562,23 @@ public class MainActivity extends AppCompatActivity {
                     db.getUnsyncedForms(MainApp.CRFCase)
             ).execute();
 
+            Toast.makeText(getApplicationContext(), "Syncing CRF Case Enrolment Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "CRF-Case",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    FormsContract.FormsTable._URL5,
+                    db.getUnsyncedForms(MainApp.CRFCaseEnroll)
+            ).execute();
+
             Toast.makeText(getApplicationContext(), "Syncing CRF Control Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
                     "CRF-Control",
                     "updateSyncedForms",
                     FormsContract.class,
-                    FormsContract.FormsTable._URL5,
+                    FormsContract.FormsTable._URL6,
                     db.getUnsyncedForms(MainApp.CRFControl)
             ).execute();
 
