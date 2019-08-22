@@ -112,7 +112,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         bi.viewGroup01.hCount.setText(String.valueOf(hospitalCount));
         bi.viewGroup01.cCount.setText(String.valueOf(communityCount));
         bi.viewGroup01.chName.setText(child.getTcvscaa01().toUpperCase());
-        bi.viewGroup01.screenDate.setText(child.getTcvscaa08());
+        bi.viewGroup01.chDOB.setText(getDOB(child));
 
         if (childLst.size() == 3) {
             bi.llsec01.setVisibility(View.VISIBLE);
@@ -144,13 +144,15 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         if (months < 7 && months >= 192) return false;
 
         if (months >= 6 && months < 36) {
-            minMonth = 7;
+            int minMonthCalculate = months.intValue() - 6;
+            minMonth = minMonthCalculate < 7 ? 7 : minMonthCalculate;
             int maxMonthCalculate = months.intValue() + 6;
             maxMonth = maxMonthCalculate > 36 ? 36 : maxMonthCalculate;
         }
 
         if (months >= 36 && months < 192) {
-            minMonth = 36;
+            int minMonthCalculate = months.intValue() - 36;
+            minMonth = minMonthCalculate < 7 ? 7 : minMonthCalculate;
             int maxMonthCalculate = months.intValue() + 36;
             maxMonth = maxMonthCalculate > 192 ? 192 : maxMonthCalculate;
         }

@@ -59,18 +59,18 @@
                     android:gravity="center"
                     android:text="Name"
                     android:textSize="@dimen/_10sdp"
-                    card_view:layout_constraintEnd_toStartOf="@+id/screenDate"
+                    card_view:layout_constraintEnd_toStartOf="@+id/chDOB"
                     card_view:layout_constraintStart_toStartOf="parent"
                     card_view:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/screenDate"
+                    android:id="@+id/chDOB"
                     android:layout_width="0dp"
                     android:layout_height="27dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp"
                     android:gravity="center"
-                    android:text="Screen"
+                    android:text="Child DOB"
                     android:textSize="@dimen/_10sdp"
                     card_view:layout_constraintEnd_toEndOf="parent"
                     card_view:layout_constraintStart_toEndOf="@+id/chName"
@@ -110,7 +110,7 @@
                     card_view:layout_constraintEnd_toStartOf="@+id/cCount"
                     card_view:layout_constraintHorizontal_bias="0.5"
                     card_view:layout_constraintStart_toEndOf="@+id/hCount"
-                    card_view:layout_constraintTop_toBottomOf="@+id/screenDate" />
+                    card_view:layout_constraintTop_toBottomOf="@+id/chDOB" />
 
                 <TextView
                     android:id="@+id/cCount"
@@ -124,7 +124,7 @@
                     card_view:layout_constraintEnd_toEndOf="parent"
                     card_view:layout_constraintHorizontal_bias="0.5"
                     card_view:layout_constraintStart_toEndOf="@+id/imageView2"
-                    card_view:layout_constraintTop_toBottomOf="@+id/screenDate" />
+                    card_view:layout_constraintTop_toBottomOf="@+id/chDOB" />
 
                 <TextView
                     android:id="@+id/ageNote"

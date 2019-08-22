@@ -94,7 +94,7 @@ public class DateUtils {
         Long diff = today.getTime() - dob.getTime();
         double ageInMonths = (diff / (24 * 60 * 60 * 1000)) / 30.4375;
         long age = (long) Math.floor(ageInMonths);
-        return age;
+        return age + 1;
     }
 
     public static String getYearsAndMonthsBack(String format, int month, int year) {
