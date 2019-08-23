@@ -346,7 +346,8 @@
                         android:text="@string/tcvscad08" />
 
                     <LinearLayout
-                        style="@style/linearlayout_view_wt_bound"
+                        style="@style/linearlayout_view"
+                        android:layout_marginTop="60dp"
                         android:tag="0">
 
                         <CheckBox
@@ -373,6 +374,11 @@
                             android:id="@+id/tcvscad0805"
                             style="@style/i_checkbox"
                             android:text="@string/tcvscad0805" />
+
+                        <CheckBox
+                            android:id="@+id/tcvscad0806"
+                            style="@style/i_checkbox"
+                            android:text="@string/tcvscad0806" />
 
                         <CheckBox
                             android:id="@+id/tcvscad0896"

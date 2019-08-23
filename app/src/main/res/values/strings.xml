@@ -59,6 +59,8 @@
     <string name="udnt"> معلوم نہیں </string>
     <string name="unone"> کبھی نہیں </string>
     <string name="tcvscanum"> number </string>
+    <string name="resistance"> Resistance </string>
+    <string name="sensitive"> Sensitive </string>
 
 
     <string name="sec_slisting">SCHOOL LISTING</string>
@@ -155,7 +157,7 @@
     <string name="tcvscab213"> Co-trimoxazole </string>
     <string name="tcvscab214"> Fluoroquinolone </string>
     <string name="tcvscab215"> Ceftriaxone </string>
-    <string name="tcvscab216"> other </string>
+    <string name="tcvscab216"> Other </string>
     <string name="tcvscab22"> کیا مریض یا والدین  مطالعہ میں  شمو لیت کے لیے  رضا مند ہے ؟ </string>
     <string name="tcvscabh22"> اگر اوپر دیے گے سوالات (22،11،10،9اور15 یا20)کے جوابات ہاں ہیں تو مریض  مطالعہ میں شرکت کے لئے اہل ہے \n مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
     <string name="tcvscab23"> کیس آئی ڈی : </string>
@@ -189,8 +191,9 @@
     <string name="tcvscad0801"> پائپ کا پانی </string>
     <string name="tcvscad0802"> ٹینکر </string>
     <string name="tcvscad0803"> عوام کا نل </string>
-    <string name="tcvscad0804"> بورنگ کا پانی </string>
-    <string name="tcvscad0805"> بوتل والا پانی </string>
+    <string name="tcvscad0804"> ریڑھی کے ساتھ چھوٹی ٹنکی </string>
+    <string name="tcvscad0805"> بورنگ کا پانی </string>
+    <string name="tcvscad0806"> بوتل والا پانی </string>
     <string name="tcvscad09"> گھر میں پینے کے پانی کو صاف کرنے کا طریقہ؟ </string>
     <string name="tcvscad09a"> کوئی نہیں (تو سوال نمبر 4.5پر جاہیے) </string>
     <string name="tcvscad09b"> گھرکا فلٹرکیا ہوا (تو سوال نمبر 4.5پر جاہیے) </string>
@@ -297,6 +300,11 @@
     <string name="tcvscad32dd"> دن </string>
     <string name="tcvscad32mm"> مہینہ </string>
     <string name="tcvscad32yy"> سا ل </string>
+    <string name="tcvscad2201"> کیا بچہ اسکول جاتا ہے؟ </string>
+    <string name="tcvscad2201a"> ہاں </string>
+    <string name="tcvscad2201a1"> اگر ہاں،اسکول کا نام: </string>
+    <string name="tcvscad2201a2"> کلاس: </string>
+    <string name="tcvscad2201b"> نہیں </string>
 
     <!---FAZAL RIZVI  -->
     <string name="CrfControl"> Case Report Form - Impact Assessment (CONTROL) </string>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
+import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection02CrfcontrolBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
@@ -79,6 +81,8 @@ public class Section02CRFControlActivity extends AppCompatActivity {
 
         // Initialize db
         db = new DatabaseHelper(this);
+
+        bi.tcvsclc22a2x.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, MainApp.schClasses));
     }
 
 
@@ -114,6 +118,10 @@ public class Section02CRFControlActivity extends AppCompatActivity {
         CrfControl.put("tcvsclc22", bi.tcvsclc22a.isChecked() ? "1"
                 : bi.tcvsclc22b.isChecked() ? "2"
                 : "0");
+        if (bi.tcvsclc22a.isChecked()) {
+            CrfControl.put("tcvsclc22a1x", bi.tcvsclc22a1x.getText().toString());
+            CrfControl.put("tcvsclc22a2x", bi.tcvsclc22a2x.getSelectedItem().toString());
+        }
 
         CrfControl.put("tcvsclc23", bi.tcvsclc23a.isChecked() ? "1"
                 : bi.tcvsclc23b.isChecked() ? "2"

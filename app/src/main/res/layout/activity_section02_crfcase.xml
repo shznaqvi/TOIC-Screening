@@ -30,78 +30,47 @@
                 android:id="@+id/crfll02"
                 style="@style/linearlayout_view">
 
-                <!--Radio tcvscad22-->
+                <!--Radio tcvscad2201-->
                 <android.support.v7.widget.CardView style="@style/cardView">
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                         <TextView
                             style="@style/i_textview"
-                            android:text="@string/tcvscad22" />
+                            android:text="@string/tcvscad2201" />
 
                         <RadioGroup
-                            android:id="@+id/tcvscad22"
+                            android:id="@+id/tcvscad2201"
                             style="@style/i_radiogroup">
 
                             <RadioButton
-                                android:id="@+id/tcvscad22a"
+                                android:id="@+id/tcvscad2201a"
                                 style="@style/i_radiobutton"
-                                android:text="@string/tcvscad22a" />
-
-                            <RadioButton
-                                android:id="@+id/tcvscad22b"
-                                style="@style/i_radiobutton"
-                                android:text="@string/tcvscad22b" />
-
-                            <RadioButton
-                                android:id="@+id/tcvscad2297"
-                                style="@style/i_radiobutton"
-                                android:text="@string/tcvscad22c" />
-
-                        </RadioGroup>
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <!--Radio tcvscad23-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/fldGrptcvscad23"
-                    style="@style/cardView"
-                    android:visibility='@{tcvscad2297.checked? View.GONE: View.VISIBLE}'>
-
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvscad23" />
-
-                        <RadioGroup
-                            android:id="@+id/tcvscad23"
-                            style="@style/i_radiogroup">
-
-                            <RadioButton
-                                android:id="@+id/tcvscad23a"
-                                style="@style/i_radiobutton"
-                                android:text="@string/tcvscad23a" />
-
-                            <RadioButton
-                                android:id="@+id/tcvscad23b"
-                                style="@style/i_radiobutton"
-                                android:text="@string/tcvscad23b" />
-
-                            <RadioButton
-                                android:id="@+id/tcvscad2396"
-                                style="@style/i_radiobutton"
-                                android:text="@string/uotherx" />
+                                android:text="@string/tcvscad2201a" />
 
                             <EditText
-                                android:id="@+id/tcvscad2396x"
+                                android:id="@+id/tcvscad2201a1x"
                                 style="@style/EditText"
-                                android:hint="@string/uotherxh"
-                                android:tag="tcvscad2396"
-                                android:text='@{tcvscad2396.checked ? tcvscad2396x.getText.toString : "" }'
-                                android:visibility='@{tcvscad2396.checked ? View.VISIBLE : View.GONE }' />
+                                android:hint="@string/tcvscad2201a1"
+                                android:tag="tcvsclc15a"
+                                android:text='@{tcvscad2201a.checked ? tcvscad2201a1x.getText.toString : "" }'
+                                android:visibility='@{tcvscad2201a.checked ? View.VISIBLE : View.GONE }' />
+
+                            <Spinner
+                                android:id="@+id/tcvscad2201a2x"
+                                style="@style/Widget.AppCompat.Spinner.Underlined"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="35"
+                                android:gravity="center"
+                                android:popupBackground="#ffffff"
+                                android:visibility='@{tcvscad2201a.checked ? View.VISIBLE : View.GONE }' />
+
+                            <RadioButton
+                                android:id="@+id/tcvscad2201b"
+                                style="@style/i_radiobutton"
+                                android:text="@string/tcvscad2201b" />
 
                         </RadioGroup>
 
@@ -109,10 +78,94 @@
 
                 </android.support.v7.widget.CardView>
 
+                <LinearLayout
+                    android:id="@+id/llcrfControl01"
+                    style="@style/linearlayout_view_wt_bound"
+                    android:visibility='@{tcvscad2201b.checked ? View.GONE : View.VISIBLE }'>
+
+                    <!--Radio tcvscad22-->
+                    <android.support.v7.widget.CardView style="@style/cardView">
+
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvscad22" />
+
+                            <RadioGroup
+                                android:id="@+id/tcvscad22"
+                                style="@style/i_radiogroup">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad22a"
+                                    style="@style/i_radiobutton"
+                                    android:text="@string/tcvscad22a" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad22b"
+                                    style="@style/i_radiobutton"
+                                    android:text="@string/tcvscad22b" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2297"
+                                    style="@style/i_radiobutton"
+                                    android:text="@string/tcvscad22c" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <!--Radio tcvscad23-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/fldGrptcvscad23"
+                        style="@style/cardView"
+                        android:visibility='@{tcvscad2297.checked? View.GONE: View.VISIBLE}'>
+
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvscad23" />
+
+                            <RadioGroup
+                                android:id="@+id/tcvscad23"
+                                style="@style/i_radiogroup">
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad23a"
+                                    style="@style/i_radiobutton"
+                                    android:text="@string/tcvscad23a" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad23b"
+                                    style="@style/i_radiobutton"
+                                    android:text="@string/tcvscad23b" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvscad2396"
+                                    style="@style/i_radiobutton"
+                                    android:text="@string/uotherx" />
+
+                                <EditText
+                                    android:id="@+id/tcvscad2396x"
+                                    style="@style/EditText"
+                                    android:hint="@string/uotherxh"
+                                    android:tag="tcvscad2396"
+                                    android:text='@{tcvscad2396.checked ? tcvscad2396x.getText.toString : "" }'
+                                    android:visibility='@{tcvscad2396.checked ? View.VISIBLE : View.GONE }' />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
                 <!--Radio tcvscad24-->
-                <android.support.v7.widget.CardView
-                    style="@style/cardView"
-                    android:visibility='@{tcvscad2396.checked ? View.GONE : View.VISIBLE }'>
+                <android.support.v7.widget.CardView style="@style/cardView">
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -907,80 +960,91 @@
 
                 </android.support.v7.widget.CardView>
 
-                <!--Radio tcvscad30-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/fldgrptcvscad30"
-                    style="@style/cardView"
+                <LinearLayout
+                    style="@style/linearlayout_view_wt_bound"
                     android:visibility='@{tcvscad29a.checked? View.VISIBLE : View.GONE}'>
 
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+                    <!--Radio tcvscad30-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/fldgrptcvscad30"
+                        style="@style/cardView">
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvscad30" />
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                        <RadioGroup
-                            android:id="@+id/tcvscad30"
-                            style="@style/i_radiogroup">
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvscad30" />
 
-                            <RadioButton
-                                android:id="@+id/tcvscad30a"
-                                style="@style/i_radiobutton"
-                                android:text="@string/uyes" />
+                            <RadioGroup
+                                android:id="@+id/tcvscad30"
+                                style="@style/i_radiogroup">
 
-                            <RadioButton
-                                android:id="@+id/tcvscad30b"
-                                style="@style/i_radiobutton"
-                                android:text="@string/uno" />
+                                <RadioButton
+                                    android:id="@+id/tcvscad30a"
+                                    style="@style/i_radiobutton"
+                                    android:text="@string/uyes" />
 
-                        </RadioGroup>
+                                <RadioButton
+                                    android:id="@+id/tcvscad30b"
+                                    style="@style/i_radiobutton"
+                                    android:text="@string/uno" />
 
-                    </LinearLayout>
+                            </RadioGroup>
 
-                </android.support.v7.widget.CardView>
+                        </LinearLayout>
 
-                <!--EditText tcvscad31-->
-                <android.support.v7.widget.CardView
-                    style="@style/cardView"
-                    android:visibility='@{tcvscad29a.checked? View.VISIBLE : View.GONE}'>
+                    </android.support.v7.widget.CardView>
 
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+                    <!--EditText tcvscad31-->
+                    <android.support.v7.widget.CardView
+                        style="@style/cardView"
+                        android:visibility='@{tcvscad30a.checked? View.VISIBLE : View.GONE}'>
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvscad31" />
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                        <EditText
-                            android:id="@+id/tcvscad31"
-                            style="@style/EditText_number"
-                            android:hint="@string/tcvscad31"
-                            android:maxLength="11" />
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvscad31" />
 
-                    </LinearLayout>
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/tcvscad31"
+                                style="@style/EditText_number"
+                                android:hint="T-####-#####"
+                                android:maxLength="11"
+                                android:text='@{tcvscad30a.checked ? tcvscad31.getText.toString : "" }'
+                                app:defaultValue=""
+                                app:mask="T-####-#####"
+                                app:pattern="[^0-9]{1,1}-[0-9]{4,4}-[0-9]{1,5}"
+                                app:type="equal" />
 
-                </android.support.v7.widget.CardView>
+                        </LinearLayout>
 
-                <!--EditText tcvscad32-->
-                <android.support.v7.widget.CardView
-                    style="@style/cardView"
-                    android:visibility='@{tcvscad29a.checked? View.VISIBLE : View.GONE}'>
+                    </android.support.v7.widget.CardView>
 
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+                    <!--EditText tcvscad32-->
+                    <android.support.v7.widget.CardView
+                        style="@style/cardView"
+                        android:visibility='@{tcvscad30a.checked? View.VISIBLE : View.GONE}'>
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvscad32" />
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                            android:id="@+id/tcvscad32"
-                            style="@style/EditText_number"
-                            android:hint="@string/tcvscad32"
-                            app:dateFormat="dd-MM-yyyy"
-                            app:maxDate="CR_DATE" />
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvscad32" />
 
-                    </LinearLayout>
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                                android:id="@+id/tcvscad32"
+                                style="@style/EditText_number"
+                                android:hint="@string/tcvscad32"
+                                android:text='@{tcvscad30a.checked ? tcvscad32.getText.toString : "" }'
+                                app:dateFormat="dd-MM-yyyy"
+                                app:maxDate="CR_DATE" />
 
-                </android.support.v7.widget.CardView>
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
 
 
                 <!--  = = = = =  END OF FORM FIELDS  = = = = = -->

@@ -150,11 +150,16 @@
                             style="@style/i_textview"
                             android:text="@string/tcvscla03" />
 
+                        <TextView
+                            style="@style/h_textview"
+                            android:text="Can be blank" />
+
                         <EditText
                             android:id="@+id/tcvscla03"
                             style="@style/EditText_number"
                             android:hint="@string/tcvscla03"
-                            android:maxLength="11" />
+                            android:maxLength="11"
+                            android:tag="-1" />
 
 
                     </LinearLayout>

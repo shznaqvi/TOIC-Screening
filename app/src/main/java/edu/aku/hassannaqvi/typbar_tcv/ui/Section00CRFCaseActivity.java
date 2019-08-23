@@ -237,6 +237,8 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscab175", bi.tcvscab175a.isChecked() ? "1" : bi.tcvscab175b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab176", bi.tcvscab176a.isChecked() ? "1" : bi.tcvscab176b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab176x", bi.tcvscab176x.getText().toString());
+        crfCase.put("tcvscab1796", bi.tcvscab1796a.isChecked() ? "1" : bi.tcvscab1796b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscab1796x", bi.tcvscab1796x.getText().toString());
         crfCase.put("tcvscab18", bi.tcvscab18a.isChecked() ? "1" : bi.tcvscab18b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab19", bi.tcvscab19.getText().toString());
         crfCase.put("tcvscab20", bi.tcvscab20a.isChecked() ? "1" : bi.tcvscab20b.isChecked() ? "2" : bi.tcvscab20c.isChecked() ? "3" : "0");
@@ -247,9 +249,11 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscab215", bi.tcvscab215a.isChecked() ? "1" : bi.tcvscab215b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab216", bi.tcvscab216a.isChecked() ? "1" : bi.tcvscab216b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab216x", bi.tcvscab216x.getText().toString());
+        crfCase.put("tcvscab2196", bi.tcvscab2196a.isChecked() ? "1" : bi.tcvscab2196b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscab2196x", bi.tcvscab2196x.getText().toString());
         crfCase.put("tcvscab22", bi.tcvscab22a.isChecked() ? "1" : bi.tcvscab22b.isChecked() ? "2" : "0");
 
-        eligibleFlag = bi.tcvscab09a.isChecked() && bi.tcvscab10a.isChecked() && bi.tcvscab11a.isChecked() && bi.tcvscab15a.isChecked() && bi.tcvscab22a.isChecked() && bi.tcvscab20a.isChecked();
+        eligibleFlag = bi.tcvscab09a.isChecked() && bi.tcvscab10a.isChecked() && bi.tcvscab11a.isChecked() && bi.tcvscab22a.isChecked() && (bi.tcvscab15a.isChecked() || bi.tcvscab20a.isChecked());
 
         if (eligibleFlag) {
             crfCase.put("tcvscab23", bi.tcvscab23.getText().toString());

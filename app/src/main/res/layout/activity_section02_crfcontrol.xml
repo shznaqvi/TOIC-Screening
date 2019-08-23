@@ -51,12 +51,23 @@
                                 android:text='@{tcvsclc22a.checked ? tcvsclc22a1x.getText.toString : "" }'
                                 android:visibility='@{tcvsclc22a.checked ? View.VISIBLE : View.GONE }' />
 
-                            <EditText
+                            <!--<EditText-->
+                            <!--android:id="@+id/tcvsclc22a2x"-->
+                            <!--style="@style/EditText"-->
+                            <!--android:hint="@string/tcvsclc22a2"-->
+                            <!--android:tag="tcvsclc15a"-->
+                            <!--android:text='@{tcvsclc22a.checked ? tcvsclc22a2x.getText.toString : "" }'-->
+                            <!--android:visibility='@{tcvsclc22a.checked ? View.VISIBLE : View.GONE }' />-->
+
+                            <Spinner
                                 android:id="@+id/tcvsclc22a2x"
-                                style="@style/EditText"
-                                android:hint="@string/tcvsclc22a2"
-                                android:tag="tcvsclc15a"
-                                android:text='@{tcvsclc22a.checked ? tcvsclc22a2x.getText.toString : "" }'
+                                style="@style/Widget.AppCompat.Spinner.Underlined"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="35"
+                                android:gravity="center"
+                                android:popupBackground="#ffffff"
                                 android:visibility='@{tcvsclc22a.checked ? View.VISIBLE : View.GONE }' />
 
                             <RadioButton
@@ -995,11 +1006,15 @@
                             style="@style/i_textview"
                             android:text="@string/tcvsclc32" />
 
-                        <EditText
+                        <com.edittextpicker.aliazaz.EditTextPicker
                             android:id="@+id/tcvsclc32"
                             style="@style/EditText_number"
-                            android:hint="ID"
-                            android:maxLength="11" />
+                            android:hint="T-####-#####"
+                            android:maxLength="11"
+                            app:defaultValue=""
+                            app:mask="T-####-#####"
+                            app:pattern="[^0-9]{1,1}-[0-9]{4,4}-[0-9]{1,5}"
+                            app:type="equal" />
 
                     </LinearLayout>
 

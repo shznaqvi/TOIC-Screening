@@ -304,7 +304,8 @@
                     android:text="@string/tcvsclc08" />
 
                 <LinearLayout
-                    style="@style/linearlayout_view_wt_bound"
+                    style="@style/linearlayout_view"
+                    android:layout_marginTop="60dp"
                     android:tag="0">
 
                     <CheckBox

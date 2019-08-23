@@ -196,6 +196,7 @@ public class Section01CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad0803", bi.tcvscad0803.isChecked() ? "3" : "0");
         crfCase.put("tcvscad0804", bi.tcvscad0804.isChecked() ? "4" : "0");
         crfCase.put("tcvscad0805", bi.tcvscad0805.isChecked() ? "5" : "0");
+        crfCase.put("tcvscad0806", bi.tcvscad0806.isChecked() ? "6" : "0");
         crfCase.put("tcvscad0896", bi.tcvscad0896.isChecked() ? "96" : "0");
         crfCase.put("tcvscad0896x", bi.tcvscad0896x.getText().toString());
 
