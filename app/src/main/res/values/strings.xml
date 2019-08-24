@@ -179,8 +179,9 @@
     <string name="tcvscad02"> اس گھر میں کتنے کمرے ہیں؟ </string>
     <string name="tcvscad03"> گھر کس قسم کا ہے ؟ </string>
     <string name="tcvscad03a"> بنگلہ </string>
-    <string name="tcvscad03b"> کچا پکا گھر </string>
-    <string name="tcvscad03c"> کچا گھر </string>
+    <string name="tcvscad03b"> پکا گھر </string>
+    <string name="tcvscad03c"> کچا پکا گھر </string>
+    <string name="tcvscad03d"> کچا گھر </string>
     <string name="tcvscad04"> گھر میں کل کتنے ٹوائلٹ ہیں؟ </string>
     <string name="tcvscad05"> گھر میں سینیٹری (لیٹرین ) کی سہولیات کیسی ہیں؟ </string>
     <string name="tcvscad05a"> کموڈکےساتھ فلش </string>
@@ -342,8 +343,9 @@
     <string name="tcvsclc02"> اس  گھر میں کتنے کمرے ہیں؟ </string>
     <string name="tcvsclc03"> گھر کس قسم کا ہے ؟ </string>
     <string name="tcvsclc03a"> بنگلہ </string>
-    <string name="tcvsclc03b"> کچا پکا گھر </string>
-    <string name="tcvsclc03c"> کچا گھر </string>
+    <string name="tcvsclc03b">  پکا گھر </string>
+    <string name="tcvsclc03c"> کچا پکا گھر </string>
+    <string name="tcvsclc03d"> کچا گھر </string>
     <string name="tcvsclc04"> گھر میں کل کتنے ٹوائلٹ ہیں؟ </string>
     <string name="tcvsclc05"> گھر میں سینیٹری (لیٹرین ) کی سہولیات کیسی ہیں؟ </string>
     <string name="tcvsclc05a"> کموڈکےساتھ فلش </string>
@@ -455,7 +457,7 @@
     <string name="tcvsclc2802">2. ریستوران </string>
     <string name="tcvsclc2803">3. ٹھیلا </string>
     <string name="tcvsclc2804">4. کام کی جگہ/ اسکول </string>
-    <string name="tcvsclc2805">5. دوست/پڑوسی کے گھر</string>
+    <string name="tcvsclc2805">5. دوست/پڑوسی کے گھر/رشتہ دار کے گھر </string>
     <string name="tcvsclc2806">6. شادی/ پارٹی </string>
     <string name="tcvsclc29"> مندرجہ ذیل کھانے کےبارے میں بتائیں (جو کھانا گھر،آفس،اسکول کے باہرکھایا ہے وہ بھی شامل کریں) </string>
     <string name="tcvsclc2901">1. آلو چاٹ </string>
@@ -467,7 +469,7 @@
     <string name="tcvsclc2907">7. آئس  کریم </string>
     <string name="tcvsclc2908">8. فرش جوس </string>
     <string name="tcvsclc30"> کیا تحقیق میں شامل مریض کو ٹائیفائیڈ بخار سے بچاو کا ٹیکہ لگا ہے؟ </string>
-    <string name="tcvsclc31"> اگر ہاں ،تو کیا یہ حفاظتی ٹیکہ آغا خان یونیورسٹی والوں نے حالیہ ویکسینیشن مہم میں کھارادر جنرل ہسپتال کے ذریعے مہیا کی تھی؟ </string>
+    <string name="tcvsclc31"> اگر ہاں ،تو کیا یہ حفاظتی ٹیکہ آغا خان یونیورسٹی والوں نے حالیہ ویکسینیشن مہم میں کھارادر جنرل ہسپتال لیاری جنرل ہسپتال، AKUسیکنڈری کیئر ہسپتال یا اسکولوں  کے ذریعے مہیا کی تھی؟ </string>
     <string name="tcvsclc32"> اگر ہاں تو ویکسین کاڑد پر درج انرولمنٹ آئی ڈی لکھیں(مطالعہ کے اسٹاف کو اس مطالعے میں فراہم کیا گیا ویکسینشن کارڈ دیکھنا ہو گا) </string>
     <string name="tcvsclc33"> ویکسینیشن کی تاریخ: </string>
     <string name="tcvsclc30dd"> دن </string>

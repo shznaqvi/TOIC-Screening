@@ -53,9 +53,9 @@
                 android:id="@+id/btn_check"
                 style="@style/buttons"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
                 android:background="@color/red"
                 android:onClick="@{() -> callback.BtnCheckCase()}"
                 android:text="CHECK CASE"
@@ -111,7 +111,7 @@
                             app:maxValue="30"
                             app:minValue="1"
                             app:required="true"
-                            app:type="range"/>
+                            app:type="range" />
 
                     </LinearLayout>
 
@@ -134,7 +134,7 @@
                             app:maxValue="20"
                             app:minValue="1"
                             app:required="true"
-                            app:type="range"/>
+                            app:type="range" />
 
                     </LinearLayout>
 
@@ -168,6 +168,11 @@
                                 style="@style/i_radiobutton"
                                 android:text="@string/tcvscad03c" />
 
+                            <RadioButton
+                                android:id="@+id/tcvscad03d"
+                                style="@style/i_radiobutton"
+                                android:text="@string/tcvscad03d" />
+
                         </RadioGroup>
 
                     </LinearLayout>
@@ -191,7 +196,7 @@
                             app:maxValue="10"
                             app:minValue="1"
                             app:required="true"
-                            app:type="range"/>
+                            app:type="range" />
 
                     </LinearLayout>
 

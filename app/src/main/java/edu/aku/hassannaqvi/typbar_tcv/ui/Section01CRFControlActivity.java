@@ -113,6 +113,7 @@ public class Section01CRFControlActivity extends AppCompatActivity {
         CrfControl.put("tcvsclc03", bi.tcvsclc03a.isChecked() ? "1"
                 : bi.tcvsclc03b.isChecked() ? "2"
                 : bi.tcvsclc03c.isChecked() ? "3"
+                : bi.tcvsclc03d.isChecked() ? "4"
                 : "0");
 
         CrfControl.put("tcvsclc04", bi.tcvsclc04.getText().toString());

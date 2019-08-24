@@ -126,6 +126,11 @@
                             style="@style/i_radiobutton"
                             android:text="@string/tcvsclc03c" />
 
+                        <RadioButton
+                            android:id="@+id/tcvsclc03d"
+                            style="@style/i_radiobutton"
+                            android:text="@string/tcvsclc03d" />
+
                     </RadioGroup>
 
                 </LinearLayout>

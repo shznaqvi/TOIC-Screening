@@ -230,27 +230,37 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscab14", bi.tcvscab14.getText().toString());
         crfCase.put("tcvscab15", bi.tcvscab15a.isChecked() ? "1" : bi.tcvscab15b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab16", bi.tcvscab16.getText().toString());
-        crfCase.put("tcvscab171", bi.tcvscab171a.isChecked() ? "1" : bi.tcvscab171b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab172", bi.tcvscab172a.isChecked() ? "1" : bi.tcvscab172b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab173", bi.tcvscab173a.isChecked() ? "1" : bi.tcvscab173b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab174", bi.tcvscab174a.isChecked() ? "1" : bi.tcvscab174b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab175", bi.tcvscab175a.isChecked() ? "1" : bi.tcvscab175b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab176", bi.tcvscab176a.isChecked() ? "1" : bi.tcvscab176b.isChecked() ? "2" : "0");
+
+        crfCase.put("tcvscab171", bi.tcvscab171a.isChecked() ? "1" : bi.tcvscab171b.isChecked() ? "2" : bi.tcvscab171c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab172", bi.tcvscab172a.isChecked() ? "1" : bi.tcvscab172b.isChecked() ? "2" : bi.tcvscab172c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab173", bi.tcvscab173a.isChecked() ? "1" : bi.tcvscab173b.isChecked() ? "2" : bi.tcvscab173c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab174", bi.tcvscab174a.isChecked() ? "1" : bi.tcvscab174b.isChecked() ? "2" : bi.tcvscab174c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab175", bi.tcvscab175a.isChecked() ? "1" : bi.tcvscab175b.isChecked() ? "2" : bi.tcvscab175c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab176", bi.tcvscab176a.isChecked() ? "1" : bi.tcvscab176b.isChecked() ? "2" : bi.tcvscab176c.isChecked() ? "9" : "0");
         crfCase.put("tcvscab176x", bi.tcvscab176x.getText().toString());
-        crfCase.put("tcvscab1796", bi.tcvscab1796a.isChecked() ? "1" : bi.tcvscab1796b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscab1796", bi.tcvscab1796a.isChecked() ? "1" : bi.tcvscab1796b.isChecked() ? "2" : bi.tcvscab1796c.isChecked() ? "9" : "0");
         crfCase.put("tcvscab1796x", bi.tcvscab1796x.getText().toString());
+        crfCase.put("tcvscab177", bi.tcvscab177a.isChecked() ? "1" : bi.tcvscab177b.isChecked() ? "2" : bi.tcvscab177c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab178", bi.tcvscab178a.isChecked() ? "1" : bi.tcvscab178b.isChecked() ? "2" : bi.tcvscab178c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab179", bi.tcvscab179a.isChecked() ? "1" : bi.tcvscab179b.isChecked() ? "2" : bi.tcvscab179c.isChecked() ? "9" : "0");
+
         crfCase.put("tcvscab18", bi.tcvscab18a.isChecked() ? "1" : bi.tcvscab18b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab19", bi.tcvscab19.getText().toString());
         crfCase.put("tcvscab20", bi.tcvscab20a.isChecked() ? "1" : bi.tcvscab20b.isChecked() ? "2" : bi.tcvscab20c.isChecked() ? "3" : "0");
-        crfCase.put("tcvscab211", bi.tcvscab211a.isChecked() ? "1" : bi.tcvscab211b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab212", bi.tcvscab212a.isChecked() ? "1" : bi.tcvscab212b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab213", bi.tcvscab213a.isChecked() ? "1" : bi.tcvscab213b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab214", bi.tcvscab214a.isChecked() ? "1" : bi.tcvscab214b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab215", bi.tcvscab215a.isChecked() ? "1" : bi.tcvscab215b.isChecked() ? "2" : "0");
-        crfCase.put("tcvscab216", bi.tcvscab216a.isChecked() ? "1" : bi.tcvscab216b.isChecked() ? "2" : "0");
+
+        crfCase.put("tcvscab211", bi.tcvscab211a.isChecked() ? "1" : bi.tcvscab211b.isChecked() ? "2" : bi.tcvscab211c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab212", bi.tcvscab212a.isChecked() ? "1" : bi.tcvscab212b.isChecked() ? "2" : bi.tcvscab212c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab213", bi.tcvscab213a.isChecked() ? "1" : bi.tcvscab213b.isChecked() ? "2" : bi.tcvscab213c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab214", bi.tcvscab214a.isChecked() ? "1" : bi.tcvscab214b.isChecked() ? "2" : bi.tcvscab214c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab215", bi.tcvscab215a.isChecked() ? "1" : bi.tcvscab215b.isChecked() ? "2" : bi.tcvscab215c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab216", bi.tcvscab216a.isChecked() ? "1" : bi.tcvscab216b.isChecked() ? "2" : bi.tcvscab216c.isChecked() ? "9" : "0");
         crfCase.put("tcvscab216x", bi.tcvscab216x.getText().toString());
-        crfCase.put("tcvscab2196", bi.tcvscab2196a.isChecked() ? "1" : bi.tcvscab2196b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscab2196", bi.tcvscab2196a.isChecked() ? "1" : bi.tcvscab2196b.isChecked() ? "2" : bi.tcvscab2196c.isChecked() ? "9" : "0");
         crfCase.put("tcvscab2196x", bi.tcvscab2196x.getText().toString());
+        crfCase.put("tcvscab217", bi.tcvscab217a.isChecked() ? "1" : bi.tcvscab217b.isChecked() ? "2" : bi.tcvscab217c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab218", bi.tcvscab218a.isChecked() ? "1" : bi.tcvscab218b.isChecked() ? "2" : bi.tcvscab218c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab219", bi.tcvscab219a.isChecked() ? "1" : bi.tcvscab219b.isChecked() ? "2" : bi.tcvscab219c.isChecked() ? "9" : "0");
+
         crfCase.put("tcvscab22", bi.tcvscab22a.isChecked() ? "1" : bi.tcvscab22b.isChecked() ? "2" : "0");
 
         eligibleFlag = bi.tcvscab09a.isChecked() && bi.tcvscab10a.isChecked() && bi.tcvscab11a.isChecked() && bi.tcvscab22a.isChecked() && (bi.tcvscab15a.isChecked() || bi.tcvscab20a.isChecked());
