@@ -61,6 +61,7 @@
     <string name="tcvscanum"> number </string>
     <string name="resistance"> Resistance </string>
     <string name="sensitive"> Sensitive </string>
+    <string name="na"> N/A </string>
 
 
     <string name="sec_slisting">SCHOOL LISTING</string>
@@ -135,9 +136,11 @@
     <string name="tcvscab09">کیا مریض ۷ ماہ سے ۱۵ سال کے درمیان میں ہے؟</string>
     <string name="tcvscab10"> کیا مریض کم سے کم پچھلے ۱ماہ سے لیاری میں رہتا ہے ؟ </string>
     <string name="tcvscab11"> کیا مریض 3دن یا 3دن سے زیادہ بخار کی شکایت کےساتھ مرکزصحت آیا ہے؟ </string>
-    <string name="tcvscab12"> بیماری  کی تاریخ : </string>  //
+    <string name="tcvscab12"> بیماری  کی تاریخ : </string>
+    //
     <string name="tcvscab13"> کیا مریض کے پاس پچھلے کلچرکی رپورٹ موجود ہے؟ </string>
-    <string name="tcvscab14"> اگرہاں،تو رپورٹ کی تاریخ بتائیں </string> //
+    <string name="tcvscab14"> اگرہاں،تو رپورٹ کی تاریخ بتائیں </string>
+    //
     <string name="tcvscab15"> کیا مریض  کے پاس موجودکلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت ہے ؟ </string>
     <string name="tcvscab16"> لیباٹری رسیدنمبر: </string>
     <string name="tcvscabh17"> اگر  کلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت  ہوتو،مائکروبیل ریززٹینس پیٹرن بتائیں۔ </string>
@@ -147,6 +150,9 @@
     <string name="tcvscab174"> Fluoroquinolone </string>
     <string name="tcvscab175"> Ceftriaxone </string>
     <string name="tcvscab176"> other </string>
+    <string name="tcvscab177"> Cefepime </string>
+    <string name="tcvscab178"> Azithromycin </string>
+    <string name="tcvscab179"> Cifixime (Cefspan) </string>
     <string name="tcvscab18"> کیا  وزٹ کےدوران مریض کا خون کا نمونہ لیا  گیاہے. </string>
     <string name="tcvscab19">لیباٹری رسیدنمبر: نوٹ: اگر اس وزٹ کے دوران خون کانمونہ لیاگیاہےتولیبارٹری کی آئی ڈی درج کی جائےگی اوربقایافارم کلچرکےنتیجہ آنےکےبعد بھراجائےگا۔</string>
     <string name="tcvscab20"> کیا مریض  کے کلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت ہے ؟ </string>
@@ -158,6 +164,9 @@
     <string name="tcvscab214"> Fluoroquinolone </string>
     <string name="tcvscab215"> Ceftriaxone </string>
     <string name="tcvscab216"> Other </string>
+    <string name="tcvscab217"> Cefepime </string>
+    <string name="tcvscab218"> Azithromycin </string>
+    <string name="tcvscab219"> Cifixime (Cefspan) </string>
     <string name="tcvscab22"> کیا مریض یا والدین  مطالعہ میں  شمو لیت کے لیے  رضا مند ہے ؟ </string>
     <string name="tcvscabh22"> اگر اوپر دیے گے سوالات (22،11،10،9اور15 یا20)کے جوابات ہاں ہیں تو مریض  مطالعہ میں شرکت کے لئے اہل ہے \n مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
     <string name="tcvscab23"> کیس آئی ڈی : </string>
@@ -269,20 +278,20 @@
     <string name="tcvscad24a"> ہر روز </string>
     <string name="tcvscad24b"> کبھی کبھی </string>
     <string name="tcvscad24c"> کبھی نہیں </string>
-    <string name="tcvscad25"> کیا تحقیق میں شامل بچہ کو پچھلے ۴ ہفتہ میں ٹائیفائیڈ ہوا؟ </string>
+    <string name="tcvscad25"> کیا تحقیق میں شامل بچہ کاو پچھلے ۴ ہفتہ میںکسی ایسے شخص سے رابطہ ہوا جو  ٹائیفائیڈکی بیماری میں مبتلا ہوا؟ </string>
     <string name="tcvscad26"> کیا اس تحقیق میں شامل شخص نے پچھلے ۴ ہفتوں میں نیچے دئیے گئے جگہ کا غیر ابلا ہواپانی پیا ہے </string>
     <string name="tcvscad2601"> کام کی جگہ </string>
     <string name="tcvscad2602"> اسکول </string>
     <string name="tcvscad2603"> سڑک کنارے وینڈرز </string>
     <string name="tcvscad2604"> عوام کا نل </string>
     <string name="tcvscad2605"> مسجد </string>
-    <string name="tcvscad2606"> دوست/پڑوسی کے گھر </string>
+    <string name="tcvscad2606"> دوست/پڑوسی کے گھر/رشتہ دار کے گھر </string>
     <string name="tcvscad27"> کیا اس تحقیق میں شامل شخص نے پچھلے ۴ ہفتوں میں نیچے دئیے گئے جگہ کا کھانا کھایا ہے؟ </string>
     <string name="tcvscad2701"> سڑک کنارے وینڈرز </string>
     <string name="tcvscad2702"> ریستوران </string>
     <string name="tcvscad2703"> ٹھیلا </string>
     <string name="tcvscad2704"> کام کی جگہ/ اسکول </string>
-    <string name="tcvscad2705"> دوست/پڑوسی کے گھر </string>
+    <string name="tcvscad2705"> دوست/پڑوسی کے گھر/رشتہ دار کے گھر </string>
     <string name="tcvscad2706"> شادی/ پارٹی </string>
     <string name="tcvscad28"> مندرجہ ذیل کھانے کےبارے میں بتائیں (جو کھانا گھر،آفس،اسکول کے باہرکھایا ہے وہ بھی شامل کریں) </string>
     <string name="tcvscad2801"> آلو چاٹ </string>
@@ -294,7 +303,7 @@
     <string name="tcvscad2807"> آئس کریم </string>
     <string name="tcvscad2808"> فرش جوس </string>
     <string name="tcvscad29"> کیا تحقیق میں شامل مریض کو ٹائیفائیڈ بخار سے بچاو کا ٹیکہ لگا ہے؟ </string>
-    <string name="tcvscad30"> اگر ہاں ،تو کیا یہ حفاظتی ٹیکہ آغا خان یونیورسٹی والوں نے حالیہ ویکسینیشن مہم میں کھارادر جنرل ہسپتال کے ذریعے مہیا کی تھی؟ </string>
+    <string name="tcvscad30"> اگر ہاں ،تو کیا یہ حفاظتی ٹیکہ آغا خان یونیورسٹی والوں نے حالیہ ویکسینیشن مہم میں کھارادر جنرل ہسپتال ،لیاری جنرل ہسپتال، AKUسیکنڈری کیئر ہسپتال یا اسکولوں کے ذریعے مہیا کی تھی؟ </string>
     <string name="tcvscad31"> اگر ہاں تو ویکسین کاڑد پر درج انرولمنٹ آئی ڈی لکھیں(مطالعہ کے اسٹاف کو اس مطلہ میں فراہم کیا گیا ویکسینشن کارڈ دیکھنا ہو گا) </string>
     <string name="tcvscad32"> ویکسینیشن کی تاریخ: </string>
     <string name="tcvscad32dd"> دن </string>
@@ -466,7 +475,6 @@
     <string name="tcvsclc30yy"> سا ل </string>
 
 
-
     <!--- Waqar Farooqui (CRF Control)-->
     <string name="tcvsclah01"> سیکشن :1 </string>
     <string name="tcvscla01"> نام: </string>
@@ -513,8 +521,6 @@
     <string name="tcvsclaa006b"> لڑکی </string>
     <string name="tcvsclaa007"> اسکرین آئی ڈی: </string>
     <string name="tcvsclaa008">اسکرین کی تاریخ:</string>
-
-
 
 
     <!--Mass Imunization-->
