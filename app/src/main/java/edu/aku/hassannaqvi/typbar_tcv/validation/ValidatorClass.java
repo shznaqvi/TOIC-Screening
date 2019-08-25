@@ -120,7 +120,7 @@ public abstract class ValidatorClass {
 
     }
 
-    public static boolean EmptyCustomeTextBox(Context context, TextView txt, String msg) {
+    public static boolean EmptyCustomTextBox(Context context, TextView txt, String msg) {
         Toast.makeText(context, "ERROR: " + msg, Toast.LENGTH_SHORT).show();
         txt.setError(msg);
         txt.setFocusableInTouchMode(true);

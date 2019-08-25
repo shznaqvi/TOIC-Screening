@@ -37,10 +37,10 @@
                     <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/tcvscad33"
                         style="@style/EditText_number"
-                        android:hint="###-######"
+                        android:hint="####-######"
                         android:layoutDirection="ltr"
                         app:defaultValue=""
-                        app:mask="###-######"
+                        app:mask="####-######"
                         app:pattern="^(\\d{3,3}\\-\\d{6,6})$"
                         app:type="equal" />
 

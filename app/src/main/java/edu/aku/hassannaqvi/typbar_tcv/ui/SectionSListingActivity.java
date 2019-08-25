@@ -202,7 +202,7 @@ public class SectionSListingActivity extends AppCompatActivity {
 
             if (schoolMap.get(bi.autoCompleteSName.getText().toString()) != null) return true;
 
-            return ValidatorClass.EmptyCustomeTextBox(this, bi.autoCompleteSName, "This data is not accurate!!");
+            return ValidatorClass.EmptyCustomTextBox(this, bi.autoCompleteSName, "This data is not accurate!!");
 
         }
 

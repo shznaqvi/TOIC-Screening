@@ -25,6 +25,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -51,6 +52,7 @@ import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.typbar_tcv.get.GetAllData;
 import edu.aku.hassannaqvi.typbar_tcv.sync.SyncAllData;
+import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -421,6 +423,7 @@ public class MainActivity extends AppCompatActivity {
 
                 final EditText input = new EditText(MainActivity.this);
                 input.setInputType(InputType.TYPE_CLASS_NUMBER);
+                input.setFilters(new InputFilter[]{new InputFilter.LengthFilter(4)});
                 input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View view, boolean b) {
@@ -436,6 +439,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         m_Text = input.getText().toString();
                         if (!m_Text.equals("")) {
+
+                            if (m_Text.length() != 4) {
+                                ValidatorClass.EmptyCustomTextBox(MainActivity.this, input, "TAG-ID Length need to be 4!!");
+                                return;
+                            }
+
                             editor.putString("tagName", "T-" + m_Text);
                             editor.commit();
 

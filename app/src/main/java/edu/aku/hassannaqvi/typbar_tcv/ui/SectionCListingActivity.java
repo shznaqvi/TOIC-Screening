@@ -172,7 +172,7 @@ public class SectionCListingActivity extends AppCompatActivity {
         if (!formValidation()) return;
 
         if (schoolMap.get(bi.tcvcl01.getText().toString()) == null) {
-            ValidatorClass.EmptyCustomeTextBox(this, bi.tcvcl01, "This data is not accurate!!");
+            ValidatorClass.EmptyCustomTextBox(this, bi.tcvcl01, "This data is not accurate!!");
             return;
         }
 
@@ -311,22 +311,22 @@ public class SectionCListingActivity extends AppCompatActivity {
 
         if (bi.tcvcl03Ageb.isChecked()) {
             if (Integer.valueOf(bi.tcvcl04y.getText().toString()) == 0 && Integer.valueOf(bi.tcvcl04m.getText().toString()) < 6)
-                return ValidatorClass.EmptyCustomeTextBox(this, bi.tcvcl04y, "Days and Months criteria not meet!!");
+                return ValidatorClass.EmptyCustomTextBox(this, bi.tcvcl04y, "Days and Months criteria not meet!!");
         }
 
         if (!bi.tcvcl07.getText().toString().isEmpty()) {
             if (bi.tcvcl07.getText().toString().length() != 15)
-                return ValidatorClass.EmptyCustomeTextBox(this, bi.tcvcl07, "Length is not accurate!!");
+                return ValidatorClass.EmptyCustomTextBox(this, bi.tcvcl07, "Length is not accurate!!");
         }
 
         if (!bi.tcvcl09.getText().toString().isEmpty()) {
             if (bi.tcvcl09.getText().toString().length() != 11)
-                return ValidatorClass.EmptyCustomeTextBox(this, bi.tcvcl09, "Length is not accurate!!");
+                return ValidatorClass.EmptyCustomTextBox(this, bi.tcvcl09, "Length is not accurate!!");
         }
 
         if (!bi.tcvcl10.getText().toString().isEmpty()) {
             if (bi.tcvcl10.getText().toString().length() != 11)
-                return ValidatorClass.EmptyCustomeTextBox(this, bi.tcvcl10, "Length is not accurate!!");
+                return ValidatorClass.EmptyCustomTextBox(this, bi.tcvcl10, "Length is not accurate!!");
         }
 
         return true;
