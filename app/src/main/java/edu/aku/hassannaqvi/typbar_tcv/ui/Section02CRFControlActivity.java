@@ -154,7 +154,7 @@ public class Section02CRFControlActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.updateSC();
+        long updcount = db.updateSB();
         return updcount != -1;
     }
 
@@ -235,7 +235,7 @@ public class Section02CRFControlActivity extends AppCompatActivity {
 
         CrfControl.put("tcvsclc33", bi.tcvsclc33.getText().toString());
 
-        fc.setsC(String.valueOf(CrfControl));
+        fc.setsB(String.valueOf(CrfControl));
 
     }
 

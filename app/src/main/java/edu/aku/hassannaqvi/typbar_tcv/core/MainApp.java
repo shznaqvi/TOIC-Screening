@@ -117,6 +117,7 @@ public class MainApp extends Application {
     public static final String CRFCase = "sca";
     public static final String CRFCaseEnroll = "sca_enroll";
     public static final String CRFControl = "scl";
+    public static final String CRFControlEnroll = "scl_enroll";
     public static final String HF = "hfType";
     public static final String CAMPHF = "chf";
     public static final String SCHOOLHF = "shf";

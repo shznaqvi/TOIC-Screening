@@ -387,7 +387,30 @@ public class MainActivity extends AppCompatActivity {
                         dialog.show();
                         break;
                     case 4:
-                        startActivity(new Intent(MainActivity.this, Section00CRFControlActivity.class));
+                        builder = new AlertDialog.Builder(this);
+                        builder.setTitle("Please Select");
+                        builder.setMessage("Where you want to go?");
+                        builder.setIcon(android.R.drawable.ic_dialog_info);
+                        builder.setNegativeButton("Screening", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                startActivity(new Intent(MainActivity.this, Section00CRFControlActivity.class));
+                                dialogInterface.dismiss();
+
+
+                            }
+                        });
+                        builder.setPositiveButton("Enrollment", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                startActivity(new Intent(MainActivity.this, Section01CRFControlActivity.class));
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        dialog = builder.create();
+                        dialog.show();
                         break;
                     case 5:
 

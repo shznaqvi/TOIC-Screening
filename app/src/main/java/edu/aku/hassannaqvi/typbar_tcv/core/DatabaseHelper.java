@@ -480,7 +480,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allDC;
     }
 
-    public CCChildrenContract getChildWRTCaseIDDB(String cid) {
+    public CCChildrenContract getChildWRTCaseControlIDDB(String formType, String cid) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -493,7 +493,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 
         String whereClause = FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + " =?";
-        String[] whereArgs = {MainApp.CRFCase, "1"};
+        String[] whereArgs = {formType, "1"};
         String groupBy = null;
         String having = null;
 
@@ -511,7 +511,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                allDC = new CCChildrenContract().hydrateDB(c);
+                if (formType.equals(MainApp.CRFControl))
+                    allDC = new CCChildrenContract().hydrateDBControl(c);
+                else
+                    allDC = new CCChildrenContract().hydrateDB(c);
                 if (allDC.getTcvscab23() == null) {
                     allDC = null;
                     continue;

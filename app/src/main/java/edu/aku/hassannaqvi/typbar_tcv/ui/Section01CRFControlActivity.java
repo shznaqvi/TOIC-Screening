@@ -3,26 +3,35 @@ package edu.aku.hassannaqvi.typbar_tcv.ui;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import edu.aku.hassannaqvi.typbar_tcv.R;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.CCChildrenContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01CrfControlBinding;
+import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class Section01CRFControlActivity extends AppCompatActivity {
 
-    ActivitySection01CrfControlBinding bi;
-    DatabaseHelper db;
-
-    int type;
+    private ActivitySection01CrfControlBinding bi;
+    private DatabaseHelper db;
+    private CCChildrenContract child;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +74,26 @@ public class Section01CRFControlActivity extends AppCompatActivity {
             }
         });
 
+        bi.tcvscad33.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                ClearClass.ClearAllFields(bi.llcrf, null);
+                bi.llcrf.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
 
     }
 
@@ -75,6 +104,36 @@ public class Section01CRFControlActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
     }
 
+    public void BtnCheckCase() {
+        if (!ValidatorClass.EmptyEditTextPicker(this, bi.tcvscad33, getString(R.string.tcvscad33)))
+            return;
+
+        child = db.getChildWRTCaseControlIDDB(MainApp.CRFControl, "T-" + bi.tcvscad33.getText().toString());
+
+        if (child == null) {
+            Toast.makeText(this, "No ControlID found!!", Toast.LENGTH_SHORT).show();
+            ClearClass.ClearAllFields(bi.llcrf, null);
+            bi.llcrf.setVisibility(View.GONE);
+            return;
+        }
+
+        bi.viewGroup01.chName.setText(child.getTcvscaa01().toUpperCase());
+        bi.viewGroup01.screenId.setText(child.getTcvscaa07());
+        bi.viewGroup01.dob.setText(getDOB(child));
+        bi.viewGroup01.screenDate.setText(child.getTcvscaa08());
+
+        bi.llcrf.setVisibility(View.VISIBLE);
+
+    }
+
+    private String getDOB(CCChildrenContract child) {
+        if (!child.getTcvscaa05().equals(""))
+            return child.getTcvscaa05();
+        else return DateUtils.getDOB("dd-MM-yyyy",
+                Integer.valueOf(child.getTcvscaa05y()),
+                Integer.valueOf(child.getTcvscaa05m()),
+                Integer.valueOf(0));
+    }
 
     public void BtnContinue() {
         try {
@@ -97,14 +156,38 @@ public class Section01CRFControlActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        DatabaseHelper db = new DatabaseHelper(this);
-        long updcount = db.updateSB();
-        return updcount != -1;
+        long updcount = db.addForm(MainApp.fc);
+        MainApp.fc.set_ID(String.valueOf(updcount));
+        if (updcount > 0) {
+            MainApp.fc.setUID((MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
+            db.updateFormID();
+
+            return true;
+        }
+
+        return false;
     }
 
     private void SaveDraft() throws JSONException {
 
+        MainApp.fc = new FormsContract();
+        MainApp.fc.setDevicetagID(getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null));
+        MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
+        MainApp.fc.setUser(MainApp.userName);
+        MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        settingGPS(MainApp.fc);
+        MainApp.fc.setFormtype(MainApp.CRFControlEnroll);
+
         JSONObject CrfControl = new JSONObject();
+
+        CrfControl.put("ch_name", child.getTcvscaa01().toUpperCase());
+        CrfControl.put("ch_screenid", child.getTcvscaa07());
+        CrfControl.put("ch_dob", getDOB(child));
+        CrfControl.put("ch_screendt", child.getTcvscaa08());
+        CrfControl.put("ch_formdt", child.getLformdate());
+        CrfControl.put("ch_luid", child.getLuid());
 
 //        New question added in between form
         CrfControl.put("tcvsclc01", bi.tcvsclc01.getText().toString());
@@ -235,8 +318,16 @@ public class Section01CRFControlActivity extends AppCompatActivity {
                 : bi.tcvsclc2197.isChecked() ? "97"
                 : "0");
 
-        MainApp.fc.setsB(String.valueOf(CrfControl));
+        MainApp.fc.setsA(String.valueOf(CrfControl));
 
+    }
+
+    public void settingGPS(FormsContract fc) {
+        MainApp.LocClass locClass = MainApp.setGPS(this);
+        fc.setGpsLat(locClass.getLatitude());
+        fc.setGpsLng(locClass.getLongitude());
+        fc.setGpsAcc(locClass.getAccuracy());
+        fc.setGpsDT(locClass.getTime());
     }
 
     private boolean formValidation() {
@@ -244,7 +335,21 @@ public class Section01CRFControlActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+
+        try {
+            if (!ValidatorClass.EmptyCheckingContainer(this, bi.llcrf)) return;
+
+            SaveDraft();
+
+            if (!UpdateDB()) {
+                Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 }

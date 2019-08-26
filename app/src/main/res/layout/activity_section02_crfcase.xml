@@ -57,6 +57,7 @@
                                 android:layout_weight="35"
                                 android:gravity="center"
                                 android:popupBackground="#ffffff"
+                                android:tag="tcvscad2201a"
                                 android:visibility='@{tcvscad2201a.checked ? View.VISIBLE : View.GONE }' />
 
                             <AutoCompleteTextView
@@ -65,7 +66,7 @@
                                 android:layout_height="wrap_content"
                                 android:hint="@string/tcvscad2201a1x"
                                 android:inputType="textCapCharacters"
-                                android:tag="tcvsclc22a"
+                                android:tag="tcvscad2201a"
                                 android:text='@{tcvscad2201a.checked ? tcvscad2201a1x.getText.toString : "" }'
                                 android:visibility='@{tcvscad2201a.checked ? View.VISIBLE : View.GONE }' />
 
@@ -78,6 +79,7 @@
                                 android:layout_weight="35"
                                 android:gravity="center"
                                 android:popupBackground="#ffffff"
+                                android:tag="tcvscad2201a"
                                 android:visibility='@{tcvscad2201a.checked ? View.VISIBLE : View.GONE }' />
 
                             <RadioButton

@@ -115,7 +115,7 @@
                             android:id="@+id/tcvscla01"
                             style="@style/EditText"
                             android:hint="@string/tcvscla01"
-                            android:maxLength="6" />
+                            android:maxLength="26" />
 
                     </LinearLayout>
 
@@ -336,7 +336,8 @@
 
                         <RadioGroup
                             android:id="@+id/tcvscla07"
-                            style="@style/i_radiogroup">
+                            style="@style/i_radiogroup"
+                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla07a"
@@ -393,8 +394,10 @@
                             android:text="@string/tcvscla10a" />
 
                         <RadioGroup
+
                             android:id="@+id/tcvscla10"
-                            style="@style/i_radiogroup">
+                            style="@style/i_radiogroup"
+                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla10a"
@@ -425,7 +428,8 @@
 
                         <RadioGroup
                             android:id="@+id/tcvscla11"
-                            style="@style/i_radiogroup">
+                            style="@style/i_radiogroup"
+                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla11a"
@@ -456,7 +460,8 @@
 
                         <RadioGroup
                             android:id="@+id/tcvscla12"
-                            style="@style/i_radiogroup">
+                            style="@style/i_radiogroup"
+                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla12a"
@@ -487,7 +492,8 @@
 
                         <RadioGroup
                             android:id="@+id/tcvscla13"
-                            style="@style/i_radiogroup">
+                            style="@style/i_radiogroup"
+                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla13a"
@@ -516,7 +522,8 @@
 
                         <RadioGroup
                             android:id="@+id/tcvscla14"
-                            style="@style/i_radiogroup">
+                            style="@style/i_radiogroup"
+                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla14a"
@@ -545,7 +552,8 @@
 
                         <RadioGroup
                             android:id="@+id/tcvscla15"
-                            style="@style/i_radiogroup">
+                            style="@style/i_radiogroup"
+                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla15a"
@@ -564,11 +572,11 @@
                 </android.support.v7.widget.CardView>
 
                 <!--EditText tcvscla16-->
-                <android.support.v7.widget.CardView style="@style/cardView">
+                <android.support.v7.widget.CardView
+                    android:id="@+id/fldGrp0130"
+                    style="@style/cardView">
 
-                    <LinearLayout
-                        style="@style/linearlayout_view_wt_bound"
-                        android:visibility='@{tcvscla10a.checked &amp;&amp; tcvscla11a.checked &amp;&amp; tcvscla12a.checked &amp;&amp; tcvscla13a.checked &amp;&amp; tcvscla14a.checked &amp;&amp; tcvscla15a.checked ? View.GONE : View.VISIBLE }'>
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                         <TextView
                             style="@style/i_textview"
@@ -588,8 +596,7 @@
                     android:id="@+id/fldGrp0131"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility='@{tcvscla10a.checked &amp;&amp; tcvscla11a.checked &amp;&amp; tcvscla12a.checked &amp;&amp; tcvscla13a.checked &amp;&amp; tcvscla14a.checked &amp;&amp; tcvscla15a.checked ? View.VISIBLE : View.GONE }'>
+                    android:orientation="vertical">
 
                     <TextView
                         style="@style/textview_fm_lst_h"

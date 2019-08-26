@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.provider.BaseColumns;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -145,8 +146,70 @@ public class CCChildrenContract {
         return this;
     }
 
+    public CCChildrenContract hydrateDBControl(Cursor cursor) {
+        FormContractChildrenControl childrenDB = new Gson().fromJson(cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_SA)), FormContractChildrenControl.class);
+
+        this.luid = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_UID));
+        this.lformdate = cursor.getString(cursor.getColumnIndex(FormsContract.FormsTable.COLUMN_FORMDATE));
+        this.tcvscaa01 = childrenDB.getTcvscaa01();
+        this.tcvscaa05 = childrenDB.getTcvscaa05();
+        this.tcvscaa05y = childrenDB.getTcvscaa05y();
+        this.tcvscaa05m = childrenDB.getTcvscaa05m();
+        this.tcvscaa07 = childrenDB.getTcvscaa07();
+        this.tcvscaa08 = childrenDB.getTcvscaa08();
+        this.tcvscab23 = childrenDB.getTcvscab23();
+
+        return this;
+    }
+
     private class FormContractChildren {
         String tcvscaa01, tcvscaa05, tcvscaa05y, tcvscaa05m, tcvscaa07, tcvscaa08, tcvscab23;
+
+        public String getTcvscaa01() {
+            return tcvscaa01;
+        }
+
+        public String getTcvscaa05() {
+            return tcvscaa05;
+        }
+
+        public String getTcvscaa05y() {
+            return tcvscaa05y;
+        }
+
+        public String getTcvscaa05m() {
+            return tcvscaa05m;
+        }
+
+        public String getTcvscaa07() {
+            return tcvscaa07;
+        }
+
+        public String getTcvscaa08() {
+            return tcvscaa08;
+        }
+
+        public String getTcvscab23() {
+            return tcvscab23;
+        }
+    }
+
+    private class FormContractChildrenControl {
+
+        @SerializedName("tcvscla01")
+        String tcvscaa01;
+        @SerializedName("ch_screendt")
+        String tcvscaa05;
+        @SerializedName("tcvscla05")
+        String tcvscaa05y;
+        @SerializedName("tcvscla05m")
+        String tcvscaa05m;
+        @SerializedName("tcvscla07")
+        String tcvscaa07;
+        @SerializedName("tcvscla08")
+        String tcvscaa08;
+        @SerializedName("tcvscla19")
+        String tcvscab23;
 
         public String getTcvscaa01() {
             return tcvscaa01;

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -48,8 +49,10 @@ public class Section00CRFControlActivity extends AppCompatActivity {
     private boolean eligibleFlag = false;
     private String screenID = "", controlID = "", tagID = "";
     private CCChildrenContract child;
+    List<RadioButton> rdbEligibilityCheckIDs, rdbEligibilityCheckIDs07a, rdbEligibilityCheckIDs07b;
 
     private int minMonth, maxMonth;
+    private boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +70,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
             return;
 
         if (child == null)
-            child = db.getChildWRTCaseIDDB("T-" + bi.tcvscla17.getText().toString());
+            child = db.getChildWRTCaseControlIDDB(MainApp.CRFCase, "T-" + bi.tcvscla17.getText().toString());
 
         if (child == null) {
             notFoundCase();
@@ -214,6 +217,36 @@ public class Section00CRFControlActivity extends AppCompatActivity {
 
     }
 
+    public void onRadioClickChanged(RadioGroup radioGroup, int id) {
+        flag = true;
+        for (RadioButton rdbID : rdbEligibilityCheckIDs) {
+            if (!rdbID.isChecked()) {
+                flag = false;
+                break;
+            }
+        }
+        if (radioGroup.getCheckedRadioButtonId() == bi.tcvscla07a.getId()) {
+            for (RadioButton rdbID : rdbEligibilityCheckIDs07a) {
+                if (!rdbID.isChecked()) {
+                    flag = false;
+                    break;
+                }
+            }
+        } else if (radioGroup.getCheckedRadioButtonId() == bi.tcvscla07b.getId()) {
+            for (RadioButton rdbID : rdbEligibilityCheckIDs07b) {
+                if (!rdbID.isChecked()) {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+
+        bi.fldGrp0130.setVisibility(flag ? View.GONE : View.VISIBLE);
+        bi.fldGrp0131.setVisibility(flag ? View.VISIBLE : View.GONE);
+
+
+    }
+
     private void loadHFFromDB() {
         Collection<HFContract> allHF = db.getAllHF();
         if (allHF.size() == 0) return;
@@ -237,6 +270,10 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         // Initialize db
         db = new DatabaseHelper(this);
         tagID = getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null);
+
+        rdbEligibilityCheckIDs = new ArrayList<>(Arrays.asList(bi.tcvscla10a, bi.tcvscla14a, bi.tcvscla15a));
+        rdbEligibilityCheckIDs07a = new ArrayList<>(Arrays.asList(bi.tcvscla07a, bi.tcvscla11a, bi.tcvscla13a));
+        rdbEligibilityCheckIDs07b = new ArrayList<>(Arrays.asList(bi.tcvscla07b, bi.tcvscla12a));
     }
 
     public void BtnContinue() {
@@ -259,7 +296,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
                         , true
                 );
 
-                startActivity(new Intent(this, eligibleFlag ? Section01CRFControlActivity.class : EndingActivity.class)
+                startActivity(new Intent(this, EndingActivity.class)
                         .putExtra("complete", true));
             }
 
@@ -331,7 +368,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
 
         crfControl.put("tcvscla18", "");
 
-        eligibleFlag = bi.tcvscla10a.isChecked() && bi.tcvscla11a.isChecked() && bi.tcvscla12a.isChecked() && bi.tcvscla13a.isChecked() && bi.tcvscla14a.isChecked() && bi.tcvscla15a.isChecked();
+        eligibleFlag = bi.tcvscla10a.isChecked() && (!bi.tcvscla07a.isChecked() || bi.tcvscla11a.isChecked()) && (!bi.tcvscla07b.isChecked() || bi.tcvscla12a.isChecked()) && (!bi.tcvscla07a.isChecked() || bi.tcvscla13a.isChecked()) && bi.tcvscla14a.isChecked() && bi.tcvscla15a.isChecked();
         if (eligibleFlag) {
             crfControl.put("tcvscla18", bi.tcvscla18.getText().toString());
             crfControl.put("tcvscla19", bi.tcvscla19.getText().toString());

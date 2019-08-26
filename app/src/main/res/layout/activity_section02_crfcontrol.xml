@@ -52,6 +52,7 @@
                                 android:layout_weight="35"
                                 android:gravity="center"
                                 android:popupBackground="#ffffff"
+                                android:tag="tcvsclc22a"
                                 android:visibility='@{tcvsclc22a.checked ? View.VISIBLE : View.GONE }' />
 
                             <AutoCompleteTextView
@@ -73,6 +74,7 @@
                                 android:layout_weight="35"
                                 android:gravity="center"
                                 android:popupBackground="#ffffff"
+                                android:tag="tcvsclc22a"
                                 android:visibility='@{tcvsclc22a.checked ? View.VISIBLE : View.GONE }' />
 
                             <RadioButton

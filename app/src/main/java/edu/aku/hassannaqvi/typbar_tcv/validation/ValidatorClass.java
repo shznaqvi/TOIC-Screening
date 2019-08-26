@@ -209,7 +209,9 @@ public abstract class ValidatorClass {
                 View innerV = rdGrp.getChildAt(j);
                 if (innerV instanceof EditText) {
                     if (getIDComponent(rdGrp.findViewById(rdGrp.getCheckedRadioButtonId())).equals(innerV.getTag()))
-                        if (innerV instanceof EditTextPicker)
+                        if (innerV instanceof Spinner)
+                            rdbFlag = EmptySpinner(context, (Spinner) innerV, getString(context, getIDComponent(innerV)));
+                        else if (innerV instanceof EditTextPicker)
                             rdbFlag = EmptyEditTextPicker(context, (EditText) innerV, getString(context, getIDComponent(innerV)));
                         else
                             rdbFlag = EmptyTextBox(context, (EditText) innerV, getString(context, getIDComponent(innerV)));
