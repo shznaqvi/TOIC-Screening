@@ -48,11 +48,24 @@
                                 style="@style/i_radiobutton"
                                 android:text="@string/tcvscad2201a" />
 
-                            <EditText
+                            <Spinner
+                                android:id="@+id/tcvcl00"
+                                style="@style/Widget.AppCompat.Spinner.Underlined"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="35"
+                                android:gravity="center"
+                                android:popupBackground="#ffffff"
+                                android:visibility='@{tcvscad2201a.checked ? View.VISIBLE : View.GONE }' />
+
+                            <AutoCompleteTextView
                                 android:id="@+id/tcvscad2201a1x"
-                                style="@style/EditText"
-                                android:hint="@string/tcvscad2201a1"
-                                android:tag="tcvsclc15a"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/tcvscad2201a1x"
+                                android:inputType="textCapCharacters"
+                                android:tag="tcvsclc22a"
                                 android:text='@{tcvscad2201a.checked ? tcvscad2201a1x.getText.toString : "" }'
                                 android:visibility='@{tcvscad2201a.checked ? View.VISIBLE : View.GONE }' />
 
@@ -224,7 +237,7 @@
                             <RadioButton
                                 android:id="@+id/tcvscad2598"
                                 style="@style/i_radiobutton"
-                                android:text="@string/dkn" />
+                                android:text="@string/udnt" />
 
                         </RadioGroup>
 

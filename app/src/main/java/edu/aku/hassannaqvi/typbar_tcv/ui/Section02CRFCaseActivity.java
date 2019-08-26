@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -11,7 +13,13 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import edu.aku.hassannaqvi.typbar_tcv.R;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection02CrfcaseBinding;
@@ -23,7 +31,9 @@ import static edu.aku.hassannaqvi.typbar_tcv.core.MainApp.fc;
 
 public class Section02CRFCaseActivity extends AppCompatActivity {
 
-    ActivitySection02CrfcaseBinding bi;
+    private ActivitySection02CrfcaseBinding bi;
+    private DatabaseHelper db;
+    private Map<String, SchoolContract> schoolMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +42,27 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section02_crfcase);
         bi.setCallback(this);
 
+        fillingSpinner();
         settingUI();
     }
 
-    private void settingUI() {
+    private void fillingSpinner() {
 
+        // Initialize db
+        db = new DatabaseHelper(this);
+
+        List<String> temp_type = new ArrayList<>();
+
+        for (String stype : MainApp.schTypes) {
+            if (stype.equals("Other")) continue;
+            temp_type.add(stype);
+        }
+
+        bi.tcvcl00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, temp_type));
         bi.tcvscad2201a2x.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, MainApp.schClasses));
+    }
+
+    private void settingUI() {
 
         bi.tcvscad22.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -72,10 +97,51 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
             }
         });
 
+        //settting spinner listeners
+        bi.tcvcl00.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                ArrayList<String> schNames = new ArrayList<>();
+
+                if (i != 0) {
+
+                    ArrayList<SchoolContract> schoolContract = db.getSchoolWRTType(String.valueOf(bi.tcvcl00.getSelectedItemPosition()), "0");
+                    schoolMap = new HashMap<>();
+
+                    for (SchoolContract school : schoolContract) {
+                        schoolMap.put(school.getSch_name().toUpperCase() + "-" + school.getSch_code(), school);
+                        schNames.add(school.getSch_name().toUpperCase() + "-" + school.getSch_code());
+                    }
+
+                }
+
+                bi.tcvscad2201a1x.setText(null);
+                bi.tcvscad2201a1x.setAdapter(new ArrayAdapter<>(Section02CRFCaseActivity.this, android.R.layout.simple_spinner_dropdown_item, schNames));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.crfll02);
+        if (!ValidatorClass.EmptyCheckingContainer(this, bi.crfll02))
+            return false;
+
+        if (bi.tcvscad2201a1x.getVisibility() == View.VISIBLE) {
+
+            if (schoolMap.get(bi.tcvscad2201a1x.getText().toString()) != null) return true;
+
+            return ValidatorClass.EmptyCustomTextBox(this, bi.tcvscad2201a1x, "This data is not accurate!!");
+
+        }
+
+        return true;
     }
 
     public void BtnContinue() {
@@ -102,7 +168,7 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        DatabaseHelper db = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
         long updcount = db.updateSA();
         return updcount != -1;
     }
@@ -116,7 +182,7 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
                 : bi.tcvscad2201b.isChecked() ? "2"
                 : "0");
         if (bi.tcvscad2201a.isChecked()) {
-            crfCase.put("tcvscad2201a1x", bi.tcvscad2201a1x.getText().toString());
+            crfCase.put("tcvscad2201a1x", schoolMap.get(bi.tcvscad2201a1x.getText().toString()).getSch_code());
             crfCase.put("tcvscad2201a2x", bi.tcvscad2201a2x.getSelectedItem().toString());
         }
 

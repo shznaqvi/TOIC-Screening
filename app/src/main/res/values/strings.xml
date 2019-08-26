@@ -313,6 +313,7 @@
     <string name="tcvscad2201"> کیا بچہ اسکول جاتا ہے؟ </string>
     <string name="tcvscad2201a"> ہاں </string>
     <string name="tcvscad2201a1"> اگر ہاں،اسکول کا نام: </string>
+    <string name="tcvscad2201a1x"> اسکول کا نام </string>
     <string name="tcvscad2201a2"> کلاس: </string>
     <string name="tcvscad2201b"> نہیں </string>
 
@@ -433,6 +434,7 @@
     <string name="tcvsclc22"> کیا بچہ اسکول جاتا ہے؟ </string>
     <string name="tcvsclc22a"> ہاں </string>
     <string name="tcvsclc22a1"> اگر ہاں،اسکول کا نام: </string>
+    <string name="tcvsclc22a1x"> اسکول کا نام </string>
     <string name="tcvsclc22a2"> کلاس: </string>
     <string name="tcvsclc22b"> نہیں </string>
     <string name="tcvsclc23"> کیا تحقیق میں شامل بچہ اسکول میں  دوپہر کے کھانے کےلیے  پیسے لے کر جاتا/جاتی ہے؟ </string>
@@ -451,7 +453,7 @@
     <string name="tcvsclc2703">3. سڑک کنارے وینڈرز </string>
     <string name="tcvsclc2704">4. عوام  کا نل </string>
     <string name="tcvsclc2705">5. مسجد </string>
-    <string name="tcvsclc2706">6. دوست/پڑوسی کے گھر </string>
+    <string name="tcvsclc2706">6. دوست/پڑوسی کے گھر/رشتہ دار کے گھر </string>
     <string name="tcvsclc28"> کیا اس تحقیق میں شامل شخص نے پچھلے ۴ ہفتوں میں نیچے دئیے گئے جگہ کا کھانا کھایا ہے؟ </string>
     <string name="tcvsclc2801">1. سڑک کنارے وینڈرز </string>
     <string name="tcvsclc2802">2. ریستوران </string>

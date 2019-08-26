@@ -41,7 +41,7 @@
                         android:layoutDirection="ltr"
                         app:defaultValue=""
                         app:mask="####-######"
-                        app:pattern="^(\\d{3,3}\\-\\d{6,6})$"
+                        app:pattern="^(\\d{4,4}\\-\\d{6,6})$"
                         app:type="equal" />
 
                 </LinearLayout>
@@ -346,57 +346,60 @@
                 <!--CheckBox & EditText tcvscad08-->
                 <android.support.v7.widget.CardView style="@style/cardView">
 
-                    <TextView
-                        style="@style/i_textview"
-                        android:text="@string/tcvscad08" />
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                    <LinearLayout
-                        style="@style/linearlayout_view"
-                        android:layout_marginTop="60dp"
-                        android:tag="0">
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/tcvscad08" />
 
-                        <CheckBox
-                            android:id="@+id/tcvscad0801"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvscad0801" />
+                        <LinearLayout
+                            style="@style/linearlayout_view_wt_bound"
+                            android:tag="0">
 
-                        <CheckBox
-                            android:id="@+id/tcvscad0802"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvscad0802" />
+                            <CheckBox
+                                android:id="@+id/tcvscad0801"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvscad0801" />
 
-                        <CheckBox
-                            android:id="@+id/tcvscad0803"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvscad0803" />
+                            <CheckBox
+                                android:id="@+id/tcvscad0802"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvscad0802" />
 
-                        <CheckBox
-                            android:id="@+id/tcvscad0804"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvscad0804" />
+                            <CheckBox
+                                android:id="@+id/tcvscad0803"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvscad0803" />
 
-                        <CheckBox
-                            android:id="@+id/tcvscad0805"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvscad0805" />
+                            <CheckBox
+                                android:id="@+id/tcvscad0804"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvscad0804" />
 
-                        <CheckBox
-                            android:id="@+id/tcvscad0806"
-                            style="@style/i_checkbox"
-                            android:text="@string/tcvscad0806" />
+                            <CheckBox
+                                android:id="@+id/tcvscad0805"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvscad0805" />
 
-                        <CheckBox
-                            android:id="@+id/tcvscad0896"
-                            style="@style/i_checkbox"
-                            android:text="@string/uotherx" />
+                            <CheckBox
+                                android:id="@+id/tcvscad0806"
+                                style="@style/i_checkbox"
+                                android:text="@string/tcvscad0806" />
 
-                        <EditText
-                            android:id="@+id/tcvscad0896x"
-                            style="@style/EditText"
-                            android:hint="@string/uotherxh"
-                            android:tag="tcvscad0896"
-                            android:text='@{tcvscad0896.checked ? tcvscad0896x.getText.toString : "" }'
-                            android:visibility='@{tcvscad0896.checked ? View.VISIBLE : View.GONE }' />
+                            <CheckBox
+                                android:id="@+id/tcvscad0896"
+                                style="@style/i_checkbox"
+                                android:text="@string/uotherx" />
+
+                            <EditText
+                                android:id="@+id/tcvscad0896x"
+                                style="@style/EditText"
+                                android:hint="@string/uotherxh"
+                                android:tag="tcvscad0896"
+                                android:text='@{tcvscad0896.checked ? tcvscad0896x.getText.toString : "" }'
+                                android:visibility='@{tcvscad0896.checked ? View.VISIBLE : View.GONE }' />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 

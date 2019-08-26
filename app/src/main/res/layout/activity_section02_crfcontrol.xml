@@ -43,21 +43,26 @@
                                 style="@style/i_radiobutton"
                                 android:text="@string/tcvsclc22a" />
 
-                            <EditText
-                                android:id="@+id/tcvsclc22a1x"
-                                style="@style/EditText"
-                                android:hint="@string/tcvsclc22a1"
-                                android:tag="tcvsclc15a"
-                                android:text='@{tcvsclc22a.checked ? tcvsclc22a1x.getText.toString : "" }'
+                            <Spinner
+                                android:id="@+id/tcvcl00"
+                                style="@style/Widget.AppCompat.Spinner.Underlined"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="35"
+                                android:gravity="center"
+                                android:popupBackground="#ffffff"
                                 android:visibility='@{tcvsclc22a.checked ? View.VISIBLE : View.GONE }' />
 
-                            <!--<EditText-->
-                            <!--android:id="@+id/tcvsclc22a2x"-->
-                            <!--style="@style/EditText"-->
-                            <!--android:hint="@string/tcvsclc22a2"-->
-                            <!--android:tag="tcvsclc15a"-->
-                            <!--android:text='@{tcvsclc22a.checked ? tcvsclc22a2x.getText.toString : "" }'-->
-                            <!--android:visibility='@{tcvsclc22a.checked ? View.VISIBLE : View.GONE }' />-->
+                            <AutoCompleteTextView
+                                android:id="@+id/tcvsclc22a1x"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/tcvsclc22a1x"
+                                android:inputType="textCapCharacters"
+                                android:tag="tcvsclc22a"
+                                android:text='@{tcvsclc22a.checked ? tcvsclc22a1x.getText.toString : "" }'
+                                android:visibility='@{tcvsclc22a.checked ? View.VISIBLE : View.GONE }' />
 
                             <Spinner
                                 android:id="@+id/tcvsclc22a2x"
@@ -229,7 +234,7 @@
                             <RadioButton
                                 android:id="@+id/tcvsclc2698"
                                 style="@style/i_radiobutton"
-                                android:text="@string/dkn" />
+                                android:text="@string/udnt" />
 
                         </RadioGroup>
 

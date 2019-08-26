@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -196,6 +197,18 @@ public class Section00CRFControlActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        bi.tcvscla07.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == bi.tcvscla07a.getId()) {
+                    bi.tcvscla12.clearCheck();
+                } else {
+                    bi.tcvscla11.clearCheck();
+                    bi.tcvscla13.clearCheck();
+                }
             }
         });
 

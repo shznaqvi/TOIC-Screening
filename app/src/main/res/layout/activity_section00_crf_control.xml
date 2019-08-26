@@ -43,7 +43,7 @@
                         android:layoutDirection="ltr"
                         app:defaultValue=""
                         app:mask="####-######"
-                        app:pattern="^(\\d{3,3}\\-\\d{6,6})$"
+                        app:pattern="^(\\d{4,4}\\-\\d{6,6})$"
                         app:type="equal" />
 
 
@@ -413,7 +413,9 @@
                 </android.support.v7.widget.CardView>
 
                 <!--Radio tcvscla11-->
-                <android.support.v7.widget.CardView style="@style/cardView">
+                <android.support.v7.widget.CardView
+                    style="@style/cardView"
+                    android:visibility="@{tcvscla07a.checked ? View.VISIBLE : View.GONE}">
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -442,7 +444,9 @@
                 </android.support.v7.widget.CardView>
 
                 <!--Radio tcvscla12-->
-                <android.support.v7.widget.CardView style="@style/cardView">
+                <android.support.v7.widget.CardView
+                    style="@style/cardView"
+                    android:visibility="@{tcvscla07b.checked ? View.VISIBLE : View.GONE}">
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -471,7 +475,9 @@
                 </android.support.v7.widget.CardView>
 
                 <!--Radio tcvscla13-->
-                <android.support.v7.widget.CardView style="@style/cardView">
+                <android.support.v7.widget.CardView
+                    style="@style/cardView"
+                    android:visibility="@{tcvscla07a.checked ? View.VISIBLE : View.GONE}">
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
