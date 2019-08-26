@@ -129,6 +129,14 @@ public abstract class ValidatorClass {
         return false;
     }
 
+    public static boolean EmptyCustomTextBox02(Context context, TextView txt, String msg) {
+        Toast.makeText(context, "ERROR: " + msg, Toast.LENGTH_SHORT).show();
+        txt.setError(msg);
+        txt.setFocusableInTouchMode(true);
+        txt.requestFocus();
+        return false;
+    }
+
     public static boolean EmptyCustomRadio(Context context, RadioButton rd, String msg) {
         Toast.makeText(context, "ERROR: " + msg, Toast.LENGTH_SHORT).show();
         rd.setError(msg);

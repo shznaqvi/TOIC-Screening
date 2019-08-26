@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText input = new EditText(MainActivity.this);
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input.setFilters(new InputFilter[]{new InputFilter.LengthFilter(4)});
         input.requestFocus();
         input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -125,6 +126,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 m_Text = input.getText().toString();
                 if (!m_Text.equals("")) {
+
+                    if (m_Text.length() != 4) {
+                        ValidatorClass.EmptyCustomTextBox02(MainActivity.this, input, "TAG-ID Length need to be 4!!");
+                        return;
+                    }
+
                     editor.putString("tagName", "T-" + m_Text);
                     editor.commit();
                 }
@@ -441,7 +448,7 @@ public class MainActivity extends AppCompatActivity {
                         if (!m_Text.equals("")) {
 
                             if (m_Text.length() != 4) {
-                                ValidatorClass.EmptyCustomTextBox(MainActivity.this, input, "TAG-ID Length need to be 4!!");
+                                ValidatorClass.EmptyCustomTextBox02(MainActivity.this, input, "TAG-ID Length need to be 4!!");
                                 return;
                             }
 
@@ -540,7 +547,7 @@ public class MainActivity extends AppCompatActivity {
                     db.getUnsyncedForms(MainApp.SCHOOLLISTINGTYPE)
             ).execute();
 
-            Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
                     "Children-Listings",
@@ -549,7 +556,7 @@ public class MainActivity extends AppCompatActivity {
                     FormsContract.FormsTable._URL2
                     ,
                     db.getUnsyncedForms(MainApp.CHILDLISTINGTYPE)
-            ).execute();
+            ).execute();*/
 
             Toast.makeText(getApplicationContext(), "Syncing Mass Immunization Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
