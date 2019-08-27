@@ -154,12 +154,15 @@
                             style="@style/h_textview"
                             android:text="Can be blank" />
 
-                        <EditText
+                        <com.edittextpicker.aliazaz.EditTextPicker
                             android:id="@+id/tcvscla03"
                             style="@style/EditText_number"
-                            android:hint="@string/tcvscla03"
+                            android:hint="###########"
                             android:maxLength="11"
-                            android:tag="-1" />
+                            android:tag="-1"
+                            app:defaultValue=""
+                            app:pattern="[0-9]{11,11}"
+                            app:type="equal" />
 
 
                     </LinearLayout>
@@ -178,12 +181,15 @@
                             style="@style/h_textview"
                             android:text="Can be blank" />
 
-                        <EditText
+                        <com.edittextpicker.aliazaz.EditTextPicker
                             android:id="@+id/tcvscla03a"
                             style="@style/EditText_number"
-                            android:hint="@string/tcvscla03a"
+                            android:hint="###########"
                             android:maxLength="11"
-                            android:tag="-1" />
+                            android:tag="-1"
+                            app:defaultValue=""
+                            app:pattern="[0-9]{11,11}"
+                            app:type="equal" />
 
 
                     </LinearLayout>

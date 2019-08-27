@@ -54,7 +54,6 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
         List<String> temp_type = new ArrayList<>();
 
         for (String stype : MainApp.schTypes) {
-            if (stype.equals("Other")) continue;
             temp_type.add(stype);
         }
 
@@ -135,6 +134,8 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
 
         if (bi.tcvscad2201a1x.getVisibility() == View.VISIBLE) {
 
+            if (bi.tcvcl00.getSelectedItemPosition() == 5) return true;
+
             if (schoolMap.get(bi.tcvscad2201a1x.getText().toString()) != null) return true;
 
             return ValidatorClass.EmptyCustomTextBox(this, bi.tcvscad2201a1x, "This data is not accurate!!");
@@ -182,7 +183,10 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
                 : bi.tcvscad2201b.isChecked() ? "2"
                 : "0");
         if (bi.tcvscad2201a.isChecked()) {
-            crfCase.put("tcvscad2201a1x", schoolMap.get(bi.tcvscad2201a1x.getText().toString()).getSch_code());
+            if (bi.tcvcl00.getSelectedItemPosition() == 5)
+                crfCase.put("tcvscad2201a1Name", bi.tcvscad2201a1x.getText().toString());
+            else
+                crfCase.put("tcvscad2201a1x", schoolMap.get(bi.tcvscad2201a1x.getText().toString()).getSch_code());
             crfCase.put("tcvscad2201a2x", bi.tcvscad2201a2x.getSelectedItem().toString());
         }
 

@@ -150,9 +150,10 @@
     <string name="tcvscab174"> Fluoroquinolone </string>
     <string name="tcvscab175"> Ceftriaxone </string>
     <string name="tcvscab176"> other </string>
-    <string name="tcvscab177"> Cefepime </string>
-    <string name="tcvscab178"> Azithromycin </string>
-    <string name="tcvscab179"> Cifixime (Cefspan) </string>
+    <string name="tcvscab177"> Ciprofloxacin </string>
+    <string name="tcvscab178"> Cefepime </string>
+    <string name="tcvscab179"> Azithromycin </string>
+    <string name="tcvscab1710"> Cifixime (Cefspan) </string>
     <string name="tcvscab18"> کیا  وزٹ کےدوران مریض کا خون کا نمونہ لیا  گیاہے. </string>
     <string name="tcvscab19">لیباٹری رسیدنمبر: نوٹ: اگر اس وزٹ کے دوران خون کانمونہ لیاگیاہےتولیبارٹری کی آئی ڈی درج کی جائےگی اوربقایافارم کلچرکےنتیجہ آنےکےبعد بھراجائےگا۔</string>
     <string name="tcvscab20"> کیا مریض  کے کلچر کا نتیجہ سالمونیلا ٹائفی کے لیے مثبت ہے ؟ </string>
@@ -164,9 +165,10 @@
     <string name="tcvscab214"> Fluoroquinolone </string>
     <string name="tcvscab215"> Ceftriaxone </string>
     <string name="tcvscab216"> Other </string>
-    <string name="tcvscab217"> Cefepime </string>
-    <string name="tcvscab218"> Azithromycin </string>
-    <string name="tcvscab219"> Cifixime (Cefspan) </string>
+    <string name="tcvscab217"> Ciprofloxacin </string>
+    <string name="tcvscab218"> Cefepime </string>
+    <string name="tcvscab219"> Azithromycin </string>
+    <string name="tcvscab2110"> Cifixime (Cefspan) </string>
     <string name="tcvscab22"> کیا مریض یا والدین  مطالعہ میں  شمو لیت کے لیے  رضا مند ہے ؟ </string>
     <string name="tcvscabh22"> اگر اوپر دیے گے سوالات (22،11،10،9اور15 یا20)کے جوابات ہاں ہیں تو مریض  مطالعہ میں شرکت کے لئے اہل ہے \n مندرجہ ذیل حصے کو بھرنا جاری رکھیں۔ </string>
     <string name="tcvscab23"> کیس آئی ڈی : </string>

@@ -28,17 +28,17 @@
                 style="@style/textview_fm_lst_h"
                 android:text="@string/tcvsclah" />
 
-            <!--EditText tcvscad33-->
+            <!--EditText tcvsclc34-->
             <android.support.v7.widget.CardView style="@style/cardView">
 
                 <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                     <TextView
                         style="@style/i_textview"
-                        android:text="@string/tcvscad33" />
+                        android:text="@string/tcvsclc34" />
 
                     <com.edittextpicker.aliazaz.EditTextPicker
-                        android:id="@+id/tcvscad33"
+                        android:id="@+id/tcvsclc34"
                         style="@style/EditText_number"
                         android:hint="####-#######"
                         android:layoutDirection="ltr"

@@ -1022,7 +1022,6 @@
                             android:id="@+id/tcvsclc32"
                             style="@style/EditText_number"
                             android:hint="T-####-#####"
-                            android:maxLength="11"
                             app:defaultValue=""
                             app:mask="T-####-#####"
                             app:pattern="[^0-9]{1,1}-[0-9]{4,4}-[0-9]{1,5}"

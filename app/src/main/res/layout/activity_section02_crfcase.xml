@@ -1030,7 +1030,6 @@
                                 android:id="@+id/tcvscad31"
                                 style="@style/EditText_number"
                                 android:hint="T-####-#####"
-                                android:maxLength="11"
                                 android:text='@{tcvscad30a.checked ? tcvscad31.getText.toString : "" }'
                                 app:defaultValue=""
                                 app:mask="T-####-#####"

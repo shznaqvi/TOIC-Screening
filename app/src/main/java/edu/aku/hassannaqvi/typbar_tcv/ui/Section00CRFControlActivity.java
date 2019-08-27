@@ -125,10 +125,17 @@ public class Section00CRFControlActivity extends AppCompatActivity {
             return;
         }
 
-        bi.viewGroup01.ageNote.setText("Note: Case Child Age is " + ageInMonth + " Months" + "\nControl Child range must be in " + minMonth + " to " + maxMonth + " Months");
+        bi.viewGroup01.ageNote.setText("Note: Case Child Age is " + convertMonthsToAge(ageInMonth.intValue()) + " Months" + "\nControl Child range must be in " + convertMonthsToAge(minMonth) + " to " + convertMonthsToAge(maxMonth) + " Months");
         bi.llcrf.setVisibility(View.VISIBLE);
         bi.llsec01.setVisibility(View.VISIBLE);
 
+    }
+
+    private String convertMonthsToAge(int months) {
+        int year = months / 12;
+        int month = months % 12;
+
+        return year + " Year & " + month + " Months";
     }
 
     private void settingControlIDs(String controlNo) {
@@ -392,6 +399,13 @@ public class Section00CRFControlActivity extends AppCompatActivity {
 
             return false;
         }
+
+        if (bi.tcvscla03.getText().toString().length() > 0)
+            return ValidatorClass.EmptyEditTextPicker(this, bi.tcvscla03, getString(R.string.tcvscla03));
+
+        if (bi.tcvscla03a.getText().toString().length() > 0)
+            return ValidatorClass.EmptyEditTextPicker(this, bi.tcvscla03a, getString(R.string.tcvscla03a));
+
 
         return true;
     }

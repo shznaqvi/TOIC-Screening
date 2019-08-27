@@ -243,6 +243,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscab177", bi.tcvscab177a.isChecked() ? "1" : bi.tcvscab177b.isChecked() ? "2" : bi.tcvscab177c.isChecked() ? "9" : "0");
         crfCase.put("tcvscab178", bi.tcvscab178a.isChecked() ? "1" : bi.tcvscab178b.isChecked() ? "2" : bi.tcvscab178c.isChecked() ? "9" : "0");
         crfCase.put("tcvscab179", bi.tcvscab179a.isChecked() ? "1" : bi.tcvscab179b.isChecked() ? "2" : bi.tcvscab179c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab1710", bi.tcvscab1710a.isChecked() ? "1" : bi.tcvscab1710b.isChecked() ? "2" : bi.tcvscab1710c.isChecked() ? "9" : "0");
 
         crfCase.put("tcvscab18", bi.tcvscab18a.isChecked() ? "1" : bi.tcvscab18b.isChecked() ? "2" : "0");
         crfCase.put("tcvscab19", bi.tcvscab19.getText().toString());
@@ -260,6 +261,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscab217", bi.tcvscab217a.isChecked() ? "1" : bi.tcvscab217b.isChecked() ? "2" : bi.tcvscab217c.isChecked() ? "9" : "0");
         crfCase.put("tcvscab218", bi.tcvscab218a.isChecked() ? "1" : bi.tcvscab218b.isChecked() ? "2" : bi.tcvscab218c.isChecked() ? "9" : "0");
         crfCase.put("tcvscab219", bi.tcvscab219a.isChecked() ? "1" : bi.tcvscab219b.isChecked() ? "2" : bi.tcvscab219c.isChecked() ? "9" : "0");
+        crfCase.put("tcvscab2110", bi.tcvscab2110a.isChecked() ? "1" : bi.tcvscab2110b.isChecked() ? "2" : bi.tcvscab2110c.isChecked() ? "9" : "0");
 
         crfCase.put("tcvscab22", bi.tcvscab22a.isChecked() ? "1" : bi.tcvscab22b.isChecked() ? "2" : "0");
 
@@ -276,7 +278,16 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.llcrfCase);
+        if (!ValidatorClass.EmptyCheckingContainer(this, bi.llcrfCase))
+            return false;
+
+        if (bi.tcvscaa03.getText().toString().length() > 0)
+            return ValidatorClass.EmptyEditTextPicker(this, bi.tcvscaa03, getString(R.string.tcvscaa03));
+
+        if (bi.tcvscaa03a.getText().toString().length() > 0)
+            return ValidatorClass.EmptyEditTextPicker(this, bi.tcvscaa03a, getString(R.string.tcvscaa03a));
+
+        return true;
     }
 
     public void BtnEnd() {

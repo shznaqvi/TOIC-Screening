@@ -124,7 +124,6 @@ public class Section02CRFControlActivity extends AppCompatActivity {
         List<String> temp_type = new ArrayList<>();
 
         for (String stype : MainApp.schTypes) {
-            if (stype.equals("Other")) continue;
             temp_type.add(stype);
         }
 
@@ -166,7 +165,10 @@ public class Section02CRFControlActivity extends AppCompatActivity {
                 : bi.tcvsclc22b.isChecked() ? "2"
                 : "0");
         if (bi.tcvsclc22a.isChecked()) {
-            CrfControl.put("tcvsclc22a1x", schoolMap.get(bi.tcvsclc22a1x.getText().toString()).getSch_code());
+            if (bi.tcvcl00.getSelectedItemPosition() == 5)
+                CrfControl.put("tcvsclc22a1xName", bi.tcvsclc22a1x.getText().toString());
+            else
+                CrfControl.put("tcvsclc22a1x", schoolMap.get(bi.tcvsclc22a1x.getText().toString()).getSch_code());
             CrfControl.put("tcvsclc22a2x", bi.tcvsclc22a2x.getSelectedItem().toString());
         }
 
@@ -244,6 +246,8 @@ public class Section02CRFControlActivity extends AppCompatActivity {
             return false;
 
         if (bi.tcvsclc22a1x.getVisibility() == View.VISIBLE) {
+
+            if (bi.tcvcl00.getSelectedItemPosition() == 5) return true;
 
             if (schoolMap.get(bi.tcvsclc22a1x.getText().toString()) != null) return true;
 

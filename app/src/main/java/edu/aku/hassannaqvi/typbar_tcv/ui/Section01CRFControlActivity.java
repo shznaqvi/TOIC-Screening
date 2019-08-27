@@ -74,7 +74,7 @@ public class Section01CRFControlActivity extends AppCompatActivity {
             }
         });
 
-        bi.tcvscad33.addTextChangedListener(new TextWatcher() {
+        bi.tcvsclc34.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -105,10 +105,10 @@ public class Section01CRFControlActivity extends AppCompatActivity {
     }
 
     public void BtnCheckCase() {
-        if (!ValidatorClass.EmptyEditTextPicker(this, bi.tcvscad33, getString(R.string.tcvscad33)))
+        if (!ValidatorClass.EmptyEditTextPicker(this, bi.tcvsclc34, getString(R.string.tcvsclc34)))
             return;
 
-        child = db.getChildWRTCaseControlIDDB(MainApp.CRFControl, "T-" + bi.tcvscad33.getText().toString());
+        child = db.getChildWRTCaseControlIDDB(MainApp.CRFControl, "T-" + bi.tcvsclc34.getText().toString());
 
         if (child == null) {
             Toast.makeText(this, "No ControlID found!!", Toast.LENGTH_SHORT).show();
@@ -190,6 +190,8 @@ public class Section01CRFControlActivity extends AppCompatActivity {
         CrfControl.put("ch_luid", child.getLuid());
 
 //        New question added in between form
+        CrfControl.put("tcvsclc34", "T-" + bi.tcvsclc34.getText().toString());
+        CrfControl.put("tcvsclc35", bi.tcvsclc35.getText().toString());
         CrfControl.put("tcvsclc01", bi.tcvsclc01.getText().toString());
         CrfControl.put("tcvsclc02", bi.tcvsclc02.getText().toString());
 
