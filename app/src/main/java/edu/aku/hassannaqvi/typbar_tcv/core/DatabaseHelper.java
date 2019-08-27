@@ -519,7 +519,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     allDC = null;
                     continue;
                 }
-                if (!allDC.getTcvscab23().equals(cid)) allDC = null;
+                if (!allDC.getTcvscab23().equals(cid)) {
+                    allDC = null;
+                    continue;
+                } else {
+                    break;
+                }
             }
         } finally {
             if (c != null) {

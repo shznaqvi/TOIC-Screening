@@ -198,15 +198,15 @@ public class CCChildrenContract {
 
         @SerializedName("tcvscla01")
         String tcvscaa01;
-        @SerializedName("ch_screendt")
-        String tcvscaa05;
         @SerializedName("tcvscla05")
+        String tcvscaa05;
+        @SerializedName("tcvscla05y")
         String tcvscaa05y;
         @SerializedName("tcvscla05m")
         String tcvscaa05m;
-        @SerializedName("tcvscla07")
-        String tcvscaa07;
         @SerializedName("tcvscla08")
+        String tcvscaa07;
+        @SerializedName("tcvscla20")
         String tcvscaa08;
         @SerializedName("tcvscla19")
         String tcvscab23;

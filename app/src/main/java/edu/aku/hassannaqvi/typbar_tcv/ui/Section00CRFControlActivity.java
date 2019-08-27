@@ -125,7 +125,7 @@ public class Section00CRFControlActivity extends AppCompatActivity {
             return;
         }
 
-        bi.viewGroup01.ageNote.setText("Note: Case Child Age is " + convertMonthsToAge(ageInMonth.intValue()) + " Months" + "\nControl Child range must be in " + convertMonthsToAge(minMonth) + " to " + convertMonthsToAge(maxMonth) + " Months");
+        bi.viewGroup01.ageNote.setText("Note: Case Child Age is " + convertMonthsToAge(ageInMonth.intValue() - 1) + "\nControl Child range must be in " + convertMonthsToAge(minMonth - 1) + " to " + convertMonthsToAge(maxMonth - 1));
         bi.llcrf.setVisibility(View.VISIBLE);
         bi.llsec01.setVisibility(View.VISIBLE);
 
@@ -232,14 +232,14 @@ public class Section00CRFControlActivity extends AppCompatActivity {
                 break;
             }
         }
-        if (radioGroup.getCheckedRadioButtonId() == bi.tcvscla07a.getId()) {
+        if (bi.tcvscla07a.isChecked()) {
             for (RadioButton rdbID : rdbEligibilityCheckIDs07a) {
                 if (!rdbID.isChecked()) {
                     flag = false;
                     break;
                 }
             }
-        } else if (radioGroup.getCheckedRadioButtonId() == bi.tcvscla07b.getId()) {
+        } else if (bi.tcvscla07b.isChecked()) {
             for (RadioButton rdbID : rdbEligibilityCheckIDs07b) {
                 if (!rdbID.isChecked()) {
                     flag = false;
