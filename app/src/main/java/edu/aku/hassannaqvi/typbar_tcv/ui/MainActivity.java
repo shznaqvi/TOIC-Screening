@@ -329,18 +329,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean permissiongrantedStuff() {
-        if (versionAppContract.getVersioncode() != null) {
-            if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
-                if (sharedPrefDownload.getBoolean("flag", true) && file.exists()) {
-                    showDialog(newVer, preVer);
-                    return false;
+        try {
+            if (versionAppContract.getVersioncode() != null) {
+                if (MainApp.versionCode < Integer.valueOf(versionAppContract.getVersioncode())) {
+                    if (sharedPrefDownload.getBoolean("flag", true) && file.exists()) {
+                        showDialog(newVer, preVer);
+                        return false;
+                    } else {
+                        return true;
+                    }
                 } else {
                     return true;
                 }
             } else {
-                return true;
+                Toast.makeText(this, "First Sync data!!", Toast.LENGTH_SHORT).show();
+                return false;
             }
-        } else {
+        } catch (Exception e) {
             Toast.makeText(this, "First Sync data!!", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -570,16 +575,15 @@ public class MainActivity extends AppCompatActivity {
                     db.getUnsyncedForms(MainApp.SCHOOLLISTINGTYPE)
             ).execute();
 
-            /*Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Syncing Child Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
                     "Children-Listings",
                     "updateSyncedForms",
                     FormsContract.class,
-                    FormsContract.FormsTable._URL2
-                    ,
+                    FormsContract.FormsTable._URL2,
                     db.getUnsyncedForms(MainApp.CHILDLISTINGTYPE)
-            ).execute();*/
+            ).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Mass Immunization Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
@@ -604,7 +608,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Syncing CRF Case Enrolment Forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
-                    "CRF-Case",
+                    "CRF-Case-Enrollment",
                     "updateSyncedForms",
                     FormsContract.class,
                     FormsContract.FormsTable._URL5,
@@ -619,6 +623,16 @@ public class MainActivity extends AppCompatActivity {
                     FormsContract.class,
                     FormsContract.FormsTable._URL6,
                     db.getUnsyncedForms(MainApp.CRFControl)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing CRF Control Enrolment Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "CRF-Control-Enrollment",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    FormsContract.FormsTable._URL7,
+                    db.getUnsyncedForms(MainApp.CRFControlEnroll)
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
