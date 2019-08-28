@@ -144,8 +144,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (sharedPref.getString("tagName", null) == "" || sharedPref.getString("tagName", null) == null) {
+        String tagNo = sharedPref.getString("tagName", null);
+        if (tagNo == "" || tagNo == null) {
             builder.show();
+        } else {
+            editor.putString("tagName", "T-" + (String.format("%04d", Integer.valueOf(tagNo.substring(2)))));
+            editor.commit();
         }
         /*TagID End*/
 

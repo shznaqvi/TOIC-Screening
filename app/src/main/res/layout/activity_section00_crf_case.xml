@@ -513,7 +513,7 @@
 
                                 <EditText
                                     android:id="@+id/tcvscab16"
-                                    style="@style/EditText_number"
+                                    style="@style/EditTextAlphaNumeric"
                                     android:hint="@string/tcvscab16" />
 
                             </LinearLayout>
@@ -958,7 +958,7 @@
 
                                 <EditText
                                     android:id="@+id/tcvscab19"
-                                    style="@style/EditText_number"
+                                    style="@style/EditTextAlphaNumeric"
                                     android:hint="@string/tcvscab19" />
 
                             </LinearLayout>
