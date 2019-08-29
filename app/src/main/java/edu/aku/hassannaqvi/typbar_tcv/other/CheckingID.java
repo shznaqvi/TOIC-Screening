@@ -62,9 +62,9 @@ public final class CheckingID {
             }
 
             if (increment)
-                return incrementInFile(idFile, ID);
+                return incrementInFile(idFile, ID, true);
 
-            return ID;
+            return incrementInFile(idFile, ID, false);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,14 +81,19 @@ public final class CheckingID {
         writer.close();
     }
 
-    private static final String incrementInFile(File idFile, String fileID) throws IOException {
+    private static final String incrementInFile(File idFile, String fileID, boolean flag) throws IOException {
         String[] idLength = fileID.split("-");
-        int lastCont = Integer.valueOf(idLength[idLength.length - 1]) + 1;
-        String subStr = fileID.substring(0, fileID.length() - idLength[idLength.length - 1].length());
+        int lastCont;
+        if (flag)
+            lastCont = Integer.valueOf(idLength[idLength.length - 1]) + 1;
+        else
+            lastCont = Integer.valueOf(idLength[idLength.length - 1]);
+        String tagID = "T-" + (String.format("%04d", Integer.valueOf(idLength[1]))) + "-";
+//        String subStr = fileID.substring(tagID.length() - 1, fileID.length() - idLength[idLength.length - 1].length());
 
-        writeInFile(idFile, subStr + lastCont);
+        writeInFile(idFile, tagID + lastCont);
 
-        return subStr + lastCont;
+        return tagID + lastCont;
     }
 
 
