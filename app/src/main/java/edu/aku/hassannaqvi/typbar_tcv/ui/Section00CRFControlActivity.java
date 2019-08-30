@@ -406,6 +406,13 @@ public class Section00CRFControlActivity extends AppCompatActivity {
         if (bi.tcvscla03a.getText().toString().length() > 0)
             return ValidatorClass.EmptyEditTextPicker(this, bi.tcvscla03a, getString(R.string.tcvscla03a));
 
+        if (bi.tcvscla05Ageb.isChecked()) {
+            if (Integer.valueOf(bi.tcvscla05y.getText().toString()) == 0 && Integer.valueOf(bi.tcvscla05m.getText().toString()) < 7) {
+                Toast.makeText(this, "Both Year and Month criteria not meet!!", Toast.LENGTH_SHORT).show();
+                bi.tcvscla05m.setError("Both Year and Month criteria not meet!!");
+                return false;
+            }
+        }
 
         return true;
     }

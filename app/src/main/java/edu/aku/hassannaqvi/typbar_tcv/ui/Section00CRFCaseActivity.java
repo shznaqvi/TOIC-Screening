@@ -287,6 +287,14 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         if (bi.tcvscaa03a.getText().toString().length() > 0)
             return ValidatorClass.EmptyEditTextPicker(this, bi.tcvscaa03a, getString(R.string.tcvscaa03a));
 
+        if (bi.tcvscaa05Ageb.isChecked()) {
+            if (Integer.valueOf(bi.tcvscaa05y.getText().toString()) == 0 && Integer.valueOf(bi.tcvscaa05m.getText().toString()) < 7) {
+                Toast.makeText(this, "Both Year and Month criteria not meet!!", Toast.LENGTH_SHORT).show();
+                bi.tcvscaa05m.setError("Both Year and Month criteria not meet!!");
+                return false;
+            }
+        }
+
         return true;
     }
 

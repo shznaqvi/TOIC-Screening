@@ -232,7 +232,7 @@
                                 android:maxLength="2"
                                 android:text='@{!tcvscaa05Ageb.checked ?  "" : tcvscaa05y.getText.toString }'
                                 app:maxValue="15"
-                                app:minValue="1"
+                                app:minValue="0"
                                 app:required="true"
                                 app:type="range" />
 
