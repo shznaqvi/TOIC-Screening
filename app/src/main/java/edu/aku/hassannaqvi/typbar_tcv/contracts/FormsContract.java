@@ -131,11 +131,10 @@ public class FormsContract {
         if (!this.sA.equals("")) {
             json.put(FormsTable.COLUMN_SA, this.sA.equals("") ? JSONObject.NULL : new JSONObject(this.sA));
         }
-        /*if (!this.sB.equals("")) {
-
+        if (!this.sB.equals("")) {
             json.put(FormsTable.COLUMN_SB, this.sB.equals("") ? JSONObject.NULL : new JSONObject(this.sB));
         }
-        if (!this.sC.equals("")) {
+        /* if (!this.sC.equals("")) {
 
             json.put(FormsTable.COLUMN_SC, this.sC.equals("") ? JSONObject.NULL : new JSONObject(this.sC));
         }

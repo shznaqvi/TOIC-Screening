@@ -437,7 +437,7 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         });
-                        builder.setPositiveButton("School-HF Immunization", new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton("HF Immunization", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -559,6 +559,18 @@ public class MainActivity extends AppCompatActivity {
     public void downloadData(View view) {
         Toast.makeText(this, "Sync Schools", Toast.LENGTH_LONG).show();
         new GetAllData(this, "School").execute();
+    }
+
+    public void syncAllServer(View view) {
+        Toast.makeText(this, "Sync Control All Forms", Toast.LENGTH_LONG).show();
+        new SyncAllData(
+                this,
+                "Control-Enroll-All-Forms",
+                "updateSyncedForms",
+                FormsContract.class,
+                FormsContract.FormsTable._URL7,
+                db.getUnsyncedAllForms(MainApp.CRFControlEnroll)
+        ).execute();
     }
 
     public void syncServer(View view) {
