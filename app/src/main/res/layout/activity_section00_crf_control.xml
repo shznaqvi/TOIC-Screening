@@ -592,7 +592,7 @@
                             android:id="@+id/tcvscla16"
                             style="@style/EditText"
                             android:hint="@string/tcvscla16"
-                            android:maxLength="6" />
+                            android:maxLength="27" />
 
                     </LinearLayout>
 

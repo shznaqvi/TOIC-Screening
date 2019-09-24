@@ -264,6 +264,7 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscab2110", bi.tcvscab2110a.isChecked() ? "1" : bi.tcvscab2110b.isChecked() ? "2" : bi.tcvscab2110c.isChecked() ? "9" : "0");
 
         crfCase.put("tcvscab22", bi.tcvscab22a.isChecked() ? "1" : bi.tcvscab22b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscab2201", bi.tcvscab2201.getText().toString());
 
         eligibleFlag = bi.tcvscab09a.isChecked() && bi.tcvscab10a.isChecked() && bi.tcvscab11a.isChecked() && bi.tcvscab22a.isChecked() && (bi.tcvscab15a.isChecked() || bi.tcvscab20a.isChecked());
 
