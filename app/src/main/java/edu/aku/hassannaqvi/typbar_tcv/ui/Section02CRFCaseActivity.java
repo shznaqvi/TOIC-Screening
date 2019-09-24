@@ -208,6 +208,7 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad2703", bi.tcvscad2703a.isChecked() ? "1" : bi.tcvscad2703b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2704", bi.tcvscad2704a.isChecked() ? "1" : bi.tcvscad2704b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2705", bi.tcvscad2705a.isChecked() ? "1" : bi.tcvscad2705b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad2706", bi.tcvscad2706a.isChecked() ? "1" : bi.tcvscad2706b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2796", bi.tcvscad2796a.isChecked() ? "1" : bi.tcvscad2796b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2796x", bi.tcvscad2796x.getText().toString());
         crfCase.put("tcvscad2801", bi.tcvscad2801a.isChecked() ? "1" : bi.tcvscad2801b.isChecked() ? "2" : "0");
@@ -219,6 +220,7 @@ public class Section02CRFCaseActivity extends AppCompatActivity {
         crfCase.put("tcvscad2807", bi.tcvscad2807a.isChecked() ? "1" : bi.tcvscad2807b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2808", bi.tcvscad2808a.isChecked() ? "1" : bi.tcvscad2808b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad2896", bi.tcvscad2896a.isChecked() ? "1" : bi.tcvscad2896b.isChecked() ? "2" : "0");
+        crfCase.put("tcvscad2896x", bi.tcvscad2896x.getText().toString());
         crfCase.put("tcvscad29", bi.tcvscad29a.isChecked() ? "1" : bi.tcvscad29b.isChecked() ? "2" : bi.tcvscad2998.isChecked() ? "98" : "0");
         crfCase.put("tcvscad30", bi.tcvscad30a.isChecked() ? "1" : bi.tcvscad30b.isChecked() ? "2" : "0");
         crfCase.put("tcvscad31", bi.tcvscad31.getText().toString());
