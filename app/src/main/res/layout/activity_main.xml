@@ -177,20 +177,20 @@
                     android:onClick="syncServer"
                     android:text="Upload Data" />
 
-                <Button
-                    android:id="@+id/syncServerAll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:onClick="syncAllServer"
-                    android:text="UPLOAD ALL DATA" />
-
                 <LinearLayout
                     android:id="@+id/adminsec"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/syncServerAll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:onClick="syncAllServer"
+                        android:text="UPLOAD ALL DATA" />
 
                     <Button
                         android:id="@+id/syncDevice"
