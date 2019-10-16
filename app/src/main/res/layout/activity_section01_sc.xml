@@ -20,6 +20,7 @@
         <LinearLayout style="@style/linearlayout_view">
 
             <LinearLayout
+                android:layoutDirection="rtl"
                 android:id="@+id/fldGrpSecA01"
                 style="@style/linearlayout_view_wt_bound">
 
@@ -31,7 +32,7 @@
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                         <TextView
-                            style="@style/i_textview"
+                            style="@style/textview_fm_lst_h"
                             android:text="@string/tcvcsah1" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -181,7 +182,7 @@
                             android:text="@string/tcvcsa08" />
 
                         <RadioGroup
-                            android:id="@+id/tcvcsa08a"
+                            android:id="@+id/tcvcsa08"
                             style="@style/i_radiogroup">
 
                             <RadioButton
@@ -205,7 +206,7 @@
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                         <TextView
-                            style="@style/i_textview"
+                            style="@style/textview_fm_lst_h"
                             android:text="@string/tcvcsah2" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -222,7 +223,7 @@
                             android:text="@string/tcvcsa09" />
 
                         <RadioGroup
-                            android:id="@+id/tcvcsa09a"
+                            android:id="@+id/tcvcsa09"
                             style="@style/i_radiogroup">
 
                             <RadioButton
@@ -269,7 +270,7 @@
                             android:text="@string/tcvcsa11" />
 
                         <RadioGroup
-                            android:id="@+id/tcvcsa11a"
+                            android:id="@+id/tcvcsa11"
                             style="@style/i_radiogroup">
 
                             <RadioButton
@@ -293,7 +294,7 @@
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                         <TextView
-                            style="@style/i_textview"
+                            style="@style/h_textview"
                             android:text="@string/tcvcsa12" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -306,7 +307,7 @@
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                         <TextView
-                            style="@style/i_textview"
+                            style="@style/h_textview"
                             android:text="@string/tcvcsah3" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -323,7 +324,7 @@
                             android:text="@string/tcvcsa13" />
 
                         <RadioGroup
-                            android:id="@+id/tcvcsa13a"
+                            android:id="@+id/tcvcsa13"
                             style="@style/i_radiogroup">
 
                             <RadioButton
@@ -351,7 +352,7 @@
                             android:text="@string/tcvcsa14" />
 
                         <RadioGroup
-                            android:id="@+id/tcvcsa14a"
+                            android:id="@+id/tcvcsa14"
                             style="@style/i_radiogroup">
 
                             <RadioButton
@@ -397,7 +398,7 @@
                             android:text="@string/tcvcsa15" />
 
                         <RadioGroup
-                            android:id="@+id/tcvcsa15a"
+                            android:id="@+id/tcvcsa15"
                             style="@style/i_radiogroup">
 
                             <RadioButton

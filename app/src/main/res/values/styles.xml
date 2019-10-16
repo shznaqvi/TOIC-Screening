@@ -260,6 +260,17 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="textview01">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">8dp</item>
+    </style>
+
     <style name="textview_fm_lst_h">
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">monospace</item>
