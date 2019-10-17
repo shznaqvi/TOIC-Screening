@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -15,6 +16,7 @@ import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection03ScBinding;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
+import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class Section03SCActivity extends AppCompatActivity {
@@ -28,6 +30,21 @@ public class Section03SCActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section03_sc);
         bi.setCallback(this);
 
+        setListeners();
+
+    }
+
+    private void setListeners() {
+
+        bi.tcvcsc10.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (bi.tcvcsc10b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.fldGrpCVtcvcsc11, null);
+                }
+            }
+        });
     }
 
     public void BtnContinue() {

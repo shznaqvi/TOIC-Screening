@@ -5,6 +5,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -20,7 +23,10 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01ScBinding;
+import edu.aku.hassannaqvi.typbar_tcv.other.CheckingIDCC;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
+import edu.aku.hassannaqvi.typbar_tcv.ui.Section00CRFCaseActivity;
+import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class Section01SCActivity extends AppCompatActivity {
@@ -36,6 +42,31 @@ public class Section01SCActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section01_sc);
         bi.setCallback(this);
 
+        setListeners();
+
+    }
+
+    private void setListeners() {
+
+        bi.tcvcsa09.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (bi.tcvcsa09b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.llvcsa01, null);
+                }
+            }
+        });
+
+        bi.tcvcsa11.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (bi.tcvcsa11b.isChecked()) {
+                    ClearClass.ClearAllFields(bi.llvcsa01, null);
+                }
+            }
+        });
     }
 
     public void BtnContinue() {
