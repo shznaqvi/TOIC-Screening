@@ -5,8 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -14,18 +13,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01ScBinding;
-import edu.aku.hassannaqvi.typbar_tcv.other.CheckingIDCC;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
-import edu.aku.hassannaqvi.typbar_tcv.ui.Section00CRFCaseActivity;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
@@ -43,6 +43,16 @@ public class Section01SCActivity extends AppCompatActivity {
         bi.setCallback(this);
 
         setListeners();
+
+        ArrayList<String> ucsNames = new ArrayList<>();
+        ucsNames.add("....");
+        ArrayList<UCsContract> ucsContract = db.getAllUCs();
+        ucMap = new HashMap<>();
+        for (UCsContract uc : ucsContract) {
+            ucMap.put(uc.getUcsName(), uc.getUccode());
+            ucsNames.add(uc.getUcsName());
+        }
+        bi.tcvcsa02.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ucsNames));
 
     }
 
@@ -63,7 +73,7 @@ public class Section01SCActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
                 if (bi.tcvcsa11b.isChecked()) {
-                    ClearClass.ClearAllFields(bi.llvcsa01, null);
+                    ClearClass.ClearAllFields(bi.llvcsa02, null);
                 }
             }
         });
@@ -73,8 +83,6 @@ public class Section01SCActivity extends AppCompatActivity {
         try {
 
             if (!formValidation()) return;
-
-//            if (!MainApp.checkingGPSRules(this)) return;
 
             SaveDraft();
 
@@ -118,7 +126,7 @@ public class Section01SCActivity extends AppCompatActivity {
         JSONObject f1 = new JSONObject();
 
         f1.put("tcvcsa01", bi.tcvcsa01.getText().toString());
-        f1.put("tcvcsa02", bi.tcvcsa02.getText().toString());
+        f1.put("tcvcsa02_code", ucMap.get(bi.tcvcsa02.getSelectedItem().toString()));
         f1.put("tcvcsa03", bi.tcvcsa03.getText().toString());
         f1.put("tcvcsa04", bi.tcvcsa04.getText().toString());
         f1.put("tcvcsa05", bi.tcvcsa05.getText().toString());
