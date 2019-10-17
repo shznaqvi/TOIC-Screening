@@ -1,32 +1,26 @@
-package edu.aku.hassannaqvi.typbar_tcv.ui;
+package edu.aku.hassannaqvi.typbar_tcv.ui.vc;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01ScBinding;
+import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class Section01SCActivity extends AppCompatActivity {
@@ -99,23 +93,21 @@ public class Section01SCActivity extends AppCompatActivity {
         f1.put("tcvcsa05", bi.tcvcsa05.getText().toString());
         f1.put("tcvcsa06", bi.tcvcsa06.getText().toString());
         f1.put("tcvcsa07", bi.tcvcsa07.getText().toString());
-        f1.put("tcvcsa08",bi.tcvcsa08a.isChecked() ?"1" :bi.tcvcsa08b.isChecked() ?"2" :"0");
-        f1.put("tcvcsa09",bi.tcvcsa09a.isChecked() ?"1" :bi.tcvcsa09b.isChecked() ?"2" :"0");
+        f1.put("tcvcsa08", bi.tcvcsa08a.isChecked() ? "1" : bi.tcvcsa08b.isChecked() ? "2" : "0");
+        f1.put("tcvcsa09", bi.tcvcsa09a.isChecked() ? "1" : bi.tcvcsa09b.isChecked() ? "2" : "0");
         f1.put("tcvcsa10", bi.tcvcsa10.getText().toString());
-        f1.put("tcvcsa11",bi.tcvcsa11a.isChecked() ?"1" :bi.tcvcsa11b.isChecked() ?"2" :"0");
-        f1.put("tcvcsa13",bi.tcvcsa13a.isChecked() ?"1" :bi.tcvcsa13b.isChecked() ?"2" :"0");
+        f1.put("tcvcsa11", bi.tcvcsa11a.isChecked() ? "1" : bi.tcvcsa11b.isChecked() ? "2" : "0");
+        f1.put("tcvcsa13", bi.tcvcsa13a.isChecked() ? "1" : bi.tcvcsa13b.isChecked() ? "2" : "0");
         f1.put("tcvcsa1496x", bi.tcvcsa1496x.getText().toString());
-        f1.put("tcvcsa14",bi.tcvcsa14a.isChecked() ?"1" :bi.tcvcsa14b.isChecked() ?"2" :bi.tcvcsa14c.isChecked() ?"3" :bi.tcvcsa1496.isChecked() ?"96" :"0");
-        f1.put("tcvcsa15",bi.tcvcsa15a.isChecked() ?"1" :bi.tcvcsa15b.isChecked() ?"2" :bi.tcvcsa15c.isChecked() ?"3" :bi.tcvcsa1598.isChecked() ?"98" :"0");
+        f1.put("tcvcsa14", bi.tcvcsa14a.isChecked() ? "1" : bi.tcvcsa14b.isChecked() ? "2" : bi.tcvcsa14c.isChecked() ? "3" : bi.tcvcsa1496.isChecked() ? "96" : "0");
+        f1.put("tcvcsa15", bi.tcvcsa15a.isChecked() ? "1" : bi.tcvcsa15b.isChecked() ? "2" : bi.tcvcsa15c.isChecked() ? "3" : bi.tcvcsa1598.isChecked() ? "98" : "0");
 
         MainApp.fc.setsA(String.valueOf(f1));
 
     }
 
     private boolean formValidation() {
-        if (!ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01)) return false;
-
-        return true;
+        return ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01);
     }
 
     public void BtnEnd() {

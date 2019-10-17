@@ -31,9 +31,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.ChildContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.EnrollmentContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MembersContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
@@ -87,7 +87,7 @@ public class MainApp extends Application {
 
     public static Boolean admin = false;
     public static FormsContract fc;
-    public static ChildContract cc;
+    public static MembersContract cc;
     public static SchoolContract sc;
     public static EnrollmentContract ec;
     public static String userName = "0000";

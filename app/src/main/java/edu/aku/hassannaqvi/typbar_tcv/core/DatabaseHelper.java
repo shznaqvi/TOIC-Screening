@@ -20,14 +20,14 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.typbar_tcv.contracts.CCChildrenContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.CCChildrenContract.ChildrenEntry;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.ChildContract;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.ChildContract.FormsChildTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.EnrollmentContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.EnrollmentContract.EnrollChildTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract.HFTable;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MembersContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MembersContract.FormMembersTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract.SchoolTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
@@ -44,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "typbar_tcv.db";
     public static final String DB_NAME = DATABASE_NAME.replace(".", "_copy.");
     public static final String PROJECT_NAME = "DMU-TYPBAR-TCV";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersContract.UsersTable.TABLE_NAME + "("
             + UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -77,25 +77,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
     private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + HFTable.TABLE_NAME;
-    private static final String SQL_CREATE_CHILD_FORMS = "CREATE TABLE "
-            + FormsChildTable.TABLE_NAME + "("
-            + FormsChildTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + FormsChildTable.COLUMN_PROJECT_NAME + " TEXT,"
-            + FormsChildTable.COLUMN_UID + " TEXT," +
-            FormsChildTable.COLUMN_UUID + " TEXT," +
-            FormsChildTable.COLUMN_FORMDATE + " TEXT," +
-            FormsChildTable.COLUMN_USER + " TEXT," +
-            FormsChildTable.COLUMN_SB + " TEXT," +
-            FormsChildTable.COLUMN_ISTATUS + " TEXT," +
-            FormsChildTable.COLUMN_GPSLAT + " TEXT," +
-            FormsChildTable.COLUMN_GPSLNG + " TEXT," +
-            FormsChildTable.COLUMN_GPSDATE + " TEXT," +
-            FormsChildTable.COLUMN_GPSACC + " TEXT," +
-            FormsChildTable.COLUMN_DEVICEID + " TEXT," +
-            FormsChildTable.COLUMN_DEVICETAGID + " TEXT," +
-            FormsChildTable.COLUMN_APP_VERSION + " TEXT," +
-            FormsChildTable.COLUMN_SYNCED + " TEXT," +
-            FormsChildTable.COLUMN_SYNCED_DATE + " TEXT"
+    private static final String SQL_CREATE_MEMBER_FORMS = "CREATE TABLE " +
+            FormMembersTable.TABLE_NAME + "(" +
+            FormMembersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            FormMembersTable.COLUMN_PROJECT_NAME + " TEXT," +
+            FormMembersTable.COLUMN_UID + " TEXT," +
+            FormMembersTable.COLUMN_UUID + " TEXT," +
+            FormMembersTable.COLUMN_FORMDATE + " TEXT," +
+            FormMembersTable.COLUMN_USER + " TEXT," +
+            FormMembersTable.COLUMN_SB + " TEXT," +
+            FormMembersTable.COLUMN_DEVICEID + " TEXT," +
+            FormMembersTable.COLUMN_DEVICETAGID + " TEXT," +
+            FormMembersTable.COLUMN_APP_VERSION + " TEXT," +
+            FormMembersTable.COLUMN_SYNCED + " TEXT," +
+            FormMembersTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
     private static final String SQL_CREATE_ENROLLMENT_FORMS = "CREATE TABLE "
             + EnrollChildTable.TABLE_NAME + "("
@@ -128,7 +123,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_FORMS = "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
     private static final String SQL_DELETE_UCS = "DROP TABLE IF EXISTS " + UCsTable.TABLE_NAME;
     private static final String SQL_DELETE_SCHOOL = "DROP TABLE IF EXISTS " + SchoolTable.TABLE_NAME;
-    private static final String SQL_DELETE_CHILD_FORMS = "DROP TABLE IF EXISTS " + FormsChildTable.TABLE_NAME;
+    private static final String SQL_DELETE_CHILD_FORMS = "DROP TABLE IF EXISTS " + FormMembersTable.TABLE_NAME;
     final String SQL_CREATE_HF = "CREATE TABLE " + HFTable.TABLE_NAME + " (" +
             HFTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             HFTable.COLUMN_HF_CODE + " TEXT, " +
@@ -172,6 +167,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_UC);
         db.execSQL(SQL_CREATE_HF);
         db.execSQL(SQL_CREATE_CCCCHILDREN);
+        db.execSQL(SQL_CREATE_MEMBER_FORMS);
     }
 
     @Override
@@ -185,6 +181,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_CREATE_HF);
             case 2:
                 db.execSQL(SQL_CREATE_CCCCHILDREN);
+            case 3:
+                db.execSQL(SQL_CREATE_MEMBER_FORMS);
 
         }
     }
@@ -808,6 +806,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public Long addMemberForms(MembersContract cc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(FormMembersTable.COLUMN_PROJECT_NAME, cc.getProjectName());
+        values.put(FormMembersTable.COLUMN_UID, cc.getUID());
+        values.put(FormMembersTable.COLUMN_FORMDATE, cc.getFormDate());
+        values.put(FormMembersTable.COLUMN_USER, cc.getUser());
+        values.put(FormMembersTable.COLUMN_SB, cc.getsB());
+        values.put(FormMembersTable.COLUMN_DEVICETAGID, cc.getDevicetagID());
+        values.put(FormMembersTable.COLUMN_DEVICEID, cc.getDeviceID());
+        values.put(FormMembersTable.COLUMN_SYNCED, cc.getSynced());
+        values.put(FormMembersTable.COLUMN_SYNCED_DATE, cc.getSynced_date());
+        values.put(FormMembersTable.COLUMN_APP_VERSION, cc.getAppversion());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                FormMembersTable.TABLE_NAME,
+                FormMembersTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
     public void updateSyncedForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -832,15 +857,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsChildTable.COLUMN_SYNCED, true);
-        values.put(FormsChildTable.COLUMN_SYNCED_DATE, new Date().toString());
+        values.put(FormMembersTable.COLUMN_SYNCED, true);
+        values.put(FormMembersTable.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = FormsChildTable._ID + " = ?";
+        String where = FormMembersTable._ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
-                FormsChildTable.TABLE_NAME,
+                FormMembersTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
@@ -877,6 +902,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
+    public int updateMemberID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormMembersTable.COLUMN_UID, MainApp.cc.getUID());
+
+// Which row to update, based on the ID
+        String selection = FormMembersTable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.cc.get_ID())};
+
+        int count = db.update(FormMembersTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -1009,39 +1052,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Collection<ChildContract> getUnsyncedChildForms() {
+    public Collection<MembersContract> getUnsyncedChildForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                FormsChildTable._ID,
-                FormsChildTable.COLUMN_UID,
-                FormsChildTable.COLUMN_UUID,
-                FormsChildTable.COLUMN_FORMDATE,
-                FormsChildTable.COLUMN_USER,
-                FormsChildTable.COLUMN_ISTATUS,
-                FormsChildTable.COLUMN_SB,
-                FormsChildTable.COLUMN_GPSLAT,
-                FormsChildTable.COLUMN_GPSLNG,
-                FormsChildTable.COLUMN_GPSDATE,
-                FormsChildTable.COLUMN_GPSACC,
-                FormsChildTable.COLUMN_DEVICETAGID,
-                FormsChildTable.COLUMN_DEVICEID,
-                FormsChildTable.COLUMN_SYNCED,
-                FormsChildTable.COLUMN_SYNCED_DATE,
-                FormsChildTable.COLUMN_APP_VERSION
+                FormMembersTable._ID,
+                FormMembersTable.COLUMN_UID,
+                FormMembersTable.COLUMN_UUID,
+                FormMembersTable.COLUMN_FORMDATE,
+                FormMembersTable.COLUMN_USER,
+                FormMembersTable.COLUMN_SB,
+                FormMembersTable.COLUMN_DEVICETAGID,
+                FormMembersTable.COLUMN_DEVICEID,
+                FormMembersTable.COLUMN_SYNCED,
+                FormMembersTable.COLUMN_SYNCED_DATE,
+                FormMembersTable.COLUMN_APP_VERSION
         };
-        String whereClause = FormsChildTable.COLUMN_SYNCED + " is null OR " + FormsChildTable.COLUMN_SYNCED + " = '' ";
+        String whereClause = FormMembersTable.COLUMN_SYNCED + " is null OR " + FormMembersTable.COLUMN_SYNCED + " = '' ";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                FormsChildTable._ID + " ASC";
+                FormMembersTable._ID + " ASC";
 
-        Collection<ChildContract> allFC = new ArrayList<ChildContract>();
+        Collection<MembersContract> allFC = new ArrayList<MembersContract>();
         try {
             c = db.query(
-                    FormsChildTable.TABLE_NAME,  // The table to query
+                    FormMembersTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -1050,7 +1088,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                ChildContract fc = new ChildContract();
+                MembersContract fc = new MembersContract();
                 allFC.add(fc.Hydrate(c));
             }
         } finally {
