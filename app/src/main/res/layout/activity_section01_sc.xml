@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.vc.Section01SCActivity">
 
     <data>
@@ -113,9 +114,9 @@
 
                         <EditText
                             android:id="@+id/tcvcsa04"
-                            style="@style/EditText"
+                            style="@style/EditText_number"
                             android:hint="@string/tcvcsa04"
-                            android:maxLength="30" />
+                            android:maxLength="5" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
@@ -261,11 +262,16 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvcsa10" />
 
-                            <EditText
+                            <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/tcvcsa10"
-                                style="@style/EditText"
+                                style="@style/EditText_number"
                                 android:hint="@string/tcvcsa10"
-                                android:maxLength="30" />
+                                android:maxLength="2"
+                                app:maxValue="10"
+                                app:minValue="1"
+                                app:required="true"
+                                app:type="range" />
+
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 

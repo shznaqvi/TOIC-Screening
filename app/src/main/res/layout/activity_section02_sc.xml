@@ -88,7 +88,7 @@
 
                         <EditText
                             android:id="@+id/tcvcsb03a"
-                            style="@style/EditText"
+                            style="@style/EditText_number"
                             android:hint="@string/tcvcsb03a"
                             android:maxLength="30" />
 
@@ -98,7 +98,7 @@
 
                         <EditText
                             android:id="@+id/tcvcsb03b"
-                            style="@style/EditText"
+                            style="@style/EditText_number"
                             android:hint="@string/tcvcsb03b"
                             android:maxLength="30" />
 
@@ -108,7 +108,7 @@
 
                         <EditText
                             android:id="@+id/tcvcsb03c"
-                            style="@style/EditText"
+                            style="@style/EditText_number"
                             android:hint="@string/tcvcsb03c"
                             android:maxLength="30" />
                     </LinearLayout>
@@ -131,7 +131,7 @@
 
                         <EditText
                             android:id="@+id/tcvcsb04y"
-                            style="@style/EditText"
+                            style="@style/EditText_number"
                             android:hint="@string/tcvcsb04y"
                             android:maxLength="30" />
 
@@ -141,7 +141,7 @@
 
                         <EditText
                             android:id="@+id/tcvcsb04m"
-                            style="@style/EditText"
+                            style="@style/EditText_number"
                             android:hint="@string/tcvcsb04m"
                             android:maxLength="30" />
                     </LinearLayout>
@@ -221,228 +221,242 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
-                <!-- tcvcsb07_T-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/fldGrpCVtcvcsb07"
-                    style="@style/cardView">
+                <LinearLayout
+                    android:id="@+id/llvcsb01"
+                    style="@style/linearlayout_view_wt_bound"
+                    android:visibility='@{tcvcsb0698.checked ? View.GONE : View.VISIBLE }'>
 
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+                    <!-- tcvcsb07_T-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/fldGrpCVtcvcsb07"
+                        style="@style/cardView">
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvcsb07" />
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                        <RadioGroup
-                            android:id="@+id/tcvcsb07"
-                            style="@style/i_radiogroup">
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvcsb07" />
 
-                            <RadioButton
-                                android:id="@+id/tcvcsb07a"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb07a" />
+                            <RadioGroup
+                                android:id="@+id/tcvcsb07"
+                                style="@style/i_radiogroup">
 
-                            <RadioButton
-                                android:id="@+id/tcvcsb07b"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb07b" />
+                                <RadioButton
+                                    android:id="@+id/tcvcsb07a"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb07a" />
 
-                            <RadioButton
-                                android:id="@+id/tcvcsb07c"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb07c" />
-                        </RadioGroup>
+                                <RadioButton
+                                    android:id="@+id/tcvcsb07b"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb07b" />
+
+                                <RadioButton
+                                    android:id="@+id/tcvcsb07c"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb07c" />
+                            </RadioGroup>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <LinearLayout
+                        android:id="@+id/llvcsb02"
+                        style="@style/linearlayout_view_wt_bound"
+                        android:visibility='@{tcvcsb07c.checked ? View.GONE : View.VISIBLE }'>
+
+                        <!-- tcvcsb08_T-->
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/fldGrpCVtcvcsb08"
+                            style="@style/cardView">
+
+                            <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                                <TextView
+                                    style="@style/textview01"
+                                    android:text="@string/tcvcsb08" />
+
+                                <TextView
+                                    style="@style/i_textview"
+                                    android:text="@string/tcvcsb08d" />
+
+                                <EditText
+                                    android:id="@+id/tcvcsb08d"
+                                    style="@style/EditText_number"
+                                    android:hint="@string/tcvcsb08d"
+                                    android:maxLength="30" />
+
+                                <TextView
+                                    style="@style/i_textview"
+                                    android:text="@string/tcvcsb08m" />
+
+                                <EditText
+                                    android:id="@+id/tcvcsb08m"
+                                    style="@style/EditText_number"
+                                    android:hint="@string/tcvcsb08m"
+                                    android:maxLength="30" />
+
+                                <TextView
+                                    style="@style/i_textview"
+                                    android:text="@string/tcvcsb08y" />
+
+                                <EditText
+                                    android:id="@+id/tcvcsb08y"
+                                    style="@style/EditText_number"
+                                    android:hint="@string/tcvcsb08y"
+                                    android:maxLength="30" />
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
+                        <!-- tcvcsb09_T-->
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/fldGrpCVtcvcsb09"
+                            style="@style/cardView">
+
+                            <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                                <TextView
+                                    style="@style/i_textview"
+                                    android:text="@string/tcvcsb09" />
+
+                                <EditText
+                                    android:id="@+id/tcvcsb09"
+                                    style="@style/EditText"
+                                    android:hint="@string/tcvcsb09"
+                                    android:maxLength="30" />
+                            </LinearLayout>
+                        </android.support.v7.widget.CardView>
+
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
 
-                <!-- tcvcsb08_T-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/fldGrpCVtcvcsb08"
-                    style="@style/cardView">
+                    <!-- tcvcsb10_T-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/fldGrpCVtcvcsb10"
+                        style="@style/cardView"
+                        android:visibility="@{tcvcsb07c.checked ? View.VISIBLE : View.GONE}">
 
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                        <TextView
-                            style="@style/textview01"
-                            android:text="@string/tcvcsb08" />
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvcsb10" />
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvcsb08d" />
+                            <RadioGroup
+                                android:id="@+id/tcvcsb10"
+                                style="@style/i_radiogroup">
 
-                        <EditText
-                            android:id="@+id/tcvcsb08d"
-                            style="@style/EditText"
-                            android:hint="@string/tcvcsb08d"
-                            android:maxLength="30" />
+                                <RadioButton
+                                    android:id="@+id/tcvcsb10a"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb10a" />
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvcsb08m" />
+                                <RadioButton
+                                    android:id="@+id/tcvcsb10b"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb10b" />
 
-                        <EditText
-                            android:id="@+id/tcvcsb08m"
-                            style="@style/EditText"
-                            android:hint="@string/tcvcsb08m"
-                            android:maxLength="30" />
+                                <RadioButton
+                                    android:id="@+id/tcvcsb10c"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb10c" />
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvcsb08y" />
+                                <RadioButton
+                                    android:id="@+id/tcvcsb10d"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb10d" />
 
-                        <EditText
-                            android:id="@+id/tcvcsb08y"
-                            style="@style/EditText"
-                            android:hint="@string/tcvcsb08y"
-                            android:maxLength="30" />
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
+                                <RadioButton
+                                    android:id="@+id/tcvcsb10e"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb10e" />
 
-                <!-- tcvcsb09_T-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/fldGrpCVtcvcsb09"
-                    style="@style/cardView">
+                                <RadioButton
+                                    android:id="@+id/tcvcsb1096"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb1096" />
 
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+                                <EditText
+                                    android:id="@+id/tcvcsb1096x"
+                                    style="@style/EditText"
+                                    android:hint="@string/tcvcsb1096x"
+                                    android:maxLength="30"
+                                    android:text='@{tcvcsb1096.checked ? tcvcsb1096x.getText.toString : ""}'
+                                    android:visibility="@{tcvcsb1096.checked ? View.VISIBLE : View.GONE}" />
+                            </RadioGroup>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvcsb09" />
+                    <!-- tcvcsb11_T-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/fldGrpCVtcvcsb11"
+                        style="@style/cardView">
 
-                        <EditText
-                            android:id="@+id/tcvcsb09"
-                            style="@style/EditText"
-                            android:hint="@string/tcvcsb09"
-                            android:maxLength="30" />
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                <!-- tcvcsb10_T-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/fldGrpCVtcvcsb10"
-                    style="@style/cardView"
-                    android:visibility="@{tcvcsb07c.checked ? View.VISIBLE : View.GONE}">
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvcsb11" />
 
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+                            <RadioGroup
+                                android:id="@+id/tcvcsb11"
+                                style="@style/i_radiogroup">
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvcsb10" />
+                                <RadioButton
+                                    android:id="@+id/tcvcsb11a"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb11a" />
 
-                        <RadioGroup
-                            android:id="@+id/tcvcsb10"
-                            style="@style/i_radiogroup">
+                                <RadioButton
+                                    android:id="@+id/tcvcsb11b"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb11b" />
 
-                            <RadioButton
-                                android:id="@+id/tcvcsb10a"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb10a" />
+                                <RadioButton
+                                    android:id="@+id/tcvcsb11c"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb11c" />
 
-                            <RadioButton
-                                android:id="@+id/tcvcsb10b"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb10b" />
+                                <RadioButton
+                                    android:id="@+id/tcvcsb11d"
+                                    style="@style/radiobutton"
+                                    android:text="@string/tcvcsb11d" />
+                            </RadioGroup>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
 
-                            <RadioButton
-                                android:id="@+id/tcvcsb10c"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb10c" />
+                    <!-- tcvcsb12_T-->
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/fldGrpCVtcvcsb12"
+                        style="@style/cardView">
 
-                            <RadioButton
-                                android:id="@+id/tcvcsb10d"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb10d" />
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                            <RadioButton
-                                android:id="@+id/tcvcsb10e"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb10e" />
+                            <TextView
+                                style="@style/textview01"
+                                android:text="@string/tcvcsb12" />
 
-                            <RadioButton
-                                android:id="@+id/tcvcsb1096"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb1096" />
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvcsb12h" />
 
                             <EditText
-                                android:id="@+id/tcvcsb1096x"
-                                style="@style/EditText"
-                                android:hint="@string/tcvcsb1096x"
-                                android:maxLength="30"
-                                android:text='@{tcvcsb1096.checked ? tcvcsb1096x.getText.toString : ""}'
-                                android:visibility="@{tcvcsb1096.checked ? View.VISIBLE : View.GONE}" />
-                        </RadioGroup>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
+                                android:id="@+id/tcvcsb12h"
+                                style="@style/EditText_number"
+                                android:hint="@string/tcvcsb12h"
+                                android:maxLength="30" />
 
-                <!-- tcvcsb11_T-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/fldGrpCVtcvcsb11"
-                    style="@style/cardView">
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvcsb12m" />
 
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+                            <EditText
+                                android:id="@+id/tcvcsb12m"
+                                style="@style/EditText_number"
+                                android:hint="@string/tcvcsb12m"
+                                android:maxLength="30" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
 
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvcsb11" />
-
-                        <RadioGroup
-                            android:id="@+id/tcvcsb11"
-                            style="@style/i_radiogroup">
-
-                            <RadioButton
-                                android:id="@+id/tcvcsb11a"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb11a" />
-
-                            <RadioButton
-                                android:id="@+id/tcvcsb11b"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb11b" />
-
-                            <RadioButton
-                                android:id="@+id/tcvcsb11c"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb11c" />
-
-                            <RadioButton
-                                android:id="@+id/tcvcsb11d"
-                                style="@style/radiobutton"
-                                android:text="@string/tcvcsb11d" />
-                        </RadioGroup>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <!-- tcvcsb12_T-->
-                <android.support.v7.widget.CardView
-                    android:id="@+id/fldGrpCVtcvcsb12"
-                    style="@style/cardView">
-
-                    <LinearLayout style="@style/linearlayout_view_wt_bound">
-
-                        <TextView
-                            style="@style/textview01"
-                            android:text="@string/tcvcsb12" />
-
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvcsb12h" />
-
-                        <EditText
-                            android:id="@+id/tcvcsb12h"
-                            style="@style/EditText"
-                            android:hint="@string/tcvcsb12h"
-                            android:maxLength="30" />
-
-                        <TextView
-                            style="@style/i_textview"
-                            android:text="@string/tcvcsb12m" />
-
-                        <EditText
-                            android:id="@+id/tcvcsb12m"
-                            style="@style/EditText"
-                            android:hint="@string/tcvcsb12m"
-                            android:maxLength="30" />
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
+                </LinearLayout>
 
                 <!-- tcvcsb13_T-->
                 <android.support.v7.widget.CardView
