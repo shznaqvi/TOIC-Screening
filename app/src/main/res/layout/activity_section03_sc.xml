@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.SectionSListingActivity">
+    tools:context=".ui.Section03SCActivity">
 
     <data>
 
@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.typbar_tcv.ui.SectionSListingActivity" />
+            type="edu.aku.hassannaqvi.typbar_tcv.ui.Section03SCActivity" />
 
     </data>
 
@@ -848,11 +848,11 @@
                             android:text="@string/tcvcsc23" />
 
                         <RadioGroup
-                            android:id="@+id/tcvcsc23a"
+                            android:id="@+id/tcvcsc23"
                             style="@style/i_radiogroup">
 
                             <RadioButton
-                                android:id="@+id/tcvcsc23"
+                                android:id="@+id/tcvcsc23a"
                                 style="@style/radiobutton"
                                 android:text="@string/tcvcsc23a" />
 
@@ -891,11 +891,11 @@
                             android:text="@string/tcvcsc24" />
 
                         <RadioGroup
-                            android:id="@+id/tcvcsc24a"
+                            android:id="@+id/tcvcsc24"
                             style="@style/i_radiogroup">
 
                             <RadioButton
-                                android:id="@+id/tcvcsc24"
+                                android:id="@+id/tcvcsc24a"
                                 style="@style/radiobutton"
                                 android:text="@string/tcvcsc24a" />
 
@@ -934,11 +934,11 @@
                             android:text="@string/tcvcsc25" />
 
                         <RadioGroup
-                            android:id="@+id/tcvcsc25a"
+                            android:id="@+id/tcvcsc25"
                             style="@style/i_radiogroup">
 
                             <RadioButton
-                                android:id="@+id/tcvcsc25"
+                                android:id="@+id/tcvcsc25a"
                                 style="@style/radiobutton"
                                 android:text="@string/tcvcsc25a" />
 

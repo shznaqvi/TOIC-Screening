@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.SectionSListingActivity">
+    tools:context=".ui.Section02SCActivity">
 
     <data>
 
@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.typbar_tcv.ui.SectionSListingActivity" />
+            type="edu.aku.hassannaqvi.typbar_tcv.ui.Section02SCActivity" />
 
     </data>
 
