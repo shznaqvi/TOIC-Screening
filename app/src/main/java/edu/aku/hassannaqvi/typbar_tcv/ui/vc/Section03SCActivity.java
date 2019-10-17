@@ -15,7 +15,6 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection03ScBinding;
-import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
@@ -59,7 +58,7 @@ public class Section03SCActivity extends AppCompatActivity {
                 return;
             }
             finish();
-            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+            startActivity(new Intent(this, Section04SCActivity.class));
         } catch (JSONException e) {
             e.printStackTrace();
         }
