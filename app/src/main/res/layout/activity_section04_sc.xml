@@ -143,12 +143,14 @@
                             <CheckBox
                                 android:id="@+id/tcvcsc27b"
                                 style="@style/checkbox"
-                                android:text="@string/tcvcsc27b" />
+                                android:text="@string/tcvcsc27b"
+                                android:gravity="right"/>
 
                             <CheckBox
                                 android:id="@+id/tcvcsc27c"
                                 style="@style/checkbox"
-                                android:text="@string/tcvcsc27c" />
+                                android:text="@string/tcvcsc27c"
+                                android:gravity="right"/>
 
                             <CheckBox
                                 android:id="@+id/tcvcsc27d"
