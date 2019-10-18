@@ -44,6 +44,7 @@ public class Section01SCActivity extends AppCompatActivity {
 
         setListeners();
 
+        db = new DatabaseHelper(this);
         ArrayList<String> ucsNames = new ArrayList<>();
         ucsNames.add("....");
         ArrayList<UCsContract> ucsContract = db.getAllUCs();
@@ -99,7 +100,7 @@ public class Section01SCActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        DatabaseHelper db = new DatabaseHelper(this);
+
         long updcount = db.addForm(MainApp.fc);
         if (updcount > 0) {
             MainApp.fc.set_ID(String.valueOf(updcount));
@@ -136,6 +137,7 @@ public class Section01SCActivity extends AppCompatActivity {
         f1.put("tcvcsa09", bi.tcvcsa09a.isChecked() ? "1" : bi.tcvcsa09b.isChecked() ? "2" : "0");
         f1.put("tcvcsa10", bi.tcvcsa10.getText().toString());
         f1.put("tcvcsa11", bi.tcvcsa11a.isChecked() ? "1" : bi.tcvcsa11b.isChecked() ? "2" : "0");
+        f1.put("tcvcsa12", bi.tcvcsa12.getText().toString());
         f1.put("tcvcsa13", bi.tcvcsa13a.isChecked() ? "1" : bi.tcvcsa13b.isChecked() ? "2" : "0");
         f1.put("tcvcsa1496x", bi.tcvcsa1496x.getText().toString());
         f1.put("tcvcsa14", bi.tcvcsa14a.isChecked() ? "1" : bi.tcvcsa14b.isChecked() ? "2" : bi.tcvcsa14c.isChecked() ? "3" : bi.tcvcsa1496.isChecked() ? "96" : "0");

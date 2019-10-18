@@ -52,6 +52,7 @@ import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.typbar_tcv.get.GetAllData;
 import edu.aku.hassannaqvi.typbar_tcv.sync.SyncAllData;
+import edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 public class MainActivity extends AppCompatActivity {
@@ -447,6 +448,9 @@ public class MainActivity extends AppCompatActivity {
                         });
                         dialog = builder.create();
                         dialog.show();
+                        break;
+                    case 6:
+                        startActivity(new Intent(MainActivity.this, Section01SCActivity.class));
                         break;
 
 
