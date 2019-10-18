@@ -180,6 +180,7 @@
                             <EditText
                                 android:id="@+id/tcvcsb0596x"
                                 style="@style/EditText"
+                                android:tag="tcvcsb0596"
                                 android:hint="@string/tcvcsb0596x"
                                 android:maxLength="30"
                                 android:text='@{tcvcsb0596.checked ? tcvcsb0596x.getText.toString : ""}'
@@ -377,6 +378,7 @@
                                 <EditText
                                     android:id="@+id/tcvcsb1096x"
                                     style="@style/EditText"
+                                    android:tag="tcvcsb1096"
                                     android:hint="@string/tcvcsb1096x"
                                     android:maxLength="30"
                                     android:text='@{tcvcsb1096.checked ? tcvcsb1096x.getText.toString : ""}'
@@ -496,6 +498,7 @@
                             <EditText
                                 android:id="@+id/tcvcsb13961x"
                                 style="@style/EditText"
+                                android:tag="tcvcsb13961"
                                 android:hint="@string/tcvcsb13961x"
                                 android:maxLength="30" />
 
@@ -521,6 +524,7 @@
                             <EditText
                                 android:id="@+id/tcvcsb13962x"
                                 style="@style/EditText"
+                                android:tag="tcvcsb13962"
                                 android:hint="@string/tcvcsb13962x"
                                 android:maxLength="30" />
 
@@ -561,6 +565,7 @@
                             <EditText
                                 android:id="@+id/tcvcsb13963x"
                                 style="@style/EditText"
+                                android:tag="tcvcsb13963"
                                 android:hint="@string/tcvcsb13963x"
                                 android:maxLength="30" />
                         </RadioGroup>

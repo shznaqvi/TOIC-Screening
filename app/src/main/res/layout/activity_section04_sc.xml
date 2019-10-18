@@ -50,6 +50,7 @@
 
                         <LinearLayout
                             android:id="@+id/fldGrpLLtcvcsc26a"
+                            android:tag="0"
                             style="@style/linearlayout_view_wt_bound">
 
                             <CheckBox
@@ -133,6 +134,7 @@
 
                         <LinearLayout
                             android:id="@+id/fldGrpLLtcvcsc27a"
+                            android:tag="0"
                             style="@style/linearlayout_view_wt_bound">
 
                             <CheckBox
@@ -183,6 +185,7 @@
 
                         <LinearLayout
                             android:id="@+id/fldGrpLLtcvcsc28a"
+                            android:tag="0"
                             style="@style/linearlayout_view_wt_bound">
 
                             <CheckBox
@@ -222,6 +225,7 @@
 
                             <EditText
                                 android:id="@+id/tcvcsc2896x"
+                                android:tag="tcvcsc2896"
                                 style="@style/EditText"
                                 android:hint="@string/tcvcsc2896x"
                                 android:maxLength="30"
@@ -244,6 +248,7 @@
 
                         <LinearLayout
                             android:id="@+id/fldGrpLLtcvcsc29a"
+                            android:tag="0"
                             style="@style/linearlayout_view_wt_bound">
 
                             <CheckBox
@@ -284,6 +289,7 @@
                             <EditText
                                 android:id="@+id/tcvcsc2996x"
                                 style="@style/EditText"
+                                android:tag="tcvcsc2996"
                                 android:hint="@string/tcvcsc2996x"
                                 android:maxLength="30"
                                 android:text='@{tcvcsc2996.checked ? tcvcsc2996x.getText.toString : ""}'
