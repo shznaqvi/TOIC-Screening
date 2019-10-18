@@ -106,20 +106,22 @@ public class Section02SCActivity extends AppCompatActivity {
 
         JSONObject c1 = new JSONObject();
 
+
+
+
         c1.put("tcvcsb01", bi.tcvcsb01.getText().toString());
         c1.put("tcvcsb02", bi.tcvcsb02a.isChecked() ? "1" : bi.tcvcsb02b.isChecked() ? "2" : "0");
-        c1.put("tcvcsb03a", bi.tcvcsb03a.getText().toString());
-        c1.put("tcvcsb03b", bi.tcvcsb03b.getText().toString());
-        c1.put("tcvcsb03c", bi.tcvcsb03c.getText().toString());
+
+        c1.put("tcvcsb03Age", bi.tcvcsbDOB.isChecked() ? "1" : bi.tcvcsbA.isChecked() ? "2" : "0");
+        c1.put("tcvcsb03", bi.tcvcsb03.getText().toString());
         c1.put("tcvcsb04y", bi.tcvcsb04y.getText().toString());
         c1.put("tcvcsb04m", bi.tcvcsb04m.getText().toString());
+
         c1.put("tcvcsb0596x", bi.tcvcsb0596x.getText().toString());
         c1.put("tcvcsb05", bi.tcvcsb05a.isChecked() ? "1" : bi.tcvcsb05b.isChecked() ? "2" : bi.tcvcsb0596.isChecked() ? "96" : "0");
         c1.put("tcvcsb06", bi.tcvcsb06a.isChecked() ? "1" : bi.tcvcsb06b.isChecked() ? "2" : bi.tcvcsb0698.isChecked() ? "98" : "0");
         c1.put("tcvcsb07", bi.tcvcsb07a.isChecked() ? "1" : bi.tcvcsb07b.isChecked() ? "2" : bi.tcvcsb07c.isChecked() ? "3" : "0");
         c1.put("tcvcsb08d", bi.tcvcsb08d.getText().toString());
-        c1.put("tcvcsb08m", bi.tcvcsb08m.getText().toString());
-        c1.put("tcvcsb08y", bi.tcvcsb08y.getText().toString());
         c1.put("tcvcsb09", bi.tcvcsb09.getText().toString());
         c1.put("tcvcsb1096x", bi.tcvcsb1096x.getText().toString());
         c1.put("tcvcsb10", bi.tcvcsb10a.isChecked() ? "1" : bi.tcvcsb10b.isChecked() ? "2" : bi.tcvcsb10c.isChecked() ? "3" : bi.tcvcsb10d.isChecked() ? "4" : bi.tcvcsb10e.isChecked() ? "5" : bi.tcvcsb1096.isChecked() ? "96" : "0");

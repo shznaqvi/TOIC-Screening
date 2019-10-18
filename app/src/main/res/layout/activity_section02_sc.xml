@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.vc.Section02SCActivity">
 
     <data>
@@ -71,7 +72,7 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
-                <!-- tcvcsb03_T-->
+                <!--&lt;!&ndash; tcvcsb03_T Date od birth&ndash;&gt;
                 <android.support.v7.widget.CardView
                     android:id="@+id/fldGrpCVtcvcsb03"
                     style="@style/cardView">
@@ -114,7 +115,7 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
-                <!-- tcvcsb04_T-->
+                &lt;!&ndash; tcvcsb04_T Age&ndash;&gt;
                 <android.support.v7.widget.CardView
                     android:id="@+id/fldGrpCVtcvcsb04"
                     style="@style/cardView">
@@ -145,7 +146,97 @@
                             android:hint="@string/tcvcsb04m"
                             android:maxLength="30" />
                     </LinearLayout>
+                </android.support.v7.widget.CardView>-->
+
+
+
+                <!--Radio tcvcl03_age-->
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/tcvcsbDOBA" />
+
+                        <RadioGroup
+                            android:id="@+id/tcvcsb03DOBA"
+                            style="@style/i_radiogroup">
+
+                            <RadioButton
+                                android:id="@+id/tcvcsbDOB"
+                                style="@style/i_radiobutton"
+                                android:text="@string/tcvcsb03" />
+
+                            <RadioButton
+                                android:id="@+id/tcvcsbA"
+                                style="@style/i_radiobutton"
+                                android:text="@string/tcvcsb04" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
                 </android.support.v7.widget.CardView>
+
+                <!--EditText tcvcl03DOB-->
+                <android.support.v7.widget.CardView
+                    style="@style/cardView"
+                    android:visibility='@{tcvcsbDOB.checked ? View.VISIBLE : View.GONE}'>
+
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/tcvcsb03" />
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                            android:id="@+id/tcvcsb03"
+                            style="@style/EditText_number"
+                            android:hint="@string/tcvcsb03"
+                            android:text='@{!tcvcsbDOB.checked ?  "" : tcvcsb03.getText.toString }'
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <!--EditText tcvcl04-->
+                <android.support.v7.widget.CardView
+                    style="@style/cardView"
+                    android:visibility='@{tcvcsbA.checked ? View.VISIBLE : View.GONE}'>
+
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/tcvcsb04" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/tcvcsb04y"
+                            style="@style/EditText_number"
+                            android:hint="@string/tcvcsb04y"
+                            android:maxLength="2"
+                            android:text='@{!tcvcsbA.checked ?  "" : tcvcsb04y.getText.toString }'
+                            app:maxValue="15"
+                            app:minValue="0"
+                            app:required="true"
+                            app:type="range" />
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/tcvcsb04m"
+                            style="@style/EditText_number"
+                            android:hint="@string/tcvcsb04m"
+                            android:maxLength="2"
+                            android:text='@{!tcvcsbA.checked ?  "" : tcvcsb04m.getText.toString }'
+                            app:maxValue="11"
+                            app:minValue="0"
+                            app:required="true"
+                            app:type="range" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+
 
                 <!-- tcvcsb05_T-->
                 <android.support.v7.widget.CardView
@@ -276,35 +367,12 @@
                                     style="@style/textview01"
                                     android:text="@string/tcvcsb08" />
 
-                                <TextView
-                                    style="@style/i_textview"
-                                    android:text="@string/tcvcsb08d" />
-
-                                <EditText
+                                <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
                                     android:id="@+id/tcvcsb08d"
                                     style="@style/EditText_number"
-                                    android:hint="@string/tcvcsb08d"
+                                    android:hint="@string/tcvcsb08"
                                     android:maxLength="30" />
 
-                                <TextView
-                                    style="@style/i_textview"
-                                    android:text="@string/tcvcsb08m" />
-
-                                <EditText
-                                    android:id="@+id/tcvcsb08m"
-                                    style="@style/EditText_number"
-                                    android:hint="@string/tcvcsb08m"
-                                    android:maxLength="30" />
-
-                                <TextView
-                                    style="@style/i_textview"
-                                    android:text="@string/tcvcsb08y" />
-
-                                <EditText
-                                    android:id="@+id/tcvcsb08y"
-                                    style="@style/EditText_number"
-                                    android:hint="@string/tcvcsb08y"
-                                    android:maxLength="30" />
                             </LinearLayout>
                         </android.support.v7.widget.CardView>
 
@@ -321,9 +389,9 @@
 
                                 <EditText
                                     android:id="@+id/tcvcsb09"
-                                    style="@style/EditText"
+                                    style="@style/EditText_number"
                                     android:hint="@string/tcvcsb09"
-                                    android:maxLength="30" />
+                                    android:maxLength="20" />
                             </LinearLayout>
                         </android.support.v7.widget.CardView>
 
@@ -440,21 +508,29 @@
                                 style="@style/i_textview"
                                 android:text="@string/tcvcsb12h" />
 
-                            <EditText
+                            <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/tcvcsb12h"
                                 style="@style/EditText_number"
                                 android:hint="@string/tcvcsb12h"
-                                android:maxLength="30" />
+                                android:maxLength="2"
+                                app:maxValue="23"
+                                app:minValue="0"
+                                app:required="true"
+                                app:type="range"/>
 
                             <TextView
                                 style="@style/i_textview"
                                 android:text="@string/tcvcsb12m" />
 
-                            <EditText
+                            <com.edittextpicker.aliazaz.EditTextPicker
                                 android:id="@+id/tcvcsb12m"
                                 style="@style/EditText_number"
                                 android:hint="@string/tcvcsb12m"
-                                android:maxLength="30" />
+                                android:maxLength="2"
+                                app:maxValue="59"
+                                app:minValue="0"
+                                app:required="true"
+                                app:type="range" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 

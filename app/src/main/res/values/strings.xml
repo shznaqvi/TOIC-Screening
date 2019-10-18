@@ -608,6 +608,9 @@
     <string name="tcvcsb03a"> دن </string>
     <string name="tcvcsb03b"> مہینہ </string>
     <string name="tcvcsb03c"> سال </string>
+
+    <string name="tcvcsbDOBA">عمر / تاریخ پیدائش </string>
+
     <string name="tcvcsb04"> عمر </string>
     <string name="tcvcsb04y"> سالوں </string>
     <string name="tcvcsb04m"> مہینوں </string>
