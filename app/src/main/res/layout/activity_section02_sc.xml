@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.vc.Section02SCActivity">
 
     <data>
@@ -41,6 +41,30 @@
                             style="@style/EditText"
                             android:hint="@string/tcvcsb01"
                             android:maxLength="30" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <!-- tcvcsb01_T-->
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                        <TextView
+                            style="@style/i_textview"
+                            android:text="@string/tcvcsb14" />
+
+                        <Spinner
+                            android:id="@+id/tcvcsb14x"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="20dp" />
+
+                        <EditText
+                            android:id="@+id/tcvcsb14"
+                            style="@style/EditText"
+                            android:hint="@string/tcvcsb14"
+                            android:maxLength="30"
+                            android:visibility="gone" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
@@ -149,7 +173,6 @@
                 </android.support.v7.widget.CardView>-->
 
 
-
                 <!--Radio tcvcl03_age-->
                 <android.support.v7.widget.CardView style="@style/cardView">
 
@@ -237,7 +260,6 @@
                 </android.support.v7.widget.CardView>
 
 
-
                 <!-- tcvcsb05_T-->
                 <android.support.v7.widget.CardView
                     android:id="@+id/fldGrpCVtcvcsb05"
@@ -271,9 +293,9 @@
                             <EditText
                                 android:id="@+id/tcvcsb0596x"
                                 style="@style/EditText"
-                                android:tag="tcvcsb0596"
                                 android:hint="@string/tcvcsb0596x"
                                 android:maxLength="30"
+                                android:tag="tcvcsb0596"
                                 android:text='@{tcvcsb0596.checked ? tcvcsb0596x.getText.toString : ""}'
                                 android:visibility="@{tcvcsb0596.checked ? View.VISIBLE : View.GONE}" />
                         </RadioGroup>
@@ -446,9 +468,9 @@
                                 <EditText
                                     android:id="@+id/tcvcsb1096x"
                                     style="@style/EditText"
-                                    android:tag="tcvcsb1096"
                                     android:hint="@string/tcvcsb1096x"
                                     android:maxLength="30"
+                                    android:tag="tcvcsb1096"
                                     android:text='@{tcvcsb1096.checked ? tcvcsb1096x.getText.toString : ""}'
                                     android:visibility="@{tcvcsb1096.checked ? View.VISIBLE : View.GONE}" />
                             </RadioGroup>
@@ -516,7 +538,7 @@
                                 app:maxValue="23"
                                 app:minValue="0"
                                 app:required="true"
-                                app:type="range"/>
+                                app:type="range" />
 
                             <TextView
                                 style="@style/i_textview"
@@ -574,9 +596,9 @@
                             <EditText
                                 android:id="@+id/tcvcsb13961x"
                                 style="@style/EditText"
-                                android:tag="tcvcsb13961"
                                 android:hint="@string/tcvcsb13961x"
-                                android:maxLength="30" />
+                                android:maxLength="30"
+                                android:tag="tcvcsb13961" />
 
                             <TextView
                                 style="@style/i_textview"
@@ -600,9 +622,9 @@
                             <EditText
                                 android:id="@+id/tcvcsb13962x"
                                 style="@style/EditText"
-                                android:tag="tcvcsb13962"
                                 android:hint="@string/tcvcsb13962x"
-                                android:maxLength="30" />
+                                android:maxLength="30"
+                                android:tag="tcvcsb13962" />
 
                             <TextView
                                 style="@style/i_textview"
@@ -641,9 +663,9 @@
                             <EditText
                                 android:id="@+id/tcvcsb13963x"
                                 style="@style/EditText"
-                                android:tag="tcvcsb13963"
                                 android:hint="@string/tcvcsb13963x"
-                                android:maxLength="30" />
+                                android:maxLength="30"
+                                android:tag="tcvcsb13963" />
                         </RadioGroup>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -667,8 +689,18 @@
                     android:background="@color/red"
                     android:onClick="@{() -> callback.BtnEnd()}"
                     android:text="@string/end_interview"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_AddMore"
+                    style="@style/buttons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#1D7ED3"
+                    android:onClick="@{() -> callback.BtnAddMore()}"
+                    android:text="@string/nextSection"
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/btn_Continue"

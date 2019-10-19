@@ -19,7 +19,7 @@ public class MembersContract {
     private String _UUID = "";
     private String formDate = ""; // Date
     private String user = ""; // Interviewer
-    //private String formtype = "";
+    private String muid = "";
 
 //    private String istatus = ""; // Interview Status
     //private String istatus88x = ""; // Interview Status
@@ -46,10 +46,11 @@ public class MembersContract {
         this._UUID = jsonObject.getString(FormMembersTable.COLUMN_UUID);
         this.formDate = jsonObject.getString(FormMembersTable.COLUMN_FORMDATE);
         this.user = jsonObject.getString(FormMembersTable.COLUMN_USER);
+        this.muid = jsonObject.getString(FormMembersTable.COLUMN_MUID);
 //        this.istatus = jsonObject.getString(FormMembersTable.COLUMN_ISTATUS);
         //this.istatus88x = jsonObject.getString(FormsContract.FormMembersTable.COLUMN_ISTATUS);
         //this.formtype = jsonObject.getString(FormsContract.FormMembersTable.COLUMN_FORMTYPE);
-        //this.sA = jsonObject.getString(FormsContract.FormMembersTable.COLUMN_SA);
+//        this.sA = jsonObject.getString(FormsContract.FormMembersTable.COLUMN_SA);
         this.sB = jsonObject.getString(FormMembersTable.COLUMN_SB);
         //this.sC = jsonObject.getString(FormsContract.FormMembersTable.COLUMN_SC);
         //this.sD = jsonObject.getString(FormsContract.FormMembersTable.COLUMN_SD);
@@ -71,7 +72,7 @@ public class MembersContract {
         this.user = cursor.getString(cursor.getColumnIndex(FormMembersTable.COLUMN_USER));
 //        this.istatus = cursor.getString(cursor.getColumnIndex(FormMembersTable.COLUMN_ISTATUS));
         //this.istatus88x = cursor.getString(cursor.getColumnIndex(FormMembersTable.COLUMN_ISTATUS));
-        //this.formtype = cursor.getString(cursor.getColumnIndex(FormMembersTable.COLUMN_FORMTYPE));
+        this.muid = cursor.getString(cursor.getColumnIndex(FormMembersTable.COLUMN_MUID));
         //this.sA = cursor.getString(cursor.getColumnIndex(FormMembersTable.COLUMN_SA));
         this.sB = cursor.getString(cursor.getColumnIndex(FormMembersTable.COLUMN_SB));
         //this.sC = cursor.getString(cursor.getColumnIndex(FormMembersTable.COLUMN_SC));
@@ -100,7 +101,7 @@ public class MembersContract {
         json.put(FormMembersTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
 //        json.put(FormMembersTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         //json.put(FormMembersTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
-        //json.put(FormMembersTable.COLUMN_FORMTYPE, this.formtype == null ? JSONObject.NULL : this.formtype);
+        json.put(FormMembersTable.COLUMN_MUID, this.muid == null ? JSONObject.NULL : this.muid);
 
         /*if (!this.sA.equals("")) {
 
@@ -181,6 +182,14 @@ public class MembersContract {
     public void setUser(String user) {
         this.user = user;
     }
+
+    public String getMuid() {
+        return muid;
+    }
+
+    public void setMuid(String muid) {
+        this.muid = muid;
+    }
 /*
     public String getIstatus() {
         return istatus;
@@ -206,15 +215,6 @@ public class MembersContract {
 
     public void setsA(String sA) {
         this.sA = sA;
-    }
-
-
-    public String getFormtype() {
-        return formtype;
-    }
-
-    public void setFormtype(String formtype) {
-        this.formtype = formtype;
     }
 
     public String getsD() {
@@ -323,6 +323,24 @@ public class MembersContract {
         this.appversion = appversion;
     }
 
+    public static class FamilyTableVC {
+        MembersContract mm;
+        boolean flag;
+
+        public FamilyTableVC(MembersContract mm, boolean flag) {
+            this.mm = mm;
+            this.flag = flag;
+        }
+
+        public MembersContract getMm() {
+            return mm;
+        }
+
+        public boolean isFlag() {
+            return flag;
+        }
+    }
+
     public static abstract class FormMembersTable implements BaseColumns {
 
         public static final String TABLE_NAME = "child";
@@ -335,7 +353,7 @@ public class MembersContract {
         public static final String COLUMN_USER = "user";
         //        public static final String COLUMN_ISTATUS = "istatus";
         //public static final String COLUMN_ISTATUS88x = "istatus88x";
-        //public static final String COLUMN_FORMTYPE = "formtype";
+        public static final String COLUMN_MUID = "muid";
         //public static final String COLUMN_SA = "sa";
         public static final String COLUMN_SB = "sb";
         //public static final String COLUMN_SC = "sc";

@@ -5,6 +5,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -23,6 +26,12 @@ import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection02ScBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
+import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.childCount;
+import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.childCounter;
+import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.motherCounter;
+import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.mothers;
+import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.mothersName;
+
 public class Section02SCActivity extends AppCompatActivity {
 
     ActivitySection02ScBinding bi;
@@ -35,6 +44,16 @@ public class Section02SCActivity extends AppCompatActivity {
         bi.setCallback(this);
 
         setListeners();
+
+        bi.tcvcsb14x.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersName));
+
+        if (childCount == childCounter) {
+            bi.btnAddMore.setVisibility(View.GONE);
+            bi.btnContinue.setVisibility(View.VISIBLE);
+        } else {
+            bi.btnAddMore.setVisibility(View.VISIBLE);
+            bi.btnContinue.setVisibility(View.GONE);
+        }
 
     }
 
@@ -59,6 +78,23 @@ public class Section02SCActivity extends AppCompatActivity {
                 }
             }
         });
+
+        bi.tcvcsb14x.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                bi.tcvcsb14.setText(null);
+                if (i == (mothersName.size() - 1)) {
+                    bi.tcvcsb14.setVisibility(View.VISIBLE);
+                    return;
+                }
+                bi.tcvcsb14.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public void BtnContinue() {
@@ -74,6 +110,24 @@ public class Section02SCActivity extends AppCompatActivity {
             }
             finish();
             startActivity(new Intent(this, Section03SCActivity.class));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void BtnAddMore() {
+        try {
+
+            if (!formValidation()) return;
+
+            SaveDraft();
+
+            if (!UpdateDB()) {
+                Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            finish();
+            startActivity(new Intent(this, Section02SCActivity.class));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -106,9 +160,6 @@ public class Section02SCActivity extends AppCompatActivity {
 
         JSONObject c1 = new JSONObject();
 
-
-
-
         c1.put("tcvcsb01", bi.tcvcsb01.getText().toString());
         c1.put("tcvcsb02", bi.tcvcsb02a.isChecked() ? "1" : bi.tcvcsb02b.isChecked() ? "2" : "0");
 
@@ -133,7 +184,23 @@ public class Section02SCActivity extends AppCompatActivity {
         c1.put("tcvcsb13963x", bi.tcvcsb13963x.getText().toString());
         c1.put("tcvcsb13", bi.tcvcsb13a.isChecked() ? "1" : bi.tcvcsb13b.isChecked() ? "2" : bi.tcvcsb13961.isChecked() ? "961" : bi.tcvcsb13c.isChecked() ? "3" : bi.tcvcsb13d.isChecked() ? "4" : bi.tcvcsb13962.isChecked() ? "962" : bi.tcvcsb13e.isChecked() ? "5" : bi.tcvcsb13f.isChecked() ? "6" : bi.tcvcsb13g.isChecked() ? "7" : bi.tcvcsb13h.isChecked() ? "8" : bi.tcvcsb13i.isChecked() ? "9" : bi.tcvcsb13963.isChecked() ? "963" : "0");
 
+        //Add mother in list
+        if (bi.tcvcsb14.getText().toString().isEmpty()) {
+            MembersContract.FamilyTableVC mm = mothers.get(bi.tcvcsb14x.getSelectedItem().toString());
+            MainApp.cc.setMuid(mm.getMm().getMuid());
+            if (!mm.isFlag() && bi.tcvcsb06a.isChecked())
+                mothers.put(bi.tcvcsb14x.getSelectedItem().toString(), new MembersContract.FamilyTableVC(mm.getMm(), true));
+        } else {
+            MainApp.cc.setMuid(MainApp.cc.getDeviceID() + MainApp.cc.get_ID() + motherCounter);
+            mothers.put(bi.tcvcsb14.getText().toString(), new MembersContract.FamilyTableVC(MainApp.cc, bi.tcvcsb06a.isChecked()));
+            mothersName.add(mothersName.size() - 2, bi.tcvcsb14.getText().toString());
+            motherCounter++;
+        }
+
         MainApp.cc.setsB(String.valueOf(c1));
+
+        //Child Counter
+        childCounter++;
 
     }
 

@@ -83,6 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormMembersTable.COLUMN_PROJECT_NAME + " TEXT," +
             FormMembersTable.COLUMN_UID + " TEXT," +
             FormMembersTable.COLUMN_UUID + " TEXT," +
+            FormMembersTable.COLUMN_MUID + " TEXT," +
             FormMembersTable.COLUMN_FORMDATE + " TEXT," +
             FormMembersTable.COLUMN_USER + " TEXT," +
             FormMembersTable.COLUMN_SB + " TEXT," +
@@ -815,7 +816,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FormMembersTable.COLUMN_PROJECT_NAME, cc.getProjectName());
         values.put(FormMembersTable.COLUMN_UID, cc.getUID());
+        values.put(FormMembersTable.COLUMN_UUID, cc.getUUID());
         values.put(FormMembersTable.COLUMN_FORMDATE, cc.getFormDate());
+        values.put(FormMembersTable.COLUMN_MUID, cc.getMuid());
         values.put(FormMembersTable.COLUMN_USER, cc.getUser());
         values.put(FormMembersTable.COLUMN_SB, cc.getsB());
         values.put(FormMembersTable.COLUMN_DEVICETAGID, cc.getDevicetagID());
@@ -1060,6 +1063,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormMembersTable.COLUMN_UID,
                 FormMembersTable.COLUMN_UUID,
                 FormMembersTable.COLUMN_FORMDATE,
+                FormMembersTable.COLUMN_MUID,
                 FormMembersTable.COLUMN_USER,
                 FormMembersTable.COLUMN_SB,
                 FormMembersTable.COLUMN_DEVICETAGID,

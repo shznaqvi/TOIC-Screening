@@ -20,6 +20,7 @@ import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MembersContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
@@ -35,6 +36,9 @@ public class Section01SCActivity extends AppCompatActivity {
     Map<String, SchoolContract> schoolMap;
     Map<String, String> ucMap;
     DatabaseHelper db;
+    public static HashMap<String, MembersContract.FamilyTableVC> mothers;
+    public static ArrayList<String> mothersName;
+    public static int motherCounter, childCount, childCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,18 @@ public class Section01SCActivity extends AppCompatActivity {
             ucsNames.add(uc.getUcsName());
         }
         bi.tcvcsa02.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, ucsNames));
+
+
+        //For section 02
+        mothers = new HashMap<>();
+        motherCounter = 1;
+        childCounter = 1;
+        mothersName = new ArrayList<String>() {
+            {
+                add("....");
+                add("Other");
+            }
+        };
 
     }
 
@@ -144,6 +160,9 @@ public class Section01SCActivity extends AppCompatActivity {
         f1.put("tcvcsa15", bi.tcvcsa15a.isChecked() ? "1" : bi.tcvcsa15b.isChecked() ? "2" : bi.tcvcsa15c.isChecked() ? "3" : bi.tcvcsa1598.isChecked() ? "98" : "0");
 
         MainApp.fc.setsA(String.valueOf(f1));
+
+        if (bi.tcvcsa09a.isChecked())
+            childCount = Integer.valueOf(bi.tcvcsa10.getText().toString());
 
     }
 
