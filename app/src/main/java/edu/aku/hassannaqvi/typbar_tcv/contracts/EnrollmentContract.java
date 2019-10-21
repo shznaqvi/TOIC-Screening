@@ -47,54 +47,54 @@ public class EnrollmentContract {
 
 
     public EnrollmentContract Sync(JSONObject jsonObject) throws JSONException {
-        this._ID = jsonObject.getString(EnrollmentContract.EnrollChildTable._ID);
-        this._UID = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_UID);
-        this._UUID = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_UUID);
-        this.formDate = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_FORMDATE);
-        this.user = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_USER);
-        this.istatus = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_ISTATUS);
+        this._ID = jsonObject.getString(EnrollChildTable._ID);
+        this._UID = jsonObject.getString(EnrollChildTable.COLUMN_UID);
+        this._UUID = jsonObject.getString(EnrollChildTable.COLUMN_UUID);
+        this.formDate = jsonObject.getString(EnrollChildTable.COLUMN_FORMDATE);
+        this.user = jsonObject.getString(EnrollChildTable.COLUMN_USER);
+        this.istatus = jsonObject.getString(EnrollChildTable.COLUMN_ISTATUS);
         //this.istatus88x = jsonObject.getString(FormsContract.EnrollChildTable.COLUMN_ISTATUS);
         //this.formtype = jsonObject.getString(FormsContract.EnrollChildTable.COLUMN_FORMTYPE);
         //this.sA = jsonObject.getString(FormsContract.EnrollChildTable.COLUMN_SA);
-        //this.sB = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_SB);
-        this.sC = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_SC);
+        //this.sB = jsonObject.getString(EnrollChildTable.COLUMN_SB);
+        this.sC = jsonObject.getString(EnrollChildTable.COLUMN_SC);
         //this.sD = jsonObject.getString(FormsContract.EnrollChildTable.COLUMN_SD);
-        this.gpsLat = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_GPSLAT);
-        this.gpsLng = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_GPSLNG);
-        this.gpsDT = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_GPSDATE);
-        this.gpsAcc = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_GPSACC);
-        this.deviceID = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_DEVICEID);
-        this.devicetagID = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_DEVICETAGID);
-        this.synced = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_SYNCED);
-        this.synced_date = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_SYNCED_DATE);
-        this.appversion = jsonObject.getString(EnrollmentContract.EnrollChildTable.COLUMN_APP_VERSION);
+        this.gpsLat = jsonObject.getString(EnrollChildTable.COLUMN_GPSLAT);
+        this.gpsLng = jsonObject.getString(EnrollChildTable.COLUMN_GPSLNG);
+        this.gpsDT = jsonObject.getString(EnrollChildTable.COLUMN_GPSDATE);
+        this.gpsAcc = jsonObject.getString(EnrollChildTable.COLUMN_GPSACC);
+        this.deviceID = jsonObject.getString(EnrollChildTable.COLUMN_DEVICEID);
+        this.devicetagID = jsonObject.getString(EnrollChildTable.COLUMN_DEVICETAGID);
+        this.synced = jsonObject.getString(EnrollChildTable.COLUMN_SYNCED);
+        this.synced_date = jsonObject.getString(EnrollChildTable.COLUMN_SYNCED_DATE);
+        this.appversion = jsonObject.getString(EnrollChildTable.COLUMN_APP_VERSION);
 
         return this;
 
     }
 
     public EnrollmentContract Hydrate(Cursor cursor) {
-        this._ID = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable._ID));
-        this._UID = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_UID));
-        this._UUID = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_UUID));
-        this.formDate = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_FORMDATE));
-        this.user = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_USER));
-        this.istatus = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_ISTATUS));
+        this._ID = cursor.getString(cursor.getColumnIndex(EnrollChildTable._ID));
+        this._UID = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_UID));
+        this._UUID = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_UUID));
+        this.formDate = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_FORMDATE));
+        this.user = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_USER));
+        this.istatus = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_ISTATUS));
         //this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsContract.EnrollChildTable.COLUMN_ISTATUS));
         //this.formtype = cursor.getString(cursor.getColumnIndex(FormsContract.EnrollChildTable.COLUMN_FORMTYPE));
         //this.sA = cursor.getString(cursor.getColumnIndex(FormsContract.EnrollChildTable.COLUMN_SA));
-        //this.sB = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_SB));
-        this.sC = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_SC));
+        //this.sB = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_SB));
+        this.sC = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_SC));
         //this.sD = cursor.getString(cursor.getColumnIndex(FormsContract.EnrollChildTable.COLUMN_SD));
-        this.gpsLat = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_GPSLAT));
-        this.gpsLng = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_GPSLNG));
-        this.gpsDT = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_GPSDATE));
-        this.gpsAcc = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_GPSACC));
-        this.deviceID = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_DEVICEID));
-        this.devicetagID = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_DEVICETAGID));
-        this.synced = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_SYNCED));
-        this.synced_date = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_SYNCED_DATE));
-        this.appversion = cursor.getString(cursor.getColumnIndex(EnrollmentContract.EnrollChildTable.COLUMN_APP_VERSION));
+        this.gpsLat = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_GPSLAT));
+        this.gpsLng = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_GPSLNG));
+        this.gpsDT = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_GPSDATE));
+        this.gpsAcc = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_GPSACC));
+        this.deviceID = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_DEVICEID));
+        this.devicetagID = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_DEVICETAGID));
+        this.synced = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_SYNCED));
+        this.synced_date = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_SYNCED_DATE));
+        this.appversion = cursor.getString(cursor.getColumnIndex(EnrollChildTable.COLUMN_APP_VERSION));
 
         // TODO:
 
@@ -107,12 +107,12 @@ public class EnrollmentContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(EnrollmentContract.EnrollChildTable._ID, this._ID == null ? JSONObject.NULL : this._ID);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
+        json.put(EnrollChildTable._ID, this._ID == null ? JSONObject.NULL : this._ID);
+        json.put(EnrollChildTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
+        json.put(EnrollChildTable.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
+        json.put(EnrollChildTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+        json.put(EnrollChildTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(EnrollChildTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         //json.put(FormsContract.EnrollChildTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
         //json.put(FormsContract.EnrollChildTable.COLUMN_FORMTYPE, this.formtype == null ? JSONObject.NULL : this.formtype);
 
@@ -123,12 +123,12 @@ public class EnrollmentContract {
 
         /*if (!this.sB.equals("")) {
 
-            json.put(EnrollmentContract.EnrollChildTable.COLUMN_SB, this.sB.equals("") ? JSONObject.NULL : new JSONObject(this.sB));
+            json.put(EnrollChildTable.COLUMN_SB, this.sB.equals("") ? JSONObject.NULL : new JSONObject(this.sB));
         }*/
 
         if (!this.sC.equals("")) {
 
-            json.put(EnrollmentContract.EnrollChildTable.COLUMN_SC, this.sC.equals("") ? JSONObject.NULL : new JSONObject(this.sC));
+            json.put(EnrollChildTable.COLUMN_SC, this.sC.equals("") ? JSONObject.NULL : new JSONObject(this.sC));
         }
 
         /*
@@ -141,11 +141,11 @@ public class EnrollmentContract {
         json.put(EnrollChildTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
         json.put(EnrollChildTable.COLUMN_GPSDATE, this.gpsDT == null ? JSONObject.NULL : this.gpsDT);
         json.put(EnrollChildTable.COLUMN_GPSACC, this.gpsAcc == null ? JSONObject.NULL : this.gpsAcc);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
-        json.put(EnrollmentContract.EnrollChildTable.COLUMN_APP_VERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
+        json.put(EnrollChildTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
+        json.put(EnrollChildTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(EnrollChildTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(EnrollChildTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
+        json.put(EnrollChildTable.COLUMN_APP_VERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
 
 
         return json;

@@ -28,6 +28,8 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.HFContract.HFTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.MembersContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.MembersContract.FormMembersTable;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MotherContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MotherContract.MothersTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.SchoolContract.SchoolTable;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
@@ -75,6 +77,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_APP_VERSION + " TEXT," +
             FormsTable.COLUMN_SYNCED + " TEXT," +
             FormsTable.COLUMN_SYNCED_DATE + " TEXT"
+            + " );";
+    private static final String SQL_CREATE_MOTHERS_FORMS = "CREATE TABLE "
+            + MothersTable.TABLE_NAME + "("
+            + MothersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + MothersTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + MothersTable.COLUMN_UID + " TEXT," +
+            MothersTable.COLUMN_UUID + " TEXT," +
+            MothersTable.COLUMN_FMUID + " TEXT," +
+            MothersTable.COLUMN_FORMDATE + " TEXT," +
+            MothersTable.COLUMN_USER + " TEXT," +
+            MothersTable.COLUMN_SC + " TEXT," +
+            MothersTable.COLUMN_SD + " TEXT," +
+            MothersTable.COLUMN_DEVICEID + " TEXT," +
+            MothersTable.COLUMN_DEVICETAGID + " TEXT," +
+            MothersTable.COLUMN_APP_VERSION + " TEXT," +
+            MothersTable.COLUMN_SYNCED + " TEXT," +
+            MothersTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
     private static final String SQL_DELETE_TALUKAS = "DROP TABLE IF EXISTS " + HFTable.TABLE_NAME;
     private static final String SQL_CREATE_MEMBER_FORMS = "CREATE TABLE " +
@@ -169,6 +188,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_HF);
         db.execSQL(SQL_CREATE_CCCCHILDREN);
         db.execSQL(SQL_CREATE_MEMBER_FORMS);
+        db.execSQL(SQL_CREATE_MOTHERS_FORMS);
     }
 
     @Override
@@ -184,6 +204,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_CREATE_CCCCHILDREN);
             case 3:
                 db.execSQL(SQL_CREATE_MEMBER_FORMS);
+                db.execSQL(SQL_CREATE_MOTHERS_FORMS);
 
         }
     }
@@ -807,6 +828,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public Long addMothersForm(MotherContract mc) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(MothersTable.COLUMN_PROJECT_NAME, mc.getProjectName());
+        values.put(MothersTable.COLUMN_UID, mc.get_UID());
+        values.put(MothersTable.COLUMN_FORMDATE, mc.getFormDate());
+        values.put(MothersTable.COLUMN_USER, mc.getUser());
+        values.put(MothersTable.COLUMN_UUID, mc.getUUID());
+        values.put(MothersTable.COLUMN_FMUID, mc.getFMUID());
+        values.put(MothersTable.COLUMN_SC, mc.getsC());
+        values.put(MothersTable.COLUMN_SD, mc.getsD());
+        values.put(MothersTable.COLUMN_DEVICETAGID, mc.getDevicetagID());
+        values.put(MothersTable.COLUMN_DEVICEID, mc.getDeviceID());
+        values.put(MothersTable.COLUMN_APP_VERSION, mc.getAppversion());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                MothersTable.TABLE_NAME,
+                MothersTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
     public Long addMemberForms(MembersContract cc) {
 
         // Gets the data repository in write mode
@@ -911,6 +960,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public int updateMotherFormID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MothersTable.COLUMN_UID, MainApp.mc.get_UID());
+
+// Which row to update, based on the ID
+        String selection = MothersTable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
+
+        int count = db.update(MothersTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+
     public int updateMemberID() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -979,6 +1046,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<MotherContract> getUnsyncedMothersForms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                MothersTable._ID,
+                MothersTable.COLUMN_UID,
+                MothersTable.COLUMN_FORMDATE,
+                MothersTable.COLUMN_USER,
+                MothersTable.COLUMN_UUID,
+                MothersTable.COLUMN_FMUID,
+                MothersTable.COLUMN_SC,
+                MothersTable.COLUMN_SD,
+                MothersTable.COLUMN_DEVICETAGID,
+                MothersTable.COLUMN_DEVICEID,
+                MothersTable.COLUMN_SYNCED,
+                MothersTable.COLUMN_SYNCED_DATE,
+                MothersTable.COLUMN_APP_VERSION
+        };
+        String whereClause = MothersTable.COLUMN_SYNCED + " is null OR " + MothersTable.COLUMN_SYNCED + " = '' ";
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = MothersTable._ID + " ASC";
+
+        Collection<MotherContract> allFC = new ArrayList<>();
+        try {
+            c = db.query(
+                    MothersTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                MotherContract fc = new MotherContract();
                 allFC.add(fc.Hydrate(c));
             }
         } finally {
@@ -1290,18 +1409,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public int updateSC() {
+    public int updateSD() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_SC, MainApp.fc.getsC());
+        values.put(MothersTable.COLUMN_SD, MainApp.mc.getsD());
 
 // Which row to update, based on the ID
-        String selection = FormsTable._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+        String selection = MothersTable._ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.mc.get_ID())};
 
-        int count = db.update(FormsTable.TABLE_NAME,
+        int count = db.update(MothersTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

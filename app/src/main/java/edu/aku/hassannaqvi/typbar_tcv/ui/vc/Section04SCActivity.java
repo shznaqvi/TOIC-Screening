@@ -10,12 +10,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection04ScBinding;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
+
+import static edu.aku.hassannaqvi.typbar_tcv.core.MainApp.mc;
 
 public class Section04SCActivity extends AppCompatActivity {
 
@@ -51,7 +52,7 @@ public class Section04SCActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         db = new DatabaseHelper(this);
-        long updcount = db.updateSC();
+        long updcount = db.updateSD();
         return updcount != -1;
     }
 
@@ -99,7 +100,7 @@ public class Section04SCActivity extends AppCompatActivity {
         f4.put("tcvcsc32", bi.tcvcsc32a.isChecked() ? "1" : bi.tcvcsc32b.isChecked() ? "2" : bi.tcvcsc32c.isChecked() ? "3" : bi.tcvcsc32d.isChecked() ? "4" : bi.tcvcsc32e.isChecked() ? "5" : "0");
         f4.put("tcvcsc33", bi.tcvcsc33a.isChecked() ? "1" : bi.tcvcsc33b.isChecked() ? "2" : bi.tcvcsc33c.isChecked() ? "3" : bi.tcvcsc33d.isChecked() ? "4" : bi.tcvcsc33e.isChecked() ? "5" : "0");
 
-        MainApp.fc.setsC(String.valueOf(f4));
+        mc.setsD(String.valueOf(f4));
 
     }
 
@@ -109,14 +110,6 @@ public class Section04SCActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         MainApp.endActivity(this, this, false);
-    }
-
-    public void settingGPS(FormsContract fc) {
-        MainApp.LocClass locClass = MainApp.setGPS(this);
-        fc.setGpsLat(locClass.getLatitude());
-        fc.setGpsLng(locClass.getLongitude());
-        fc.setGpsAcc(locClass.getAccuracy());
-        fc.setGpsDT(locClass.getTime());
     }
 
 }

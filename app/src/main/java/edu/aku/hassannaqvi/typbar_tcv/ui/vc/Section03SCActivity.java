@@ -3,25 +3,37 @@ package edu.aku.hassannaqvi.typbar_tcv.ui.vc;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import edu.aku.hassannaqvi.typbar_tcv.R;
-import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MembersContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MotherContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection03ScBinding;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
+import static edu.aku.hassannaqvi.typbar_tcv.core.MainApp.mc;
+import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.mothersName;
+
 public class Section03SCActivity extends AppCompatActivity {
 
     ActivitySection03ScBinding bi;
     DatabaseHelper db;
+    MembersContract.FamilyTableVC mothers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +41,16 @@ public class Section03SCActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section03_sc);
         bi.setCallback(this);
 
+        db = new DatabaseHelper(this);
+
+        setContent();
         setListeners();
 
+    }
+
+    private void setContent() {
+        mothersName.remove(mothersName.size() - 1);
+        bi.tcvcsc00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersName));
     }
 
     private void setListeners() {
@@ -42,6 +62,26 @@ public class Section03SCActivity extends AppCompatActivity {
                 if (bi.tcvcsc10b.isChecked()) {
                     ClearClass.ClearAllFields(bi.fldGrpCVtcvcsc11, null);
                 }
+            }
+        });
+
+        bi.tcvcsc00.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i == 0) return;
+                mothers = Section01SCActivity.mothersMap.get(bi.tcvcsc00.getSelectedItem().toString());
+                if (!mothers.isFlag()) {
+                    bi.fldGrpCVtcvcsc03.setVisibility(View.GONE);
+                    bi.tcvcsc03.clearCheck();
+                } else {
+                    bi.fldGrpCVtcvcsc03.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
@@ -66,12 +106,29 @@ public class Section03SCActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        db = new DatabaseHelper(this);
-        long updcount = db.updateSB();
-        return updcount != -1;
+        long updcount = db.addMothersForm(mc);
+        if (updcount > 0) {
+            mc.set_ID(String.valueOf(updcount));
+            mc.set_UID((mc.getDeviceID() + mc.get_ID()));
+            db.updateMotherFormID();
+
+            return true;
+        }
+
+        return false;
     }
 
     private void SaveDraft() throws JSONException {
+
+        mc = new MotherContract();
+        mc.setDevicetagID(getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null));
+        mc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
+        mc.setUser(MainApp.userName);
+        mc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        mc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
+        mc.setUUID(MainApp.fc.getUID());
+        mc.setFMUID(mothers.getMm().getMuid());
 
         JSONObject f3 = new JSONObject();
 
@@ -101,7 +158,7 @@ public class Section03SCActivity extends AppCompatActivity {
         f3.put("tcvcsc24", bi.tcvcsc24a.isChecked() ? "1" : bi.tcvcsc24b.isChecked() ? "2" : bi.tcvcsc24c.isChecked() ? "3" : bi.tcvcsc24d.isChecked() ? "4" : bi.tcvcsc24e.isChecked() ? "5" : "0");
         f3.put("tcvcsc25", bi.tcvcsc25a.isChecked() ? "1" : bi.tcvcsc25b.isChecked() ? "2" : bi.tcvcsc25c.isChecked() ? "3" : bi.tcvcsc25d.isChecked() ? "4" : bi.tcvcsc25e.isChecked() ? "5" : "0");
 
-        MainApp.fc.setsB(String.valueOf(f3));
+        mc.setsC(String.valueOf(f3));
 
     }
 
@@ -111,14 +168,6 @@ public class Section03SCActivity extends AppCompatActivity {
 
     public void BtnEnd() {
         MainApp.endActivity(this, this, false);
-    }
-
-    public void settingGPS(FormsContract fc) {
-        MainApp.LocClass locClass = MainApp.setGPS(this);
-        fc.setGpsLat(locClass.getLatitude());
-        fc.setGpsLng(locClass.getLongitude());
-        fc.setGpsAcc(locClass.getAccuracy());
-        fc.setGpsDT(locClass.getTime());
     }
 
 }

@@ -198,7 +198,8 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
                         android:onClick="syncAllServer"
-                        android:text="UPLOAD ALL DATA" />
+                        android:text="UPLOAD ALL DATA"
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/syncDevice"

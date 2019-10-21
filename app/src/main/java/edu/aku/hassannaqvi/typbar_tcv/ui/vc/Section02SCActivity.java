@@ -29,7 +29,7 @@ import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.childCount;
 import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.childCounter;
 import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.motherCounter;
-import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.mothers;
+import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.mothersMap;
 import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.mothersName;
 
 public class Section02SCActivity extends AppCompatActivity {
@@ -63,7 +63,7 @@ public class Section02SCActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (bi.tcvcsb0698.isChecked()) {
+                if (!bi.tcvcsb06a.isChecked()) {
                     ClearClass.ClearAllFields(bi.llvcsb01, null);
                 }
             }
@@ -186,14 +186,14 @@ public class Section02SCActivity extends AppCompatActivity {
 
         //Add mother in list
         if (bi.tcvcsb14.getText().toString().isEmpty()) {
-            MembersContract.FamilyTableVC mm = mothers.get(bi.tcvcsb14x.getSelectedItem().toString());
+            MembersContract.FamilyTableVC mm = mothersMap.get(bi.tcvcsb14x.getSelectedItem().toString());
             MainApp.cc.setMuid(mm.getMm().getMuid());
             if (!mm.isFlag() && bi.tcvcsb06a.isChecked())
-                mothers.put(bi.tcvcsb14x.getSelectedItem().toString(), new MembersContract.FamilyTableVC(mm.getMm(), true));
+                mothersMap.put(bi.tcvcsb14x.getSelectedItem().toString(), new MembersContract.FamilyTableVC(mm.getMm(), true));
         } else {
             MainApp.cc.setMuid(MainApp.cc.getDeviceID() + MainApp.cc.get_ID() + motherCounter);
-            mothers.put(bi.tcvcsb14.getText().toString(), new MembersContract.FamilyTableVC(MainApp.cc, bi.tcvcsb06a.isChecked()));
-            mothersName.add(mothersName.size() - 2, bi.tcvcsb14.getText().toString());
+            mothersMap.put(bi.tcvcsb14.getText().toString(), new MembersContract.FamilyTableVC(MainApp.cc, bi.tcvcsb06a.isChecked()));
+            mothersName.add(mothersName.size() - 1, bi.tcvcsb14.getText().toString());
             motherCounter++;
         }
 

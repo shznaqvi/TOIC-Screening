@@ -600,6 +600,7 @@
     <string name="tcvcsa15b"> 2سے 4 کلومیٹر </string>
     <string name="tcvcsa15c"> 4 کلو میٹر </string>
     <string name="tcvcsa1598"> معلوم نہیں </string>
+    <string name="tcvcsb00"> MOTHER/CHILD INFORMATION </string>
     <string name="tcvcsb01"> نام </string>
     <string name="tcvcsb14"> ماں کا نام </string>
     <string name="tcvcsb02"> جنس </string>
@@ -670,6 +671,7 @@
     <string name="tcvcsb13963x"> دیگر وضاحت کریں </string>
     <string name="tcvcsc01h"> حصّہ سی: والدین کی ٹائیفائیڈ ویکسنیشن کے بارے میں برتاؤ اور آگائی </string>
     <string name="tcvcsc01h1"> حصّہ سی۱:پرسنل ٹائیفائیڈبیماریوں کا تجربہ </string>
+    <string name="tcvcsc00"> Mother Name </string>
     <string name="tcvcsc01"> کیا خود آپ نے ٹائیفائیڈبخار میں مبتلا کسی مریض کو دیکھا ہے ؟ </string>
     <string name="tcvcsc01a"> ہاں </string>
     <string name="tcvcsc01b"> نہیں </string>

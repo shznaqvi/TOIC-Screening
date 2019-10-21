@@ -36,7 +36,7 @@ public class Section01SCActivity extends AppCompatActivity {
     Map<String, SchoolContract> schoolMap;
     Map<String, String> ucMap;
     DatabaseHelper db;
-    public static HashMap<String, MembersContract.FamilyTableVC> mothers;
+    public static HashMap<String, MembersContract.FamilyTableVC> mothersMap;
     public static ArrayList<String> mothersName;
     public static int motherCounter, childCount, childCounter;
 
@@ -61,7 +61,7 @@ public class Section01SCActivity extends AppCompatActivity {
 
 
         //For section 02
-        mothers = new HashMap<>();
+        mothersMap = new HashMap<>();
         motherCounter = 1;
         childCounter = 1;
         mothersName = new ArrayList<String>() {
@@ -115,7 +115,6 @@ public class Section01SCActivity extends AppCompatActivity {
     }
 
     private boolean UpdateDB() {
-
 
         long updcount = db.addForm(MainApp.fc);
         if (updcount > 0) {
