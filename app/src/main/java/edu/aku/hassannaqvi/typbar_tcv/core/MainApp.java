@@ -128,6 +128,7 @@ public class MainApp extends Application {
     public static final String CASEID = "caid";
     public static final String CONTROLSCR = "cls";
     public static final String CONTROLID = "clid";
+    public static final String VCID = "vcid";
 
     public static int monthsBetweenDates(Date startDate, Date endDate) {
 

@@ -26,6 +26,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.UCsContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection01ScBinding;
+import edu.aku.hassannaqvi.typbar_tcv.other.CheckingIDCC;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
@@ -71,6 +72,16 @@ public class Section01SCActivity extends AppCompatActivity {
             }
         };
 
+        //For StudyID
+
+        // ACCESSING VC FOR StudyID
+        bi.tcvcsa04.setText(CheckingIDCC.accessingFile(Section01SCActivity.this, getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null)
+                , MainApp.casecontrol
+                , MainApp.VCID
+                , ""
+                , false
+        ));
+
     }
 
     private void setListeners() {
@@ -107,6 +118,15 @@ public class Section01SCActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            // ACCESSING VC FOR StudyID
+            bi.tcvcsa04.setText(CheckingIDCC.accessingFile(Section01SCActivity.this, getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null)
+                    , MainApp.casecontrol
+                    , MainApp.VCID
+                    , ""
+                    , true
+            ));
+
             finish();
             startActivity(new Intent(this, bi.tcvcsa09b.isChecked() || bi.tcvcsa11b.isChecked() ? EndingActivity.class : Section02SCActivity.class).putExtra("complete", true));
         } catch (JSONException e) {

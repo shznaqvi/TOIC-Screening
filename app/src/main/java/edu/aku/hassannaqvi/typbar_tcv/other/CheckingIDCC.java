@@ -36,12 +36,15 @@ public final class CheckingIDCC {
             String data = new String(byteArray);
             String[] stringArray = data.split("\n");
 
-            if (stringArray.length == 1) {
+            //01 for empty and 06 for update of app that includes VC id
+            if (stringArray.length == 1 || stringArray.length == 6) {
                 lineBuffer.append("CASE\n");
                 lineBuffer.append(tagID + "-000001\n");
                 lineBuffer.append(tagID + "-000001\n");
                 lineBuffer.append("CONTROL\n");
                 lineBuffer.append(tagID + "-000001\n");
+                lineBuffer.append(tagID + "-000001\n");
+                lineBuffer.append("VC\n");
                 lineBuffer.append(tagID + "-000001");
 
                 writeInFile(idFile, lineBuffer.toString());
@@ -100,6 +103,8 @@ public final class CheckingIDCC {
                 return 4;
             case MainApp.CONTROLID:
                 return 5;
+            case MainApp.VCID:
+                return 7;
             default:
                 return 0;
         }
