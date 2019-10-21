@@ -47,8 +47,8 @@ public class Section02SCActivity extends AppCompatActivity {
         setListeners();
 
         bi.tcvcsb14x.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersName));
-        bi.tcvcsb03.setMinDate(DateUtils.getMonthsBack("dd/MM/yyyy", -6));
-        bi.tcvcsb03.setMaxDate(DateUtils.getYearsBack("dd/MM/yyyy", -15));
+        bi.tcvcsb03.setMaxDate(DateUtils.getMonthsBack("dd/MM/yyyy", -6));
+        bi.tcvcsb03.setMinDate(DateUtils.getYearsBack("dd/MM/yyyy", -15));
 
         if (childCount == childCounter) {
             bi.btnAddMore.setVisibility(View.GONE);
@@ -113,6 +113,9 @@ public class Section02SCActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            mothersName.remove(mothersName.size() - 1);
+
             finish();
             startActivity(new Intent(this, Section03SCActivity.class));
         } catch (JSONException e) {

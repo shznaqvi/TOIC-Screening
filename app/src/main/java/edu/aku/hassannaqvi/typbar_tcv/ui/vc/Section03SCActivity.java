@@ -49,7 +49,6 @@ public class Section03SCActivity extends AppCompatActivity {
     }
 
     private void setContent() {
-        mothersName.remove(mothersName.size() - 1);
         bi.tcvcsc00.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersName));
     }
 
@@ -97,6 +96,14 @@ public class Section03SCActivity extends AppCompatActivity {
                 Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            int i = 0;
+            for (String name : mothersName) {
+                if (name.equals(bi.tcvcsc00.getSelectedItem().toString()))
+                    mothersName.remove(i);
+                i++;
+            }
+
             finish();
             startActivity(new Intent(this, Section04SCActivity.class));
         } catch (JSONException e) {

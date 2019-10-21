@@ -19,6 +19,7 @@ import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 import static edu.aku.hassannaqvi.typbar_tcv.core.MainApp.mc;
+import static edu.aku.hassannaqvi.typbar_tcv.ui.vc.Section01SCActivity.mothersName;
 
 public class Section04SCActivity extends AppCompatActivity {
 
@@ -55,7 +56,7 @@ public class Section04SCActivity extends AppCompatActivity {
                 return;
             }
             finish();
-            startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+            startActivity(new Intent(this, mothersName.size() > 1 ? Section03SCActivity.class : EndingActivity.class).putExtra("complete", true));
         } catch (JSONException e) {
             e.printStackTrace();
         }
