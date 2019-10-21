@@ -143,7 +143,7 @@ public class Section02SCActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        DatabaseHelper db = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
         long updcount = db.addMemberForms(MainApp.cc);
         if (updcount > 0) {
             MainApp.cc.set_ID(String.valueOf(updcount));
