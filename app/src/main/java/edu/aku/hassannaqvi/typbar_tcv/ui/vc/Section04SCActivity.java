@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -14,6 +15,7 @@ import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection04ScBinding;
 import edu.aku.hassannaqvi.typbar_tcv.ui.EndingActivity;
+import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
 import static edu.aku.hassannaqvi.typbar_tcv.core.MainApp.mc;
@@ -28,6 +30,16 @@ public class Section04SCActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section04_sc);
         bi.setCallback(this);
+
+        bi.tcvcsc27f.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b)
+                    ClearClass.ClearAllFields(bi.fldGrpLLtcvcsc27a, false);
+                else
+                    ClearClass.ClearAllFields(bi.fldGrpLLtcvcsc27a, true);
+            }
+        });
 
     }
 

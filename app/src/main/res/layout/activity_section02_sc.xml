@@ -579,7 +579,7 @@
                     <android.support.v7.widget.CardView
                         android:id="@+id/fldGrpCVtcvcsb13"
                         style="@style/cardView"
-                        android:visibility="@{tcvcsb0698.checked ? View.VISIBLE : View.GONE}">
+                        android:visibility="@{tcvcsb06a.checked ? View.GONE : View.VISIBLE}">
 
                         <LinearLayout style="@style/linearlayout_view_wt_bound">
 

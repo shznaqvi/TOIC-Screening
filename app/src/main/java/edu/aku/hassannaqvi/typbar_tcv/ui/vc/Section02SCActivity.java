@@ -63,7 +63,9 @@ public class Section02SCActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (!bi.tcvcsb06a.isChecked()) {
+                if (bi.tcvcsb06a.isChecked()) {
+                    bi.tcvcsb13.clearCheck();
+                } else {
                     ClearClass.ClearAllFields(bi.llvcsb01, null);
                 }
             }
