@@ -199,7 +199,7 @@
                                 android:text="@string/tcvcsbDOBA" />
 
                             <RadioGroup
-                                android:id="@+id/tcvcsb03DOBA"
+                                android:id="@+id/tcvcsb03Age"
                                 style="@style/i_radiogroup">
 
                                 <RadioButton

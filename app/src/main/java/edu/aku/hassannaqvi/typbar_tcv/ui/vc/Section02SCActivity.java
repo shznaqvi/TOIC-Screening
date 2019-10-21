@@ -23,6 +23,7 @@ import edu.aku.hassannaqvi.typbar_tcv.contracts.MembersContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
 import edu.aku.hassannaqvi.typbar_tcv.core.MainApp;
 import edu.aku.hassannaqvi.typbar_tcv.databinding.ActivitySection02ScBinding;
+import edu.aku.hassannaqvi.typbar_tcv.utils.DateUtils;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ClearClass;
 import edu.aku.hassannaqvi.typbar_tcv.validation.ValidatorClass;
 
@@ -46,6 +47,8 @@ public class Section02SCActivity extends AppCompatActivity {
         setListeners();
 
         bi.tcvcsb14x.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersName));
+        bi.tcvcsb03.setMinDate(DateUtils.getMonthsBack("dd/MM/yyyy", -6));
+        bi.tcvcsb03.setMaxDate(DateUtils.getYearsBack("dd/MM/yyyy", -15));
 
         if (childCount == childCounter) {
             bi.btnAddMore.setVisibility(View.GONE);
@@ -207,7 +210,15 @@ public class Section02SCActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01);
+        if (!ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01))
+            return false;
+
+        if (bi.tcvcsbA.isChecked()) {
+            if (Integer.valueOf(bi.tcvcsb04y.getText().toString()) == 0 && Integer.valueOf(bi.tcvcsb04m.getText().toString()) < 6)
+                return ValidatorClass.EmptyCustomTextBox(this, bi.tcvcsb04y, "Days and Months criteria not meet!!");
+        }
+
+        return true;
     }
 
     public void BtnEnd() {
