@@ -157,7 +157,7 @@ public class Section01SCActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setAppversion(MainApp.versionName + "." + MainApp.versionCode);
         settingGPS(MainApp.fc);
-        MainApp.fc.setFormtype(MainApp.SCHOOLLISTINGTYPE);
+        MainApp.fc.setFormtype(MainApp.VACCINECOVERAGE);
 
         JSONObject f1 = new JSONObject();
 
