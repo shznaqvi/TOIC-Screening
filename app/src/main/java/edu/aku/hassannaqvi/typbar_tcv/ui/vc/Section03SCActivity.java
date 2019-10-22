@@ -97,11 +97,9 @@ public class Section03SCActivity extends AppCompatActivity {
                 return;
             }
 
-            int i = 0;
-            for (String name : mothersName) {
-                if (name.equals(bi.tcvcsc00.getSelectedItem().toString()))
+            for (int i = 0; i < mothersName.size(); i++) {
+                if (mothersName.get(i).equals(bi.tcvcsc00.getSelectedItem().toString()))
                     mothersName.remove(i);
-                i++;
             }
 
             finish();

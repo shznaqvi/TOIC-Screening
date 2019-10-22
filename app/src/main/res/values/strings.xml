@@ -632,7 +632,7 @@
     <string name="tcvcsb08m"> مہینوں </string>
     <string name="tcvcsb08y"> سالوں </string>
     <string name="tcvcsb09"> ویکسینیشن کارڈ کے مطابق ویکسینیشن آئی ڈی </string>
-    <string name="tcvcsb10"> اگر ہاں تو کہاں سے؟ </string>
+    <string name="tcvcsb10"> ویکسین کہاں سے لگوائی گئی؟ </string>
     <string name="tcvcsb10a"> ویکسین سینٹر (EPI) </string>
     <string name="tcvcsb10b"> کھارادر جنرل ہسپتال </string>
     <string name="tcvcsb10c"> لیاری جنرل ہسپتال </string>
