@@ -375,6 +375,7 @@
                                     android:text="@string/tcvcsc11g" />
 
                                 <EditText
+                                    android:visibility="@{tcvcsc11g.checked ? View.VISIBLE : View.GONE}"
                                     android:id="@+id/tcvcsc11h"
                                     style="@style/EditText"
                                     android:hint="@string/tcvcsc11h"
