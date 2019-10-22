@@ -399,5 +399,6 @@ public class FormsContract {
         public static String _URL5 = "crf_scaenroll.php";
         public static String _URL6 = "crf_scl.php";
         public static String _URL7 = "crf_sclenroll.php";
+        public static String _URL8 = "forms_vc.php";
     }
 }

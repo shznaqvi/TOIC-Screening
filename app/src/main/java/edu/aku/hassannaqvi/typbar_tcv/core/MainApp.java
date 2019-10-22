@@ -116,6 +116,7 @@ public class MainApp extends Application {
     public static final String CHILDLISTINGTYPE = "cl";
     public static final String SCHOOLLISTINGTYPE = "sl";
     public static final String MASSIMMUNIZATIONTYPE = "mi";
+    public static final String VACCINECOVERAGE = "vc";
     public static final String CRFCase = "sca";
     public static final String CRFCaseEnroll = "sca_enroll";
     public static final String CRFControl = "scl";

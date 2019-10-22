@@ -904,7 +904,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-    public void updateSyncedChildForm(String id) {
+    public void updateSyncedMembersForm(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -918,6 +918,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int count = db.update(
                 FormMembersTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedMothersForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(MothersTable.COLUMN_SYNCED, true);
+        values.put(MothersTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = MothersTable._ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                MothersTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
@@ -1174,7 +1193,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Collection<MembersContract> getUnsyncedChildForms() {
+    public Collection<MembersContract> getUnsyncedMembersForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {

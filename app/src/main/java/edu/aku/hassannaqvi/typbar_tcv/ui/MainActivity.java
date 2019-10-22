@@ -45,6 +45,8 @@ import java.util.Map;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.FormsContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MembersContract;
+import edu.aku.hassannaqvi.typbar_tcv.contracts.MotherContract;
 import edu.aku.hassannaqvi.typbar_tcv.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.typbar_tcv.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
@@ -653,6 +655,36 @@ public class MainActivity extends AppCompatActivity {
                     FormsContract.class,
                     FormsContract.FormsTable._URL7,
                     db.getUnsyncedForms(MainApp.CRFControlEnroll)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Vaccine Coverage Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Forms-Vaccine Coverage",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    FormsContract.FormsTable._URL8,
+                    db.getUnsyncedForms(MainApp.VACCINECOVERAGE)
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Members Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Forms-Members",
+                    "updateSyncedMembersForm",
+                    MembersContract.class,
+                    MembersContract.FormMembersTable._URL,
+                    db.getUnsyncedMembersForms()
+            ).execute();
+
+            Toast.makeText(getApplicationContext(), "Syncing Mothers Forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Forms-Mothers",
+                    "updateSyncedMothersForm",
+                    MotherContract.class,
+                    MotherContract.MothersTable._URL,
+                    db.getUnsyncedMothersForms()
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
