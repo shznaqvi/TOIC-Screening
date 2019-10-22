@@ -8,6 +8,9 @@
     <color name="pink_100">#ccefd3</color>
     <color name="colorHeading">#CDDC39</color>
 
+    <color name="blue1">#3F51B5</color>
+    <color name="blue2">#303F9F</color>
+
     <color name="black">#000000</color>
     <color name="blackOverlay">#66000000</color>
     <color name="dullBlack">#292929</color>
