@@ -158,7 +158,8 @@
                                 android:id="@+id/tcvcsc04"
                                 style="@style/EditText"
                                 android:hint="@string/tcvcsc04"
-                                android:maxLength="30"
+                                android:inputType="textMultiLine"
+                                android:maxLength="200"
                                 android:text='@{tcvcsc03a.checked ? tcvcsc04.getText.toString : "" }' />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
@@ -207,7 +208,9 @@
                                 android:id="@+id/tcvcsc06"
                                 style="@style/EditText"
                                 android:hint="@string/tcvcsc06"
-                                android:maxLength="30" />
+                                android:inputType="textMultiLine"
+                                android:maxLength="200"
+                                android:text='@{tcvcsc05a.checked ? tcvcsc06.getText.toString : "" }' />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
@@ -375,12 +378,12 @@
                                     android:text="@string/tcvcsc11g" />
 
                                 <EditText
-                                    android:visibility="@{tcvcsc11g.checked ? View.VISIBLE : View.GONE}"
                                     android:id="@+id/tcvcsc11h"
                                     style="@style/EditText"
                                     android:hint="@string/tcvcsc11h"
                                     android:maxLength="30"
-                                    android:tag="tcvcsc11g" />
+                                    android:tag="tcvcsc11g"
+                                    android:visibility="@{tcvcsc11g.checked ? View.VISIBLE : View.GONE}" />
                             </RadioGroup>
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
@@ -538,11 +541,11 @@
 
                         <LinearLayout style="@style/linearlayout_view_wt_bound">
 
-                                <TextView
-                                    style="@style/i_textview"
-                                    android:text="@string/tcvcsc15" />
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvcsc15" />
 
-                                <RadioGroup
+                            <RadioGroup
                                 android:id="@+id/tcvcsc15"
                                 style="@style/i_radiogroup">
 
