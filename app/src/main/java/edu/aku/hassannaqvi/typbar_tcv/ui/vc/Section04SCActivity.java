@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -35,10 +36,13 @@ public class Section04SCActivity extends AppCompatActivity {
         bi.tcvcsc27f.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b)
+                if (b) {
+                    bi.fldGrpCVtcvcsc28.setVisibility(View.GONE);
                     ClearClass.ClearAllFields(bi.fldGrpLLtcvcsc27a, false);
-                else
+                } else {
+                    bi.fldGrpCVtcvcsc28.setVisibility(View.VISIBLE);
                     ClearClass.ClearAllFields(bi.fldGrpLLtcvcsc27a, true);
+                }
             }
         });
 
