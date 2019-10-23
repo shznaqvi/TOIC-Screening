@@ -20,6 +20,7 @@
         android:scrollbars="horizontal">
 
         <LinearLayout
+            android:id="@+id/fldGrpSecEnding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layoutDirection="rtl"
@@ -117,13 +118,28 @@
 
             </RadioGroup>
 
-            <EditText
-                android:id="@+id/istatus88x"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
-                android:maxLength="40"
-                android:hint="@string/other" />
+            <!--Status-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/fldGrpCVtcvcsc34"
+                style="@style/cardView"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <LinearLayout style="@style/linearlayout_view">
+
+                    <TextView
+                        style="@style/i_textview"
+                        android:padding="10dp"
+                        android:text="@string/tcvcsc34" />
+
+                    <EditText
+                        android:id="@+id/tcvcsc34"
+                        style="@style/EditText"
+                        android:hint="@string/tcvcsc34" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
             <Button
                 android:id="@+id/btn_End"

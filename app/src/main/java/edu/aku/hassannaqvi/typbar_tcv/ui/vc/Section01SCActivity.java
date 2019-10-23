@@ -128,7 +128,10 @@ public class Section01SCActivity extends AppCompatActivity {
             ));
 
             finish();
-            startActivity(new Intent(this, bi.tcvcsa09b.isChecked() || bi.tcvcsa11b.isChecked() ? EndingActivity.class : Section02SCActivity.class).putExtra("complete", true));
+            startActivity(new Intent(this, bi.tcvcsa09b.isChecked() || bi.tcvcsa11b.isChecked() ? EndingActivity.class : Section02SCActivity.class)
+                    .putExtra("complete", true)
+                    .putExtra("tcvcsa04", bi.tcvcsa04.getText().toString())
+            );
         } catch (JSONException e) {
             e.printStackTrace();
         }

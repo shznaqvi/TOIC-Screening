@@ -34,6 +34,7 @@ public class Section03SCActivity extends AppCompatActivity {
     ActivitySection03ScBinding bi;
     DatabaseHelper db;
     MembersContract.FamilyTableVC mothers;
+    String ref_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class Section03SCActivity extends AppCompatActivity {
         setContent();
         setListeners();
 
+        ref_id = getIntent().getStringExtra("tcvcsa04");
     }
 
     private void setContent() {
@@ -136,6 +138,8 @@ public class Section03SCActivity extends AppCompatActivity {
         mc.setFMUID(mothers.getMm().getMuid());
 
         JSONObject f3 = new JSONObject();
+
+        f3.put("ref_tcvcsa04", ref_id);
 
         f3.put("tcvcsc01", bi.tcvcsc01a.isChecked() ? "1" : bi.tcvcsc01b.isChecked() ? "2" : "0");
         f3.put("tcvcsc02", bi.tcvcsc02a.isChecked() ? "1" : bi.tcvcsc02b.isChecked() ? "2" : "0");

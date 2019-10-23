@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.typbar_tcv.R;
 import edu.aku.hassannaqvi.typbar_tcv.core.DatabaseHelper;
@@ -17,6 +21,7 @@ public class EndingActivity extends AppCompatActivity {
     private static final String TAG = EndingActivity.class.getSimpleName();
 
     ActivityEndingBinding binding;
+    boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +53,22 @@ public class EndingActivity extends AppCompatActivity {
             }
         });*/
 
+        if (MainApp.fc.getFormtype().equals(MainApp.VACCINECOVERAGE)) {
+            flag = true;
+
+            binding.fldGrpCVtcvcsc34.setVisibility(View.VISIBLE);
+        }
+
     }
 
     public void BtnEnd() {
 
         if (formValidation()) {
-            SaveDraft();
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             if (UpdateDB()) {
 
                 finish();
@@ -66,19 +81,26 @@ public class EndingActivity extends AppCompatActivity {
         }
     }
 
-    private void SaveDraft() {
+    private void SaveDraft() throws JSONException {
 
         MainApp.fc.setIstatus(binding.istatusa.isChecked() ? "1"
                 : binding.istatusb.isChecked() ? "2"
                 : "0");
 
-        MainApp.fc.setIstatus(binding.istatus88x.getText().toString());
+        if (flag) {
+            JSONObject f2 = new JSONObject();
+            f2.put("tcvcsc34", binding.tcvcsc34.getText().toString());
+            MainApp.fc.setsB(String.valueOf(f2));
+        }
     }
 
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateEnding();
+
+        if (flag)
+            updcount = db.updateSB();
 
         if (updcount == 1) {
             return true;
@@ -90,7 +112,7 @@ public class EndingActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyRadioButton(this, binding.istatus, binding.istatusb, getString(R.string.istatus));
+        return ValidatorClass.EmptyCheckingContainer(this, binding.fldGrpSecEnding);
     }
 
 

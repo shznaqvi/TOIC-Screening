@@ -37,6 +37,7 @@ public class Section02SCActivity extends AppCompatActivity {
 
     ActivitySection02ScBinding bi;
     DatabaseHelper db;
+    String ref_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,8 @@ public class Section02SCActivity extends AppCompatActivity {
             bi.btnAddMore.setVisibility(View.VISIBLE);
             bi.btnContinue.setVisibility(View.GONE);
         }
+
+        ref_id = getIntent().getStringExtra("tcvcsa04");
 
     }
 
@@ -119,7 +122,7 @@ public class Section02SCActivity extends AppCompatActivity {
             mothersName.remove(mothersName.size() - 1);
 
             finish();
-            startActivity(new Intent(this, Section03SCActivity.class));
+            startActivity(new Intent(this, Section03SCActivity.class).putExtra("tcvcsa04", ref_id));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -170,14 +173,14 @@ public class Section02SCActivity extends AppCompatActivity {
 
         JSONObject c1 = new JSONObject();
 
+        c1.put("ref_tcvcsa04", ref_id);
+
         c1.put("tcvcsb01", bi.tcvcsb01.getText().toString());
         c1.put("tcvcsb02", bi.tcvcsb02a.isChecked() ? "1" : bi.tcvcsb02b.isChecked() ? "2" : "0");
-
         c1.put("tcvcsb03Age", bi.tcvcsbDOB.isChecked() ? "1" : bi.tcvcsbA.isChecked() ? "2" : "0");
         c1.put("tcvcsb03", bi.tcvcsb03.getText().toString());
         c1.put("tcvcsb04y", bi.tcvcsb04y.getText().toString());
         c1.put("tcvcsb04m", bi.tcvcsb04m.getText().toString());
-
         c1.put("tcvcsb0596x", bi.tcvcsb0596x.getText().toString());
         c1.put("tcvcsb05", bi.tcvcsb05a.isChecked() ? "1" : bi.tcvcsb05b.isChecked() ? "2" : bi.tcvcsb0596.isChecked() ? "96" : "0");
         c1.put("tcvcsb06", bi.tcvcsb06a.isChecked() ? "1" : bi.tcvcsb06b.isChecked() ? "2" : bi.tcvcsb0698.isChecked() ? "98" : "0");

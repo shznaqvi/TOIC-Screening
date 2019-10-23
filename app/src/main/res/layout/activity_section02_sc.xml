@@ -426,11 +426,14 @@
                                         style="@style/i_textview"
                                         android:text="@string/tcvcsb09" />
 
-                                    <EditText
+                                    <com.edittextpicker.aliazaz.EditTextPicker
                                         android:id="@+id/tcvcsb09"
                                         style="@style/EditText_number"
-                                        android:hint="@string/tcvcsb09"
-                                        android:maxLength="6" />
+                                        android:hint="T-####-#####"
+                                        app:defaultValue=""
+                                        app:mask="T-####-#####"
+                                        app:pattern="[^0-9]{1,1}-[0-9]{4,4}-[0-9]{1,5}"
+                                        app:type="equal" />
                                 </LinearLayout>
                             </android.support.v7.widget.CardView>
 
