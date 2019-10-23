@@ -147,7 +147,7 @@ public class Section03SCActivity extends AppCompatActivity {
         f3.put("tcvcsc08", bi.tcvcsc08a.isChecked() ? "1" : bi.tcvcsc08b.isChecked() ? "2" : "0");
         f3.put("tcvcsc09", bi.tcvcsc09a.isChecked() ? "1" : bi.tcvcsc09b.isChecked() ? "2" : "0");
         f3.put("tcvcsc10", bi.tcvcsc10a.isChecked() ? "1" : bi.tcvcsc10b.isChecked() ? "2" : "0");
-        f3.put("tcvcsc11h", bi.tcvcsc11h.getText().toString());
+        f3.put("tcvcsc1196x", bi.tcvcsc1196x.getText().toString());
         f3.put("tcvcsc11", bi.tcvcsc11a.isChecked() ? "1" : bi.tcvcsc11b.isChecked() ? "2" : bi.tcvcsc11c.isChecked() ? "3" : bi.tcvcsc11d.isChecked() ? "4" : bi.tcvcsc11e.isChecked() ? "5" : bi.tcvcsc11f.isChecked() ? "6" : bi.tcvcsc11g.isChecked() ? "7" : "0");
         f3.put("tcvcsc12", bi.tcvcsc12a.isChecked() ? "1" : bi.tcvcsc12b.isChecked() ? "2" : bi.tcvcsc12c.isChecked() ? "3" : bi.tcvcsc12d.isChecked() ? "4" : bi.tcvcsc12e.isChecked() ? "5" : "0");
         f3.put("tcvcsc13", bi.tcvcsc13a.isChecked() ? "1" : bi.tcvcsc13b.isChecked() ? "2" : bi.tcvcsc13c.isChecked() ? "3" : bi.tcvcsc13d.isChecked() ? "4" : bi.tcvcsc13e.isChecked() ? "5" : "0");

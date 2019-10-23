@@ -85,7 +85,8 @@ public class Section04SCActivity extends AppCompatActivity {
         f4.put("tcvcsc26j", bi.tcvcsc26j.isChecked() ? "10" : "0");
         f4.put("tcvcsc26k", bi.tcvcsc26k.isChecked() ? "11" : "0");
         f4.put("tcvcsc26l", bi.tcvcsc26l.isChecked() ? "12" : "0");
-        f4.put("tcvcsc26m", bi.tcvcsc26m.isChecked() ? "13" : "0");
+        f4.put("tcvcsc2696", bi.tcvcsc2696.isChecked() ? "96" : "0");
+        f4.put("tcvcsc2696x", bi.tcvcsc2696x.getText().toString());
         f4.put("tcvcsc27a", bi.tcvcsc27a.isChecked() ? "1" : "0");
         f4.put("tcvcsc27b", bi.tcvcsc27b.isChecked() ? "2" : "0");
         f4.put("tcvcsc27c", bi.tcvcsc27c.isChecked() ? "3" : "0");

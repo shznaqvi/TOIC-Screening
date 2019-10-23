@@ -114,9 +114,18 @@
                                 android:text="@string/tcvcsc26l" />
 
                             <CheckBox
-                                android:id="@+id/tcvcsc26m"
+                                android:id="@+id/tcvcsc2696"
                                 style="@style/checkbox"
                                 android:text="@string/tcvcsc26m" />
+
+                            <EditText
+                                android:id="@+id/tcvcsc2696x"
+                                style="@style/EditText"
+                                android:hint="@string/tcvcsc2896x"
+                                android:maxLength="30"
+                                android:tag="tcvcsc2896"
+                                android:text='@{tcvcsc2696.checked ? tcvcsc2696x.getText.toString : ""}'
+                                android:visibility="@{tcvcsc2696.checked ? View.VISIBLE : View.GONE}" />
                         </LinearLayout>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -177,7 +186,8 @@
                 <!-- tcvcsc28_T-->
                 <android.support.v7.widget.CardView
                     android:id="@+id/fldGrpCVtcvcsc28"
-                    style="@style/cardView">
+                    style="@style/cardView"
+                    android:visibility='@{tcvcsc27f.checked ? View.GONE : View.VISIBLE }'>
 
                     <LinearLayout style="@style/linearlayout_view_wt_bound">
 
@@ -185,44 +195,43 @@
                             style="@style/i_textview"
                             android:text="@string/tcvcsc28" />
 
-                        <LinearLayout
-                            android:id="@+id/fldGrpLLtcvcsc28a"
-                            style="@style/linearlayout_view_wt_bound"
-                            android:tag="0">
+                        <RadioGroup
+                            android:id="@+id/tcvcsc28"
+                            style="@style/i_radiogroup">
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc28a"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc28a" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc28b"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc28b" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc28c"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc28c" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc28d"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc28d" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc28e"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc28e" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc28f"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc28f" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc2896"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc2896" />
 
                             <EditText
@@ -233,7 +242,7 @@
                                 android:tag="tcvcsc2896"
                                 android:text='@{tcvcsc2896.checked ? tcvcsc2896x.getText.toString : ""}'
                                 android:visibility="@{tcvcsc2896.checked ? View.VISIBLE : View.GONE}" />
-                        </LinearLayout>
+                        </RadioGroup>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
@@ -248,55 +257,54 @@
                             style="@style/i_textview"
                             android:text="@string/tcvcsc29" />
 
-                        <LinearLayout
-                            android:id="@+id/fldGrpLLtcvcsc29a"
-                            style="@style/linearlayout_view_wt_bound"
-                            android:tag="0">
+                        <RadioGroup
+                            android:id="@+id/tcvcsc29"
+                            style="@style/i_radiogroup">
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc29a"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc29a" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc29b"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc29b" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc29c"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc29c" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc29d"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc29d" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc29e"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc29e" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc29f"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc29f" />
 
-                            <CheckBox
+                            <RadioButton
                                 android:id="@+id/tcvcsc2996"
-                                style="@style/checkbox"
+                                style="@style/radiobutton"
                                 android:text="@string/tcvcsc2996" />
 
                             <EditText
                                 android:id="@+id/tcvcsc2996x"
                                 style="@style/EditText"
-                                android:hint="@string/tcvcsc2996x"
+                                android:hint="@string/tcvcsc2996"
                                 android:maxLength="30"
                                 android:tag="tcvcsc2996"
                                 android:text='@{tcvcsc2996.checked ? tcvcsc2996x.getText.toString : ""}'
                                 android:visibility="@{tcvcsc2996.checked ? View.VISIBLE : View.GONE}" />
-                        </LinearLayout>
+                        </RadioGroup>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
