@@ -72,7 +72,7 @@ public class EndingActivity extends AppCompatActivity {
                 : binding.istatusb.isChecked() ? "2"
                 : "0");
 
-//        MainApp.fc.setIstatus88x(istatus88x.getText().toString());
+        MainApp.fc.setIstatus(binding.istatus88x.getText().toString());
     }
 
     private boolean UpdateDB() {

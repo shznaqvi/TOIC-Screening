@@ -343,7 +343,7 @@
                         <RadioGroup
                             android:id="@+id/tcvscla07"
                             style="@style/i_radiogroup"
-                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
+                            android:onCheckedChanged="@{callback::onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla07a"
@@ -403,7 +403,7 @@
 
                             android:id="@+id/tcvscla10"
                             style="@style/i_radiogroup"
-                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
+                            android:onCheckedChanged="@{callback::onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla10a"
@@ -435,7 +435,7 @@
                         <RadioGroup
                             android:id="@+id/tcvscla11"
                             style="@style/i_radiogroup"
-                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
+                            android:onCheckedChanged="@{callback::onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla11a"
@@ -467,7 +467,7 @@
                         <RadioGroup
                             android:id="@+id/tcvscla12"
                             style="@style/i_radiogroup"
-                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
+                            android:onCheckedChanged="@{callback::onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla12a"
@@ -499,7 +499,7 @@
                         <RadioGroup
                             android:id="@+id/tcvscla13"
                             style="@style/i_radiogroup"
-                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
+                            android:onCheckedChanged="@{callback::onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla13a"
@@ -529,7 +529,7 @@
                         <RadioGroup
                             android:id="@+id/tcvscla14"
                             style="@style/i_radiogroup"
-                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
+                            android:onCheckedChanged="@{callback::onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla14a"
@@ -559,7 +559,7 @@
                         <RadioGroup
                             android:id="@+id/tcvscla15"
                             style="@style/i_radiogroup"
-                            android:onCheckedChanged="@{callback.onRadioClickChanged}">
+                            android:onCheckedChanged="@{callback::onRadioClickChanged}">
 
                             <RadioButton
                                 android:id="@+id/tcvscla15a"

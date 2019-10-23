@@ -137,9 +137,9 @@
 
                             <EditText
                                 android:id="@+id/tcvcsa05"
-                                style="@style/EditText"
+                                style="@style/EditTextAlphaNumeric"
                                 android:hint="@string/tcvcsa05"
-                                android:maxLength="30" />
+                                android:maxLength="50" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
