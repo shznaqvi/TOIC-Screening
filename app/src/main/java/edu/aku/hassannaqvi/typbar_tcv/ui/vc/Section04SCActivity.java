@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class Section04SCActivity extends AppCompatActivity {
 
     ActivitySection04ScBinding bi;
     DatabaseHelper db;
+    int checkCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,25 @@ public class Section04SCActivity extends AppCompatActivity {
                 }
             }
         });
+
+        CheckBox.OnCheckedChangeListener check = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if (b)
+                    checkCounter++;
+                else
+                    checkCounter--;
+
+            }
+        };
+
+        CheckBox[] checkBoxList = {bi.tcvcsc26a, bi.tcvcsc26b, bi.tcvcsc26c, bi.tcvcsc26d, bi.tcvcsc26e,
+                bi.tcvcsc26f, bi.tcvcsc26g, bi.tcvcsc26h, bi.tcvcsc26i, bi.tcvcsc26j, bi.tcvcsc26k, bi.tcvcsc2696};
+
+        for (CheckBox checkBox : checkBoxList) {
+            checkBox.setOnCheckedChangeListener(check);
+        }
 
     }
 
@@ -123,7 +144,16 @@ public class Section04SCActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01);
+        if (!ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpSecA01))
+            return false;
+
+        if (checkCounter > 3) {
+            Toast.makeText(this, "ERROR(Not more then 3 Options):" + getString(R.string.tcvcsc26), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+
     }
 
     public void BtnEnd() {
