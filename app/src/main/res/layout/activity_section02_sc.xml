@@ -189,7 +189,7 @@
                     </android.support.v7.widget.CardView>-->
 
 
-                    <!--Radio tcvcl03_age-->
+                    <!--Radio tcvcsb03_age-->
                     <android.support.v7.widget.CardView style="@style/cardView">
 
                         <LinearLayout style="@style/linearlayout_view_wt_bound">
@@ -217,7 +217,7 @@
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
-                    <!--EditText tcvcl03DOB-->
+                    <!--EditText tcvcsb03DOB-->
                     <android.support.v7.widget.CardView
                         style="@style/cardView"
                         android:visibility='@{tcvcsbDOB.checked ? View.VISIBLE : View.GONE}'>
@@ -239,7 +239,7 @@
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
-                    <!--EditText tcvcl04-->
+                    <!--EditText tcvcsb04-->
                     <android.support.v7.widget.CardView
                         style="@style/cardView"
                         android:visibility='@{tcvcsbA.checked ? View.VISIBLE : View.GONE}'>
