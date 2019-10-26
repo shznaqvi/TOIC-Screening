@@ -577,7 +577,7 @@
     <string name="tcvcsa08a"> مرد </string>
     <string name="tcvcsa08b"> عورت </string>
     <string name="tcvcsah2"> (جواب دہندگان کووالدین/بنیادی نگران ہونا چاہیے 14 سال سے زائد بچوں کا) </string>
-    <string name="tcvcsa09"> کیا اس گھر میں 6 ماہ سے 15 سال تک کا بچہ/بچے موجود ہیں؟ </string>
+    <string name="tcvcsa09"> کیا اس گھر میں 6 ماہ سے 16 سال تک کا بچہ/ بچے موجود ہیں؟ </string>
     <string name="tcvcsa09a"> ہاں </string>
     <string name="tcvcsa09b"> نہیں </string>
     <string name="tcvcsa10"> اگر ہاں ،تو کتنے </string>
@@ -648,7 +648,7 @@
     <string name="tcvcsb12"> ویکسینشن کی جگہ پر پہنچنے کے لیے کتنا وقت لگتا ہے؟ </string>
     <string name="tcvcsb12h"> گھنٹے </string>
     <string name="tcvcsb12m"> منٹس </string>
-    <string name="tcvcsb13"> کیا آپ کے بچے کوکبھی ٹائیفائیڈکی بیماری کے خلاف ویکسین لگا ہے ؟ </string>
+    <string name="tcvcsb13"> آپ کے بچے کو ٹائفائڈ کی بیماری  سے بچائو کی ویکسین کیوں نہیں لگوائی گئی؟ </string>
     <string name="tcvcsb13h1"> معلومات کی کمی </string>
     <string name="tcvcsb13a"> ٹیکوں کی اہمیت کی معلومات کی کمی </string>
     <string name="tcvcsb13b"> یکوں کے ردعمل کا خوف </string>
