@@ -140,7 +140,7 @@ public class Section02SCActivity extends AppCompatActivity {
                 return;
             }
             finish();
-            startActivity(new Intent(this, Section02SCActivity.class));
+            startActivity(new Intent(this, Section02SCActivity.class).putExtra("tcvcsa04", ref_id));
         } catch (JSONException e) {
             e.printStackTrace();
         }
