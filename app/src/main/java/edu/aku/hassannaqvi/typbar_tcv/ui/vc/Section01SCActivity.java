@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -105,6 +107,22 @@ public class Section01SCActivity extends AppCompatActivity {
                 }
             }
         });
+
+        bi.tcvcsa02.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i == 0) {
+                    bi.tcvcsa1601.setText(null);
+                    return;
+                }
+                bi.tcvcsa1601.setText(String.format("%02d", Integer.valueOf(ucMap.get(bi.tcvcsa02.getSelectedItem().toString()))));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public void BtnContinue() {
@@ -120,12 +138,11 @@ public class Section01SCActivity extends AppCompatActivity {
             }
 
             // ACCESSING VC FOR StudyID
-            bi.tcvcsa04.setText(CheckingIDCC.accessingFile(Section01SCActivity.this, getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null)
+            CheckingIDCC.accessingFile(Section01SCActivity.this, getSharedPreferences("tagName", MODE_PRIVATE).getString("tagName", null)
                     , MainApp.casecontrol
                     , MainApp.VCID
                     , ""
-                    , true
-            ));
+                    , true);
 
             finish();
             startActivity(new Intent(this, bi.tcvcsa09b.isChecked() || bi.tcvcsa11b.isChecked() ? EndingActivity.class : Section02SCActivity.class)
@@ -180,6 +197,7 @@ public class Section01SCActivity extends AppCompatActivity {
         f1.put("tcvcsa1496x", bi.tcvcsa1496x.getText().toString());
         f1.put("tcvcsa14", bi.tcvcsa14a.isChecked() ? "1" : bi.tcvcsa14b.isChecked() ? "2" : bi.tcvcsa14c.isChecked() ? "3" : bi.tcvcsa1496.isChecked() ? "96" : "0");
         f1.put("tcvcsa15", bi.tcvcsa15a.isChecked() ? "1" : bi.tcvcsa15b.isChecked() ? "2" : bi.tcvcsa15c.isChecked() ? "3" : bi.tcvcsa1598.isChecked() ? "98" : "0");
+        f1.put("tcvcsa16", bi.tcvcsa1601.getText().toString() + bi.tcvcsa16.getText().toString());
 
         MainApp.fc.setsA(String.valueOf(f1));
 

@@ -90,8 +90,7 @@
                         android:id="@+id/fldGrpCVtcvcsa03"
                         style="@style/cardView">
 
-                        <LinearLayout
-                            style="@style/linearlayout_view_wt_bound">
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
 
                             <TextView
                                 style="@style/i_textview"
@@ -101,7 +100,7 @@
                                 android:id="@+id/tcvcsa03"
                                 style="@style/EditText"
                                 android:hint="@string/tcvcsa03"
-                                android:maxLength="30"/>
+                                android:maxLength="30" />
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
@@ -121,6 +120,43 @@
                                 style="@style/EditText_number"
                                 android:enabled="false"
                                 android:hint="@string/tcvcsa04" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <!-- tcvcsa16-->
+                    <android.support.v7.widget.CardView style="@style/cardView">
+
+                        <LinearLayout style="@style/linearlayout_view_wt_bound">
+
+                            <TextView
+                                style="@style/i_textview"
+                                android:text="@string/tcvcsa16" />
+
+
+                            <LinearLayout
+                                style="@style/linearlayout_view_wt_bound"
+                                android:orientation="horizontal">
+
+                                <com.edittextpicker.aliazaz.EditTextPicker
+                                    android:id="@+id/tcvcsa16"
+                                    style="@style/EditText_number"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="80"
+                                    android:hint="###"
+                                    android:layoutDirection="ltr"
+                                    app:defaultValue=""
+                                    app:mask="###"
+                                    app:pattern="[0-9]{3,3}" />
+
+                                <EditText
+                                    android:id="@+id/tcvcsa1601"
+                                    style="@style/EditText_number"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="20"
+                                    android:enabled="false"
+                                    android:hint="UC-Code" />
+                            </LinearLayout>
+
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 

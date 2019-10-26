@@ -203,11 +203,16 @@ public class Section02SCActivity extends AppCompatActivity {
             MainApp.cc.setMuid(mm.getMm().getMuid());
             if (!mm.isFlag() && bi.tcvcsb06a.isChecked())
                 mothersMap.put(bi.tcvcsb14x.getSelectedItem().toString(), new MembersContract.FamilyTableVC(mm.getMm(), true));
+
+            c1.put("tcvcsb14", bi.tcvcsb14x.getSelectedItem().toString());
+
         } else {
             MainApp.cc.setMuid(MainApp.cc.getDeviceID() + MainApp.cc.get_ID() + motherCounter);
             mothersMap.put(bi.tcvcsb14.getText().toString(), new MembersContract.FamilyTableVC(MainApp.cc, bi.tcvcsb06a.isChecked()));
             mothersName.add(mothersName.size() - 1, bi.tcvcsb14.getText().toString());
             motherCounter++;
+
+            c1.put("tcvcsb14", bi.tcvcsb14.getText().toString());
         }
 
         MainApp.cc.setsB(String.valueOf(c1));
