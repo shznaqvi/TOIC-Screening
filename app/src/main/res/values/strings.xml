@@ -653,7 +653,7 @@
     <string name="tcvcsb13"> آپ کے بچے کو ٹائفائڈ کی بیماری  سے بچائو کی ویکسین کیوں نہیں لگوائی گئی؟ </string>
     <string name="tcvcsb13h1"> معلومات کی کمی </string>
     <string name="tcvcsb13a"> ٹیکوں کی اہمیت کی معلومات کی کمی </string>
-    <string name="tcvcsb13b"> یکوں کے ردعمل کا خوف </string>
+    <string name="tcvcsb13b"> ٹیکوں کے ردعمل کا خوف </string>
     <string name="tcvcsb13961"> دیگر وضاحت کریں </string>
     <string name="tcvcsb13961x"> دیگر وضاحت کریں </string>
     <string name="tcvcsb13h2"> حوصلہ افزائی کی کمی </string>
@@ -664,7 +664,7 @@
     <string name="tcvcsb13h3"> رکاوٹ </string>
     <string name="tcvcsb13e"> ٹیکے لگانے کی جگہ دور ہے </string>
     <string name="tcvcsb13f"> ٹیکے لگانے والا موجود نہیں ہے </string>
-    <string name="tcvcsb13g">   ویکسنیشن موجود نہیں تھی </string>
+    <string name="tcvcsb13g">  ویکسنیشن موجود نہیں تھی </string>
     <string name="tcvcsb13h"> ماں مصروف تھی </string>
     <string name="tcvcsb13i"> بچہ بیمارہے۔نہیں لیا </string>
     <string name="tcvcsb13963"> دیگر وضاحت کریں </string>
@@ -675,7 +675,7 @@
     <string name="tcvcsc01">کیا آپ نے خود ٹائیفائیڈبخار میں مبتلا کسی مریض کو دیکھا ہے ؟  </string>
     <string name="tcvcsc01a"> ہاں </string>
     <string name="tcvcsc01b"> نہیں </string>
-    <string name="tcvcsc02"> خاندان میں کسی ایسے شخص کوجانتے ہیں جسےٹائیفائیڈ ہوا ہے ؟ / کیا آپ اپنے محلے </string>
+    <string name="tcvcsc02">کیا آپ اپنے محلے / خاندان میں کسی ایسے شخص کوجانتے ہیں جسےٹائیفائیڈ ہوا ہے ؟  </string>
     <string name="tcvcsc02a"> ہاں </string>
     <string name="tcvcsc02b"> نہیں </string>
     <string name="tcvcsc03"> کیا اآپ نے کبھی  الرجی یا بیماری کے علاوہ کسی اور وجہ سے اپنے بچے کو ویکسین لگانے میں دیر کی ہے ۔(اگر بچے کو ویکسین نہیں لگی ہو تو یہ سوال چھوڑدیں) </string>
@@ -806,7 +806,7 @@
     <string name="tcvcsc26i"> مقامی وینڈرز پر پوسٹر </string>
     <string name="tcvcsc26j"> دوستوں </string>
     <string name="tcvcsc26k"> مذہبی رہنما/تنظیم </string>
-    <string name="tcvcsc26l"> اس ام اس </string>
+    <string name="tcvcsc26l"> اس ام اس (SMS) </string>
     <string name="tcvcsc26m"> کوئی اوروضاحت کریں </string>
     <string name="tcvcsc27"> آپ عام طور پر کس وقت ریڈیوسنتےہیں ؟(جو بھی ہو نشان لگائیں) </string>
     <string name="tcvcsc27a"> صبح (۹بجے سےپہلے) </string>

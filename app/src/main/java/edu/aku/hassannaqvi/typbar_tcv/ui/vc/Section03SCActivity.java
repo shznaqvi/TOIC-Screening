@@ -105,7 +105,7 @@ public class Section03SCActivity extends AppCompatActivity {
             }
 
             finish();
-            startActivity(new Intent(this, Section04SCActivity.class));
+            startActivity(new Intent(this, Section04SCActivity.class).putExtra("tcvcsa04", ref_id));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -140,6 +140,7 @@ public class Section03SCActivity extends AppCompatActivity {
         JSONObject f3 = new JSONObject();
 
         f3.put("ref_tcvcsa04", ref_id);
+        f3.put("ref_tcvcsb14", bi.tcvcsc00.getSelectedItem().toString());
 
         f3.put("tcvcsc01", bi.tcvcsc01a.isChecked() ? "1" : bi.tcvcsc01b.isChecked() ? "2" : "0");
         f3.put("tcvcsc02", bi.tcvcsc02a.isChecked() ? "1" : bi.tcvcsc02b.isChecked() ? "2" : "0");

@@ -81,7 +81,7 @@ public class Section04SCActivity extends AppCompatActivity {
                 return;
             }
             finish();
-            startActivity(new Intent(this, mothersName.size() > 1 ? Section03SCActivity.class : EndingActivity.class).putExtra("complete", true));
+            startActivity(new Intent(this, mothersName.size() > 1 ? Section03SCActivity.class : EndingActivity.class).putExtra("complete", true).putExtra("tcvcsa04", getIntent().getStringExtra("tcvcsa04")));
         } catch (JSONException e) {
             e.printStackTrace();
         }
