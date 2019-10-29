@@ -50,6 +50,8 @@ public class Section02SCActivity extends AppCompatActivity {
         bi.tcvcsb14x.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mothersName));
         bi.tcvcsb03.setMaxDate(DateUtils.getMonthsBack("dd/MM/yyyy", -6));
         bi.tcvcsb03.setMinDate(DateUtils.getYearsBack("dd/MM/yyyy", -16));
+        bi.tcvcsb08d.setMaxDate(DateUtils.convertDateFormat("26-10-2019"));
+        bi.tcvcsb08d.setMinDate(DateUtils.convertDateFormat("10-04-2019"));
 
         if (childCount == childCounter) {
             bi.btnAddMore.setVisibility(View.GONE);
