@@ -37,7 +37,7 @@ public final class CheckingIDCC {
             String[] stringArray = data.split("\n");
 
             //01 for empty and 06 for update of app that includes VC id
-            if (stringArray.length == 1 || stringArray.length == 6) {
+            if (stringArray.length == 1) {
                 lineBuffer.append("CASE\n");
                 lineBuffer.append(tagID + "-000001\n");
                 lineBuffer.append(tagID + "-000001\n");
@@ -45,6 +45,11 @@ public final class CheckingIDCC {
                 lineBuffer.append(tagID + "-000001\n");
                 lineBuffer.append(tagID + "-000001\n");
                 lineBuffer.append("VC\n");
+                lineBuffer.append(tagID + "-000001");
+
+                writeInFile(idFile, lineBuffer.toString());
+            } else if (stringArray.length == 6) {
+                lineBuffer.append("\nVC\n");
                 lineBuffer.append(tagID + "-000001");
 
                 writeInFile(idFile, lineBuffer.toString());

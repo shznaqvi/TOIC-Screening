@@ -99,10 +99,11 @@ public class Section00CRFCaseActivity extends AppCompatActivity {
 
                 } else {
                     String[] screenIDS = screenID.split("-");
-                    screenID = screenID.replace(screenIDS[screenIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
+                    screenID = screenID.replace("-" + screenIDS[screenIDS.length - 1].substring(0, 1), "-" + hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
 
                     String[] caseIDS = caseID.split("-");
-                    caseID = caseID.replace(caseIDS[caseIDS.length - 1].substring(0, 1), hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
+                    caseID = caseID.replace("-" + caseIDS[caseIDS.length - 1].substring(0, 1), "-" + hfMap.get(bi.hfcode.getSelectedItem()).getHfcode());
+
                 }
 
                 bi.tcvscaa07.setText(screenID);
